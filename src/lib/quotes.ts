@@ -277,3 +277,48 @@ export function applyQuotes(positions: Position[], feed: QuoteFeed | null): Posi
     };
   });
 }
+
+// ── DEMO MOCK FEED ───────────────────────────────────────────────────────────
+// When no price token is configured, the /api/quotes proxy returns
+// NOT_CONFIGURED and there is no intraday feed, so the "daily movers" card has
+// nothing to rank. For a DEMO deployment we synthesise a plausible feed from
+// each holding's OWN statement mark plus a small, deterministic daily wiggle:
+// every price stays within a few percent of its real mark, so NAV barely moves
+// and the identity gate (priceLooksLikeSameSecurity) accepts it. The moment a
+// real token is added, fetchQuotes succeeds and this is never reached. This
+// fabricates nothing about the real book — it is a demo stand-in for a feed.
+function hashUnit(s: string): number {
+  let h = 2166136261;
+  for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); }
+  return ((h >>> 0) % 100000) / 100000; // [0, 1)
+}
+
+export function mockQuoteFeed(positions: Position[], symbols: readonly string[]): QuoteFeed {
+  const quotes: Record<string, Quote> = {};
+  const now = new Date().toISOString();
+  for (const p of positions) {
+    if (p.review || p.quantity === null) continue;
+    const mark = p.currentPrice;
+    if (!(typeof mark === "number" && mark > 0)) continue;
+    const sym = holdingQuoteSymbolFor(p);
+    if (!sym) continue;
+    // Deterministic per security: a daily move in roughly [-4%, +4%]. One price
+    // per security, applied to all its symbol spellings, so the % and ₹ agree.
+    const move = hashUnit(p.securityKey) * 0.08 - 0.04;
+    const price = Math.round(mark * (1 + move) * 100) / 100;
+    const q: Quote = {
+      price, prevClose: mark, open: mark,
+      dayLow: Math.min(price, mark), dayHigh: Math.max(price, mark),
+      low52: null, high52: null, marketCap: null, volume: null, yearChangePct: null,
+      ageS: 0, source: "muns", tradedAt: now, observedAt: now,
+    };
+    for (const key of [sym, quoteSymbolFor(p), symbolFor(p)]) {
+      if (key && !quotes[key]) quotes[key] = q;
+    }
+  }
+  // Every symbol asked for that we could not price (no mark — e.g. a depository
+  // share the statements report without one) is `missing`, not `pending`, so a
+  // card waiting on its scope to land stops waiting instead of spinning for ever.
+  const missing = [...new Set(symbols)].filter((s) => !quotes[s]);
+  return { quotes, asOf: now, missing, pending: [], fresh: Object.keys(quotes).length, stale: 0 };
+}

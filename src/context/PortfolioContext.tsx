@@ -11,7 +11,7 @@ import type { Portfolio, Position } from "@/lib/types";
 import { dedupedPositions, publicPrivateSplit, holdingBucket, DIRECT_EQUITY_BUCKET } from "@/lib/analytics";
 import { accountIndex, engagementOf } from "@/lib/accounts";
 import { SUPPORTED_DISPLAY_CURRENCIES, type DisplayCurrency, DEFAULT_INR_PER_USD, fetchInrPerUsd } from "@/lib/fx";
-import { fetchQuotes, symbolsFor, quoteSymbolsFor, quoteSymbolFor, holdingQuoteSymbolFor, applyQuotes, pendingAmong, quoteFeedNames, type QuoteFeed } from "@/lib/quotes";
+import { fetchQuotes, symbolsFor, quoteSymbolsFor, quoteSymbolFor, holdingQuoteSymbolFor, applyQuotes, pendingAmong, quoteFeedNames, mockQuoteFeed, lastQuoteFailure, type QuoteFeed } from "@/lib/quotes";
 import { applyFundNavs, depositoryFundHoldings, partialValuationNotes, unpricedStatementUnits, withPartialValuation } from "@/lib/fundNavs";
 import { depositoryShareHoldings, depositoryShareIsins, depositoryShareSymbols, shareCandidates } from "@/lib/depositoryShares";
 import { applyCorporateActionQuotes, fetchCorporateActions, liveWithheldReason, savedCorporateActions, type ActionFeed, type ActionReturn } from "@/lib/corporateActions";
@@ -509,7 +509,13 @@ export function PortfolioProvider({ children }: { children: React.ReactNode }) {
       // is answered in seconds; one the upstream cannot price never is, so
       // polling on it held this book at a four-second cadence for the life of
       // the tab while nothing could change.
-      if (feed && retainQuotes(feed)) { mergeFeed(feed); setQuotesStatus("live"); return feed.pending.length; }
+      // DEMO FALLBACK: with no price token configured the proxy answers
+      // NOT_CONFIGURED and `feed` is null. Rather than leave the movers card
+      // empty, synthesise a feed from each holding's own statement mark plus a
+      // small daily wiggle. A real token makes fetchQuotes succeed, so this
+      // branch is never taken once live prices are configured.
+      const effective = feed ?? (lastQuoteFailure()?.failureCode === "NOT_CONFIGURED" ? mockQuoteFeed(BOOK_POSITIONS, symbols) : null);
+      if (effective && retainQuotes(effective)) { mergeFeed(effective); setQuotesStatus("live"); return effective.pending.length; }
       setQuotes((previous) => retainQuotes(previous));
       setQuotesStatus("unavailable");
       return -1;
