@@ -53,7 +53,7 @@
 //
 // What none of the three passes can settle is a lot that is not a SALE: ASK
 // prints five lots with sale proceeds of ₹0 — the fractions a demerger or a
-// bonus left (Simran Pharmalabs' 0.75 share in both accounts, each a ₹279.47
+// bonus left (Riya Pharmalabs' 0.75 share in both accounts, each a ₹279.47
 // loss; three Astral Poly Technik fractions at nil cost and nil proceeds).
 // There is no tape row for them to meet, so they stay unsettled and the caller
 // names them; they are never folded into a sale.

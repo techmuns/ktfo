@@ -46,16 +46,16 @@ assert.equal(result.flows[0].amount,-1100,'own 31 March NAV establishes opening'
 const unpaired=structuredClone(switched);unpaired.cashFlows[2].amount=1200;
 assert.equal(unitLedgerReturnRecord(unpaired,'2026-04-01',[]),null,'both class-switch legs must agree');
 
-assert.equal(classify({fileName:'G3517383_40212_BankBook.pdf',text:'CARNELIAN BESPOKE PORTFOLIO Account : 3517383 Kapil Verma BANK BOOK From 01/04/2026 to 07/10/2026'}).provider,'Carnelian Asset Management and Advisors Pvt Ltd');
-assert.equal(classify({fileName:'Z1281_8710090_BankBook178CT.pdf',text:'SVAN INVESTMENT MANAGERS LLP BANK BOOK Account : 8710090 Rohan Verma From 01/04/2026 to 30/09/2026'}).provider,'SVAN Investment Managers LLP');
+assert.equal(classify({fileName:'G3517383_40212_BankBook.pdf',text:'CARNELIAN BESPOKE PORTFOLIO Account : 3517383 Chiraag Kapil BANK BOOK From 01/04/2026 to 07/10/2026'}).provider,'Carnelian Asset Management and Advisors Pvt Ltd');
+assert.equal(classify({fileName:'Z1281_8710090_BankBook178CT.pdf',text:'SVAN INVESTMENT MANAGERS LLP BANK BOOK Account : 8710090 Arjun Kapil From 01/04/2026 to 30/09/2026'}).provider,'SVAN Investment Managers LLP');
 assert.equal(classify({fileName:'demat.pdf',text:'CDSL AND NSDL : IN-DP-1 Statement of holdings Scheme Motilal Oswal Arbitrage Fund - Direct Plan Growth- ISIN No : INF247L01ED1'}).provider,'Motilal Oswal Financial Services (demat)','a held fund cannot replace the depository issuer');
 assert.equal(classify({fileName:'register.xlsx',text:'ORG. SHARE CERTIFICATE STATUS Invesco India Arbitrage Fund invescomutualfund.com'}).provider,'Family investment register (not a statement)');
 const friendly={sourcePath:'source/drop/issuer/CURRENT PORTFOLIO.pdf'};
 const witness={status:'ok',provider:'Goldstandard Wealth Private Limited',accountNo:'100023',ownerId:'ajay',sourcePath:'source/drop/issuer/G100023_Performance.pdf'};
-const text='CURRENT PORTFOLIO\nAccount : 100023 Kapil Verma\nHDFC Asset Management Co. Ltd';
+const text='CURRENT PORTFOLIO\nAccount : 100023 Chiraag Kapil\nHDFC Asset Management Co. Ltd';
 // Obtain the registry's actual canonical ID rather than assuming a spelling.
 import {resolveOwner}from'../../../shared/owners.mjs';
-witness.ownerId=resolveOwner('Kapil Verma').owner.ownerId;
+witness.ownerId=resolveOwner('Chiraag Kapil').owner.ownerId;
 assert.equal(pmsSiblingProvider(friendly,text,[friendly,witness]),witness.provider);
 assert.equal(pmsSiblingProvider(friendly,text,[{...witness,sourcePath:'source/other/G.pdf'}]),null,'different deliveries cannot supply a provider guess');
 assert.equal(pmsSiblingProvider(friendly,text,[{...witness,ownerId:'other'}]),null,'same number with a different holder refuses attribution');

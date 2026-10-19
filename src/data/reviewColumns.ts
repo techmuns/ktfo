@@ -2,7 +2,7 @@
 import type { ReviewColumnData } from "../lib/reviewColumns";
 export const REVIEW_COLUMN_DATA: ReviewColumnData = {
  "asOf": "2026-06-30",
- "workbook": "source/august-2026-d/Final Consolidated Verma Family Review as on 30 June 2026.xlsx",
+ "workbook": "source/august-2026-d/Final Consolidated Kapil Family Review as on 30 June 2026.xlsx",
  "bySource": {
   "Private Investments:4": {
    "investmentRange": {
@@ -2763,7 +2763,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C4"
    },
    "investors": {
-    "value": "Kapil Verma / Nisha Verma",
+    "value": "Chiraag Kapil / Meera Kapil",
     "source": "Equity!D4"
    },
    "benchmark": {
@@ -2814,7 +2814,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C5"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Equity!D5"
    },
    "benchmark": {
@@ -2865,7 +2865,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C6"
    },
    "investors": {
-    "value": "Kapil Verma / Nisha Verma",
+    "value": "Chiraag Kapil / Meera Kapil",
     "source": "Equity!D6"
    },
    "benchmark": {
@@ -2916,7 +2916,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C7"
    },
    "investors": {
-    "value": "Kapil Verma / Nisha Verma",
+    "value": "Chiraag Kapil / Meera Kapil",
     "source": "Equity!D7"
    },
    "benchmark": {
@@ -2967,7 +2967,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C8"
    },
    "investors": {
-    "value": "Kapil Verma / Nisha Verma",
+    "value": "Chiraag Kapil / Meera Kapil",
     "source": "Equity!D8"
    },
    "benchmark": {
@@ -3018,7 +3018,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C9"
    },
    "investors": {
-    "value": "Kapil Verma / Nisha Verma",
+    "value": "Chiraag Kapil / Meera Kapil",
     "source": "Equity!D9"
    },
    "benchmark": {
@@ -3069,7 +3069,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C10"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Equity!D10"
    },
    "benchmark": {
@@ -3120,7 +3120,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C11"
    },
    "investors": {
-    "value": "Nisha Verma",
+    "value": "Meera Kapil",
     "source": "Equity!D11"
    },
    "benchmark": {
@@ -3171,7 +3171,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C12"
    },
    "investors": {
-    "value": "Kapil Verma / Nisha Verma / Rohan Verma / Verma Family Trust II / Verma Family Trust III",
+    "value": "Chiraag Kapil / Meera Kapil / Arjun Kapil / Kapil Family Trust II / Kapil Family Trust III",
     "source": "Equity!D12"
    },
    "benchmark": {
@@ -3222,7 +3222,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C13"
    },
    "investors": {
-    "value": "Kapil Verma / Nisha Verma / Rohan Verma",
+    "value": "Chiraag Kapil / Meera Kapil / Arjun Kapil",
     "source": "Equity!D13"
    },
    "benchmark": {
@@ -3273,7 +3273,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C14"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Equity!D14"
    },
    "benchmark": {
@@ -3324,7 +3324,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C15"
    },
    "investors": {
-    "value": "Simran Verma / Kapil Verma / Nisha Verma",
+    "value": "Riya Kapil / Chiraag Kapil / Meera Kapil",
     "source": "Equity!D15"
    },
    "benchmark": {
@@ -3375,7 +3375,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C16"
    },
    "investors": {
-    "value": "Simran Verma / Kapil Verma",
+    "value": "Riya Kapil / Chiraag Kapil",
     "source": "Equity!D16"
    },
    "benchmark": {
@@ -3477,7 +3477,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C18"
    },
    "investors": {
-    "value": "Kapil Verma / Rohan Verma",
+    "value": "Chiraag Kapil / Arjun Kapil",
     "source": "Equity!D18"
    },
    "benchmark": {
@@ -3528,7 +3528,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C19"
    },
    "investors": {
-    "value": "Simran Verma / Kapil Verma / Nisha Verma / Rohan Verma",
+    "value": "Riya Kapil / Chiraag Kapil / Meera Kapil / Arjun Kapil",
     "source": "Equity!D19"
    },
    "benchmark": {
@@ -3579,7 +3579,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C20"
    },
    "investors": {
-    "value": "Kapil Verma / Nisha Verma",
+    "value": "Chiraag Kapil / Meera Kapil",
     "source": "Equity!D20"
    },
    "benchmark": {
@@ -3681,7 +3681,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C22"
    },
    "investors": {
-    "value": "Simran Verma / Nisha Verma / Rohan Verma / Kapil Verma",
+    "value": "Riya Kapil / Meera Kapil / Arjun Kapil / Chiraag Kapil",
     "source": "Equity!D22"
    },
    "benchmark": {
@@ -3732,7 +3732,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C23"
    },
    "investors": {
-    "value": "Rohan Verma / Kapil Verma / Nisha Verma",
+    "value": "Arjun Kapil / Chiraag Kapil / Meera Kapil",
     "source": "Equity!D23"
    },
    "benchmark": {
@@ -3783,7 +3783,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C24"
    },
    "investors": {
-    "value": "Kapil Verma / Rohan Verma / Nisha Verma",
+    "value": "Chiraag Kapil / Arjun Kapil / Meera Kapil",
     "source": "Equity!D24"
    },
    "benchmark": {
@@ -3834,7 +3834,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C25"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Equity!D25"
    },
    "benchmark": {
@@ -3885,7 +3885,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C26"
    },
    "investors": {
-    "value": "Kapil Verma / Nisha Verma / Rohan Verma",
+    "value": "Chiraag Kapil / Meera Kapil / Arjun Kapil",
     "source": "Equity!D26"
    },
    "benchmark": {
@@ -3983,7 +3983,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C28"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Equity!D28"
    },
    "benchmark": {
@@ -4081,7 +4081,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C30"
    },
    "investors": {
-    "value": "Nisha Verma",
+    "value": "Meera Kapil",
     "source": "Equity!D30"
    },
    "benchmark": {
@@ -4132,7 +4132,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C31"
    },
    "investors": {
-    "value": "Kapil Verma / Rohan Verma",
+    "value": "Chiraag Kapil / Arjun Kapil",
     "source": "Equity!D31"
    },
    "benchmark": {
@@ -4183,7 +4183,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C32"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Equity!D32"
    },
    "benchmark": {
@@ -4234,7 +4234,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C33"
    },
    "investors": {
-    "value": "Kapil Verma / Nisha Verma",
+    "value": "Chiraag Kapil / Meera Kapil",
     "source": "Equity!D33"
    },
    "benchmark": {
@@ -4285,7 +4285,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C34"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Equity!D34"
    },
    "benchmark": {
@@ -4336,7 +4336,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C35"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Equity!D35"
    },
    "benchmark": {
@@ -4387,7 +4387,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C36"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Equity!D36"
    },
    "benchmark": {
@@ -4438,7 +4438,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C37"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Equity!D37"
    },
    "benchmark": {
@@ -4489,7 +4489,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C38"
    },
    "investors": {
-    "value": "Nisha Verma",
+    "value": "Meera Kapil",
     "source": "Equity!D38"
    },
    "benchmark": {
@@ -4540,7 +4540,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C39"
    },
    "investors": {
-    "value": "Kapil Verma / Rohan Verma",
+    "value": "Chiraag Kapil / Arjun Kapil",
     "source": "Equity!D39"
    },
    "benchmark": {
@@ -4591,7 +4591,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C40"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Equity!D40"
    },
    "benchmark": {
@@ -4642,7 +4642,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C41"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Equity!D41"
    },
    "benchmark": {
@@ -4693,7 +4693,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C42"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Equity!D42"
    },
    "benchmark": {
@@ -4744,7 +4744,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C43"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Equity!D43"
    },
    "benchmark": {
@@ -4795,7 +4795,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C44"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Equity!D44"
    },
    "benchmark": {
@@ -4846,7 +4846,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C45"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Equity!D45"
    },
    "benchmark": {
@@ -4897,7 +4897,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C46"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Equity!D46"
    },
    "benchmark": {
@@ -4948,7 +4948,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C47"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Equity!D47"
    },
    "benchmark": {
@@ -4999,7 +4999,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C48"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Equity!D48"
    },
    "benchmark": {
@@ -5050,7 +5050,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C49"
    },
    "investors": {
-    "value": "Simran Verma",
+    "value": "Riya Kapil",
     "source": "Equity!D49"
    },
    "benchmark": {
@@ -5101,7 +5101,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C50"
    },
    "investors": {
-    "value": "Kapil Verma / Rohan Verma",
+    "value": "Chiraag Kapil / Arjun Kapil",
     "source": "Equity!D50"
    },
    "benchmark": {
@@ -5148,7 +5148,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C51"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Equity!D51"
    },
    "benchmark": {
@@ -5195,7 +5195,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C52"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Equity!D52"
    },
    "benchmark": {
@@ -5242,7 +5242,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C53"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Equity!D53"
    },
    "benchmark": {
@@ -5289,7 +5289,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C54"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Equity!D54"
    },
    "benchmark": {
@@ -5340,7 +5340,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C55"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Equity!D55"
    },
    "benchmark": {
@@ -5391,7 +5391,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C56"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Equity!D56"
    },
    "benchmark": {
@@ -5442,7 +5442,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C57"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Equity!D57"
    },
    "benchmark": {
@@ -5493,7 +5493,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C58"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Equity!D58"
    },
    "benchmark": {
@@ -5544,7 +5544,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C59"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Equity!D59"
    },
    "benchmark": {
@@ -5595,7 +5595,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C60"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Equity!D60"
    },
    "benchmark": {
@@ -5646,7 +5646,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C61"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Equity!D61"
    },
    "benchmark": {
@@ -5697,7 +5697,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C62"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Equity!D62"
    },
    "benchmark": {
@@ -5748,7 +5748,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C63"
    },
    "investors": {
-    "value": "Kapil Verma / Nisha Verma",
+    "value": "Chiraag Kapil / Meera Kapil",
     "source": "Equity!D63"
    },
    "benchmark": {
@@ -5893,7 +5893,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C66"
    },
    "investors": {
-    "value": "Kapil Verma / Rohan Verma",
+    "value": "Chiraag Kapil / Arjun Kapil",
     "source": "Equity!D66"
    },
    "benchmark": {
@@ -5944,7 +5944,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C67"
    },
    "investors": {
-    "value": "Kapil Verma / Nisha Verma",
+    "value": "Chiraag Kapil / Meera Kapil",
     "source": "Equity!D67"
    },
    "benchmark": {
@@ -6042,7 +6042,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C69"
    },
    "investors": {
-    "value": "Kapil Verma / Nisha Verma",
+    "value": "Chiraag Kapil / Meera Kapil",
     "source": "Equity!D69"
    },
    "benchmark": {
@@ -6093,7 +6093,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C70"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Equity!D70"
    },
    "benchmark": {
@@ -8035,7 +8035,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Stable Growth!E3"
    },
    "investors": {
-    "value": "Kapil Verma / Nisha Verma",
+    "value": "Chiraag Kapil / Meera Kapil",
     "source": "Stable Growth!F3"
    },
    "benchmark": {
@@ -8086,7 +8086,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Stable Growth!E4"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Stable Growth!F4"
    },
    "benchmark": {
@@ -8137,7 +8137,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Stable Growth!E5"
    },
    "investors": {
-    "value": "Kapil Verma / Nisha Verma",
+    "value": "Chiraag Kapil / Meera Kapil",
     "source": "Stable Growth!F5"
    },
    "benchmark": {
@@ -8188,7 +8188,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Stable Growth!E6"
    },
    "investors": {
-    "value": "Kapil Verma / Nisha Verma",
+    "value": "Chiraag Kapil / Meera Kapil",
     "source": "Stable Growth!F6"
    },
    "benchmark": {
@@ -8239,7 +8239,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Stable Growth!E7"
    },
    "investors": {
-    "value": "Kapil Verma / Nisha Verma / Rohan Verma / Verma Family Trust II / Verma Family Trust III",
+    "value": "Chiraag Kapil / Meera Kapil / Arjun Kapil / Kapil Family Trust II / Kapil Family Trust III",
     "source": "Stable Growth!F7"
    },
    "benchmark": {
@@ -8290,7 +8290,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Stable Growth!E8"
    },
    "investors": {
-    "value": "Kapil Verma / Nisha Verma / Rohan Verma",
+    "value": "Chiraag Kapil / Meera Kapil / Arjun Kapil",
     "source": "Stable Growth!F8"
    },
    "benchmark": {
@@ -8341,7 +8341,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Stable Growth!E9"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Stable Growth!F9"
    },
    "benchmark": {
@@ -8392,7 +8392,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Stable Growth!E10"
    },
    "investors": {
-    "value": "Simran Verma / Kapil Verma / Nisha Verma",
+    "value": "Riya Kapil / Chiraag Kapil / Meera Kapil",
     "source": "Stable Growth!F10"
    },
    "benchmark": {
@@ -8443,7 +8443,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Stable Growth!E11"
    },
    "investors": {
-    "value": "Simran Verma / Kapil Verma",
+    "value": "Riya Kapil / Chiraag Kapil",
     "source": "Stable Growth!F11"
    },
    "benchmark": {
@@ -8494,7 +8494,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Stable Growth!E12"
    },
    "investors": {
-    "value": "Simran Verma / Kapil Verma / Nisha Verma / Rohan Verma",
+    "value": "Riya Kapil / Chiraag Kapil / Meera Kapil / Arjun Kapil",
     "source": "Stable Growth!F12"
    },
    "benchmark": {
@@ -8545,7 +8545,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Stable Growth!E13"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Stable Growth!F13"
    },
    "benchmark": {
@@ -8596,7 +8596,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Stable Growth!E14"
    },
    "investors": {
-    "value": "Kapil Verma / Nisha Verma",
+    "value": "Chiraag Kapil / Meera Kapil",
     "source": "Stable Growth!F14"
    },
    "benchmark": {
@@ -8712,7 +8712,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Entrepreneruial Growth!E3"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Entrepreneruial Growth!F3"
    },
    "benchmark": {
@@ -9125,7 +9125,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Thematic,Tactical!E3"
    },
    "investors": {
-    "value": "Kapil Verma / Nisha Verma",
+    "value": "Chiraag Kapil / Meera Kapil",
     "source": "Thematic,Tactical!F3"
    },
    "benchmark": {
@@ -9176,7 +9176,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Thematic,Tactical!E4"
    },
    "investors": {
-    "value": "Kapil Verma / Nisha Verma",
+    "value": "Chiraag Kapil / Meera Kapil",
     "source": "Thematic,Tactical!F4"
    },
    "benchmark": {
@@ -9227,7 +9227,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Thematic,Tactical!E5"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Thematic,Tactical!F5"
    },
    "benchmark": {
@@ -9278,7 +9278,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Thematic,Tactical!E6"
    },
    "investors": {
-    "value": "Nisha Verma",
+    "value": "Meera Kapil",
     "source": "Thematic,Tactical!F6"
    },
    "benchmark": {
@@ -9329,7 +9329,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Thematic,Tactical!E7"
    },
    "investors": {
-    "value": "Kapil Verma / Rohan Verma",
+    "value": "Chiraag Kapil / Arjun Kapil",
     "source": "Thematic,Tactical!F7"
    },
    "benchmark": {
@@ -9380,7 +9380,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Thematic,Tactical!E8"
    },
    "investors": {
-    "value": "Kapil Verma / Nisha Verma",
+    "value": "Chiraag Kapil / Meera Kapil",
     "source": "Thematic,Tactical!F8"
    },
    "benchmark": {
@@ -9580,7 +9580,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Thematic,Tactical!E12"
    },
    "investors": {
-    "value": "Rohan Verma",
+    "value": "Arjun Kapil",
     "source": "Thematic,Tactical!F12"
    },
    "benchmark": {
@@ -9631,7 +9631,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Thematic,Tactical!E13"
    },
    "investors": {
-    "value": "Nisha Verma",
+    "value": "Meera Kapil",
     "source": "Thematic,Tactical!F13"
    },
    "benchmark": {
@@ -9682,7 +9682,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Thematic,Tactical!E14"
    },
    "investors": {
-    "value": "Kapil Verma / Rohan Verma",
+    "value": "Chiraag Kapil / Arjun Kapil",
     "source": "Thematic,Tactical!F14"
    },
    "benchmark": {
@@ -9733,7 +9733,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Thematic,Tactical!E15"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Thematic,Tactical!F15"
    },
    "benchmark": {
@@ -9784,7 +9784,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Thematic,Tactical!E16"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Thematic,Tactical!F16"
    },
    "benchmark": {
@@ -9835,7 +9835,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Thematic,Tactical!E17"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Thematic,Tactical!F17"
    },
    "benchmark": {
@@ -9886,7 +9886,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Thematic,Tactical!E18"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Thematic,Tactical!F18"
    },
    "benchmark": {
@@ -9937,7 +9937,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Thematic,Tactical!E19"
    },
    "investors": {
-    "value": "Nisha Verma",
+    "value": "Meera Kapil",
     "source": "Thematic,Tactical!F19"
    },
    "benchmark": {
@@ -9988,7 +9988,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Thematic,Tactical!E20"
    },
    "investors": {
-    "value": "Kapil Verma / Rohan Verma",
+    "value": "Chiraag Kapil / Arjun Kapil",
     "source": "Thematic,Tactical!F20"
    },
    "benchmark": {
@@ -10039,7 +10039,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Thematic,Tactical!E21"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Thematic,Tactical!F21"
    },
    "benchmark": {
@@ -10090,7 +10090,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Thematic,Tactical!E22"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Thematic,Tactical!F22"
    },
    "benchmark": {
@@ -10141,7 +10141,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Thematic,Tactical!E23"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Thematic,Tactical!F23"
    },
    "benchmark": {
@@ -10192,7 +10192,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Thematic,Tactical!E24"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Thematic,Tactical!F24"
    },
    "benchmark": {
@@ -10243,7 +10243,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Thematic,Tactical!E25"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Thematic,Tactical!F25"
    },
    "benchmark": {
@@ -10294,7 +10294,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Thematic,Tactical!E26"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Thematic,Tactical!F26"
    },
    "benchmark": {
@@ -10345,7 +10345,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Thematic,Tactical!E27"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Thematic,Tactical!F27"
    },
    "benchmark": {
@@ -10396,7 +10396,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Thematic,Tactical!E28"
    },
    "investors": {
-    "value": "Simran Verma",
+    "value": "Riya Kapil",
     "source": "Thematic,Tactical!F28"
    },
    "benchmark": {
@@ -10447,7 +10447,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Thematic,Tactical!E29"
    },
    "investors": {
-    "value": "Kapil Verma / Rohan Verma",
+    "value": "Chiraag Kapil / Arjun Kapil",
     "source": "Thematic,Tactical!F29"
    },
    "benchmark": {
@@ -10494,7 +10494,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Thematic,Tactical!E30"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Thematic,Tactical!F30"
    },
    "benchmark": {
@@ -10541,7 +10541,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Thematic,Tactical!E31"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Thematic,Tactical!F31"
    },
    "benchmark": {
@@ -10588,7 +10588,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Thematic,Tactical!E32"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Thematic,Tactical!F32"
    },
    "benchmark": {
@@ -10635,7 +10635,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Thematic,Tactical!E33"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Thematic,Tactical!F33"
    },
    "benchmark": {
@@ -10686,7 +10686,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Thematic,Tactical!E34"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Thematic,Tactical!F34"
    },
    "benchmark": {
@@ -10737,7 +10737,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Thematic,Tactical!E35"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Thematic,Tactical!F35"
    },
    "benchmark": {
@@ -10788,7 +10788,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Thematic,Tactical!E36"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Thematic,Tactical!F36"
    },
    "benchmark": {
@@ -10839,7 +10839,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Thematic,Tactical!E37"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Thematic,Tactical!F37"
    },
    "benchmark": {
@@ -10890,7 +10890,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Thematic,Tactical!E38"
    },
    "investors": {
-    "value": "Kapil Verma / Nisha Verma",
+    "value": "Chiraag Kapil / Meera Kapil",
     "source": "Thematic,Tactical!F38"
    },
    "benchmark": {
@@ -10941,7 +10941,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Thematic,Tactical!E39"
    },
    "investors": {
-    "value": "Kapil Verma / Nisha Verma",
+    "value": "Chiraag Kapil / Meera Kapil",
     "source": "Thematic,Tactical!F39"
    },
    "benchmark": {
@@ -10992,7 +10992,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Thematic,Tactical!E40"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Thematic,Tactical!F40"
    },
    "benchmark": {
@@ -11043,7 +11043,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Thematic,Tactical!E41"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Thematic,Tactical!F41"
    },
    "benchmark": {
@@ -11094,7 +11094,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Thematic,Tactical!E42"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Thematic,Tactical!F42"
    },
    "benchmark": {
@@ -11145,7 +11145,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Thematic,Tactical!E43"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Thematic,Tactical!F43"
    },
    "benchmark": {
@@ -11196,7 +11196,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Thematic,Tactical!E44"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Thematic,Tactical!F44"
    },
    "benchmark": {
@@ -11247,7 +11247,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Thematic,Tactical!E45"
    },
    "investors": {
-    "value": "Kapil Verma / Rohan Verma",
+    "value": "Chiraag Kapil / Arjun Kapil",
     "source": "Thematic,Tactical!F45"
    },
    "benchmark": {
@@ -11298,7 +11298,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Thematic,Tactical!E46"
    },
    "investors": {
-    "value": "Kapil Verma / Nisha Verma",
+    "value": "Chiraag Kapil / Meera Kapil",
     "source": "Thematic,Tactical!F46"
    },
    "benchmark": {
@@ -11349,7 +11349,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Liquid!E3"
    },
    "investors": {
-    "value": "Simran Verma / Nisha Verma / Rohan Verma / Kapil Verma",
+    "value": "Riya Kapil / Meera Kapil / Arjun Kapil / Chiraag Kapil",
     "source": "Liquid!F3"
    },
    "benchmark": {
@@ -11400,7 +11400,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Liquid!E4"
    },
    "investors": {
-    "value": "Rohan Verma / Kapil Verma / Nisha Verma",
+    "value": "Arjun Kapil / Chiraag Kapil / Meera Kapil",
     "source": "Liquid!F4"
    },
    "benchmark": {
@@ -11451,7 +11451,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Liquid!E5"
    },
    "investors": {
-    "value": "Kapil Verma / Rohan Verma / Nisha Verma",
+    "value": "Chiraag Kapil / Arjun Kapil / Meera Kapil",
     "source": "Liquid!F5"
    },
    "benchmark": {
@@ -11502,7 +11502,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Liquid!E6"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Liquid!F6"
    },
    "benchmark": {
@@ -11553,7 +11553,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Liquid!E7"
    },
    "investors": {
-    "value": "Kapil Verma / Nisha Verma / Rohan Verma",
+    "value": "Chiraag Kapil / Meera Kapil / Arjun Kapil",
     "source": "Liquid!F7"
    },
    "benchmark": {
@@ -15198,7 +15198,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C36"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Equity!D36"
    },
    "benchmark": {
@@ -16379,7 +16379,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C48"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Equity!D48"
    },
    "benchmark": {
@@ -17257,7 +17257,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Consolidated review as on 30 June 2026"
    }
   },
-  "ue lifesciences shikha verma": {
+  "ue lifesciences shikha kapil": {
    "investmentRange": {
     "value": "30 Dec 2021",
     "source": "Private Investments!C82",
@@ -17676,7 +17676,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C4"
    },
    "investors": {
-    "value": "Kapil Verma / Nisha Verma",
+    "value": "Chiraag Kapil / Meera Kapil",
     "source": "Equity!D4"
    },
    "benchmark": {
@@ -17810,7 +17810,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C5"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Equity!D5"
    },
    "benchmark": {
@@ -17944,7 +17944,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C6"
    },
    "investors": {
-    "value": "Kapil Verma / Nisha Verma",
+    "value": "Chiraag Kapil / Meera Kapil",
     "source": "Equity!D6"
    },
    "benchmark": {
@@ -18083,7 +18083,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C7"
    },
    "investors": {
-    "value": "Kapil Verma / Nisha Verma",
+    "value": "Chiraag Kapil / Meera Kapil",
     "source": "Equity!D7"
    },
    "benchmark": {
@@ -18222,7 +18222,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C8"
    },
    "investors": {
-    "value": "Kapil Verma / Nisha Verma",
+    "value": "Chiraag Kapil / Meera Kapil",
     "source": "Equity!D8"
    },
    "benchmark": {
@@ -18348,7 +18348,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C9"
    },
    "investors": {
-    "value": "Kapil Verma / Nisha Verma",
+    "value": "Chiraag Kapil / Meera Kapil",
     "source": "Equity!D9"
    },
    "benchmark": {
@@ -18487,7 +18487,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C10"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Equity!D10"
    },
    "benchmark": {
@@ -18621,7 +18621,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C11"
    },
    "investors": {
-    "value": "Nisha Verma",
+    "value": "Meera Kapil",
     "source": "Equity!D11"
    },
    "benchmark": {
@@ -18755,7 +18755,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C12"
    },
    "investors": {
-    "value": "Kapil Verma / Nisha Verma / Rohan Verma / Verma Family Trust II / Verma Family Trust III",
+    "value": "Chiraag Kapil / Meera Kapil / Arjun Kapil / Kapil Family Trust II / Kapil Family Trust III",
     "source": "Equity!D12"
    },
    "benchmark": {
@@ -18894,7 +18894,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C13"
    },
    "investors": {
-    "value": "Kapil Verma / Nisha Verma / Rohan Verma",
+    "value": "Chiraag Kapil / Meera Kapil / Arjun Kapil",
     "source": "Equity!D13"
    },
    "benchmark": {
@@ -19033,7 +19033,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C14"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Equity!D14"
    },
    "benchmark": {
@@ -19167,7 +19167,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C15"
    },
    "investors": {
-    "value": "Simran Verma / Kapil Verma / Nisha Verma",
+    "value": "Riya Kapil / Chiraag Kapil / Meera Kapil",
     "source": "Equity!D15"
    },
    "benchmark": {
@@ -19293,7 +19293,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C16"
    },
    "investors": {
-    "value": "Simran Verma / Kapil Verma",
+    "value": "Riya Kapil / Chiraag Kapil",
     "source": "Equity!D16"
    },
    "benchmark": {
@@ -19541,7 +19541,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C18"
    },
    "investors": {
-    "value": "Kapil Verma / Rohan Verma",
+    "value": "Chiraag Kapil / Arjun Kapil",
     "source": "Equity!D18"
    },
    "benchmark": {
@@ -19675,7 +19675,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C19"
    },
    "investors": {
-    "value": "Simran Verma / Kapil Verma / Nisha Verma / Rohan Verma",
+    "value": "Riya Kapil / Chiraag Kapil / Meera Kapil / Arjun Kapil",
     "source": "Equity!D19"
    },
    "benchmark": {
@@ -19809,7 +19809,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C20"
    },
    "investors": {
-    "value": "Kapil Verma / Nisha Verma",
+    "value": "Chiraag Kapil / Meera Kapil",
     "source": "Equity!D20"
    },
    "benchmark": {
@@ -20062,7 +20062,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C22"
    },
    "investors": {
-    "value": "Simran Verma / Nisha Verma / Rohan Verma / Kapil Verma",
+    "value": "Riya Kapil / Meera Kapil / Arjun Kapil / Chiraag Kapil",
     "source": "Equity!D22"
    },
    "benchmark": {
@@ -20196,7 +20196,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C23"
    },
    "investors": {
-    "value": "Rohan Verma / Kapil Verma / Nisha Verma",
+    "value": "Arjun Kapil / Chiraag Kapil / Meera Kapil",
     "source": "Equity!D23"
    },
    "benchmark": {
@@ -20330,7 +20330,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C24"
    },
    "investors": {
-    "value": "Kapil Verma / Rohan Verma / Nisha Verma",
+    "value": "Chiraag Kapil / Arjun Kapil / Meera Kapil",
     "source": "Equity!D24"
    },
    "benchmark": {
@@ -20464,7 +20464,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C25"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Equity!D25"
    },
    "benchmark": {
@@ -20520,7 +20520,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C26"
    },
    "investors": {
-    "value": "Kapil Verma / Nisha Verma / Rohan Verma",
+    "value": "Chiraag Kapil / Meera Kapil / Arjun Kapil",
     "source": "Equity!D26"
    },
    "benchmark": {
@@ -20689,7 +20689,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C28"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Equity!D28"
    },
    "benchmark": {
@@ -20912,7 +20912,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C30"
    },
    "investors": {
-    "value": "Nisha Verma",
+    "value": "Meera Kapil",
     "source": "Equity!D30"
    },
    "benchmark": {
@@ -21013,7 +21013,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C31"
    },
    "investors": {
-    "value": "Kapil Verma / Rohan Verma",
+    "value": "Chiraag Kapil / Arjun Kapil",
     "source": "Equity!D31"
    },
    "benchmark": {
@@ -21114,7 +21114,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C32"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Equity!D32"
    },
    "benchmark": {
@@ -21227,7 +21227,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C33"
    },
    "investors": {
-    "value": "Kapil Verma / Nisha Verma",
+    "value": "Chiraag Kapil / Meera Kapil",
     "source": "Equity!D33"
    },
    "benchmark": {
@@ -21340,7 +21340,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C34"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Equity!D34"
    },
    "benchmark": {
@@ -21441,7 +21441,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C35"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Equity!D35"
    },
    "benchmark": {
@@ -21546,7 +21546,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C37"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Equity!D37"
    },
    "benchmark": {
@@ -21639,7 +21639,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C38"
    },
    "investors": {
-    "value": "Nisha Verma",
+    "value": "Meera Kapil",
     "source": "Equity!D38"
    },
    "benchmark": {
@@ -21740,7 +21740,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C39"
    },
    "investors": {
-    "value": "Kapil Verma / Rohan Verma",
+    "value": "Chiraag Kapil / Arjun Kapil",
     "source": "Equity!D39"
    },
    "benchmark": {
@@ -21841,7 +21841,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C40"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Equity!D40"
    },
    "benchmark": {
@@ -21942,7 +21942,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C41"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Equity!D41"
    },
    "benchmark": {
@@ -22055,7 +22055,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C42"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Equity!D42"
    },
    "benchmark": {
@@ -22168,7 +22168,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C43"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Equity!D43"
    },
    "benchmark": {
@@ -22281,7 +22281,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C44"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Equity!D44"
    },
    "benchmark": {
@@ -22382,7 +22382,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C45"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Equity!D45"
    },
    "benchmark": {
@@ -22483,7 +22483,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C46"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Equity!D46"
    },
    "benchmark": {
@@ -22596,7 +22596,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C47"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Equity!D47"
    },
    "benchmark": {
@@ -22697,7 +22697,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C49"
    },
    "investors": {
-    "value": "Simran Verma",
+    "value": "Riya Kapil",
     "source": "Equity!D49"
    },
    "benchmark": {
@@ -22802,7 +22802,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C50"
    },
    "investors": {
-    "value": "Kapil Verma / Rohan Verma",
+    "value": "Chiraag Kapil / Arjun Kapil",
     "source": "Equity!D50"
    },
    "benchmark": {
@@ -22906,7 +22906,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C51"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Equity!D51"
    },
    "benchmark": {
@@ -22982,7 +22982,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C52"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Equity!D52"
    },
    "benchmark": {
@@ -23058,7 +23058,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C53"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Equity!D53"
    },
    "benchmark": {
@@ -23134,7 +23134,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C54"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Equity!D54"
    },
    "benchmark": {
@@ -23219,7 +23219,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C55"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Equity!D55"
    },
    "benchmark": {
@@ -23320,7 +23320,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C56"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Equity!D56"
    },
    "benchmark": {
@@ -23421,7 +23421,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C57"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Equity!D57"
    },
    "benchmark": {
@@ -23522,7 +23522,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C58"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Equity!D58"
    },
    "benchmark": {
@@ -23615,7 +23615,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C59"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Equity!D59"
    },
    "benchmark": {
@@ -23708,7 +23708,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C60"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Equity!D60"
    },
    "benchmark": {
@@ -23813,7 +23813,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C61"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Equity!D61"
    },
    "benchmark": {
@@ -23906,7 +23906,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C62"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Equity!D62"
    },
    "benchmark": {
@@ -24019,7 +24019,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C63"
    },
    "investors": {
-    "value": "Kapil Verma / Nisha Verma",
+    "value": "Chiraag Kapil / Meera Kapil",
     "source": "Equity!D63"
    },
    "benchmark": {
@@ -24139,7 +24139,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Thematic,Tactical!E12"
    },
    "investors": {
-    "value": "Rohan Verma",
+    "value": "Arjun Kapil",
     "source": "Thematic,Tactical!F12"
    },
    "benchmark": {
@@ -24292,7 +24292,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C66"
    },
    "investors": {
-    "value": "Kapil Verma / Rohan Verma",
+    "value": "Chiraag Kapil / Arjun Kapil",
     "source": "Equity!D66"
    },
    "benchmark": {
@@ -24405,7 +24405,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C67"
    },
    "investors": {
-    "value": "Kapil Verma / Nisha Verma",
+    "value": "Chiraag Kapil / Meera Kapil",
     "source": "Equity!D67"
    },
    "benchmark": {
@@ -24586,7 +24586,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C69"
    },
    "investors": {
-    "value": "Kapil Verma / Nisha Verma",
+    "value": "Chiraag Kapil / Meera Kapil",
     "source": "Equity!D69"
    },
    "benchmark": {
@@ -24699,7 +24699,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Equity!C70"
    },
    "investors": {
-    "value": "Kapil Verma",
+    "value": "Chiraag Kapil",
     "source": "Equity!D70"
    },
    "benchmark": {
@@ -26902,7 +26902,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
   "one-eight-technologies-private-limited-ram": "one eight technologies private limited ram",
   "reflexical": "reflexical",
   "tamasha-angel-list": "tamasha angel list",
-  "ue-lifesciences-shikha-verma": "ue lifesciences shikha verma",
+  "ue-lifesciences-shikha-kapil": "ue lifesciences shikha kapil",
   "wazir": "wazir",
   "zaamo-e-commerce-pvt-ltd-pradeep-kumar": "zaamo e commerce pvt ltd pradeep kumar",
   "al-trust-forbidden-foods-brb": "al trust forbidden foods brb",
@@ -27030,7 +27030,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
   "larsen-toubro": "larsen toubro ltd"
  },
  "byEntity": {
-  "ajay verma": {
+  "ajay kapil": {
    "entityTotal": {
     "value": 8275996638.754674,
     "source": "Investorwise Summary!C40"
@@ -27060,7 +27060,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Investorwise Summary!C34"
    }
   },
-  "aarti ajay verma": {
+  "aarti ajay kapil": {
    "entityTotal": {
     "value": 1315915574.5540106,
     "source": "Investorwise Summary!E40"
@@ -27090,7 +27090,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Investorwise Summary!E34"
    }
   },
-  "bharat verma": {
+  "bharat kapil": {
    "entityTotal": {
     "value": 1054924707.4979719,
     "source": "Investorwise Summary!G40"
@@ -27120,7 +27120,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Investorwise Summary!G34"
    }
   },
-  "ankita verma": {
+  "ankita kapil": {
    "entityTotal": {
     "value": 2127792323.4324377,
     "source": "Investorwise Summary!I40"
@@ -27180,7 +27180,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Investorwise Summary!K34"
    }
   },
-  "bharat verma family trust": {
+  "bharat kapil family trust": {
    "entityTotal": {
     "value": 59556491.0628174,
     "source": "Investorwise Summary!M40"
@@ -27210,7 +27210,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Investorwise Summary!M34"
    }
   },
-  "bharat verma family trust ii": {
+  "bharat kapil family trust ii": {
    "entityTotal": {
     "value": 81220503.32876,
     "source": "Investorwise Summary!O40"
@@ -27240,7 +27240,7 @@ export const REVIEW_COLUMN_DATA: ReviewColumnData = {
     "source": "Investorwise Summary!O34"
    }
   },
-  "bharat verma family trust iii": {
+  "bharat kapil family trust iii": {
    "entityTotal": {
     "value": 81220503.32876,
     "source": "Investorwise Summary!Q40"

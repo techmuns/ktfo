@@ -50,11 +50,11 @@ const ownerName = (id) => (id === NOT_ATTRIBUTED ? NOT_ATTRIBUTED_NAME : ownerBy
 
 /** The review's Transactions tab names a holder in words; this is the one map. */
 const INVESTOR = {
-  "Kapil Verma": "kapil-verma",
-  "Rohan Verma": "rohan-verma",
-  "Nisha Verma": "nisha-verma",
-  "Verma Family Trust II": "verma-family-trust-2",
-  "Verma Family Trust III": "verma-family-trust-3",
+  "Chiraag Kapil": "chiraag-kapil",
+  "Arjun Kapil": "arjun-kapil",
+  "Meera Kapil": "meera-kapil",
+  "Kapil Family Trust II": "kapil-family-trust-2",
+  "Kapil Family Trust III": "kapil-family-trust-3",
 };
 
 export function reviewBookLayer({ root = ".", positions, unvalued }) {

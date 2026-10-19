@@ -41,7 +41,7 @@ function statementPdf(pricesAsOn) {
     [22, 800, "ICICI BANK LIMITED"],
     [22, 790, "DP ID : IN302902"],
     [22, 770, "Statement of Holding 31-Mar-2026"],
-    [22, 755, "Name AJAY T VERMA Client Id 49794950"],
+    [22, 755, "Name AJAY T KAPIL Client Id 49794950"],
     [22, 740, "Category Non House Beneficiary Status Active"],
     [337, 707, "Account"],
     [22, 700, "ISIN Code"], [91, 700, "Scrip Name"], [463, 700, "Balance"], [534, 700, "Value (Rs.)"],

@@ -145,7 +145,7 @@ export function carryLotsThroughSwitches(byKey, reclassifications, capitalMoves,
  * review carries. The appraisal this book takes a holding's cost from prints the
  * Class A4 units at their allotment amounts, and ONE of those allotments is the
  * switch: Class A1 units bought for ₹21.01 Cr, restated at ₹22.54 Cr on the day
- * they moved. ₹1.53 Cr of Kapil's gain and ₹9.1 L of Nisha's were reading as
+ * they moved. ₹1.53 Cr of Kapil's gain and ₹9.1 L of Meera's were reading as
  * money paid in. Rule 3 — the cost is a primitive — does not make a restatement
  * a purchase: the primitive for these units is what bought them, and the dated
  * record now carries it through the switch.

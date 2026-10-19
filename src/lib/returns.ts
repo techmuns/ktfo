@@ -175,7 +175,7 @@ export type OwnerReturn = {
  * WHOLE market value against those partial openings folds every uncovered
  * account's value into the terminal inflow with no opening stake behind it — for
  * Kapil that closed ~₹62.86 Cr of openings against his full ₹155.45 Cr and
- * returned ~+2,600% p.a.; for Nisha worse. The old per-entity helper did exactly
+ * returned ~+2,600% p.a.; for Meera worse. The old per-entity helper did exactly
  * that (it appended the entity's whole `currentMV` to partial flows).
  *
  * The rate itself is `measuredAccountsReturn` over the owner's accounts, on the

@@ -8,7 +8,7 @@
 // review's own 30 June figures, each row tagged `reviewSource`. Everything else
 // is still the statements'. Section C0 holds the carried lines to the book's rows.
 //
-// `source/august-2026-d/Final Consolidated Verma Family Review as on 30
+// `source/august-2026-d/Final Consolidated Kapil Family Review as on 30
 // June 2026.xlsx` is the adviser's 25-tab aggregation of the whole book. It has
 // no reader in `scripts/ingest/` BY DECISION: every figure in this book traces
 // to the statement of the institution that struck it, and folding an aggregation
@@ -57,7 +57,7 @@ import { readReviewPrivate } from "./lib/reviewPrivateRead.mjs";
 import { PRIVATE_INVESTMENT_ELSEWHERE } from "../shared/reviewHolders.mjs";
 import { makeSecurityMatcher } from "../shared/nameMatch.mjs";
 
-const WORKBOOK = "source/august-2026-d/Final Consolidated Verma Family Review as on 30 June 2026.xlsx";
+const WORKBOOK = "source/august-2026-d/Final Consolidated Kapil Family Review as on 30 June 2026.xlsx";
 const BOOK = "src/data/glowData.ts";
 const OUT = "docs/REVIEW-RECONCILIATION.md";
 
@@ -154,7 +154,7 @@ function investorwise() {
   const seen = new Map();
   return cols.map(({ name, col }) => {
     /**
-     * THE SHEET PRINTS "Verma Family Trust II" TWICE, and the two
+     * THE SHEET PRINTS "Kapil Family Trust II" TWICE, and the two
      * columns carry different money. This book has Trust 2 and Trust 3 as
      * separate taxpayers with separate PANs, so the second occurrence is
      * Trust III — a header typo in the review, recorded rather than silently
@@ -176,9 +176,9 @@ function investorwise() {
  * error visible.
  *
  * Transition Venture Capital Fund I — Class A1 is reported under BOTH Bharat
- * Verma family trusts, ₹1,71,46,374.76 each, sharing one `dedupeGroup`.
+ * Kapil family trusts, ₹1,71,46,374.76 each, sharing one `dedupeGroup`.
  * Deduped, whichever trust sorted second lost its ONLY position — so section B
- * reported "Verma Family Trust III — *not in the book*" against a
+ * reported "Kapil Family Trust III — *not in the book*" against a
  * book that holds ₹1.71 Cr for it, and the missing row silently joined the
  * "holders with no account in this book" step of the bridge.
  *
@@ -682,9 +682,9 @@ const bo = bookByOwner();
 say("| Holder | Review | Book (ex-promoter) | Difference |");
 say("| --- | ---: | ---: | ---: |");
 const OWNER_ALIAS = new Map([
-  ["Simran Verma", "Simran Verma"],
-  ["Verma Family Trust II", "Verma Family Trust 2"],
-  ["Verma Family Trust III", "Verma Family Trust 3"],
+  ["Riya Kapil", "Riya Kapil"],
+  ["Kapil Family Trust II", "Kapil Family Trust 2"],
+  ["Kapil Family Trust III", "Kapil Family Trust 3"],
 ]);
 /**
  * "NOT IN THE BOOK" IS A FACT ABOUT THE ACCOUNT REGISTRY, NOT ABOUT A VALUE.
@@ -693,7 +693,7 @@ const OWNER_ALIAS = new Map([
  * any holder it did not carry "not in the book", adding the holder's whole review
  * total to the bridge's "holders with no account in this book" step. That was
  * true while the only such holder was the Hope India Trust, and stopped being
- * true at Stage 10db: the unnumbered Verma Family Trust has an
+ * true at Stage 10db: the unnumbered Kapil Family Trust has an
  * account in the registry (Motilal Oswal demat 1201090032387399) whose statement
  * records its three funds as QUANTITIES only (Stage 10cz), so it holds no valued
  * position on the statement basis. Its ₹5.96 Cr was then subtracted TWICE: once
@@ -816,11 +816,11 @@ H_ROWS.forEach((r, i) => {
     date: hSerial(c[7]), qty: num(c[8]), qtyDp: (String(c[8]).split(".")[1] ?? "").length, rate: num(c[9]), value: num(c[10]) });
 });
 const H_OWNER = new Map([
-  ["Simran Verma", "simran-verma"], ["Kapil Verma", "kapil-verma"],
-  ["Nisha Verma", "nisha-verma"], ["Rohan Verma", "rohan-verma"],
-  ["Verma Family Trust II", "verma-family-trust-2"],
-  ["Verma Family Trust III", "verma-family-trust-3"],
-  ["Verma Family Trust", "verma-family-trust"],
+  ["Riya Kapil", "riya-kapil"], ["Chiraag Kapil", "chiraag-kapil"],
+  ["Meera Kapil", "meera-kapil"], ["Arjun Kapil", "arjun-kapil"],
+  ["Kapil Family Trust II", "kapil-family-trust-2"],
+  ["Kapil Family Trust III", "kapil-family-trust-3"],
+  ["Kapil Family Trust", "kapil-family-trust"],
 ]);
 /**
  * Mirror of `REVIEW_LINE_ISINS` in src/lib/reviewGaps.ts — kept in step by hand,

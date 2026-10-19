@@ -69,7 +69,7 @@ const ISSUERS = [
 const warn = (warnings, code, detail) => warnings.push({ code, detail });
 const num = (s) => parseNum(s);
 
-/** `Account : 8710067 AJAY T VERMA - SVC067` */
+/** `Account : 8710067 AJAY T KAPIL - SVC067` */
 const ACCOUNT = /Account\s*:?\s*(\d{4,})\s+([A-Z][A-Za-z .']+?)\s*-\s*([A-Z]{2,6}\d{2,})/;
 
 /** `From 01/06/2026 To 30/06/2026` */

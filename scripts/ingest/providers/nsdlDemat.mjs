@@ -2,7 +2,7 @@
 // this book whose rows are almost entirely UNLISTED.
 //
 // One document, one account: `Statement of Holding 31-Mar-2026` for Kapil
-// Verma, Client Id 49794950, DP ID IN302902. It arrived after every other
+// Kapil, Client Id 49794950, DP ID IN302902. It arrived after every other
 // delivery and it is the only source anywhere in `source/` for the family's
 // pre-IPO allotments, their private-company shares and preference shares, and
 // their promoter holding in a listed company. Nothing else in the corpus

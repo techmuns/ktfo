@@ -34,8 +34,8 @@ export const BOOK_ACCOUNTS: Account[] = [
     "accountId": "360-one-alternates-asset-management-1000632",
     "provider": "360 ONE Alternates Asset Management",
     "accountNo": "1000632",
-    "ownerId": "kapil-verma",
-    "owner": "Kapil Verma",
+    "ownerId": "chiraag-kapil",
+    "owner": "Chiraag Kapil",
     "strategy": "360 ONE Special Opportunities Fund - Series 8",
     "engagement": "AIF",
     "providerEngagement": "Category II AIF — pass-through",
@@ -50,8 +50,8 @@ export const BOOK_ACCOUNTS: Account[] = [
     "accountId": "360-one-alternates-asset-management-1000633",
     "provider": "360 ONE Alternates Asset Management",
     "accountNo": "1000633",
-    "ownerId": "rohan-verma",
-    "owner": "Rohan Verma",
+    "ownerId": "arjun-kapil",
+    "owner": "Arjun Kapil",
     "strategy": "360 ONE Special Opportunities Fund - Series 8",
     "engagement": "AIF",
     "providerEngagement": "Category II AIF — pass-through",
@@ -66,8 +66,8 @@ export const BOOK_ACCOUNTS: Account[] = [
     "accountId": "360-one-private-wealth-37702",
     "provider": "360 ONE Private Wealth",
     "accountNo": "37702",
-    "ownerId": "kapil-verma",
-    "owner": "Kapil Verma",
+    "ownerId": "chiraag-kapil",
+    "owner": "Chiraag Kapil",
     "strategy": null,
     "engagement": "Distribution",
     "providerEngagement": "Distribution / Executionary",
@@ -95,8 +95,8 @@ export const BOOK_ACCOUNTS: Account[] = [
     "accountId": "360-one-private-wealth-60066",
     "provider": "360 ONE Private Wealth",
     "accountNo": "60066",
-    "ownerId": "kapil-verma",
-    "owner": "Kapil Verma",
+    "ownerId": "chiraag-kapil",
+    "owner": "Chiraag Kapil",
     "strategy": null,
     "engagement": "unknown",
     "providerEngagement": "Advisory / Distribution",
@@ -124,8 +124,8 @@ export const BOOK_ACCOUNTS: Account[] = [
     "accountId": "360-one-private-wealth-60117",
     "provider": "360 ONE Private Wealth",
     "accountNo": "60117",
-    "ownerId": "rohan-verma",
-    "owner": "Rohan Verma",
+    "ownerId": "arjun-kapil",
+    "owner": "Arjun Kapil",
     "strategy": null,
     "engagement": "Distribution",
     "providerEngagement": "Advisory / Distribution",
@@ -153,8 +153,8 @@ export const BOOK_ACCOUNTS: Account[] = [
     "accountId": "3p-investment-managers-3000048",
     "provider": "3P Investment Managers",
     "accountNo": "3000048",
-    "ownerId": "kapil-verma",
-    "owner": "Kapil Verma",
+    "ownerId": "chiraag-kapil",
+    "owner": "Chiraag Kapil",
     "strategy": null,
     "engagement": "AIF",
     "providerEngagement": "Category III AIF — as the depository's scheme name for these units prints it (\"3P INDIA EQUITY FUND 1-CATEGORY III AIF\"); unit classes B1/B2/B3",
@@ -169,8 +169,8 @@ export const BOOK_ACCOUNTS: Account[] = [
     "accountId": "ask-absolute-return-fund-9039917111",
     "provider": "ASK Absolute Return Fund",
     "accountNo": "9039917111",
-    "ownerId": "kapil-verma",
-    "owner": "Kapil Verma",
+    "ownerId": "chiraag-kapil",
+    "owner": "Chiraag Kapil",
     "strategy": null,
     "engagement": "AIF",
     "providerEngagement": "AIF statement of account — the statement prints no SEBI category",
@@ -185,8 +185,8 @@ export const BOOK_ACCOUNTS: Account[] = [
     "accountId": "ask-absolute-return-fund-9039917144",
     "provider": "ASK Absolute Return Fund",
     "accountNo": "9039917144",
-    "ownerId": "nisha-verma",
-    "owner": "Nisha Verma",
+    "ownerId": "meera-kapil",
+    "owner": "Meera Kapil",
     "strategy": null,
     "engagement": "AIF",
     "providerEngagement": "AIF statement of account — the statement prints no SEBI category",
@@ -201,8 +201,8 @@ export const BOOK_ACCOUNTS: Account[] = [
     "accountId": "ask-investment-managers-limited-10032723",
     "provider": "ASK Investment Managers Limited",
     "accountNo": "10032723",
-    "ownerId": "nisha-verma",
-    "owner": "Nisha Verma",
+    "ownerId": "meera-kapil",
+    "owner": "Meera Kapil",
     "strategy": "ASK Indian Entrepreneur Portfolio",
     "engagement": "PMS",
     "providerEngagement": "Portfolio Management Service",
@@ -224,8 +224,8 @@ export const BOOK_ACCOUNTS: Account[] = [
     "accountId": "ask-investment-managers-limited-10034025",
     "provider": "ASK Investment Managers Limited",
     "accountNo": "10034025",
-    "ownerId": "kapil-verma",
-    "owner": "Kapil Verma",
+    "ownerId": "chiraag-kapil",
+    "owner": "Chiraag Kapil",
     "strategy": "ASK Indian Entrepreneur Portfolio",
     "engagement": "PMS",
     "providerEngagement": "Portfolio Management Service",
@@ -247,8 +247,8 @@ export const BOOK_ACCOUNTS: Account[] = [
     "accountId": "baring-private-equity-india-fund-AIFM_BPEPF6_0584",
     "provider": "Baring Private Equity India Fund",
     "accountNo": "AIFM_BPEPF6_0584",
-    "ownerId": "nisha-verma",
-    "owner": "Nisha Verma",
+    "ownerId": "meera-kapil",
+    "owner": "Meera Kapil",
     "strategy": null,
     "engagement": "AIF",
     "providerEngagement": "Category II AIF — drawdown private equity fund",
@@ -263,8 +263,8 @@ export const BOOK_ACCOUNTS: Account[] = [
     "accountId": "buoyant-capital-103472",
     "provider": "Buoyant Capital",
     "accountNo": "103472",
-    "ownerId": "nisha-verma",
-    "owner": "Nisha Verma",
+    "ownerId": "meera-kapil",
+    "owner": "Meera Kapil",
     "strategy": "Buoyant Opportunities Strategy - Investor",
     "engagement": "AIF",
     "providerEngagement": "Portfolio Management Service",
@@ -279,8 +279,8 @@ export const BOOK_ACCOUNTS: Account[] = [
     "accountId": "buoyant-capital-103473",
     "provider": "Buoyant Capital",
     "accountNo": "103473",
-    "ownerId": "kapil-verma",
-    "owner": "Kapil Verma",
+    "ownerId": "chiraag-kapil",
+    "owner": "Chiraag Kapil",
     "strategy": "Buoyant Opportunities Strategy - Investor",
     "engagement": "AIF",
     "providerEngagement": "Portfolio Management Service",
@@ -295,8 +295,8 @@ export const BOOK_ACCOUNTS: Account[] = [
     "accountId": "carnelian-asset-management-and-advisors-pvt-ltd-3517383",
     "provider": "Carnelian Asset Management and Advisors Pvt Ltd",
     "accountNo": "3517383",
-    "ownerId": "kapil-verma",
-    "owner": "Kapil Verma",
+    "ownerId": "chiraag-kapil",
+    "owner": "Chiraag Kapil",
     "strategy": "CARNELIAN BESPOKE PORTFOLIO",
     "engagement": "PMS",
     "providerEngagement": "Portfolio Management Service",
@@ -318,8 +318,8 @@ export const BOOK_ACCOUNTS: Account[] = [
     "accountId": "carnelian-bharat-amritkaal-fund-4551",
     "provider": "Carnelian Bharat Amritkaal Fund",
     "accountNo": "4551",
-    "ownerId": "nisha-verma",
-    "owner": "Nisha Verma",
+    "ownerId": "meera-kapil",
+    "owner": "Meera Kapil",
     "strategy": null,
     "engagement": "AIF",
     "providerEngagement": "Category III AIF Scheme",
@@ -334,8 +334,8 @@ export const BOOK_ACCOUNTS: Account[] = [
     "accountId": "goldstandard-wealth-private-limited-100022",
     "provider": "Goldstandard Wealth Private Limited",
     "accountNo": "100022",
-    "ownerId": "nisha-verma",
-    "owner": "Nisha Verma",
+    "ownerId": "meera-kapil",
+    "owner": "Meera Kapil",
     "strategy": "Aristos Equity Portfolio",
     "engagement": "PMS",
     "providerEngagement": "Portfolio Management Service",
@@ -357,8 +357,8 @@ export const BOOK_ACCOUNTS: Account[] = [
     "accountId": "goldstandard-wealth-private-limited-100023",
     "provider": "Goldstandard Wealth Private Limited",
     "accountNo": "100023",
-    "ownerId": "kapil-verma",
-    "owner": "Kapil Verma",
+    "ownerId": "chiraag-kapil",
+    "owner": "Chiraag Kapil",
     "strategy": "Aristos Equity Portfolio",
     "engagement": "PMS",
     "providerEngagement": "Portfolio Management Service",
@@ -380,8 +380,8 @@ export const BOOK_ACCOUNTS: Account[] = [
     "accountId": "green-lantern-capital-llp-510854",
     "provider": "Green Lantern Capital LLP",
     "accountNo": "510854",
-    "ownerId": "nisha-verma",
-    "owner": "Nisha Verma",
+    "ownerId": "meera-kapil",
+    "owner": "Meera Kapil",
     "strategy": "GREEN LANTERN CAPITAL LLP - GLC GROWTH FUND",
     "engagement": "PMS",
     "providerEngagement": "Portfolio Management Service",
@@ -403,8 +403,8 @@ export const BOOK_ACCOUNTS: Account[] = [
     "accountId": "green-lantern-capital-llp-510861",
     "provider": "Green Lantern Capital LLP",
     "accountNo": "510861",
-    "ownerId": "kapil-verma",
-    "owner": "Kapil Verma",
+    "ownerId": "chiraag-kapil",
+    "owner": "Chiraag Kapil",
     "strategy": "GREEN LANTERN CAPITAL LLP - GLC GROWTH FUND",
     "engagement": "PMS",
     "providerEngagement": "Portfolio Management Service",
@@ -426,8 +426,8 @@ export const BOOK_ACCOUNTS: Account[] = [
     "accountId": "hdfc-bank-nsdl-demat-67786137",
     "provider": "HDFC Bank (NSDL demat)",
     "accountNo": "67786137",
-    "ownerId": "verma-family-trust-3",
-    "owner": "Verma Family Trust 3",
+    "ownerId": "kapil-family-trust-3",
+    "owner": "Kapil Family Trust 3",
     "strategy": null,
     "engagement": "Direct",
     "providerEngagement": "NSDL depository account at IN301549 — Free Balance",
@@ -442,8 +442,8 @@ export const BOOK_ACCOUNTS: Account[] = [
     "accountId": "hdfc-bank-nsdl-demat-67786547",
     "provider": "HDFC Bank (NSDL demat)",
     "accountNo": "67786547",
-    "ownerId": "verma-family-trust-2",
-    "owner": "Verma Family Trust 2",
+    "ownerId": "kapil-family-trust-2",
+    "owner": "Kapil Family Trust 2",
     "strategy": null,
     "engagement": "Direct",
     "providerEngagement": "NSDL depository account at IN301549 — Free Balance",
@@ -458,8 +458,8 @@ export const BOOK_ACCOUNTS: Account[] = [
     "accountId": "hdfc-mutual-fund-15644806",
     "provider": "HDFC Mutual Fund",
     "accountNo": "15644806",
-    "ownerId": "kapil-verma",
-    "owner": "Kapil Verma",
+    "ownerId": "chiraag-kapil",
+    "owner": "Chiraag Kapil",
     "strategy": null,
     "engagement": "Direct",
     "providerEngagement": "folio held by a individual",
@@ -474,8 +474,8 @@ export const BOOK_ACCOUNTS: Account[] = [
     "accountId": "hdfc-mutual-fund-15725046",
     "provider": "HDFC Mutual Fund",
     "accountNo": "15725046",
-    "ownerId": "simran-verma",
-    "owner": "Simran Verma",
+    "ownerId": "riya-kapil",
+    "owner": "Riya Kapil",
     "strategy": null,
     "engagement": "Direct",
     "providerEngagement": "folio held by a individual",
@@ -490,8 +490,8 @@ export const BOOK_ACCOUNTS: Account[] = [
     "accountId": "hdfc-mutual-fund-16002141",
     "provider": "HDFC Mutual Fund",
     "accountNo": "16002141",
-    "ownerId": "nisha-verma",
-    "owner": "Nisha Verma",
+    "ownerId": "meera-kapil",
+    "owner": "Meera Kapil",
     "strategy": null,
     "engagement": "Direct",
     "providerEngagement": "folio held by a individual",
@@ -506,8 +506,8 @@ export const BOOK_ACCOUNTS: Account[] = [
     "accountId": "hdfc-mutual-fund-16180583",
     "provider": "HDFC Mutual Fund",
     "accountNo": "16180583",
-    "ownerId": "rohan-verma",
-    "owner": "Rohan Verma",
+    "ownerId": "arjun-kapil",
+    "owner": "Arjun Kapil",
     "strategy": null,
     "engagement": "Direct",
     "providerEngagement": "folio held by a individual",
@@ -522,8 +522,8 @@ export const BOOK_ACCOUNTS: Account[] = [
     "accountId": "helios-mutual-fund-10355977",
     "provider": "Helios Mutual Fund",
     "accountNo": "10355977",
-    "ownerId": "kapil-verma",
-    "owner": "Kapil Verma",
+    "ownerId": "chiraag-kapil",
+    "owner": "Chiraag Kapil",
     "strategy": null,
     "engagement": "Direct",
     "providerEngagement": "mutual-fund folio, Direct plan as the statement states",
@@ -538,8 +538,8 @@ export const BOOK_ACCOUNTS: Account[] = [
     "accountId": "icici-bank-nsdl-demat-49794950",
     "provider": "ICICI Bank (NSDL demat)",
     "accountNo": "49794950",
-    "ownerId": "kapil-verma",
-    "owner": "Kapil Verma",
+    "ownerId": "chiraag-kapil",
+    "owner": "Chiraag Kapil",
     "strategy": null,
     "engagement": "Direct",
     "providerEngagement": "NSDL depository account at IN302902 — Non House Beneficiary, Resident Ordinary",
@@ -554,8 +554,8 @@ export const BOOK_ACCOUNTS: Account[] = [
     "accountId": "icici-prudential-mutual-fund-36378950",
     "provider": "ICICI Prudential Mutual Fund",
     "accountNo": "36378950",
-    "ownerId": "kapil-verma",
-    "owner": "Kapil Verma",
+    "ownerId": "chiraag-kapil",
+    "owner": "Chiraag Kapil",
     "strategy": null,
     "engagement": "Direct",
     "providerEngagement": "folio held by a individual",
@@ -570,8 +570,8 @@ export const BOOK_ACCOUNTS: Account[] = [
     "accountId": "icici-prudential-mutual-fund-36379637",
     "provider": "ICICI Prudential Mutual Fund",
     "accountNo": "36379637",
-    "ownerId": "rohan-verma",
-    "owner": "Rohan Verma",
+    "ownerId": "arjun-kapil",
+    "owner": "Arjun Kapil",
     "strategy": null,
     "engagement": "Direct",
     "providerEngagement": "folio held by a individual",
@@ -586,8 +586,8 @@ export const BOOK_ACCOUNTS: Account[] = [
     "accountId": "india-sme-investments-175962",
     "provider": "India SME Investments",
     "accountNo": "175962",
-    "ownerId": "kapil-verma",
-    "owner": "Kapil Verma",
+    "ownerId": "chiraag-kapil",
+    "owner": "Chiraag Kapil",
     "strategy": null,
     "engagement": "AIF",
     "providerEngagement": "drawdown AIF, with a commitment and uncalled capital — the statement prints no SEBI category",
@@ -602,8 +602,8 @@ export const BOOK_ACCOUNTS: Account[] = [
     "accountId": "india-sme-investments-175964",
     "provider": "India SME Investments",
     "accountNo": "175964",
-    "ownerId": "rohan-verma",
-    "owner": "Rohan Verma",
+    "ownerId": "arjun-kapil",
+    "owner": "Arjun Kapil",
     "strategy": null,
     "engagement": "AIF",
     "providerEngagement": "drawdown AIF, with a commitment and uncalled capital — the statement prints no SEBI category",
@@ -618,8 +618,8 @@ export const BOOK_ACCOUNTS: Account[] = [
     "accountId": "india-sme-investments-177302",
     "provider": "India SME Investments",
     "accountNo": "177302",
-    "ownerId": "nisha-verma",
-    "owner": "Nisha Verma",
+    "ownerId": "meera-kapil",
+    "owner": "Meera Kapil",
     "strategy": null,
     "engagement": "AIF",
     "providerEngagement": "drawdown AIF, with a commitment and uncalled capital — the statement prints no SEBI category",
@@ -634,8 +634,8 @@ export const BOOK_ACCOUNTS: Account[] = [
     "accountId": "invesco-mutual-fund-3041491081",
     "provider": "Invesco Mutual Fund",
     "accountNo": "3041491081",
-    "ownerId": "rohan-verma",
-    "owner": "Rohan Verma",
+    "ownerId": "arjun-kapil",
+    "owner": "Arjun Kapil",
     "strategy": null,
     "engagement": "Direct",
     "providerEngagement": null,
@@ -650,8 +650,8 @@ export const BOOK_ACCOUNTS: Account[] = [
     "accountId": "invesco-mutual-fund-3041491145",
     "provider": "Invesco Mutual Fund",
     "accountNo": "3041491145",
-    "ownerId": "kapil-verma",
-    "owner": "Kapil Verma",
+    "ownerId": "chiraag-kapil",
+    "owner": "Chiraag Kapil",
     "strategy": null,
     "engagement": "Direct",
     "providerEngagement": null,
@@ -666,8 +666,8 @@ export const BOOK_ACCOUNTS: Account[] = [
     "accountId": "invesco-mutual-fund-3041794916",
     "provider": "Invesco Mutual Fund",
     "accountNo": "3041794916",
-    "ownerId": "nisha-verma",
-    "owner": "Nisha Verma",
+    "ownerId": "meera-kapil",
+    "owner": "Meera Kapil",
     "strategy": null,
     "engagement": "Direct",
     "providerEngagement": null,
@@ -682,8 +682,8 @@ export const BOOK_ACCOUNTS: Account[] = [
     "accountId": "kotak-mahindra-mutual-fund-7125255",
     "provider": "Kotak Mahindra Mutual Fund",
     "accountNo": "7125255",
-    "ownerId": "kapil-verma",
-    "owner": "Kapil Verma",
+    "ownerId": "chiraag-kapil",
+    "owner": "Chiraag Kapil",
     "strategy": null,
     "engagement": "Direct",
     "providerEngagement": "folio held by a individual",
@@ -698,8 +698,8 @@ export const BOOK_ACCOUNTS: Account[] = [
     "accountId": "lkp-securities-98245",
     "provider": "LKP Securities",
     "accountNo": "98245",
-    "ownerId": "rohan-verma",
-    "owner": "Rohan Verma",
+    "ownerId": "arjun-kapil",
+    "owner": "Arjun Kapil",
     "strategy": null,
     "engagement": "Execution",
     "providerEngagement": "CDSL demat account — self-directed",
@@ -714,8 +714,8 @@ export const BOOK_ACCOUNTS: Account[] = [
     "accountId": "marathon-trends-advisory-pvt-ltd-5110758",
     "provider": "Marathon Trends Advisory Pvt Ltd",
     "accountNo": "5110758",
-    "ownerId": "nisha-verma",
-    "owner": "Nisha Verma",
+    "ownerId": "meera-kapil",
+    "owner": "Meera Kapil",
     "strategy": "Trend Following - Flexicap Growth",
     "engagement": "PMS",
     "providerEngagement": "Portfolio Management Service",
@@ -731,8 +731,8 @@ export const BOOK_ACCOUNTS: Account[] = [
     "accountId": "marathon-trends-advisory-pvt-ltd-5110837",
     "provider": "Marathon Trends Advisory Pvt Ltd",
     "accountNo": "5110837",
-    "ownerId": "kapil-verma",
-    "owner": "Kapil Verma",
+    "ownerId": "chiraag-kapil",
+    "owner": "Chiraag Kapil",
     "strategy": "Trend Following - Flexicap Growth",
     "engagement": "PMS",
     "providerEngagement": "Portfolio Management Service",
@@ -748,8 +748,8 @@ export const BOOK_ACCOUNTS: Account[] = [
     "accountId": "molecule-ventures-llp-7810404",
     "provider": "Molecule Ventures LLP",
     "accountNo": "7810404",
-    "ownerId": "kapil-verma",
-    "owner": "Kapil Verma",
+    "ownerId": "chiraag-kapil",
+    "owner": "Chiraag Kapil",
     "strategy": "GROWTH",
     "engagement": "PMS",
     "providerEngagement": "Portfolio Management Service",
@@ -771,8 +771,8 @@ export const BOOK_ACCOUNTS: Account[] = [
     "accountId": "motilal-oswal-active-momentum-fund-904168868444",
     "provider": "Motilal Oswal Active Momentum Fund",
     "accountNo": "904168868444",
-    "ownerId": "nisha-verma",
-    "owner": "Nisha Verma",
+    "ownerId": "meera-kapil",
+    "owner": "Meera Kapil",
     "strategy": null,
     "engagement": "Direct",
     "providerEngagement": "mutual-fund folio, Direct Plan as the statement states",
@@ -787,8 +787,8 @@ export const BOOK_ACCOUNTS: Account[] = [
     "accountId": "motilal-oswal-delphi-equity-fund-9049241536",
     "provider": "Motilal Oswal Delphi Equity Fund",
     "accountNo": "9049241536",
-    "ownerId": "kapil-verma",
-    "owner": "Kapil Verma",
+    "ownerId": "chiraag-kapil",
+    "owner": "Chiraag Kapil",
     "strategy": null,
     "engagement": "AIF",
     "providerEngagement": "AIF — the statement prints a commitment, a called/received split and a post-tax NAV per class",
@@ -803,8 +803,8 @@ export const BOOK_ACCOUNTS: Account[] = [
     "accountId": "motilal-oswal-financial-services-demat-1201090012539150",
     "provider": "Motilal Oswal Financial Services (demat)",
     "accountNo": "1201090012539150",
-    "ownerId": "kapil-verma",
-    "owner": "Kapil Verma",
+    "ownerId": "chiraag-kapil",
+    "owner": "Chiraag Kapil",
     "strategy": null,
     "engagement": "Direct",
     "providerEngagement": "CDSL depository account — Individual-Resident",
@@ -820,8 +820,8 @@ export const BOOK_ACCOUNTS: Account[] = [
     "accountId": "motilal-oswal-financial-services-demat-1201090012838316",
     "provider": "Motilal Oswal Financial Services (demat)",
     "accountNo": "1201090012838316",
-    "ownerId": "nisha-verma",
-    "owner": "Nisha Verma",
+    "ownerId": "meera-kapil",
+    "owner": "Meera Kapil",
     "strategy": null,
     "engagement": "Direct",
     "providerEngagement": "CDSL depository account — Individual-Resident",
@@ -836,8 +836,8 @@ export const BOOK_ACCOUNTS: Account[] = [
     "accountId": "motilal-oswal-financial-services-demat-1201090012838320",
     "provider": "Motilal Oswal Financial Services (demat)",
     "accountNo": "1201090012838320",
-    "ownerId": "rohan-verma",
-    "owner": "Rohan Verma",
+    "ownerId": "arjun-kapil",
+    "owner": "Arjun Kapil",
     "strategy": null,
     "engagement": "Direct",
     "providerEngagement": "CDSL depository account — Individual-Resident",
@@ -852,8 +852,8 @@ export const BOOK_ACCOUNTS: Account[] = [
     "accountId": "motilal-oswal-financial-services-demat-1201090012838335",
     "provider": "Motilal Oswal Financial Services (demat)",
     "accountNo": "1201090012838335",
-    "ownerId": "simran-verma",
-    "owner": "Simran Verma",
+    "ownerId": "riya-kapil",
+    "owner": "Riya Kapil",
     "strategy": null,
     "engagement": "Direct",
     "providerEngagement": "CDSL depository account — Individual-Resident",
@@ -868,8 +868,8 @@ export const BOOK_ACCOUNTS: Account[] = [
     "accountId": "motilal-oswal-financial-services-demat-1201090032387399",
     "provider": "Motilal Oswal Financial Services (demat)",
     "accountNo": "1201090032387399",
-    "ownerId": "verma-family-trust",
-    "owner": "Verma Family Trust",
+    "ownerId": "kapil-family-trust",
+    "owner": "Kapil Family Trust",
     "strategy": null,
     "engagement": "Direct",
     "providerEngagement": "CDSL depository account — NIN",
@@ -884,8 +884,8 @@ export const BOOK_ACCOUNTS: Account[] = [
     "accountId": "motilal-oswal-financial-services-demat-1201090037359311",
     "provider": "Motilal Oswal Financial Services (demat)",
     "accountNo": "1201090037359311",
-    "ownerId": "kapil-verma",
-    "owner": "Kapil Verma",
+    "ownerId": "chiraag-kapil",
+    "owner": "Chiraag Kapil",
     "strategy": null,
     "engagement": "Direct",
     "providerEngagement": "CDSL depository account — Individual-Resident",
@@ -900,8 +900,8 @@ export const BOOK_ACCOUNTS: Account[] = [
     "accountId": "motilal-oswal-financial-services-demat-1201090037436848",
     "provider": "Motilal Oswal Financial Services (demat)",
     "accountNo": "1201090037436848",
-    "ownerId": "rohan-verma",
-    "owner": "Rohan Verma",
+    "ownerId": "arjun-kapil",
+    "owner": "Arjun Kapil",
     "strategy": null,
     "engagement": "Direct",
     "providerEngagement": "CDSL depository account — Individual-Resident",
@@ -916,8 +916,8 @@ export const BOOK_ACCOUNTS: Account[] = [
     "accountId": "motilal-oswal-founders-fund-90410016093",
     "provider": "Motilal Oswal Founders Fund",
     "accountNo": "90410016093",
-    "ownerId": "nisha-verma",
-    "owner": "Nisha Verma",
+    "ownerId": "meera-kapil",
+    "owner": "Meera Kapil",
     "strategy": null,
     "engagement": "AIF",
     "providerEngagement": "drawdown AIF, with a commitment and called capital — the statement prints no SEBI category",
@@ -932,8 +932,8 @@ export const BOOK_ACCOUNTS: Account[] = [
     "accountId": "motilal-oswal-founders-fund-90410016104",
     "provider": "Motilal Oswal Founders Fund",
     "accountNo": "90410016104",
-    "ownerId": "kapil-verma",
-    "owner": "Kapil Verma",
+    "ownerId": "chiraag-kapil",
+    "owner": "Chiraag Kapil",
     "strategy": null,
     "engagement": "AIF",
     "providerEngagement": "drawdown AIF, with a commitment and called capital — the statement prints no SEBI category",
@@ -948,8 +948,8 @@ export const BOOK_ACCOUNTS: Account[] = [
     "accountId": "motilal-oswal-hedged-equity-multi-factor-strategy-90410014574",
     "provider": "Motilal Oswal Hedged Equity Multi Factor Strategy",
     "accountNo": "90410014574",
-    "ownerId": "kapil-verma",
-    "owner": "Kapil Verma",
+    "ownerId": "chiraag-kapil",
+    "owner": "Chiraag Kapil",
     "strategy": null,
     "engagement": "AIF",
     "providerEngagement": "AIF — the statement prints a commitment, a called/received split and a post-tax NAV per class",
@@ -964,8 +964,8 @@ export const BOOK_ACCOUNTS: Account[] = [
     "accountId": "motilal-oswal-mutual-fund-90414963315",
     "provider": "Motilal Oswal Mutual Fund",
     "accountNo": "90414963315",
-    "ownerId": "kapil-verma",
-    "owner": "Kapil Verma",
+    "ownerId": "chiraag-kapil",
+    "owner": "Chiraag Kapil",
     "strategy": null,
     "engagement": "Direct",
     "providerEngagement": null,
@@ -980,8 +980,8 @@ export const BOOK_ACCOUNTS: Account[] = [
     "accountId": "neo-infra-income-opportunities-fund-9039920536",
     "provider": "Neo Infra Income Opportunities Fund",
     "accountNo": "9039920536",
-    "ownerId": "kapil-verma",
-    "owner": "Kapil Verma",
+    "ownerId": "chiraag-kapil",
+    "owner": "Chiraag Kapil",
     "strategy": null,
     "engagement": "AIF",
     "providerEngagement": "drawdown fund — the statement prints a capital commitment, dated drawdowns and a quarterly NAV; its manager block prints the SEBI registration \"AIF -Category-II No : IN/AIF2/22-23/1042\"",
@@ -993,11 +993,11 @@ export const BOOK_ACCOUNTS: Account[] = [
     "noPositionsReason": null
   },
   {
-    "accountId": "review-kapil-verma",
+    "accountId": "review-chiraag-kapil",
     "provider": "Consolidated review (MOPWM)",
     "accountNo": "MOPWM",
-    "ownerId": "kapil-verma",
-    "owner": "Kapil Verma",
+    "ownerId": "chiraag-kapil",
+    "owner": "Chiraag Kapil",
     "strategy": null,
     "engagement": "Direct",
     "providerEngagement": "Private investments as the family's consolidated review records them (MOPWM, 30 June 2026)",
@@ -1010,11 +1010,11 @@ export const BOOK_ACCOUNTS: Account[] = [
     "reviewHolder": true
   },
   {
-    "accountId": "review-nisha-verma",
+    "accountId": "review-meera-kapil",
     "provider": "Consolidated review (MOPWM)",
     "accountNo": "MOPWM",
-    "ownerId": "nisha-verma",
-    "owner": "Nisha Verma",
+    "ownerId": "meera-kapil",
+    "owner": "Meera Kapil",
     "strategy": null,
     "engagement": "Direct",
     "providerEngagement": "Private investments as the family's consolidated review records them (MOPWM, 30 June 2026)",
@@ -1027,11 +1027,11 @@ export const BOOK_ACCOUNTS: Account[] = [
     "reviewHolder": true
   },
   {
-    "accountId": "review-rohan-verma",
+    "accountId": "review-arjun-kapil",
     "provider": "Consolidated review (MOPWM)",
     "accountNo": "MOPWM",
-    "ownerId": "rohan-verma",
-    "owner": "Rohan Verma",
+    "ownerId": "arjun-kapil",
+    "owner": "Arjun Kapil",
     "strategy": null,
     "engagement": "Direct",
     "providerEngagement": "Private investments as the family's consolidated review records them (MOPWM, 30 June 2026)",
@@ -1044,11 +1044,11 @@ export const BOOK_ACCOUNTS: Account[] = [
     "reviewHolder": true
   },
   {
-    "accountId": "review-verma-family-trust-2",
+    "accountId": "review-kapil-family-trust-2",
     "provider": "Consolidated review (MOPWM)",
     "accountNo": "MOPWM",
-    "ownerId": "verma-family-trust-2",
-    "owner": "Verma Family Trust 2",
+    "ownerId": "kapil-family-trust-2",
+    "owner": "Kapil Family Trust 2",
     "strategy": null,
     "engagement": "Direct",
     "providerEngagement": "Private investments as the family's consolidated review records them (MOPWM, 30 June 2026)",
@@ -1061,11 +1061,11 @@ export const BOOK_ACCOUNTS: Account[] = [
     "reviewHolder": true
   },
   {
-    "accountId": "review-verma-family-trust-3",
+    "accountId": "review-kapil-family-trust-3",
     "provider": "Consolidated review (MOPWM)",
     "accountNo": "MOPWM",
-    "ownerId": "verma-family-trust-3",
-    "owner": "Verma Family Trust 3",
+    "ownerId": "kapil-family-trust-3",
+    "owner": "Kapil Family Trust 3",
     "strategy": null,
     "engagement": "Direct",
     "providerEngagement": "Private investments as the family's consolidated review records them (MOPWM, 30 June 2026)",
@@ -1098,8 +1098,8 @@ export const BOOK_ACCOUNTS: Account[] = [
     "accountId": "sanshi-fund-9039671821",
     "provider": "Sanshi Fund",
     "accountNo": "9039671821",
-    "ownerId": "simran-verma",
-    "owner": "Simran Verma",
+    "ownerId": "riya-kapil",
+    "owner": "Riya Kapil",
     "strategy": "Sanshi Fund-I (Open Ended AIF CAT-III)",
     "engagement": "AIF",
     "providerEngagement": "Open Ended AIF CAT-III",
@@ -1114,8 +1114,8 @@ export const BOOK_ACCOUNTS: Account[] = [
     "accountId": "sanshi-fund-9039671854",
     "provider": "Sanshi Fund",
     "accountNo": "9039671854",
-    "ownerId": "rohan-verma",
-    "owner": "Rohan Verma",
+    "ownerId": "arjun-kapil",
+    "owner": "Arjun Kapil",
     "strategy": "Sanshi Fund-I (Open Ended AIF CAT-III)",
     "engagement": "AIF",
     "providerEngagement": "Open Ended AIF CAT-III",
@@ -1130,8 +1130,8 @@ export const BOOK_ACCOUNTS: Account[] = [
     "accountId": "sanshi-fund-9039671912",
     "provider": "Sanshi Fund",
     "accountNo": "9039671912",
-    "ownerId": "kapil-verma",
-    "owner": "Kapil Verma",
+    "ownerId": "chiraag-kapil",
+    "owner": "Chiraag Kapil",
     "strategy": "Sanshi Fund-I (Open Ended AIF CAT-III)",
     "engagement": "AIF",
     "providerEngagement": "Open Ended AIF CAT-III",
@@ -1146,8 +1146,8 @@ export const BOOK_ACCOUNTS: Account[] = [
     "accountId": "sanshi-fund-9069671554",
     "provider": "Sanshi Fund",
     "accountNo": "9069671554",
-    "ownerId": "nisha-verma",
-    "owner": "Nisha Verma",
+    "ownerId": "meera-kapil",
+    "owner": "Meera Kapil",
     "strategy": "Sanshi Fund-I (Open Ended AIF CAT-III)",
     "engagement": "AIF",
     "providerEngagement": "Open Ended AIF CAT-III",
@@ -1162,8 +1162,8 @@ export const BOOK_ACCOUNTS: Account[] = [
     "accountId": "sanshi-fund-9069671634",
     "provider": "Sanshi Fund",
     "accountNo": "9069671634",
-    "ownerId": "kapil-verma",
-    "owner": "Kapil Verma",
+    "ownerId": "chiraag-kapil",
+    "owner": "Chiraag Kapil",
     "strategy": "Sanshi Fund-I (Open Ended AIF CAT-III)",
     "engagement": "AIF",
     "providerEngagement": "Open Ended AIF CAT-III",
@@ -1178,8 +1178,8 @@ export const BOOK_ACCOUNTS: Account[] = [
     "accountId": "sky-capital-rising-titans-fund-SKY003",
     "provider": "Sky Capital Rising Titans Fund",
     "accountNo": "SKY003",
-    "ownerId": "rohan-verma",
-    "owner": "Rohan Verma",
+    "ownerId": "arjun-kapil",
+    "owner": "Arjun Kapil",
     "strategy": null,
     "engagement": "AIF",
     "providerEngagement": "Category I Alternative Investment Fund – Angel Fund",
@@ -1194,8 +1194,8 @@ export const BOOK_ACCOUNTS: Account[] = [
     "accountId": "sky-capital-rising-titans-fund-SKY022",
     "provider": "Sky Capital Rising Titans Fund",
     "accountNo": "SKY022",
-    "ownerId": "kapil-verma",
-    "owner": "Kapil Verma",
+    "ownerId": "chiraag-kapil",
+    "owner": "Chiraag Kapil",
     "strategy": null,
     "engagement": "AIF",
     "providerEngagement": "Category I Alternative Investment Fund – Angel Fund",
@@ -1210,8 +1210,8 @@ export const BOOK_ACCOUNTS: Account[] = [
     "accountId": "sky-capital-rising-titans-fund-SKY023",
     "provider": "Sky Capital Rising Titans Fund",
     "accountNo": "SKY023",
-    "ownerId": "verma-family-trust-2",
-    "owner": "Verma Family Trust 2",
+    "ownerId": "kapil-family-trust-2",
+    "owner": "Kapil Family Trust 2",
     "strategy": null,
     "engagement": "AIF",
     "providerEngagement": "Category I Alternative Investment Fund – Angel Fund",
@@ -1226,8 +1226,8 @@ export const BOOK_ACCOUNTS: Account[] = [
     "accountId": "sky-capital-rising-titans-fund-SKY024",
     "provider": "Sky Capital Rising Titans Fund",
     "accountNo": "SKY024",
-    "ownerId": "verma-family-trust-3",
-    "owner": "Verma Family Trust 3",
+    "ownerId": "kapil-family-trust-3",
+    "owner": "Kapil Family Trust 3",
     "strategy": null,
     "engagement": "AIF",
     "providerEngagement": "Category I Alternative Investment Fund – Angel Fund",
@@ -1242,8 +1242,8 @@ export const BOOK_ACCOUNTS: Account[] = [
     "accountId": "svan-investment-managers-llp-8710067",
     "provider": "SVAN Investment Managers LLP",
     "accountNo": "8710067",
-    "ownerId": "kapil-verma",
-    "owner": "Kapil Verma",
+    "ownerId": "chiraag-kapil",
+    "owner": "Chiraag Kapil",
     "strategy": "SVAN INVESTMENT MANAGERS LLP - VELOCITY",
     "engagement": "PMS",
     "providerEngagement": "Discretionary",
@@ -1265,8 +1265,8 @@ export const BOOK_ACCOUNTS: Account[] = [
     "accountId": "svan-investment-managers-llp-8710090",
     "provider": "SVAN Investment Managers LLP",
     "accountNo": "8710090",
-    "ownerId": "rohan-verma",
-    "owner": "Rohan Verma",
+    "ownerId": "arjun-kapil",
+    "owner": "Arjun Kapil",
     "strategy": "SVAN INVESTMENT MANAGERS LLP - VELOCITY",
     "engagement": "PMS",
     "providerEngagement": "Portfolio Management Service",
@@ -1288,8 +1288,8 @@ export const BOOK_ACCOUNTS: Account[] = [
     "accountId": "transition-venture-capital-TVC262",
     "provider": "Transition Venture Capital",
     "accountNo": "TVC262",
-    "ownerId": "verma-family-trust-2",
-    "owner": "Verma Family Trust 2",
+    "ownerId": "kapil-family-trust-2",
+    "owner": "Kapil Family Trust 2",
     "strategy": "Transition Venture Capital Fund I",
     "engagement": "AIF",
     "providerEngagement": "drawdown fund — the statement prints a capital commitment, the capital contributed against it and a NAV per unit; its Sebi Reg. no. line is blank",
@@ -1304,8 +1304,8 @@ export const BOOK_ACCOUNTS: Account[] = [
     "accountId": "transition-venture-capital-TVC263",
     "provider": "Transition Venture Capital",
     "accountNo": "TVC263",
-    "ownerId": "verma-family-trust-3",
-    "owner": "Verma Family Trust 3",
+    "ownerId": "kapil-family-trust-3",
+    "owner": "Kapil Family Trust 3",
     "strategy": "Transition Venture Capital Fund I",
     "engagement": "AIF",
     "providerEngagement": "drawdown fund — the statement prints a capital commitment, the capital contributed against it and a NAV per unit; its Sebi Reg. no. line is blank",
@@ -1320,8 +1320,8 @@ export const BOOK_ACCOUNTS: Account[] = [
     "accountId": "v-e-c-assago-capital-management-llp-128004",
     "provider": "V.E.C Assago Capital Management LLP",
     "accountNo": "128004",
-    "ownerId": "nisha-verma",
-    "owner": "Nisha Verma",
+    "ownerId": "meera-kapil",
+    "owner": "Meera Kapil",
     "strategy": "V.E.C ASSAGO Small and Mid-Cap Growth",
     "engagement": "PMS",
     "providerEngagement": "Portfolio Management Service",
@@ -1343,8 +1343,8 @@ export const BOOK_ACCOUNTS: Account[] = [
     "accountId": "v-e-c-assago-capital-management-llp-128005",
     "provider": "V.E.C Assago Capital Management LLP",
     "accountNo": "128005",
-    "ownerId": "kapil-verma",
-    "owner": "Kapil Verma",
+    "ownerId": "chiraag-kapil",
+    "owner": "Chiraag Kapil",
     "strategy": "V.E.C ASSAGO Small and Mid-Cap Growth",
     "engagement": "PMS",
     "providerEngagement": "Portfolio Management Service",
@@ -1367,32 +1367,32 @@ export const BOOK_ACCOUNTS: Account[] = [
 /** Canonical owners with at least one account in the book. */
 export const BOOK_OWNERS = [
   {
-    "ownerId": "kapil-verma",
-    "displayName": "Kapil Verma"
+    "ownerId": "chiraag-kapil",
+    "displayName": "Chiraag Kapil"
   },
   {
-    "ownerId": "nisha-verma",
-    "displayName": "Nisha Verma"
+    "ownerId": "meera-kapil",
+    "displayName": "Meera Kapil"
   },
   {
-    "ownerId": "rohan-verma",
-    "displayName": "Rohan Verma"
+    "ownerId": "arjun-kapil",
+    "displayName": "Arjun Kapil"
   },
   {
-    "ownerId": "simran-verma",
-    "displayName": "Simran Verma"
+    "ownerId": "riya-kapil",
+    "displayName": "Riya Kapil"
   },
   {
-    "ownerId": "verma-family-trust-2",
-    "displayName": "Verma Family Trust 2"
+    "ownerId": "kapil-family-trust-2",
+    "displayName": "Kapil Family Trust 2"
   },
   {
-    "ownerId": "verma-family-trust-3",
-    "displayName": "Verma Family Trust 3"
+    "ownerId": "kapil-family-trust-3",
+    "displayName": "Kapil Family Trust 3"
   },
   {
-    "ownerId": "verma-family-trust",
-    "displayName": "Verma Family Trust"
+    "ownerId": "kapil-family-trust",
+    "displayName": "Kapil Family Trust"
   },
   {
     "ownerId": "not-attributed",
@@ -1717,7 +1717,7 @@ export const BOOK_POSITIONS: Position[] = [
       "block": "PE Funds",
       "row": 9
     },
-    "reviewNote": "Valued at ₹1,88,42,208.74 on the family's consolidated review (MOPWM, 30 Jun 2026), PE Funds row 9, its closing of 31 Mar 2026. Nisha's folio. A statement says otherwise: Nisha's Motilal Oswal demat records 252.5 units on 31 Jul 2026, against the 202.5 the fund's statement and the review carry; the fund's statement of 31 Mar 2026 prints ₹56,161 paid out (₹18,909 on 30 Sep 2025 and ₹37,252 on 31 Mar 2026) where the review carries ₹1,42,867."
+    "reviewNote": "Valued at ₹1,88,42,208.74 on the family's consolidated review (MOPWM, 30 Jun 2026), PE Funds row 9, its closing of 31 Mar 2026. Meera's folio. A statement says otherwise: Meera's Motilal Oswal demat records 252.5 units on 31 Jul 2026, against the 202.5 the fund's statement and the review carry; the fund's statement of 31 Mar 2026 prints ₹56,161 paid out (₹18,909 on 30 Sep 2025 and ₹37,252 on 31 Mar 2026) where the review carries ₹1,42,867."
   },
   {
     "securityKey": "buoyant-opportunities-strategy-category-iii-class-a4",
@@ -3949,7 +3949,7 @@ export const BOOK_POSITIONS: Position[] = [
   },
   {
     "securityKey": "aarti-drugs",
-    "security": "Simran Drugs Ltd",
+    "security": "Riya Drugs Ltd",
     "symbol": "AARTIDRUGS",
     "accountId": "green-lantern-capital-llp-510854",
     "memberId": null,
@@ -4873,7 +4873,7 @@ export const BOOK_POSITIONS: Position[] = [
   },
   {
     "securityKey": "aarti-drugs",
-    "security": "Simran Drugs Ltd",
+    "security": "Riya Drugs Ltd",
     "symbol": "AARTIDRUGS",
     "accountId": "green-lantern-capital-llp-510861",
     "memberId": null,
@@ -7780,7 +7780,7 @@ export const BOOK_POSITIONS: Position[] = [
     "security": "Assetgro Fintech Private Limited — Series B Preference",
     "symbol": null,
     "isin": "INE1BZY03142",
-    "accountId": "review-kapil-verma",
+    "accountId": "review-chiraag-kapil",
     "memberId": null,
     "sector": "Unclassified",
     "providerSector": null,
@@ -7822,7 +7822,7 @@ export const BOOK_POSITIONS: Position[] = [
     "security": "BIG BANG BOOM",
     "symbol": null,
     "isin": "INE1BRB03089",
-    "accountId": "review-kapil-verma",
+    "accountId": "review-chiraag-kapil",
     "memberId": null,
     "sector": "Unclassified",
     "providerSector": null,
@@ -7857,13 +7857,13 @@ export const BOOK_POSITIONS: Position[] = [
       "block": "Private Investments",
       "row": 20
     },
-    "reviewNote": "Held at cost on the family's consolidated review (MOPWM, 30 Jun 2026), Private Investments row 20 — Kapil Verma's ₹3,02,40,000 of the line. Two holders; the family's investment register records each one's payment."
+    "reviewNote": "Held at cost on the family's consolidated review (MOPWM, 30 Jun 2026), Private Investments row 20 — Chiraag Kapil's ₹3,02,40,000 of the line. Two holders; the family's investment register records each one's payment."
   },
   {
     "securityKey": "blue-ashva-india-pool-account",
     "security": "Blue Ashva India Pool Account",
     "symbol": null,
-    "accountId": "review-kapil-verma",
+    "accountId": "review-chiraag-kapil",
     "memberId": null,
     "sector": "Unclassified",
     "providerSector": null,
@@ -7898,14 +7898,14 @@ export const BOOK_POSITIONS: Position[] = [
       "block": "Private Investments",
       "row": 60
     },
-    "reviewNote": "Held at cost on the family's consolidated review (MOPWM, 30 Jun 2026), Private Investments row 60 — Kapil Verma's ₹51,08,000 of the line. The family's investment register records Nisha's ₹1,52,51,640 and Kapil's ₹51,08,000 into the pool account; the rest of the review's line names no holder."
+    "reviewNote": "Held at cost on the family's consolidated review (MOPWM, 30 Jun 2026), Private Investments row 60 — Chiraag Kapil's ₹51,08,000 of the line. The family's investment register records Meera's ₹1,52,51,640 and Kapil's ₹51,08,000 into the pool account; the rest of the review's line names no holder."
   },
   {
     "securityKey": "blue-ashva-varenya-fund-bavf-ser20-c6-restricted-transferability",
     "security": "Blue Ashva Varenya Account",
     "symbol": null,
     "isin": "INF0VGG22429",
-    "accountId": "review-kapil-verma",
+    "accountId": "review-chiraag-kapil",
     "memberId": null,
     "sector": "Unclassified",
     "providerSector": null,
@@ -7940,14 +7940,14 @@ export const BOOK_POSITIONS: Position[] = [
       "block": "Private Investments",
       "row": 65
     },
-    "reviewNote": "Held at cost on the family's consolidated review (MOPWM, 30 Jun 2026), Private Investments row 65 — Kapil Verma's ₹1,00,000 of the line. Two holders; the family's investment register records ₹1 L each. A statement says otherwise: the ICICI Bank NSDL statement of 31 Mar 2026 values Kapil's units at ₹98,742."
+    "reviewNote": "Held at cost on the family's consolidated review (MOPWM, 30 Jun 2026), Private Investments row 65 — Chiraag Kapil's ₹1,00,000 of the line. Two holders; the family's investment register records ₹1 L each. A statement says otherwise: the ICICI Bank NSDL statement of 31 Mar 2026 values Kapil's units at ₹98,742."
   },
   {
     "securityKey": "borosil-renewables-limited-warrants-13ag26",
     "security": "Borosil Renewables - Warrants 13AG26",
     "symbol": null,
     "isin": "INE666D13019",
-    "accountId": "review-kapil-verma",
+    "accountId": "review-chiraag-kapil",
     "memberId": null,
     "sector": "Unclassified",
     "providerSector": null,
@@ -7988,7 +7988,7 @@ export const BOOK_POSITIONS: Position[] = [
     "securityKey": "edugorilla-community",
     "security": "EDUGORILLA COMMUNITY PRIVATE LIMITED",
     "symbol": null,
-    "accountId": "review-kapil-verma",
+    "accountId": "review-chiraag-kapil",
     "memberId": null,
     "sector": "Unclassified",
     "providerSector": null,
@@ -8030,7 +8030,7 @@ export const BOOK_POSITIONS: Position[] = [
     "security": "Electromech Infraprojects Pvt Ltd",
     "symbol": null,
     "isin": "INE1B3701036",
-    "accountId": "review-kapil-verma",
+    "accountId": "review-chiraag-kapil",
     "memberId": null,
     "sector": "Unclassified",
     "providerSector": null,
@@ -8071,7 +8071,7 @@ export const BOOK_POSITIONS: Position[] = [
     "securityKey": "ema-preferred-shares",
     "security": "EMA Preferred Shares",
     "symbol": null,
-    "accountId": "review-kapil-verma",
+    "accountId": "review-chiraag-kapil",
     "memberId": null,
     "sector": "Unclassified",
     "providerSector": null,
@@ -8113,7 +8113,7 @@ export const BOOK_POSITIONS: Position[] = [
     "security": "Everest Fleet Private Ltd - SIDDHARTH LADSARIYA",
     "symbol": null,
     "isin": "INE0LTR01029",
-    "accountId": "review-kapil-verma",
+    "accountId": "review-chiraag-kapil",
     "memberId": null,
     "sector": "Unclassified",
     "providerSector": null,
@@ -8148,13 +8148,13 @@ export const BOOK_POSITIONS: Position[] = [
       "block": "Private Investments",
       "row": 4
     },
-    "reviewNote": "Held at cost on the family's consolidated review (MOPWM, 30 Jun 2026), Private Investments row 4 — Kapil Verma's ₹2,53,18,588 of the line. Three holders; the family's investment register records each one's payment."
+    "reviewNote": "Held at cost on the family's consolidated review (MOPWM, 30 Jun 2026), Private Investments row 4 — Chiraag Kapil's ₹2,53,18,588 of the line. Three holders; the family's investment register records each one's payment."
   },
   {
     "securityKey": "innoviti-payment-solutions-private-ltd-pranav-koranne",
     "security": "Innoviti Payment Solutions Private Ltd - PRANAV KORANNE",
     "symbol": null,
-    "accountId": "review-kapil-verma",
+    "accountId": "review-chiraag-kapil",
     "memberId": null,
     "sector": "Unclassified",
     "providerSector": null,
@@ -8189,14 +8189,14 @@ export const BOOK_POSITIONS: Position[] = [
       "block": "Private Investments",
       "row": 17
     },
-    "reviewNote": "Held at cost on the family's consolidated review (MOPWM, 30 Jun 2026), Private Investments row 17 — Kapil Verma's ₹1,49,99,980.38 of the line. Two holders; the family's investment register records each one's payment."
+    "reviewNote": "Held at cost on the family's consolidated review (MOPWM, 30 Jun 2026), Private Investments row 17 — Chiraag Kapil's ₹1,49,99,980.38 of the line. Two holders; the family's investment register records each one's payment."
   },
   {
     "securityKey": "integris-medtech",
     "security": "Integris",
     "symbol": null,
     "isin": "INE05GT01023",
-    "accountId": "review-kapil-verma",
+    "accountId": "review-chiraag-kapil",
     "memberId": null,
     "sector": "Unclassified",
     "providerSector": null,
@@ -8231,13 +8231,13 @@ export const BOOK_POSITIONS: Position[] = [
       "block": "Private Investments",
       "row": 7
     },
-    "reviewNote": "Held at cost on the family's consolidated review (MOPWM, 30 Jun 2026), Private Investments row 7 — Kapil Verma's ₹9,99,98,625 of the line. The family's investment register records Kapil's ₹9,99,98,625 and Bharat's ₹2,99,99,419; the review's line is ₹2,99,99,418.80 more, which no document names a holder for."
+    "reviewNote": "Held at cost on the family's consolidated review (MOPWM, 30 Jun 2026), Private Investments row 7 — Chiraag Kapil's ₹9,99,98,625 of the line. The family's investment register records Kapil's ₹9,99,98,625 and Bharat's ₹2,99,99,419; the review's line is ₹2,99,99,418.80 more, which no document names a holder for."
   },
   {
     "securityKey": "landcraft-retail-pvt-ltd-food-square",
     "security": "LANDCRAFT RETAIL PVT LTD. - FOOD SQUARE",
     "symbol": null,
-    "accountId": "review-kapil-verma",
+    "accountId": "review-chiraag-kapil",
     "memberId": null,
     "sector": "Unclassified",
     "providerSector": null,
@@ -8279,7 +8279,7 @@ export const BOOK_POSITIONS: Position[] = [
     "security": "Matrix Gas And Renewables Limited",
     "symbol": null,
     "isin": "INE0PO201010",
-    "accountId": "review-kapil-verma",
+    "accountId": "review-chiraag-kapil",
     "memberId": null,
     "sector": "Unclassified",
     "providerSector": null,
@@ -8314,13 +8314,13 @@ export const BOOK_POSITIONS: Position[] = [
       "block": "Private Investments",
       "row": 14
     },
-    "reviewNote": "Held at cost on the family's consolidated review (MOPWM, 30 Jun 2026), Private Investments row 14 — Kapil Verma's ₹3,00,00,000 of the line. Two holders; the family's investment register records each one's payment."
+    "reviewNote": "Held at cost on the family's consolidated review (MOPWM, 30 Jun 2026), Private Investments row 14 — Chiraag Kapil's ₹3,00,00,000 of the line. Two holders; the family's investment register records each one's payment."
   },
   {
     "securityKey": "mother-india-forming",
     "security": "MOTHER INDIA FORMING PRIVATE LIMITED",
     "symbol": null,
-    "accountId": "review-kapil-verma",
+    "accountId": "review-chiraag-kapil",
     "memberId": null,
     "sector": "Unclassified",
     "providerSector": null,
@@ -8362,7 +8362,7 @@ export const BOOK_POSITIONS: Position[] = [
     "security": "National Stock Exchange of India",
     "symbol": null,
     "isin": "INE721I01024",
-    "accountId": "review-kapil-verma",
+    "accountId": "review-chiraag-kapil",
     "memberId": null,
     "sector": "Financials",
     "providerSector": "Capital Markets",
@@ -8396,14 +8396,14 @@ export const BOOK_POSITIONS: Position[] = [
       "block": "Direct Equity - Unlisted",
       "row": 69
     },
-    "reviewNote": "Valued at ₹25,93,75,000 on the family's consolidated review (MOPWM, 30 Jun 2026), Direct Equity - Unlisted row 69. 1,25,000 shares on Kapil's ICICI Bank NSDL statement and 75,000 on Nisha's Motilal Oswal demat; the review's ₹12.085 Cr cost split by shares, which is this book's judgement — the review prints one cost for the 2,00,000. Now a listed company: the family confirmed NSE has listed; the review's value is kept and no exchange price is published to this book (confirmed 2026-10-13)."
+    "reviewNote": "Valued at ₹25,93,75,000 on the family's consolidated review (MOPWM, 30 Jun 2026), Direct Equity - Unlisted row 69. 1,25,000 shares on Kapil's ICICI Bank NSDL statement and 75,000 on Meera's Motilal Oswal demat; the review's ₹12.085 Cr cost split by shares, which is this book's judgement — the review prints one cost for the 2,00,000. Now a listed company: the family confirmed NSE has listed; the review's value is kept and no exchange price is published to this book (confirmed 2026-10-13)."
   },
   {
     "securityKey": "oilmax-energy",
     "security": "Oil Max",
     "symbol": null,
     "isin": "INE069601016",
-    "accountId": "review-kapil-verma",
+    "accountId": "review-chiraag-kapil",
     "memberId": null,
     "sector": "Unclassified",
     "providerSector": null,
@@ -8445,7 +8445,7 @@ export const BOOK_POSITIONS: Position[] = [
     "security": "Onix Renewable",
     "symbol": null,
     "isin": "INE0TG701015",
-    "accountId": "review-kapil-verma",
+    "accountId": "review-chiraag-kapil",
     "memberId": null,
     "sector": "Unclassified",
     "providerSector": null,
@@ -8487,7 +8487,7 @@ export const BOOK_POSITIONS: Position[] = [
     "security": "Radiant",
     "symbol": null,
     "isin": "INE007Z01022",
-    "accountId": "review-kapil-verma",
+    "accountId": "review-chiraag-kapil",
     "memberId": null,
     "sector": "Unclassified",
     "providerSector": null,
@@ -8529,7 +8529,7 @@ export const BOOK_POSITIONS: Position[] = [
     "security": "RAY's",
     "symbol": null,
     "isin": "INE0WSH01011",
-    "accountId": "review-kapil-verma",
+    "accountId": "review-chiraag-kapil",
     "memberId": null,
     "sector": "Unclassified",
     "providerSector": null,
@@ -8571,7 +8571,7 @@ export const BOOK_POSITIONS: Position[] = [
     "security": "SKS Fastener",
     "symbol": null,
     "isin": "INE593N01019",
-    "accountId": "review-kapil-verma",
+    "accountId": "review-chiraag-kapil",
     "memberId": null,
     "sector": "Unclassified",
     "providerSector": null,
@@ -8613,7 +8613,7 @@ export const BOOK_POSITIONS: Position[] = [
     "security": "SOTEFIN",
     "symbol": null,
     "isin": "INE12Z301012",
-    "accountId": "review-kapil-verma",
+    "accountId": "review-chiraag-kapil",
     "memberId": null,
     "sector": "Unclassified",
     "providerSector": null,
@@ -8655,7 +8655,7 @@ export const BOOK_POSITIONS: Position[] = [
     "security": "Spray Engineering Devices Ltd.",
     "symbol": null,
     "isin": "INE528I01015",
-    "accountId": "review-kapil-verma",
+    "accountId": "review-chiraag-kapil",
     "memberId": null,
     "sector": "Unclassified",
     "providerSector": null,
@@ -8696,7 +8696,7 @@ export const BOOK_POSITIONS: Position[] = [
     "securityKey": "telawne-power",
     "security": "Telawne Power",
     "symbol": null,
-    "accountId": "review-kapil-verma",
+    "accountId": "review-chiraag-kapil",
     "memberId": null,
     "sector": "Unclassified",
     "providerSector": null,
@@ -8738,7 +8738,7 @@ export const BOOK_POSITIONS: Position[] = [
     "security": "URB Ventures Pvt Ltd - ANUJ MUNOT",
     "symbol": null,
     "isin": "INE0Q8701015",
-    "accountId": "review-kapil-verma",
+    "accountId": "review-chiraag-kapil",
     "memberId": null,
     "sector": "Unclassified",
     "providerSector": null,
@@ -8773,13 +8773,13 @@ export const BOOK_POSITIONS: Position[] = [
       "block": "Private Investments",
       "row": 5
     },
-    "reviewNote": "Held at cost on the family's consolidated review (MOPWM, 30 Jun 2026), Private Investments row 5 — Kapil Verma's ₹1,00,00,000 of the line. Two holders; the family's investment register records each one's payment."
+    "reviewNote": "Held at cost on the family's consolidated review (MOPWM, 30 Jun 2026), Private Investments row 5 — Chiraag Kapil's ₹1,00,00,000 of the line. Two holders; the family's investment register records each one's payment."
   },
   {
     "securityKey": "we-voise",
     "security": "WE VOISE",
     "symbol": null,
-    "accountId": "review-kapil-verma",
+    "accountId": "review-chiraag-kapil",
     "memberId": null,
     "sector": "Unclassified",
     "providerSector": null,
@@ -8821,7 +8821,7 @@ export const BOOK_POSITIONS: Position[] = [
     "security": "Zenith",
     "symbol": null,
     "isin": "INE0ETS01014",
-    "accountId": "review-kapil-verma",
+    "accountId": "review-chiraag-kapil",
     "memberId": null,
     "sector": "Unclassified",
     "providerSector": null,
@@ -8862,7 +8862,7 @@ export const BOOK_POSITIONS: Position[] = [
     "securityKey": "zepto",
     "security": "Zepto",
     "symbol": null,
-    "accountId": "review-kapil-verma",
+    "accountId": "review-chiraag-kapil",
     "memberId": null,
     "sector": "Unclassified",
     "providerSector": null,
@@ -8902,7 +8902,7 @@ export const BOOK_POSITIONS: Position[] = [
     "securityKey": "al-trust-collabmates-pvt-ltd-angellist-likeminds",
     "security": "AL Trust - Collabmates Pvt Ltd - (ANGELLIST - LIKEMINDS)",
     "symbol": null,
-    "accountId": "review-nisha-verma",
+    "accountId": "review-meera-kapil",
     "memberId": null,
     "sector": "Unclassified",
     "providerSector": null,
@@ -8943,7 +8943,7 @@ export const BOOK_POSITIONS: Position[] = [
     "securityKey": "blue-ashva-india-pool-account",
     "security": "Blue Ashva India Pool Account",
     "symbol": null,
-    "accountId": "review-nisha-verma",
+    "accountId": "review-meera-kapil",
     "memberId": null,
     "sector": "Unclassified",
     "providerSector": null,
@@ -8978,14 +8978,14 @@ export const BOOK_POSITIONS: Position[] = [
       "block": "Private Investments",
       "row": 60
     },
-    "reviewNote": "Held at cost on the family's consolidated review (MOPWM, 30 Jun 2026), Private Investments row 60 — Nisha Verma's ₹1,52,51,640 of the line. The family's investment register records Nisha's ₹1,52,51,640 and Kapil's ₹51,08,000 into the pool account; the rest of the review's line names no holder."
+    "reviewNote": "Held at cost on the family's consolidated review (MOPWM, 30 Jun 2026), Private Investments row 60 — Meera Kapil's ₹1,52,51,640 of the line. The family's investment register records Meera's ₹1,52,51,640 and Kapil's ₹51,08,000 into the pool account; the rest of the review's line names no holder."
   },
   {
     "securityKey": "blue-ashva-varenya-fund-bavf-ser20-c6-restricted-transferability",
     "security": "Blue Ashva Varenya Account",
     "symbol": null,
     "isin": "INF0VGG22429",
-    "accountId": "review-nisha-verma",
+    "accountId": "review-meera-kapil",
     "memberId": null,
     "sector": "Unclassified",
     "providerSector": null,
@@ -9020,14 +9020,14 @@ export const BOOK_POSITIONS: Position[] = [
       "block": "Private Investments",
       "row": 65
     },
-    "reviewNote": "Held at cost on the family's consolidated review (MOPWM, 30 Jun 2026), Private Investments row 65 — Nisha Verma's ₹1,00,000 of the line. Two holders; the family's investment register records ₹1 L each."
+    "reviewNote": "Held at cost on the family's consolidated review (MOPWM, 30 Jun 2026), Private Investments row 65 — Meera Kapil's ₹1,00,000 of the line. Two holders; the family's investment register records ₹1 L each."
   },
   {
     "securityKey": "everest-fleet",
     "security": "Everest Fleet Private Ltd - SIDDHARTH LADSARIYA",
     "symbol": null,
     "isin": "INE0LTR01029",
-    "accountId": "review-nisha-verma",
+    "accountId": "review-meera-kapil",
     "memberId": null,
     "sector": "Unclassified",
     "providerSector": null,
@@ -9062,13 +9062,13 @@ export const BOOK_POSITIONS: Position[] = [
       "block": "Private Investments",
       "row": 4
     },
-    "reviewNote": "Held at cost on the family's consolidated review (MOPWM, 30 Jun 2026), Private Investments row 4 — Nisha Verma's ₹1,60,93,284 of the line. Three holders; the family's investment register records each one's payment."
+    "reviewNote": "Held at cost on the family's consolidated review (MOPWM, 30 Jun 2026), Private Investments row 4 — Meera Kapil's ₹1,60,93,284 of the line. Three holders; the family's investment register records each one's payment."
   },
   {
     "securityKey": "inflexor-technologies",
     "security": "Inflexor Technologies",
     "symbol": null,
-    "accountId": "review-nisha-verma",
+    "accountId": "review-meera-kapil",
     "memberId": null,
     "sector": "Unclassified",
     "providerSector": null,
@@ -9110,7 +9110,7 @@ export const BOOK_POSITIONS: Position[] = [
     "security": "National Stock Exchange of India",
     "symbol": null,
     "isin": "INE721I01024",
-    "accountId": "review-nisha-verma",
+    "accountId": "review-meera-kapil",
     "memberId": null,
     "sector": "Financials",
     "providerSector": "Capital Markets",
@@ -9144,14 +9144,14 @@ export const BOOK_POSITIONS: Position[] = [
       "block": "Direct Equity - Unlisted",
       "row": 69
     },
-    "reviewNote": "Valued at ₹15,56,25,000 on the family's consolidated review (MOPWM, 30 Jun 2026), Direct Equity - Unlisted row 69. 1,25,000 shares on Kapil's ICICI Bank NSDL statement and 75,000 on Nisha's Motilal Oswal demat; the review's ₹12.085 Cr cost split by shares, which is this book's judgement — the review prints one cost for the 2,00,000. Now a listed company: the family confirmed NSE has listed; the review's value is kept and no exchange price is published to this book (confirmed 2026-10-13)."
+    "reviewNote": "Valued at ₹15,56,25,000 on the family's consolidated review (MOPWM, 30 Jun 2026), Direct Equity - Unlisted row 69. 1,25,000 shares on Kapil's ICICI Bank NSDL statement and 75,000 on Meera's Motilal Oswal demat; the review's ₹12.085 Cr cost split by shares, which is this book's judgement — the review prints one cost for the 2,00,000. Now a listed company: the family confirmed NSE has listed; the review's value is kept and no exchange price is published to this book (confirmed 2026-10-13)."
   },
   {
     "securityKey": "pvc-ii-class-a1",
     "security": "Pivot Ventures - ISHA KEDIA",
     "symbol": null,
     "isin": "INF0UXX22017",
-    "accountId": "review-nisha-verma",
+    "accountId": "review-meera-kapil",
     "memberId": null,
     "sector": "Unclassified",
     "providerSector": null,
@@ -9192,7 +9192,7 @@ export const BOOK_POSITIONS: Position[] = [
     "securityKey": "since-99-apparel-pvt-limited-punit-sehgal-dexter-capital",
     "security": "Since 99 Apparel Pvt Limited - PUNIT SEHGAL / DEXTER CAPITAL",
     "symbol": null,
-    "accountId": "review-nisha-verma",
+    "accountId": "review-meera-kapil",
     "memberId": null,
     "sector": "Unclassified",
     "providerSector": null,
@@ -9233,7 +9233,7 @@ export const BOOK_POSITIONS: Position[] = [
     "securityKey": "sky-vision-cure",
     "security": "Sky Vision Cure LLP",
     "symbol": null,
-    "accountId": "review-nisha-verma",
+    "accountId": "review-meera-kapil",
     "memberId": null,
     "sector": "Unclassified",
     "providerSector": null,
@@ -9275,7 +9275,7 @@ export const BOOK_POSITIONS: Position[] = [
     "security": "The OAKS Consumer Fund I - SANTOSH PARAB",
     "symbol": null,
     "isin": "INF0RSB22019",
-    "accountId": "review-nisha-verma",
+    "accountId": "review-meera-kapil",
     "memberId": null,
     "sector": "Unclassified",
     "providerSector": null,
@@ -9317,7 +9317,7 @@ export const BOOK_POSITIONS: Position[] = [
     "security": "Transition Venture Capital Fund I — Class A1",
     "symbol": null,
     "isin": "INF0VIS22016",
-    "accountId": "review-nisha-verma",
+    "accountId": "review-meera-kapil",
     "memberId": null,
     "sector": "Unclassified",
     "providerSector": null,
@@ -9351,14 +9351,14 @@ export const BOOK_POSITIONS: Position[] = [
       "block": "PE Funds",
       "row": 13
     },
-    "reviewNote": "Valued at ₹32,85,877 on the family's consolidated review (MOPWM, 30 Jun 2026), PE Funds row 13, its closing of 28 Feb 2026. Each trust's own folio, and Nisha's 2,500 units on the review's Transactions."
+    "reviewNote": "Valued at ₹32,85,877 on the family's consolidated review (MOPWM, 30 Jun 2026), PE Funds row 13, its closing of 28 Feb 2026. Each trust's own folio, and Meera's 2,500 units on the review's Transactions."
   },
   {
     "securityKey": "urb-ventures",
     "security": "URB Ventures Pvt Ltd - ANUJ MUNOT",
     "symbol": null,
     "isin": "INE0Q8701015",
-    "accountId": "review-nisha-verma",
+    "accountId": "review-meera-kapil",
     "memberId": null,
     "sector": "Unclassified",
     "providerSector": null,
@@ -9393,13 +9393,13 @@ export const BOOK_POSITIONS: Position[] = [
       "block": "Private Investments",
       "row": 5
     },
-    "reviewNote": "Held at cost on the family's consolidated review (MOPWM, 30 Jun 2026), Private Investments row 5 — Nisha Verma's ₹1,25,00,000 of the line. Two holders; the family's investment register records each one's payment."
+    "reviewNote": "Held at cost on the family's consolidated review (MOPWM, 30 Jun 2026), Private Investments row 5 — Meera Kapil's ₹1,25,00,000 of the line. Two holders; the family's investment register records each one's payment."
   },
   {
     "securityKey": "a-k-enterprises",
     "security": "A K Enterprises",
     "symbol": null,
-    "accountId": "review-rohan-verma",
+    "accountId": "review-arjun-kapil",
     "memberId": null,
     "sector": "Unclassified",
     "providerSector": null,
@@ -9440,7 +9440,7 @@ export const BOOK_POSITIONS: Position[] = [
     "securityKey": "ajay-jain-drink-prime",
     "security": "Kapil Jain - Drink Prime",
     "symbol": null,
-    "accountId": "review-rohan-verma",
+    "accountId": "review-arjun-kapil",
     "memberId": null,
     "sector": "Unclassified",
     "providerSector": null,
@@ -9481,7 +9481,7 @@ export const BOOK_POSITIONS: Position[] = [
     "securityKey": "aksum-trademart-pvt-ltd-ankit-jain",
     "security": "Aksum Trademart Pvt Ltd - ANKIT JAIN",
     "symbol": null,
-    "accountId": "review-rohan-verma",
+    "accountId": "review-arjun-kapil",
     "memberId": null,
     "sector": "Unclassified",
     "providerSector": null,
@@ -9522,7 +9522,7 @@ export const BOOK_POSITIONS: Position[] = [
     "securityKey": "al-trust-karban-envirotech-ruv-nilesh-angelist",
     "security": "AL Trust - Karban Envirotech (RUV) - Nilesh Angelist",
     "symbol": null,
-    "accountId": "review-rohan-verma",
+    "accountId": "review-arjun-kapil",
     "memberId": null,
     "sector": "Unclassified",
     "providerSector": null,
@@ -9563,7 +9563,7 @@ export const BOOK_POSITIONS: Position[] = [
     "securityKey": "autocracy-machinery",
     "security": "Autocracy Machinery Pvt Ltd.",
     "symbol": null,
-    "accountId": "review-rohan-verma",
+    "accountId": "review-arjun-kapil",
     "memberId": null,
     "sector": "Unclassified",
     "providerSector": null,
@@ -9605,7 +9605,7 @@ export const BOOK_POSITIONS: Position[] = [
     "security": "BIG BANG BOOM",
     "symbol": null,
     "isin": "INE1BRB03089",
-    "accountId": "review-rohan-verma",
+    "accountId": "review-arjun-kapil",
     "memberId": null,
     "sector": "Unclassified",
     "providerSector": null,
@@ -9640,14 +9640,14 @@ export const BOOK_POSITIONS: Position[] = [
       "block": "Private Investments",
       "row": 20
     },
-    "reviewNote": "Held at cost on the family's consolidated review (MOPWM, 30 Jun 2026), Private Investments row 20 — Rohan Verma's ₹1,00,80,000 of the line. Two holders; the family's investment register records each one's payment."
+    "reviewNote": "Held at cost on the family's consolidated review (MOPWM, 30 Jun 2026), Private Investments row 20 — Arjun Kapil's ₹1,00,80,000 of the line. Two holders; the family's investment register records each one's payment."
   },
   {
     "securityKey": "everest-fleet",
     "security": "Everest Fleet Private Ltd - SIDDHARTH LADSARIYA",
     "symbol": null,
     "isin": "INE0LTR01029",
-    "accountId": "review-rohan-verma",
+    "accountId": "review-arjun-kapil",
     "memberId": null,
     "sector": "Unclassified",
     "providerSector": null,
@@ -9682,13 +9682,13 @@ export const BOOK_POSITIONS: Position[] = [
       "block": "Private Investments",
       "row": 4
     },
-    "reviewNote": "Held at cost on the family's consolidated review (MOPWM, 30 Jun 2026), Private Investments row 4 — Rohan Verma's ₹61,95,952 of the line. Three holders; the family's investment register records each one's payment."
+    "reviewNote": "Held at cost on the family's consolidated review (MOPWM, 30 Jun 2026), Private Investments row 4 — Arjun Kapil's ₹61,95,952 of the line. Three holders; the family's investment register records each one's payment."
   },
   {
     "securityKey": "fh-edutech",
     "security": "FH Edutech LLP",
     "symbol": null,
-    "accountId": "review-rohan-verma",
+    "accountId": "review-arjun-kapil",
     "memberId": null,
     "sector": "Unclassified",
     "providerSector": null,
@@ -9729,7 +9729,7 @@ export const BOOK_POSITIONS: Position[] = [
     "securityKey": "fh-enable-llp-aakash-sachdev",
     "security": "FH Enable LLP - Aakash Sachdev",
     "symbol": null,
-    "accountId": "review-rohan-verma",
+    "accountId": "review-arjun-kapil",
     "memberId": null,
     "sector": "Unclassified",
     "providerSector": null,
@@ -9770,7 +9770,7 @@ export const BOOK_POSITIONS: Position[] = [
     "securityKey": "hanok-reuben-medhari-drink-prime",
     "security": "Hanok Reuben Medhari - Drink Prime",
     "symbol": null,
-    "accountId": "review-rohan-verma",
+    "accountId": "review-arjun-kapil",
     "memberId": null,
     "sector": "Unclassified",
     "providerSector": null,
@@ -9811,7 +9811,7 @@ export const BOOK_POSITIONS: Position[] = [
     "securityKey": "home-pecked-e-marketplace-services",
     "security": "Home Pecked E-Marketplace Services Ltd",
     "symbol": null,
-    "accountId": "review-rohan-verma",
+    "accountId": "review-arjun-kapil",
     "memberId": null,
     "sector": "Unclassified",
     "providerSector": null,
@@ -9852,7 +9852,7 @@ export const BOOK_POSITIONS: Position[] = [
     "securityKey": "hyprkytchen-foodtech-private-limited-mr-bansi",
     "security": "HYPRKYTCHEN Foodtech Private Limited - Mr. Bansi",
     "symbol": null,
-    "accountId": "review-rohan-verma",
+    "accountId": "review-arjun-kapil",
     "memberId": null,
     "sector": "Unclassified",
     "providerSector": null,
@@ -9893,7 +9893,7 @@ export const BOOK_POSITIONS: Position[] = [
     "securityKey": "incred-holdings",
     "security": "Incred Holdings Ltd.",
     "symbol": null,
-    "accountId": "review-rohan-verma",
+    "accountId": "review-arjun-kapil",
     "memberId": null,
     "sector": "Unclassified",
     "providerSector": null,
@@ -9934,7 +9934,7 @@ export const BOOK_POSITIONS: Position[] = [
     "securityKey": "innoviti-payment-solutions-private-ltd-pranav-koranne",
     "security": "Innoviti Payment Solutions Private Ltd - PRANAV KORANNE",
     "symbol": null,
-    "accountId": "review-rohan-verma",
+    "accountId": "review-arjun-kapil",
     "memberId": null,
     "sector": "Unclassified",
     "providerSector": null,
@@ -9969,14 +9969,14 @@ export const BOOK_POSITIONS: Position[] = [
       "block": "Private Investments",
       "row": 17
     },
-    "reviewNote": "Held at cost on the family's consolidated review (MOPWM, 30 Jun 2026), Private Investments row 17 — Rohan Verma's ₹49,99,993.46 of the line. Two holders; the family's investment register records each one's payment."
+    "reviewNote": "Held at cost on the family's consolidated review (MOPWM, 30 Jun 2026), Private Investments row 17 — Arjun Kapil's ₹49,99,993.46 of the line. Two holders; the family's investment register records each one's payment."
   },
   {
     "securityKey": "integris-medtech",
     "security": "Integris",
     "symbol": null,
     "isin": "INE05GT01023",
-    "accountId": "review-rohan-verma",
+    "accountId": "review-arjun-kapil",
     "memberId": null,
     "sector": "Unclassified",
     "providerSector": null,
@@ -10011,13 +10011,13 @@ export const BOOK_POSITIONS: Position[] = [
       "block": "Private Investments",
       "row": 7
     },
-    "reviewNote": "Held at cost on the family's consolidated review (MOPWM, 30 Jun 2026), Private Investments row 7 — Rohan Verma's ₹2,99,99,419 of the line. The family's investment register records Kapil's ₹9,99,98,625 and Bharat's ₹2,99,99,419; the review's line is ₹2,99,99,418.80 more, which no document names a holder for."
+    "reviewNote": "Held at cost on the family's consolidated review (MOPWM, 30 Jun 2026), Private Investments row 7 — Arjun Kapil's ₹2,99,99,419 of the line. The family's investment register records Kapil's ₹9,99,98,625 and Bharat's ₹2,99,99,419; the review's line is ₹2,99,99,418.80 more, which no document names a holder for."
   },
   {
     "securityKey": "k-m-global-credit",
     "security": "K M Global - Credit Private Limited",
     "symbol": null,
-    "accountId": "review-rohan-verma",
+    "accountId": "review-arjun-kapil",
     "memberId": null,
     "sector": "Unclassified",
     "providerSector": null,
@@ -10057,7 +10057,7 @@ export const BOOK_POSITIONS: Position[] = [
     "securityKey": "lv-angel-fund-lets-venture-hoopr-vaibhav-karnavat",
     "security": "LV Angel Fund - Lets Venture (HOOPR) - VAIBHAV KARNAVAT",
     "symbol": null,
-    "accountId": "review-rohan-verma",
+    "accountId": "review-arjun-kapil",
     "memberId": null,
     "sector": "Unclassified",
     "providerSector": null,
@@ -10099,7 +10099,7 @@ export const BOOK_POSITIONS: Position[] = [
     "security": "Matrix Gas And Renewables Limited",
     "symbol": null,
     "isin": "INE0PO201010",
-    "accountId": "review-rohan-verma",
+    "accountId": "review-arjun-kapil",
     "memberId": null,
     "sector": "Unclassified",
     "providerSector": null,
@@ -10134,13 +10134,13 @@ export const BOOK_POSITIONS: Position[] = [
       "block": "Private Investments",
       "row": 14
     },
-    "reviewNote": "Held at cost on the family's consolidated review (MOPWM, 30 Jun 2026), Private Investments row 14 — Rohan Verma's ₹1,50,00,000 of the line. Two holders; the family's investment register records each one's payment."
+    "reviewNote": "Held at cost on the family's consolidated review (MOPWM, 30 Jun 2026), Private Investments row 14 — Arjun Kapil's ₹1,50,00,000 of the line. Two holders; the family's investment register records each one's payment."
   },
   {
     "securityKey": "nopo-nanotechnologies-india-pvt-ltd-gadhadar-reddy",
     "security": "Nopo Nanotechnologies India Pvt Ltd - Gadhadar Reddy",
     "symbol": null,
-    "accountId": "review-rohan-verma",
+    "accountId": "review-arjun-kapil",
     "memberId": null,
     "sector": "Unclassified",
     "providerSector": null,
@@ -10181,7 +10181,7 @@ export const BOOK_POSITIONS: Position[] = [
     "securityKey": "procyon-enterprise-llp-abhishek-murarka",
     "security": "PROCYON ENTERPRISE LLP - ABHISHEK MURARKA",
     "symbol": null,
-    "accountId": "review-rohan-verma",
+    "accountId": "review-arjun-kapil",
     "memberId": null,
     "sector": "Unclassified",
     "providerSector": null,
@@ -10222,7 +10222,7 @@ export const BOOK_POSITIONS: Position[] = [
     "securityKey": "rurash-financials-private-ltd-reliance-retail",
     "security": "Rurash Financials Private Ltd - Reliance Retail",
     "symbol": null,
-    "accountId": "review-rohan-verma",
+    "accountId": "review-arjun-kapil",
     "memberId": null,
     "sector": "Unclassified",
     "providerSector": null,
@@ -10263,7 +10263,7 @@ export const BOOK_POSITIONS: Position[] = [
     "securityKey": "sky-enable-tech",
     "security": "Sky Enable Tech Llp",
     "symbol": null,
-    "accountId": "review-rohan-verma",
+    "accountId": "review-arjun-kapil",
     "memberId": null,
     "sector": "Unclassified",
     "providerSector": null,
@@ -10304,7 +10304,7 @@ export const BOOK_POSITIONS: Position[] = [
     "securityKey": "stay-vista-private-limited-anandkumar-radhakrishna-ladsariya",
     "security": "Stay Vista Private Limited - Anandkumar Radhakrishna Ladsariya",
     "symbol": null,
-    "accountId": "review-rohan-verma",
+    "accountId": "review-arjun-kapil",
     "memberId": null,
     "sector": "Unclassified",
     "providerSector": null,
@@ -10345,7 +10345,7 @@ export const BOOK_POSITIONS: Position[] = [
     "securityKey": "stay-vista-private-limited-artha-energy-projects",
     "security": "Stay Vista Private Limited - ARTHA ENERGY PROJECTS PVT LTD",
     "symbol": null,
-    "accountId": "review-rohan-verma",
+    "accountId": "review-arjun-kapil",
     "memberId": null,
     "sector": "Unclassified",
     "providerSector": null,
@@ -10386,7 +10386,7 @@ export const BOOK_POSITIONS: Position[] = [
     "securityKey": "swapeco-solutions-private-limited-scrap-uncle-mukul-chabra",
     "security": "SWAPECO SOLUTIONS PRIVATE LIMITED - (SCRAP UNCLE - MUKUL CHABRA)",
     "symbol": null,
-    "accountId": "review-rohan-verma",
+    "accountId": "review-arjun-kapil",
     "memberId": null,
     "sector": "Unclassified",
     "providerSector": null,
@@ -10427,7 +10427,7 @@ export const BOOK_POSITIONS: Position[] = [
     "securityKey": "third-eye-distillery-holdings-pvt-ltd-skyventures-lv-angel-fund-aakash-sachdev",
     "security": "Third Eye Distillery Holdings Pvt Ltd (SKYVENTURES - LV ANGEL FUND - AAKASH SACHDEV)",
     "symbol": null,
-    "accountId": "review-rohan-verma",
+    "accountId": "review-arjun-kapil",
     "memberId": null,
     "sector": "Unclassified",
     "providerSector": null,
@@ -10468,7 +10468,7 @@ export const BOOK_POSITIONS: Position[] = [
     "securityKey": "transigo-fleet",
     "security": "Transigo Fleet LLP",
     "symbol": null,
-    "accountId": "review-rohan-verma",
+    "accountId": "review-arjun-kapil",
     "memberId": null,
     "sector": "Unclassified",
     "providerSector": null,
@@ -10509,7 +10509,7 @@ export const BOOK_POSITIONS: Position[] = [
     "securityKey": "variance-pt-ventures-llp-romil-kapadia",
     "security": "Variance PT Ventures LLP - Romil Kapadia",
     "symbol": null,
-    "accountId": "review-rohan-verma",
+    "accountId": "review-arjun-kapil",
     "memberId": null,
     "sector": "Unclassified",
     "providerSector": null,
@@ -10550,7 +10550,7 @@ export const BOOK_POSITIONS: Position[] = [
     "securityKey": "vineet-sethia-drink-prime",
     "security": "Vineet Sethia - Drink Prime",
     "symbol": null,
-    "accountId": "review-rohan-verma",
+    "accountId": "review-arjun-kapil",
     "memberId": null,
     "sector": "Unclassified",
     "providerSector": null,
@@ -10591,7 +10591,7 @@ export const BOOK_POSITIONS: Position[] = [
     "securityKey": "waterwala-labs-private-limited-drink-prime",
     "security": "Waterwala Labs Private Limited - Drink Prime",
     "symbol": null,
-    "accountId": "review-rohan-verma",
+    "accountId": "review-arjun-kapil",
     "memberId": null,
     "sector": "Unclassified",
     "providerSector": null,
@@ -10632,7 +10632,7 @@ export const BOOK_POSITIONS: Position[] = [
     "securityKey": "zippmat-private-ltd-abhijeet-kudva",
     "security": "Zippmat Private Ltd - ABHIJEET KUDVA",
     "symbol": null,
-    "accountId": "review-rohan-verma",
+    "accountId": "review-arjun-kapil",
     "memberId": null,
     "sector": "Unclassified",
     "providerSector": null,
@@ -10674,7 +10674,7 @@ export const BOOK_POSITIONS: Position[] = [
     "security": "Swapeco Solutions Private Limited",
     "symbol": null,
     "isin": "INE2DT103015",
-    "accountId": "review-verma-family-trust-2",
+    "accountId": "review-kapil-family-trust-2",
     "memberId": null,
     "sector": "Unclassified",
     "providerSector": null,
@@ -10709,14 +10709,14 @@ export const BOOK_POSITIONS: Position[] = [
       "block": "Private Investments",
       "row": 62
     },
-    "reviewNote": "Held at cost on the family's consolidated review (MOPWM, 30 Jun 2026), Private Investments row 62 — Verma Family Trust 2's ₹1,35,00,875 of the line. 347 CCPS per family trust on both trusts' HDFC Bank NSDL statements, ₹1,35,00,875 each on the review's own member summary."
+    "reviewNote": "Held at cost on the family's consolidated review (MOPWM, 30 Jun 2026), Private Investments row 62 — Kapil Family Trust 2's ₹1,35,00,875 of the line. 347 CCPS per family trust on both trusts' HDFC Bank NSDL statements, ₹1,35,00,875 each on the review's own member summary."
   },
   {
     "securityKey": "swapeco-solutions",
     "security": "Swapeco Solutions Private Limited",
     "symbol": null,
     "isin": "INE2DT103015",
-    "accountId": "review-verma-family-trust-3",
+    "accountId": "review-kapil-family-trust-3",
     "memberId": null,
     "sector": "Unclassified",
     "providerSector": null,
@@ -10751,7 +10751,7 @@ export const BOOK_POSITIONS: Position[] = [
       "block": "Private Investments",
       "row": 62
     },
-    "reviewNote": "Held at cost on the family's consolidated review (MOPWM, 30 Jun 2026), Private Investments row 62 — Verma Family Trust 3's ₹1,35,00,875 of the line. 347 CCPS per family trust on both trusts' HDFC Bank NSDL statements, ₹1,35,00,875 each on the review's own member summary."
+    "reviewNote": "Held at cost on the family's consolidated review (MOPWM, 30 Jun 2026), Private Investments row 62 — Kapil Family Trust 3's ₹1,35,00,875 of the line. 347 CCPS per family trust on both trusts' HDFC Bank NSDL statements, ₹1,35,00,875 each on the review's own member summary."
   },
   {
     "securityKey": "blue-ashva-india-pool-account",
@@ -10792,7 +10792,7 @@ export const BOOK_POSITIONS: Position[] = [
       "block": "Private Investments",
       "row": 60
     },
-    "reviewNote": "Held at cost on the family's consolidated review (MOPWM, 30 Jun 2026), Private Investments row 60 — Not attributed to a member's ₹1,70,48,360 of the line. The family's investment register records Nisha's ₹1,52,51,640 and Kapil's ₹51,08,000 into the pool account; the rest of the review's line names no holder."
+    "reviewNote": "Held at cost on the family's consolidated review (MOPWM, 30 Jun 2026), Private Investments row 60 — Not attributed to a member's ₹1,70,48,360 of the line. The family's investment register records Meera's ₹1,52,51,640 and Kapil's ₹51,08,000 into the pool account; the rest of the review's line names no holder."
   },
   {
     "securityKey": "head-infotech",
@@ -13823,7 +13823,7 @@ export const BOOK_POSITIONS: Position[] = [
       "block": "PE Funds",
       "row": 13
     },
-    "reviewNote": "Valued at ₹96,80,754 on the family's consolidated review (MOPWM, 30 Jun 2026), PE Funds row 13, its closing of 28 Feb 2026. Each trust's own folio, and Nisha's 2,500 units on the review's Transactions. A statement says otherwise: the trust's own statement of 31 Mar 2026 values its 7,500 units at ₹1,71,45,962.25 (₹2,286.13 a unit) against the review's 28 Feb mark."
+    "reviewNote": "Valued at ₹96,80,754 on the family's consolidated review (MOPWM, 30 Jun 2026), PE Funds row 13, its closing of 28 Feb 2026. Each trust's own folio, and Meera's 2,500 units on the review's Transactions. A statement says otherwise: the trust's own statement of 31 Mar 2026 values its 7,500 units at ₹1,71,45,962.25 (₹2,286.13 a unit) against the review's 28 Feb mark."
   },
   {
     "securityKey": "transition-venture-capital-fund-i-class-a1",
@@ -13864,7 +13864,7 @@ export const BOOK_POSITIONS: Position[] = [
       "block": "PE Funds",
       "row": 13
     },
-    "reviewNote": "Valued at ₹96,80,754 on the family's consolidated review (MOPWM, 30 Jun 2026), PE Funds row 13, its closing of 28 Feb 2026. Each trust's own folio, and Nisha's 2,500 units on the review's Transactions. A statement says otherwise: the trust's own statement of 31 Mar 2026 values its 7,500 units at ₹1,71,45,962.25 (₹2,286.13 a unit) against the review's 28 Feb mark."
+    "reviewNote": "Valued at ₹96,80,754 on the family's consolidated review (MOPWM, 30 Jun 2026), PE Funds row 13, its closing of 28 Feb 2026. Each trust's own folio, and Meera's 2,500 units on the review's Transactions. A statement says otherwise: the trust's own statement of 31 Mar 2026 values its 7,500 units at ₹1,71,45,962.25 (₹2,286.13 a unit) against the review's 28 Feb mark."
   },
   {
     "securityKey": "amrutanjan-health-care",
@@ -14827,7 +14827,7 @@ export const BOOK_POSITIONS: Position[] = [
 export const BOOK_UNVALUED_HOLDINGS: UnvaluedStatementHolding[] = [
   {
     "accountId": "icici-bank-nsdl-demat-49794950",
-    "ownerId": "kapil-verma",
+    "ownerId": "chiraag-kapil",
     "securityKey": "esds-software-solution-limited-eq-new-fv-rs-1",
     "security": "ESDS SOFTWARE SOLUTION LIMITED - EQ NEW FV RS .1/",
     "isin": "INE0DRI01029",
@@ -14844,7 +14844,7 @@ export const BOOK_UNVALUED_HOLDINGS: UnvaluedStatementHolding[] = [
   },
   {
     "accountId": "icici-bank-nsdl-demat-49794950",
-    "ownerId": "kapil-verma",
+    "ownerId": "chiraag-kapil",
     "securityKey": "infobay-ai-limited-0-01-pref-18ag44",
     "security": "INFOBAY AI LIMITED - 0.01% PREF 18AG44",
     "isin": "IN90SE903019",
@@ -14861,7 +14861,7 @@ export const BOOK_UNVALUED_HOLDINGS: UnvaluedStatementHolding[] = [
   },
   {
     "accountId": "icici-bank-nsdl-demat-49794950",
-    "ownerId": "kapil-verma",
+    "ownerId": "chiraag-kapil",
     "securityKey": "innoviti-technologies",
     "security": "INNOVITI TECHNOLOGIES PRIVATE LIMITED - EQ",
     "isin": "INE0NV501016",
@@ -14878,7 +14878,7 @@ export const BOOK_UNVALUED_HOLDINGS: UnvaluedStatementHolding[] = [
   },
   {
     "accountId": "icici-bank-nsdl-demat-49794950",
-    "ownerId": "kapil-verma",
+    "ownerId": "chiraag-kapil",
     "securityKey": "wevois-labs",
     "security": "WEVOIS LABS PRIVATE LIMITED - EQ",
     "isin": "INE0Z6Z01013",
@@ -14895,7 +14895,7 @@ export const BOOK_UNVALUED_HOLDINGS: UnvaluedStatementHolding[] = [
   },
   {
     "accountId": "motilal-oswal-financial-services-demat-1201090012838316",
-    "ownerId": "nisha-verma",
+    "ownerId": "meera-kapil",
     "securityKey": "3p-india-equity-fund-1-class-b3",
     "security": "3P India Equity Fund 1 — Class B3",
     "isin": "INF0R4I22066",
@@ -14912,7 +14912,7 @@ export const BOOK_UNVALUED_HOLDINGS: UnvaluedStatementHolding[] = [
   },
   {
     "accountId": "motilal-oswal-financial-services-demat-1201090012838316",
-    "ownerId": "nisha-verma",
+    "ownerId": "meera-kapil",
     "securityKey": "absl-bal-adv-growth",
     "security": "ABSL BAL ADV-GROWTH",
     "isin": "INF084M01AB8",
@@ -14929,7 +14929,7 @@ export const BOOK_UNVALUED_HOLDINGS: UnvaluedStatementHolding[] = [
   },
   {
     "accountId": "motilal-oswal-financial-services-demat-1201090012838316",
-    "ownerId": "nisha-verma",
+    "ownerId": "meera-kapil",
     "securityKey": "axis-bank",
     "security": "AXIS BANK EQ",
     "isin": "INE238A01034",
@@ -14946,7 +14946,7 @@ export const BOOK_UNVALUED_HOLDINGS: UnvaluedStatementHolding[] = [
   },
   {
     "accountId": "motilal-oswal-financial-services-demat-1201090012838316",
-    "ownerId": "nisha-verma",
+    "ownerId": "meera-kapil",
     "securityKey": "bharat-parenteral",
     "security": "BHARAT PARENTERAL-EQ",
     "isin": "INE365Y01019",
@@ -14963,7 +14963,7 @@ export const BOOK_UNVALUED_HOLDINGS: UnvaluedStatementHolding[] = [
   },
   {
     "accountId": "motilal-oswal-financial-services-demat-1201090012838316",
-    "ownerId": "nisha-verma",
+    "ownerId": "meera-kapil",
     "securityKey": "bndh-l-and-mcf-dp-gr",
     "security": "BNDH L&MCF DP GR",
     "isin": "INF194K01V89",
@@ -14980,7 +14980,7 @@ export const BOOK_UNVALUED_HOLDINGS: UnvaluedStatementHolding[] = [
   },
   {
     "accountId": "motilal-oswal-financial-services-demat-1201090012838316",
-    "ownerId": "nisha-verma",
+    "ownerId": "meera-kapil",
     "securityKey": "buoyant-opportunities-strategy-class-a4",
     "security": "Buoyant Opportunities Strategy — Class A4",
     "isin": "INF0RRI22040",
@@ -14997,7 +14997,7 @@ export const BOOK_UNVALUED_HOLDINGS: UnvaluedStatementHolding[] = [
   },
   {
     "accountId": "motilal-oswal-financial-services-demat-1201090012838316",
-    "ownerId": "nisha-verma",
+    "ownerId": "meera-kapil",
     "securityKey": "carnelian-bharat-amritkaal-fund-class-a2",
     "security": "Carnelian Bharat Amritkaal Fund — Class A2",
     "isin": "INF0ROG22363",
@@ -15014,7 +15014,7 @@ export const BOOK_UNVALUED_HOLDINGS: UnvaluedStatementHolding[] = [
   },
   {
     "accountId": "motilal-oswal-financial-services-demat-1201090012838316",
-    "ownerId": "nisha-verma",
+    "ownerId": "meera-kapil",
     "securityKey": "city-union",
     "security": "CITY UNION -EQ RE1/",
     "isin": "INE491A01021",
@@ -15031,7 +15031,7 @@ export const BOOK_UNVALUED_HOLDINGS: UnvaluedStatementHolding[] = [
   },
   {
     "accountId": "motilal-oswal-financial-services-demat-1201090012838316",
-    "ownerId": "nisha-verma",
+    "ownerId": "meera-kapil",
     "securityKey": "clean-max-env",
     "security": "CLEAN MAX ENV-EQ 1/",
     "isin": "INE647U01026",
@@ -15048,7 +15048,7 @@ export const BOOK_UNVALUED_HOLDINGS: UnvaluedStatementHolding[] = [
   },
   {
     "accountId": "motilal-oswal-financial-services-demat-1201090012838316",
-    "ownerId": "nisha-verma",
+    "ownerId": "meera-kapil",
     "securityKey": "dsp-gold-etf",
     "security": "DSP GOLD ETF",
     "isin": "INF740KA1SW3",
@@ -15065,7 +15065,7 @@ export const BOOK_UNVALUED_HOLDINGS: UnvaluedStatementHolding[] = [
   },
   {
     "accountId": "motilal-oswal-financial-services-demat-1201090012838316",
-    "ownerId": "nisha-verma",
+    "ownerId": "meera-kapil",
     "securityKey": "dsp-silver-etf",
     "security": "DSP SILVER ETF",
     "isin": "INF740KA1RE3",
@@ -15082,7 +15082,7 @@ export const BOOK_UNVALUED_HOLDINGS: UnvaluedStatementHolding[] = [
   },
   {
     "accountId": "motilal-oswal-financial-services-demat-1201090012838316",
-    "ownerId": "nisha-verma",
+    "ownerId": "meera-kapil",
     "securityKey": "federal-bank",
     "security": "FEDERAL BANK EQ 2/",
     "isin": "INE171A01029",
@@ -15099,7 +15099,7 @@ export const BOOK_UNVALUED_HOLDINGS: UnvaluedStatementHolding[] = [
   },
   {
     "accountId": "motilal-oswal-financial-services-demat-1201090012838316",
-    "ownerId": "nisha-verma",
+    "ownerId": "meera-kapil",
     "securityKey": "hdfc-baf-r-grow",
     "security": "HDFC BAF R-GROW",
     "isin": "INF179K01830",
@@ -15116,7 +15116,7 @@ export const BOOK_UNVALUED_HOLDINGS: UnvaluedStatementHolding[] = [
   },
   {
     "accountId": "motilal-oswal-financial-services-demat-1201090012838316",
-    "ownerId": "nisha-verma",
+    "ownerId": "meera-kapil",
     "securityKey": "helios-fcf-d-grow",
     "security": "HELIOS FCF D-GROW",
     "isin": "INF0R8701046",
@@ -15133,7 +15133,7 @@ export const BOOK_UNVALUED_HOLDINGS: UnvaluedStatementHolding[] = [
   },
   {
     "accountId": "motilal-oswal-financial-services-demat-1201090012838316",
-    "ownerId": "nisha-verma",
+    "ownerId": "meera-kapil",
     "securityKey": "icici-bank",
     "security": "ICICI BANK-EQ",
     "isin": "INE090A01021",
@@ -15150,7 +15150,7 @@ export const BOOK_UNVALUED_HOLDINGS: UnvaluedStatementHolding[] = [
   },
   {
     "accountId": "motilal-oswal-financial-services-demat-1201090012838316",
-    "ownerId": "nisha-verma",
+    "ownerId": "meera-kapil",
     "securityKey": "icici-ioppf-d-grw",
     "security": "ICICI IOPPF D-GRW",
     "isin": "INF109KC1RH9",
@@ -15167,7 +15167,7 @@ export const BOOK_UNVALUED_HOLDINGS: UnvaluedStatementHolding[] = [
   },
   {
     "accountId": "motilal-oswal-financial-services-demat-1201090012838316",
-    "ownerId": "nisha-verma",
+    "ownerId": "meera-kapil",
     "securityKey": "indian-bank",
     "security": "INDIAN BANK - EQ",
     "isin": "INE562A01011",
@@ -15184,7 +15184,7 @@ export const BOOK_UNVALUED_HOLDINGS: UnvaluedStatementHolding[] = [
   },
   {
     "accountId": "motilal-oswal-financial-services-demat-1201090012838316",
-    "ownerId": "nisha-verma",
+    "ownerId": "meera-kapil",
     "securityKey": "indusind-bank",
     "security": "INDUSIND BANK EQUITY",
     "isin": "INE095A01012",
@@ -15201,7 +15201,7 @@ export const BOOK_UNVALUED_HOLDINGS: UnvaluedStatementHolding[] = [
   },
   {
     "accountId": "motilal-oswal-financial-services-demat-1201090012838316",
-    "ownerId": "nisha-verma",
+    "ownerId": "meera-kapil",
     "securityKey": "infinium-pharma",
     "security": "INFINIUM PHARMA-EQ",
     "isin": "INE0MRE01011",
@@ -15218,7 +15218,7 @@ export const BOOK_UNVALUED_HOLDINGS: UnvaluedStatementHolding[] = [
   },
   {
     "accountId": "motilal-oswal-financial-services-demat-1201090012838316",
-    "ownerId": "nisha-verma",
+    "ownerId": "meera-kapil",
     "securityKey": "itf-class-a",
     "security": "ITF — Class A",
     "isin": "INF0RW922016",
@@ -15235,7 +15235,7 @@ export const BOOK_UNVALUED_HOLDINGS: UnvaluedStatementHolding[] = [
   },
   {
     "accountId": "motilal-oswal-financial-services-demat-1201090012838316",
-    "ownerId": "nisha-verma",
+    "ownerId": "meera-kapil",
     "securityKey": "karur-vysya-bank",
     "security": "THE KARUR VYS-EQ",
     "isin": "INE036D01028",
@@ -15252,7 +15252,7 @@ export const BOOK_UNVALUED_HOLDINGS: UnvaluedStatementHolding[] = [
   },
   {
     "accountId": "motilal-oswal-financial-services-demat-1201090012838316",
-    "ownerId": "nisha-verma",
+    "ownerId": "meera-kapil",
     "securityKey": "kaynes-technology",
     "security": "KAYNES TECHNOLOGY-EQ",
     "isin": "INE918Z01012",
@@ -15269,7 +15269,7 @@ export const BOOK_UNVALUED_HOLDINGS: UnvaluedStatementHolding[] = [
   },
   {
     "accountId": "motilal-oswal-financial-services-demat-1201090012838316",
-    "ownerId": "nisha-verma",
+    "ownerId": "meera-kapil",
     "securityKey": "mirae-lcf-d-grow",
     "security": "MIRAE LCF D-GROW",
     "isin": "INF769K01AX2",
@@ -15286,7 +15286,7 @@ export const BOOK_UNVALUED_HOLDINGS: UnvaluedStatementHolding[] = [
   },
   {
     "accountId": "motilal-oswal-financial-services-demat-1201090012838316",
-    "ownerId": "nisha-verma",
+    "ownerId": "meera-kapil",
     "securityKey": "motilal-oswal-founders-fund-series-ii-class-g1",
     "security": "Motilal Oswal Founders Fund Series II — Class G1",
     "isin": "INF0RRH22DW6",
@@ -15303,7 +15303,7 @@ export const BOOK_UNVALUED_HOLDINGS: UnvaluedStatementHolding[] = [
   },
   {
     "accountId": "motilal-oswal-financial-services-demat-1201090012838316",
-    "ownerId": "nisha-verma",
+    "ownerId": "meera-kapil",
     "securityKey": "nip-etnf1d-rtliqbees",
     "security": "NIP ETNF1D RTLIQBEES",
     "isin": "INF732E01037",
@@ -15320,7 +15320,7 @@ export const BOOK_UNVALUED_HOLDINGS: UnvaluedStatementHolding[] = [
   },
   {
     "accountId": "motilal-oswal-financial-services-demat-1201090012838316",
-    "ownerId": "nisha-verma",
+    "ownerId": "meera-kapil",
     "securityKey": "rbl-bnk",
     "security": "RBL BNK-EQ RE 10",
     "isin": "INE976G01028",
@@ -15337,7 +15337,7 @@ export const BOOK_UNVALUED_HOLDINGS: UnvaluedStatementHolding[] = [
   },
   {
     "accountId": "motilal-oswal-financial-services-demat-1201090012838316",
-    "ownerId": "nisha-verma",
+    "ownerId": "meera-kapil",
     "securityKey": "sanshi-fund-i-class-e",
     "security": "Sanshi Fund-I — Class E",
     "isin": "INF1ISW22079",
@@ -15354,7 +15354,7 @@ export const BOOK_UNVALUED_HOLDINGS: UnvaluedStatementHolding[] = [
   },
   {
     "accountId": "motilal-oswal-financial-services-demat-1201090012838316",
-    "ownerId": "nisha-verma",
+    "ownerId": "meera-kapil",
     "securityKey": "state-bank-of-india",
     "security": "SBI - EQ",
     "isin": "INE062A01020",
@@ -15371,7 +15371,7 @@ export const BOOK_UNVALUED_HOLDINGS: UnvaluedStatementHolding[] = [
   },
   {
     "accountId": "motilal-oswal-financial-services-demat-1201090012838316",
-    "ownerId": "nisha-verma",
+    "ownerId": "meera-kapil",
     "securityKey": "vof-i-class-a2",
     "security": "VOF I — Class A2",
     "isin": "INF2O4Z22020",
@@ -15388,7 +15388,7 @@ export const BOOK_UNVALUED_HOLDINGS: UnvaluedStatementHolding[] = [
   },
   {
     "accountId": "motilal-oswal-financial-services-demat-1201090012838316",
-    "ownerId": "nisha-verma",
+    "ownerId": "meera-kapil",
     "securityKey": "woc-maaf-d-grow",
     "security": "WOC MAAF D-GROW",
     "isin": "INF03VN01761",
@@ -15405,7 +15405,7 @@ export const BOOK_UNVALUED_HOLDINGS: UnvaluedStatementHolding[] = [
   },
   {
     "accountId": "motilal-oswal-financial-services-demat-1201090012838316",
-    "ownerId": "nisha-verma",
+    "ownerId": "meera-kapil",
     "securityKey": "zaggle-prepaid",
     "security": "ZAGGLE PREPAID-EQ1/",
     "isin": "INE07K301024",
@@ -15422,7 +15422,7 @@ export const BOOK_UNVALUED_HOLDINGS: UnvaluedStatementHolding[] = [
   },
   {
     "accountId": "motilal-oswal-financial-services-demat-1201090012838320",
-    "ownerId": "rohan-verma",
+    "ownerId": "arjun-kapil",
     "securityKey": "absl-bal-adv-growth",
     "security": "ABSL BAL ADV-GROWTH",
     "isin": "INF084M01AB8",
@@ -15439,7 +15439,7 @@ export const BOOK_UNVALUED_HOLDINGS: UnvaluedStatementHolding[] = [
   },
   {
     "accountId": "motilal-oswal-financial-services-demat-1201090012838320",
-    "ownerId": "rohan-verma",
+    "ownerId": "arjun-kapil",
     "securityKey": "absl-liqf-d-growth",
     "security": "ABSL LIQF D-GROWTH",
     "isin": "INF209K01VA3",
@@ -15456,7 +15456,7 @@ export const BOOK_UNVALUED_HOLDINGS: UnvaluedStatementHolding[] = [
   },
   {
     "accountId": "motilal-oswal-financial-services-demat-1201090012838320",
-    "ownerId": "rohan-verma",
+    "ownerId": "arjun-kapil",
     "securityKey": "birla-cable",
     "security": "BIRLA CABLE LTD-EQ",
     "isin": "INE800A01015",
@@ -15473,7 +15473,7 @@ export const BOOK_UNVALUED_HOLDINGS: UnvaluedStatementHolding[] = [
   },
   {
     "accountId": "motilal-oswal-financial-services-demat-1201090012838320",
-    "ownerId": "rohan-verma",
+    "ownerId": "arjun-kapil",
     "securityKey": "hdfc-baf-d-grow",
     "security": "HDFC BAF D-GROW",
     "isin": "INF179K01WA6",
@@ -15490,7 +15490,7 @@ export const BOOK_UNVALUED_HOLDINGS: UnvaluedStatementHolding[] = [
   },
   {
     "accountId": "motilal-oswal-financial-services-demat-1201090012838320",
-    "ownerId": "rohan-verma",
+    "ownerId": "arjun-kapil",
     "securityKey": "helios-fcf-d-grow",
     "security": "HELIOS FCF D-GROW",
     "isin": "INF0R8701046",
@@ -15507,7 +15507,7 @@ export const BOOK_UNVALUED_HOLDINGS: UnvaluedStatementHolding[] = [
   },
   {
     "accountId": "motilal-oswal-financial-services-demat-1201090012838320",
-    "ownerId": "rohan-verma",
+    "ownerId": "arjun-kapil",
     "securityKey": "icici-ioppf-d-grw",
     "security": "ICICI IOPPF D-GRW",
     "isin": "INF109KC1RH9",
@@ -15524,7 +15524,7 @@ export const BOOK_UNVALUED_HOLDINGS: UnvaluedStatementHolding[] = [
   },
   {
     "accountId": "motilal-oswal-financial-services-demat-1201090012838320",
-    "ownerId": "rohan-verma",
+    "ownerId": "arjun-kapil",
     "securityKey": "icici-nft-nt-50-dp-g",
     "security": "ICICI NFT NT 50 DP G",
     "isin": "INF109K01Y80",
@@ -15541,7 +15541,7 @@ export const BOOK_UNVALUED_HOLDINGS: UnvaluedStatementHolding[] = [
   },
   {
     "accountId": "motilal-oswal-financial-services-demat-1201090012838320",
-    "ownerId": "rohan-verma",
+    "ownerId": "arjun-kapil",
     "securityKey": "icici-nft-nx-50-r-gr",
     "security": "ICICI NFT NX 50 R GR",
     "isin": "INF109K01IF1",
@@ -15558,7 +15558,7 @@ export const BOOK_UNVALUED_HOLDINGS: UnvaluedStatementHolding[] = [
   },
   {
     "accountId": "motilal-oswal-financial-services-demat-1201090012838320",
-    "ownerId": "rohan-verma",
+    "ownerId": "arjun-kapil",
     "securityKey": "icici-nift50ind-dp-g",
     "security": "ICICI NIFT50IND DP G",
     "isin": "INF109K012M7",
@@ -15575,7 +15575,7 @@ export const BOOK_UNVALUED_HOLDINGS: UnvaluedStatementHolding[] = [
   },
   {
     "accountId": "motilal-oswal-financial-services-demat-1201090012838320",
-    "ownerId": "rohan-verma",
+    "ownerId": "arjun-kapil",
     "securityKey": "icici-pru-baf-dp-grw",
     "security": "ICICI PRU BAF DP GRW",
     "isin": "INF109K012B0",
@@ -15592,7 +15592,7 @@ export const BOOK_UNVALUED_HOLDINGS: UnvaluedStatementHolding[] = [
   },
   {
     "accountId": "motilal-oswal-financial-services-demat-1201090012838320",
-    "ownerId": "rohan-verma",
+    "ownerId": "arjun-kapil",
     "securityKey": "inves-con-r-growth",
     "security": "INVES CON R GROWTH",
     "isin": "INF205K01189",
@@ -15609,7 +15609,7 @@ export const BOOK_UNVALUED_HOLDINGS: UnvaluedStatementHolding[] = [
   },
   {
     "accountId": "motilal-oswal-financial-services-demat-1201090012838320",
-    "ownerId": "rohan-verma",
+    "ownerId": "arjun-kapil",
     "securityKey": "nip-etnf1d-rtliqbees",
     "security": "NIP ETNF1D RTLIQBEES",
     "isin": "INF732E01037",
@@ -15626,7 +15626,7 @@ export const BOOK_UNVALUED_HOLDINGS: UnvaluedStatementHolding[] = [
   },
   {
     "accountId": "motilal-oswal-financial-services-demat-1201090012838320",
-    "ownerId": "rohan-verma",
+    "ownerId": "arjun-kapil",
     "securityKey": "onesource-special",
     "security": "ONESOURCE SPECIAL-EQ",
     "isin": "INE013P01021",
@@ -15643,7 +15643,7 @@ export const BOOK_UNVALUED_HOLDINGS: UnvaluedStatementHolding[] = [
   },
   {
     "accountId": "motilal-oswal-financial-services-demat-1201090012838320",
-    "ownerId": "rohan-verma",
+    "ownerId": "arjun-kapil",
     "securityKey": "woc-maaf-d-grow",
     "security": "WOC MAAF D-GROW",
     "isin": "INF03VN01761",
@@ -15660,7 +15660,7 @@ export const BOOK_UNVALUED_HOLDINGS: UnvaluedStatementHolding[] = [
   },
   {
     "accountId": "motilal-oswal-financial-services-demat-1201090012838335",
-    "ownerId": "simran-verma",
+    "ownerId": "riya-kapil",
     "securityKey": "absl-bal-adv-growth",
     "security": "ABSL BAL ADV-GROWTH",
     "isin": "INF084M01AB8",
@@ -15677,7 +15677,7 @@ export const BOOK_UNVALUED_HOLDINGS: UnvaluedStatementHolding[] = [
   },
   {
     "accountId": "motilal-oswal-financial-services-demat-1201090012838335",
-    "ownerId": "simran-verma",
+    "ownerId": "riya-kapil",
     "securityKey": "bndh-l-and-mcf-dp-gr",
     "security": "BNDH L&MCF DP GR",
     "isin": "INF194K01V89",
@@ -15694,7 +15694,7 @@ export const BOOK_UNVALUED_HOLDINGS: UnvaluedStatementHolding[] = [
   },
   {
     "accountId": "motilal-oswal-financial-services-demat-1201090012838335",
-    "ownerId": "simran-verma",
+    "ownerId": "riya-kapil",
     "securityKey": "dsp-gold-etf",
     "security": "DSP GOLD ETF",
     "isin": "INF740KA1SW3",
@@ -15711,7 +15711,7 @@ export const BOOK_UNVALUED_HOLDINGS: UnvaluedStatementHolding[] = [
   },
   {
     "accountId": "motilal-oswal-financial-services-demat-1201090012838335",
-    "ownerId": "simran-verma",
+    "ownerId": "riya-kapil",
     "securityKey": "icici-liqf-d-growth",
     "security": "ICICI LIQF D-GROWTH",
     "isin": "INF109K01Q49",
@@ -15728,7 +15728,7 @@ export const BOOK_UNVALUED_HOLDINGS: UnvaluedStatementHolding[] = [
   },
   {
     "accountId": "motilal-oswal-financial-services-demat-1201090012838335",
-    "ownerId": "simran-verma",
+    "ownerId": "riya-kapil",
     "securityKey": "kotak-mtcf-d-grow",
     "security": "KOTAK MTCF D-GROW",
     "isin": "INF174KA1HV3",
@@ -15745,7 +15745,7 @@ export const BOOK_UNVALUED_HOLDINGS: UnvaluedStatementHolding[] = [
   },
   {
     "accountId": "motilal-oswal-financial-services-demat-1201090012838335",
-    "ownerId": "simran-verma",
+    "ownerId": "riya-kapil",
     "securityKey": "nip-etnf1d-rtliqbees",
     "security": "NIP ETNF1D RTLIQBEES",
     "isin": "INF732E01037",
@@ -15762,7 +15762,7 @@ export const BOOK_UNVALUED_HOLDINGS: UnvaluedStatementHolding[] = [
   },
   {
     "accountId": "motilal-oswal-financial-services-demat-1201090012838335",
-    "ownerId": "simran-verma",
+    "ownerId": "riya-kapil",
     "securityKey": "pg-electro",
     "security": "PG ELECTRO-EQ1/",
     "isin": "INE457L01029",
@@ -15779,7 +15779,7 @@ export const BOOK_UNVALUED_HOLDINGS: UnvaluedStatementHolding[] = [
   },
   {
     "accountId": "motilal-oswal-financial-services-demat-1201090032387399",
-    "ownerId": "verma-family-trust",
+    "ownerId": "kapil-family-trust",
     "securityKey": "icici-liqf-d-growth",
     "security": "ICICI LIQF D-GROWTH",
     "isin": "INF109K01Q49",
@@ -15796,7 +15796,7 @@ export const BOOK_UNVALUED_HOLDINGS: UnvaluedStatementHolding[] = [
   },
   {
     "accountId": "motilal-oswal-financial-services-demat-1201090032387399",
-    "ownerId": "verma-family-trust",
+    "ownerId": "kapil-family-trust",
     "securityKey": "inves-arbf-d-grow",
     "security": "INVES ARBF D-GROW",
     "isin": "INF205K01KR8",
@@ -15813,7 +15813,7 @@ export const BOOK_UNVALUED_HOLDINGS: UnvaluedStatementHolding[] = [
   },
   {
     "accountId": "motilal-oswal-financial-services-demat-1201090032387399",
-    "ownerId": "verma-family-trust",
+    "ownerId": "kapil-family-trust",
     "securityKey": "kotak-arbfd-dp-grow",
     "security": "KOTAK ARBFD DP GROW",
     "isin": "INF174K01LC6",
@@ -15830,7 +15830,7 @@ export const BOOK_UNVALUED_HOLDINGS: UnvaluedStatementHolding[] = [
   },
   {
     "accountId": "motilal-oswal-financial-services-demat-1201090037359311",
-    "ownerId": "kapil-verma",
+    "ownerId": "chiraag-kapil",
     "securityKey": "3p-india-equity-fund-1-class-b3",
     "security": "3P India Equity Fund 1 — Class B3",
     "isin": "INF0R4I22066",
@@ -15847,7 +15847,7 @@ export const BOOK_UNVALUED_HOLDINGS: UnvaluedStatementHolding[] = [
   },
   {
     "accountId": "motilal-oswal-financial-services-demat-1201090037359311",
-    "ownerId": "kapil-verma",
+    "ownerId": "chiraag-kapil",
     "securityKey": "buoyant-opportunities-strategy-class-a4",
     "security": "Buoyant Opportunities Strategy — Class A4",
     "isin": "INF0RRI22040",
@@ -16453,7 +16453,7 @@ export const BOOK_REVIEW_WRITTEN_OFF: ReviewWrittenOff[] = [
     "dates": "20 Aug 2020"
   },
   {
-    "security": "UE Lifesciences - SHIKHA VERMA",
+    "security": "UE Lifesciences - SHIKHA KAPIL",
     "reviewRow": 82,
     "remark": "Written Off",
     "dates": "30 Dec 2021"
@@ -17055,7 +17055,7 @@ export const BOOK_REVIEW_FLOWS: ReviewFlow[] = [
     "reviewRow": 57
   },
   {
-    "accountId": "review-kapil-verma",
+    "accountId": "review-chiraag-kapil",
     "securityKey": "assetgro-fintech-private-limited-1-series-b-pref-25nv44",
     "security": "Assetgro Fintech Private Limited — Series B Preference",
     "date": "2025-11-26",
@@ -17066,7 +17066,7 @@ export const BOOK_REVIEW_FLOWS: ReviewFlow[] = [
     "reviewRow": 27
   },
   {
-    "accountId": "review-kapil-verma",
+    "accountId": "review-chiraag-kapil",
     "securityKey": "zepto",
     "security": "Zepto",
     "date": "2025-02-24",
@@ -17077,7 +17077,7 @@ export const BOOK_REVIEW_FLOWS: ReviewFlow[] = [
     "reviewRow": 443
   },
   {
-    "accountId": "review-nisha-verma",
+    "accountId": "review-meera-kapil",
     "securityKey": "transition-venture-capital-fund-i-class-a1",
     "security": "Transition Venture Capital Fund I — Class A1",
     "date": "2025-08-01",
@@ -17088,7 +17088,7 @@ export const BOOK_REVIEW_FLOWS: ReviewFlow[] = [
     "reviewRow": 82
   },
   {
-    "accountId": "review-rohan-verma",
+    "accountId": "review-arjun-kapil",
     "securityKey": "k-m-global-credit",
     "security": "K M Global - Credit Private Limited",
     "date": "2020-09-21",
@@ -17099,7 +17099,7 @@ export const BOOK_REVIEW_FLOWS: ReviewFlow[] = [
     "reviewRow": 204
   },
   {
-    "accountId": "review-rohan-verma",
+    "accountId": "review-arjun-kapil",
     "securityKey": "k-m-global-credit",
     "security": "K M Global - Credit Private Limited",
     "date": "2020-09-30",
@@ -17110,7 +17110,7 @@ export const BOOK_REVIEW_FLOWS: ReviewFlow[] = [
     "reviewRow": 205
   },
   {
-    "accountId": "review-rohan-verma",
+    "accountId": "review-arjun-kapil",
     "securityKey": "k-m-global-credit",
     "security": "K M Global - Credit Private Limited",
     "date": "2024-03-22",
@@ -18204,35 +18204,35 @@ export const BOOK_NAV_COVERAGE: NavCoverage = {
       "bookValue": 55498303.25
     },
     {
-      "accountId": "review-kapil-verma",
+      "accountId": "review-chiraag-kapil",
       "provider": "Consolidated review (MOPWM)",
       "accountNo": "MOPWM",
       "date": "2026-06-30",
       "bookValue": 1253986765.57
     },
     {
-      "accountId": "review-nisha-verma",
+      "accountId": "review-meera-kapil",
       "provider": "Consolidated review (MOPWM)",
       "accountNo": "MOPWM",
       "date": "2026-06-30",
       "bookValue": 290427491.87
     },
     {
-      "accountId": "review-rohan-verma",
+      "accountId": "review-arjun-kapil",
       "provider": "Consolidated review (MOPWM)",
       "accountNo": "MOPWM",
       "date": "2026-06-30",
       "bookValue": 372633638.62
     },
     {
-      "accountId": "review-verma-family-trust-2",
+      "accountId": "review-kapil-family-trust-2",
       "provider": "Consolidated review (MOPWM)",
       "accountNo": "MOPWM",
       "date": "2026-06-30",
       "bookValue": 13500875
     },
     {
-      "accountId": "review-verma-family-trust-3",
+      "accountId": "review-kapil-family-trust-3",
       "provider": "Consolidated review (MOPWM)",
       "accountNo": "MOPWM",
       "date": "2026-06-30",
@@ -19816,7 +19816,7 @@ export const BOOK_ATTRIBUTION: Attribution = {
     },
     {
       "securityKey": "aarti-drugs",
-      "security": "Simran Drugs Ltd",
+      "security": "Riya Drugs Ltd",
       "accountId": "green-lantern-capital-llp-510861",
       "from": "2026-06-25",
       "to": "2026-07-27",
@@ -20088,7 +20088,7 @@ export const BOOK_ATTRIBUTION: Attribution = {
     },
     {
       "securityKey": "aarti-drugs",
-      "security": "Simran Drugs Ltd",
+      "security": "Riya Drugs Ltd",
       "accountId": "green-lantern-capital-llp-510854",
       "from": "2026-06-25",
       "to": "2026-07-27",
@@ -24057,9 +24057,9 @@ export const BOOK_ATTRIBUTION: Attribution = {
  */
 export const BOOK_CAPITAL_GAINS: EntityCG[] = [
   {
-    "entity": "Kapil Verma · 360 1000632",
+    "entity": "Chiraag Kapil · 360 1000632",
     "accountId": "360-one-alternates-asset-management-1000632",
-    "ownerId": "kapil-verma",
+    "ownerId": "chiraag-kapil",
     "realisedST": null,
     "realisedLT": null,
     "unrealisedST": null,
@@ -24071,9 +24071,9 @@ export const BOOK_CAPITAL_GAINS: EntityCG[] = [
     "absent": "no capital gain statement issued for this account in this drop"
   },
   {
-    "entity": "Rohan Verma · 360 1000633",
+    "entity": "Arjun Kapil · 360 1000633",
     "accountId": "360-one-alternates-asset-management-1000633",
-    "ownerId": "rohan-verma",
+    "ownerId": "arjun-kapil",
     "realisedST": null,
     "realisedLT": null,
     "unrealisedST": null,
@@ -24085,9 +24085,9 @@ export const BOOK_CAPITAL_GAINS: EntityCG[] = [
     "absent": "no capital gain statement issued for this account in this drop"
   },
   {
-    "entity": "Kapil Verma · 360 37702",
+    "entity": "Chiraag Kapil · 360 37702",
     "accountId": "360-one-private-wealth-37702",
-    "ownerId": "kapil-verma",
+    "ownerId": "chiraag-kapil",
     "realisedST": null,
     "realisedLT": null,
     "unrealisedST": null,
@@ -24099,9 +24099,9 @@ export const BOOK_CAPITAL_GAINS: EntityCG[] = [
     "absent": "no capital gain statement issued for this account in this drop"
   },
   {
-    "entity": "Kapil Verma · 360 60066",
+    "entity": "Chiraag Kapil · 360 60066",
     "accountId": "360-one-private-wealth-60066",
-    "ownerId": "kapil-verma",
+    "ownerId": "chiraag-kapil",
     "realisedST": null,
     "realisedLT": null,
     "unrealisedST": null,
@@ -24113,9 +24113,9 @@ export const BOOK_CAPITAL_GAINS: EntityCG[] = [
     "absent": "no capital gain statement issued for this account in this drop"
   },
   {
-    "entity": "Rohan Verma · 360 60117",
+    "entity": "Arjun Kapil · 360 60117",
     "accountId": "360-one-private-wealth-60117",
-    "ownerId": "rohan-verma",
+    "ownerId": "arjun-kapil",
     "realisedST": null,
     "realisedLT": null,
     "unrealisedST": null,
@@ -24127,9 +24127,9 @@ export const BOOK_CAPITAL_GAINS: EntityCG[] = [
     "absent": "no capital gain statement issued for this account in this drop"
   },
   {
-    "entity": "Kapil Verma · 3P 3000048",
+    "entity": "Chiraag Kapil · 3P 3000048",
     "accountId": "3p-investment-managers-3000048",
-    "ownerId": "kapil-verma",
+    "ownerId": "chiraag-kapil",
     "realisedST": null,
     "realisedLT": null,
     "unrealisedST": null,
@@ -24141,9 +24141,9 @@ export const BOOK_CAPITAL_GAINS: EntityCG[] = [
     "absent": "no capital gain statement issued for this account in this drop"
   },
   {
-    "entity": "Kapil Verma · ASK 9039917111",
+    "entity": "Chiraag Kapil · ASK 9039917111",
     "accountId": "ask-absolute-return-fund-9039917111",
-    "ownerId": "kapil-verma",
+    "ownerId": "chiraag-kapil",
     "realisedST": null,
     "realisedLT": null,
     "unrealisedST": null,
@@ -24155,9 +24155,9 @@ export const BOOK_CAPITAL_GAINS: EntityCG[] = [
     "absent": "no capital gain statement issued for this account in this drop"
   },
   {
-    "entity": "Nisha Verma · ASK 9039917144",
+    "entity": "Meera Kapil · ASK 9039917144",
     "accountId": "ask-absolute-return-fund-9039917144",
-    "ownerId": "nisha-verma",
+    "ownerId": "meera-kapil",
     "realisedST": null,
     "realisedLT": null,
     "unrealisedST": null,
@@ -24169,9 +24169,9 @@ export const BOOK_CAPITAL_GAINS: EntityCG[] = [
     "absent": "no capital gain statement issued for this account in this drop"
   },
   {
-    "entity": "Nisha Verma · ASK 10032723",
+    "entity": "Meera Kapil · ASK 10032723",
     "accountId": "ask-investment-managers-limited-10032723",
-    "ownerId": "nisha-verma",
+    "ownerId": "meera-kapil",
     "realisedST": 5543531.73,
     "realisedLT": 37574541.69,
     "unrealisedST": null,
@@ -24220,9 +24220,9 @@ export const BOOK_CAPITAL_GAINS: EntityCG[] = [
     "source": "ask-investment-managers-limited-10032723-2026-09-08-capital-gain"
   },
   {
-    "entity": "Kapil Verma · ASK 10034025",
+    "entity": "Chiraag Kapil · ASK 10034025",
     "accountId": "ask-investment-managers-limited-10034025",
-    "ownerId": "kapil-verma",
+    "ownerId": "chiraag-kapil",
     "realisedST": 10006421.12,
     "realisedLT": 62637997.09,
     "unrealisedST": null,
@@ -24271,9 +24271,9 @@ export const BOOK_CAPITAL_GAINS: EntityCG[] = [
     "source": "ask-investment-managers-limited-10034025-2026-09-08-capital-gain"
   },
   {
-    "entity": "Nisha Verma · Baring AIFM_BPEPF6_0584",
+    "entity": "Meera Kapil · Baring AIFM_BPEPF6_0584",
     "accountId": "baring-private-equity-india-fund-AIFM_BPEPF6_0584",
-    "ownerId": "nisha-verma",
+    "ownerId": "meera-kapil",
     "realisedST": null,
     "realisedLT": null,
     "unrealisedST": null,
@@ -24285,9 +24285,9 @@ export const BOOK_CAPITAL_GAINS: EntityCG[] = [
     "absent": "no capital gain statement issued for this account in this drop"
   },
   {
-    "entity": "Nisha Verma · Buoyant 103472",
+    "entity": "Meera Kapil · Buoyant 103472",
     "accountId": "buoyant-capital-103472",
-    "ownerId": "nisha-verma",
+    "ownerId": "meera-kapil",
     "realisedST": null,
     "realisedLT": null,
     "unrealisedST": null,
@@ -24299,9 +24299,9 @@ export const BOOK_CAPITAL_GAINS: EntityCG[] = [
     "absent": "no capital gain statement issued for this account in this drop"
   },
   {
-    "entity": "Kapil Verma · Buoyant 103473",
+    "entity": "Chiraag Kapil · Buoyant 103473",
     "accountId": "buoyant-capital-103473",
-    "ownerId": "kapil-verma",
+    "ownerId": "chiraag-kapil",
     "realisedST": null,
     "realisedLT": null,
     "unrealisedST": null,
@@ -24313,9 +24313,9 @@ export const BOOK_CAPITAL_GAINS: EntityCG[] = [
     "absent": "no capital gain statement issued for this account in this drop"
   },
   {
-    "entity": "Kapil Verma · Carnelian 3517383",
+    "entity": "Chiraag Kapil · Carnelian 3517383",
     "accountId": "carnelian-asset-management-and-advisors-pvt-ltd-3517383",
-    "ownerId": "kapil-verma",
+    "ownerId": "chiraag-kapil",
     "realisedST": -16568583.12,
     "realisedLT": 14805159.7,
     "unrealisedST": null,
@@ -24334,9 +24334,9 @@ export const BOOK_CAPITAL_GAINS: EntityCG[] = [
     "source": "carnelian-asset-management-and-advisors-pvt-ltd-3517383-2026-09-30-capital-gain"
   },
   {
-    "entity": "Nisha Verma · Carnelian 4551",
+    "entity": "Meera Kapil · Carnelian 4551",
     "accountId": "carnelian-bharat-amritkaal-fund-4551",
-    "ownerId": "nisha-verma",
+    "ownerId": "meera-kapil",
     "realisedST": null,
     "realisedLT": null,
     "unrealisedST": null,
@@ -24348,9 +24348,9 @@ export const BOOK_CAPITAL_GAINS: EntityCG[] = [
     "absent": "no capital gain statement issued for this account in this drop"
   },
   {
-    "entity": "Nisha Verma · Goldstandard 100022",
+    "entity": "Meera Kapil · Goldstandard 100022",
     "accountId": "goldstandard-wealth-private-limited-100022",
-    "ownerId": "nisha-verma",
+    "ownerId": "meera-kapil",
     "realisedST": null,
     "realisedLT": null,
     "unrealisedST": null,
@@ -24362,9 +24362,9 @@ export const BOOK_CAPITAL_GAINS: EntityCG[] = [
     "absent": "no capital gain statement issued for this account in this drop"
   },
   {
-    "entity": "Kapil Verma · Goldstandard 100023",
+    "entity": "Chiraag Kapil · Goldstandard 100023",
     "accountId": "goldstandard-wealth-private-limited-100023",
-    "ownerId": "kapil-verma",
+    "ownerId": "chiraag-kapil",
     "realisedST": null,
     "realisedLT": null,
     "unrealisedST": null,
@@ -24376,9 +24376,9 @@ export const BOOK_CAPITAL_GAINS: EntityCG[] = [
     "absent": "no capital gain statement issued for this account in this drop"
   },
   {
-    "entity": "Nisha Verma · Green 510854",
+    "entity": "Meera Kapil · Green 510854",
     "accountId": "green-lantern-capital-llp-510854",
-    "ownerId": "nisha-verma",
+    "ownerId": "meera-kapil",
     "realisedST": -710831.73,
     "realisedLT": 147393.06,
     "unrealisedST": null,
@@ -24397,9 +24397,9 @@ export const BOOK_CAPITAL_GAINS: EntityCG[] = [
     "source": "green-lantern-capital-llp-510854-2026-07-27-capital-gain"
   },
   {
-    "entity": "Kapil Verma · Green 510861",
+    "entity": "Chiraag Kapil · Green 510861",
     "accountId": "green-lantern-capital-llp-510861",
-    "ownerId": "kapil-verma",
+    "ownerId": "chiraag-kapil",
     "realisedST": -1382686.39,
     "realisedLT": 202985.8,
     "unrealisedST": null,
@@ -24418,9 +24418,9 @@ export const BOOK_CAPITAL_GAINS: EntityCG[] = [
     "source": "green-lantern-capital-llp-510861-2026-07-27-capital-gain"
   },
   {
-    "entity": "Verma Family Trust 3 · HDFC 67786137",
+    "entity": "Kapil Family Trust 3 · HDFC 67786137",
     "accountId": "hdfc-bank-nsdl-demat-67786137",
-    "ownerId": "verma-family-trust-3",
+    "ownerId": "kapil-family-trust-3",
     "realisedST": null,
     "realisedLT": null,
     "unrealisedST": null,
@@ -24432,9 +24432,9 @@ export const BOOK_CAPITAL_GAINS: EntityCG[] = [
     "absent": "no capital gain statement issued for this account in this drop"
   },
   {
-    "entity": "Verma Family Trust 2 · HDFC 67786547",
+    "entity": "Kapil Family Trust 2 · HDFC 67786547",
     "accountId": "hdfc-bank-nsdl-demat-67786547",
-    "ownerId": "verma-family-trust-2",
+    "ownerId": "kapil-family-trust-2",
     "realisedST": null,
     "realisedLT": null,
     "unrealisedST": null,
@@ -24446,9 +24446,9 @@ export const BOOK_CAPITAL_GAINS: EntityCG[] = [
     "absent": "no capital gain statement issued for this account in this drop"
   },
   {
-    "entity": "Kapil Verma · HDFC 15644806",
+    "entity": "Chiraag Kapil · HDFC 15644806",
     "accountId": "hdfc-mutual-fund-15644806",
-    "ownerId": "kapil-verma",
+    "ownerId": "chiraag-kapil",
     "realisedST": null,
     "realisedLT": null,
     "unrealisedST": null,
@@ -24460,9 +24460,9 @@ export const BOOK_CAPITAL_GAINS: EntityCG[] = [
     "absent": "no capital gain statement issued for this account in this drop"
   },
   {
-    "entity": "Simran Verma · HDFC 15725046",
+    "entity": "Riya Kapil · HDFC 15725046",
     "accountId": "hdfc-mutual-fund-15725046",
-    "ownerId": "simran-verma",
+    "ownerId": "riya-kapil",
     "realisedST": null,
     "realisedLT": null,
     "unrealisedST": null,
@@ -24474,9 +24474,9 @@ export const BOOK_CAPITAL_GAINS: EntityCG[] = [
     "absent": "no capital gain statement issued for this account in this drop"
   },
   {
-    "entity": "Nisha Verma · HDFC 16002141",
+    "entity": "Meera Kapil · HDFC 16002141",
     "accountId": "hdfc-mutual-fund-16002141",
-    "ownerId": "nisha-verma",
+    "ownerId": "meera-kapil",
     "realisedST": null,
     "realisedLT": null,
     "unrealisedST": null,
@@ -24488,9 +24488,9 @@ export const BOOK_CAPITAL_GAINS: EntityCG[] = [
     "absent": "no capital gain statement issued for this account in this drop"
   },
   {
-    "entity": "Rohan Verma · HDFC 16180583",
+    "entity": "Arjun Kapil · HDFC 16180583",
     "accountId": "hdfc-mutual-fund-16180583",
-    "ownerId": "rohan-verma",
+    "ownerId": "arjun-kapil",
     "realisedST": null,
     "realisedLT": null,
     "unrealisedST": null,
@@ -24502,9 +24502,9 @@ export const BOOK_CAPITAL_GAINS: EntityCG[] = [
     "absent": "no capital gain statement issued for this account in this drop"
   },
   {
-    "entity": "Kapil Verma · Helios 10355977",
+    "entity": "Chiraag Kapil · Helios 10355977",
     "accountId": "helios-mutual-fund-10355977",
-    "ownerId": "kapil-verma",
+    "ownerId": "chiraag-kapil",
     "realisedST": null,
     "realisedLT": null,
     "unrealisedST": null,
@@ -24516,9 +24516,9 @@ export const BOOK_CAPITAL_GAINS: EntityCG[] = [
     "absent": "no capital gain statement issued for this account in this drop"
   },
   {
-    "entity": "Kapil Verma · ICICI 49794950",
+    "entity": "Chiraag Kapil · ICICI 49794950",
     "accountId": "icici-bank-nsdl-demat-49794950",
-    "ownerId": "kapil-verma",
+    "ownerId": "chiraag-kapil",
     "realisedST": null,
     "realisedLT": null,
     "unrealisedST": null,
@@ -24530,9 +24530,9 @@ export const BOOK_CAPITAL_GAINS: EntityCG[] = [
     "absent": "no capital gain statement issued for this account in this drop"
   },
   {
-    "entity": "Kapil Verma · ICICI 36378950",
+    "entity": "Chiraag Kapil · ICICI 36378950",
     "accountId": "icici-prudential-mutual-fund-36378950",
-    "ownerId": "kapil-verma",
+    "ownerId": "chiraag-kapil",
     "realisedST": null,
     "realisedLT": null,
     "unrealisedST": null,
@@ -24544,9 +24544,9 @@ export const BOOK_CAPITAL_GAINS: EntityCG[] = [
     "absent": "no capital gain statement issued for this account in this drop"
   },
   {
-    "entity": "Rohan Verma · ICICI 36379637",
+    "entity": "Arjun Kapil · ICICI 36379637",
     "accountId": "icici-prudential-mutual-fund-36379637",
-    "ownerId": "rohan-verma",
+    "ownerId": "arjun-kapil",
     "realisedST": null,
     "realisedLT": null,
     "unrealisedST": null,
@@ -24558,9 +24558,9 @@ export const BOOK_CAPITAL_GAINS: EntityCG[] = [
     "absent": "no capital gain statement issued for this account in this drop"
   },
   {
-    "entity": "Kapil Verma · India 175962",
+    "entity": "Chiraag Kapil · India 175962",
     "accountId": "india-sme-investments-175962",
-    "ownerId": "kapil-verma",
+    "ownerId": "chiraag-kapil",
     "realisedST": null,
     "realisedLT": null,
     "unrealisedST": null,
@@ -24572,9 +24572,9 @@ export const BOOK_CAPITAL_GAINS: EntityCG[] = [
     "absent": "no capital gain statement issued for this account in this drop"
   },
   {
-    "entity": "Rohan Verma · India 175964",
+    "entity": "Arjun Kapil · India 175964",
     "accountId": "india-sme-investments-175964",
-    "ownerId": "rohan-verma",
+    "ownerId": "arjun-kapil",
     "realisedST": null,
     "realisedLT": null,
     "unrealisedST": null,
@@ -24586,9 +24586,9 @@ export const BOOK_CAPITAL_GAINS: EntityCG[] = [
     "absent": "no capital gain statement issued for this account in this drop"
   },
   {
-    "entity": "Nisha Verma · India 177302",
+    "entity": "Meera Kapil · India 177302",
     "accountId": "india-sme-investments-177302",
-    "ownerId": "nisha-verma",
+    "ownerId": "meera-kapil",
     "realisedST": null,
     "realisedLT": null,
     "unrealisedST": null,
@@ -24600,9 +24600,9 @@ export const BOOK_CAPITAL_GAINS: EntityCG[] = [
     "absent": "no capital gain statement issued for this account in this drop"
   },
   {
-    "entity": "Rohan Verma · Invesco 3041491081",
+    "entity": "Arjun Kapil · Invesco 3041491081",
     "accountId": "invesco-mutual-fund-3041491081",
-    "ownerId": "rohan-verma",
+    "ownerId": "arjun-kapil",
     "realisedST": null,
     "realisedLT": null,
     "unrealisedST": null,
@@ -24614,9 +24614,9 @@ export const BOOK_CAPITAL_GAINS: EntityCG[] = [
     "absent": "no capital gain statement issued for this account in this drop"
   },
   {
-    "entity": "Kapil Verma · Invesco 3041491145",
+    "entity": "Chiraag Kapil · Invesco 3041491145",
     "accountId": "invesco-mutual-fund-3041491145",
-    "ownerId": "kapil-verma",
+    "ownerId": "chiraag-kapil",
     "realisedST": null,
     "realisedLT": null,
     "unrealisedST": null,
@@ -24628,9 +24628,9 @@ export const BOOK_CAPITAL_GAINS: EntityCG[] = [
     "absent": "no capital gain statement issued for this account in this drop"
   },
   {
-    "entity": "Nisha Verma · Invesco 3041794916",
+    "entity": "Meera Kapil · Invesco 3041794916",
     "accountId": "invesco-mutual-fund-3041794916",
-    "ownerId": "nisha-verma",
+    "ownerId": "meera-kapil",
     "realisedST": null,
     "realisedLT": null,
     "unrealisedST": null,
@@ -24642,9 +24642,9 @@ export const BOOK_CAPITAL_GAINS: EntityCG[] = [
     "absent": "no capital gain statement issued for this account in this drop"
   },
   {
-    "entity": "Kapil Verma · Kotak 7125255",
+    "entity": "Chiraag Kapil · Kotak 7125255",
     "accountId": "kotak-mahindra-mutual-fund-7125255",
-    "ownerId": "kapil-verma",
+    "ownerId": "chiraag-kapil",
     "realisedST": null,
     "realisedLT": null,
     "unrealisedST": null,
@@ -24656,9 +24656,9 @@ export const BOOK_CAPITAL_GAINS: EntityCG[] = [
     "absent": "no capital gain statement issued for this account in this drop"
   },
   {
-    "entity": "Rohan Verma · LKP 98245",
+    "entity": "Arjun Kapil · LKP 98245",
     "accountId": "lkp-securities-98245",
-    "ownerId": "rohan-verma",
+    "ownerId": "arjun-kapil",
     "realisedST": 1241115.44,
     "realisedLT": -539913.5,
     "unrealisedST": null,
@@ -24677,9 +24677,9 @@ export const BOOK_CAPITAL_GAINS: EntityCG[] = [
     "source": "lkp-securities-98245-2026-07-31-capital-gain"
   },
   {
-    "entity": "Nisha Verma · Marathon 5110758",
+    "entity": "Meera Kapil · Marathon 5110758",
     "accountId": "marathon-trends-advisory-pvt-ltd-5110758",
-    "ownerId": "nisha-verma",
+    "ownerId": "meera-kapil",
     "realisedST": -252940.36,
     "realisedLT": 0,
     "unrealisedST": null,
@@ -24704,9 +24704,9 @@ export const BOOK_CAPITAL_GAINS: EntityCG[] = [
     "source": "marathon-trends-advisory-pvt-ltd-5110758-2026-09-09-capital-gain"
   },
   {
-    "entity": "Kapil Verma · Marathon 5110837",
+    "entity": "Chiraag Kapil · Marathon 5110837",
     "accountId": "marathon-trends-advisory-pvt-ltd-5110837",
-    "ownerId": "kapil-verma",
+    "ownerId": "chiraag-kapil",
     "realisedST": 12708648.06,
     "realisedLT": 0,
     "unrealisedST": null,
@@ -24731,9 +24731,9 @@ export const BOOK_CAPITAL_GAINS: EntityCG[] = [
     "source": "marathon-trends-advisory-pvt-ltd-5110837-2026-09-09-capital-gain"
   },
   {
-    "entity": "Kapil Verma · Molecule 7810404",
+    "entity": "Chiraag Kapil · Molecule 7810404",
     "accountId": "molecule-ventures-llp-7810404",
-    "ownerId": "kapil-verma",
+    "ownerId": "chiraag-kapil",
     "realisedST": 0,
     "realisedLT": -372054.5,
     "unrealisedST": null,
@@ -24752,9 +24752,9 @@ export const BOOK_CAPITAL_GAINS: EntityCG[] = [
     "source": "molecule-ventures-llp-7810404-2026-06-30-capital-gain"
   },
   {
-    "entity": "Nisha Verma · Motilal 904168868444",
+    "entity": "Meera Kapil · Motilal 904168868444",
     "accountId": "motilal-oswal-active-momentum-fund-904168868444",
-    "ownerId": "nisha-verma",
+    "ownerId": "meera-kapil",
     "realisedST": null,
     "realisedLT": null,
     "unrealisedST": null,
@@ -24766,9 +24766,9 @@ export const BOOK_CAPITAL_GAINS: EntityCG[] = [
     "absent": "no capital gain statement issued for this account in this drop"
   },
   {
-    "entity": "Kapil Verma · Motilal 9049241536",
+    "entity": "Chiraag Kapil · Motilal 9049241536",
     "accountId": "motilal-oswal-delphi-equity-fund-9049241536",
-    "ownerId": "kapil-verma",
+    "ownerId": "chiraag-kapil",
     "realisedST": null,
     "realisedLT": null,
     "unrealisedST": null,
@@ -24780,9 +24780,9 @@ export const BOOK_CAPITAL_GAINS: EntityCG[] = [
     "absent": "no capital gain statement issued for this account in this drop"
   },
   {
-    "entity": "Kapil Verma · Motilal 1201090012539150",
+    "entity": "Chiraag Kapil · Motilal 1201090012539150",
     "accountId": "motilal-oswal-financial-services-demat-1201090012539150",
-    "ownerId": "kapil-verma",
+    "ownerId": "chiraag-kapil",
     "realisedST": null,
     "realisedLT": null,
     "unrealisedST": null,
@@ -24794,9 +24794,9 @@ export const BOOK_CAPITAL_GAINS: EntityCG[] = [
     "absent": "no capital gain statement issued for this account in this drop"
   },
   {
-    "entity": "Nisha Verma · Motilal 1201090012838316",
+    "entity": "Meera Kapil · Motilal 1201090012838316",
     "accountId": "motilal-oswal-financial-services-demat-1201090012838316",
-    "ownerId": "nisha-verma",
+    "ownerId": "meera-kapil",
     "realisedST": null,
     "realisedLT": null,
     "unrealisedST": null,
@@ -24808,9 +24808,9 @@ export const BOOK_CAPITAL_GAINS: EntityCG[] = [
     "absent": "no capital gain statement issued for this account in this drop"
   },
   {
-    "entity": "Rohan Verma · Motilal 1201090012838320",
+    "entity": "Arjun Kapil · Motilal 1201090012838320",
     "accountId": "motilal-oswal-financial-services-demat-1201090012838320",
-    "ownerId": "rohan-verma",
+    "ownerId": "arjun-kapil",
     "realisedST": null,
     "realisedLT": null,
     "unrealisedST": null,
@@ -24822,9 +24822,9 @@ export const BOOK_CAPITAL_GAINS: EntityCG[] = [
     "absent": "no capital gain statement issued for this account in this drop"
   },
   {
-    "entity": "Simran Verma · Motilal 1201090012838335",
+    "entity": "Riya Kapil · Motilal 1201090012838335",
     "accountId": "motilal-oswal-financial-services-demat-1201090012838335",
-    "ownerId": "simran-verma",
+    "ownerId": "riya-kapil",
     "realisedST": null,
     "realisedLT": null,
     "unrealisedST": null,
@@ -24836,9 +24836,9 @@ export const BOOK_CAPITAL_GAINS: EntityCG[] = [
     "absent": "no capital gain statement issued for this account in this drop"
   },
   {
-    "entity": "Verma Family Trust · Motilal 1201090032387399",
+    "entity": "Kapil Family Trust · Motilal 1201090032387399",
     "accountId": "motilal-oswal-financial-services-demat-1201090032387399",
-    "ownerId": "verma-family-trust",
+    "ownerId": "kapil-family-trust",
     "realisedST": null,
     "realisedLT": null,
     "unrealisedST": null,
@@ -24850,9 +24850,9 @@ export const BOOK_CAPITAL_GAINS: EntityCG[] = [
     "absent": "no capital gain statement issued for this account in this drop"
   },
   {
-    "entity": "Kapil Verma · Motilal 1201090037359311",
+    "entity": "Chiraag Kapil · Motilal 1201090037359311",
     "accountId": "motilal-oswal-financial-services-demat-1201090037359311",
-    "ownerId": "kapil-verma",
+    "ownerId": "chiraag-kapil",
     "realisedST": null,
     "realisedLT": null,
     "unrealisedST": null,
@@ -24864,9 +24864,9 @@ export const BOOK_CAPITAL_GAINS: EntityCG[] = [
     "absent": "no capital gain statement issued for this account in this drop"
   },
   {
-    "entity": "Rohan Verma · Motilal 1201090037436848",
+    "entity": "Arjun Kapil · Motilal 1201090037436848",
     "accountId": "motilal-oswal-financial-services-demat-1201090037436848",
-    "ownerId": "rohan-verma",
+    "ownerId": "arjun-kapil",
     "realisedST": null,
     "realisedLT": null,
     "unrealisedST": null,
@@ -24878,9 +24878,9 @@ export const BOOK_CAPITAL_GAINS: EntityCG[] = [
     "absent": "no capital gain statement issued for this account in this drop"
   },
   {
-    "entity": "Nisha Verma · Motilal 90410016093",
+    "entity": "Meera Kapil · Motilal 90410016093",
     "accountId": "motilal-oswal-founders-fund-90410016093",
-    "ownerId": "nisha-verma",
+    "ownerId": "meera-kapil",
     "realisedST": null,
     "realisedLT": null,
     "unrealisedST": null,
@@ -24892,9 +24892,9 @@ export const BOOK_CAPITAL_GAINS: EntityCG[] = [
     "absent": "no capital gain statement issued for this account in this drop"
   },
   {
-    "entity": "Kapil Verma · Motilal 90410016104",
+    "entity": "Chiraag Kapil · Motilal 90410016104",
     "accountId": "motilal-oswal-founders-fund-90410016104",
-    "ownerId": "kapil-verma",
+    "ownerId": "chiraag-kapil",
     "realisedST": null,
     "realisedLT": null,
     "unrealisedST": null,
@@ -24906,9 +24906,9 @@ export const BOOK_CAPITAL_GAINS: EntityCG[] = [
     "absent": "no capital gain statement issued for this account in this drop"
   },
   {
-    "entity": "Kapil Verma · Motilal 90410014574",
+    "entity": "Chiraag Kapil · Motilal 90410014574",
     "accountId": "motilal-oswal-hedged-equity-multi-factor-strategy-90410014574",
-    "ownerId": "kapil-verma",
+    "ownerId": "chiraag-kapil",
     "realisedST": null,
     "realisedLT": null,
     "unrealisedST": null,
@@ -24920,9 +24920,9 @@ export const BOOK_CAPITAL_GAINS: EntityCG[] = [
     "absent": "no capital gain statement issued for this account in this drop"
   },
   {
-    "entity": "Kapil Verma · Motilal 90414963315",
+    "entity": "Chiraag Kapil · Motilal 90414963315",
     "accountId": "motilal-oswal-mutual-fund-90414963315",
-    "ownerId": "kapil-verma",
+    "ownerId": "chiraag-kapil",
     "realisedST": null,
     "realisedLT": null,
     "unrealisedST": null,
@@ -24934,9 +24934,9 @@ export const BOOK_CAPITAL_GAINS: EntityCG[] = [
     "absent": "no capital gain statement issued for this account in this drop"
   },
   {
-    "entity": "Kapil Verma · Neo 9039920536",
+    "entity": "Chiraag Kapil · Neo 9039920536",
     "accountId": "neo-infra-income-opportunities-fund-9039920536",
-    "ownerId": "kapil-verma",
+    "ownerId": "chiraag-kapil",
     "realisedST": null,
     "realisedLT": null,
     "unrealisedST": null,
@@ -24948,9 +24948,9 @@ export const BOOK_CAPITAL_GAINS: EntityCG[] = [
     "absent": "no capital gain statement issued for this account in this drop"
   },
   {
-    "entity": "Simran Verma · Sanshi 9039671821",
+    "entity": "Riya Kapil · Sanshi 9039671821",
     "accountId": "sanshi-fund-9039671821",
-    "ownerId": "simran-verma",
+    "ownerId": "riya-kapil",
     "realisedST": null,
     "realisedLT": null,
     "unrealisedST": null,
@@ -24962,9 +24962,9 @@ export const BOOK_CAPITAL_GAINS: EntityCG[] = [
     "absent": "no capital gain statement issued for this account in this drop"
   },
   {
-    "entity": "Rohan Verma · Sanshi 9039671854",
+    "entity": "Arjun Kapil · Sanshi 9039671854",
     "accountId": "sanshi-fund-9039671854",
-    "ownerId": "rohan-verma",
+    "ownerId": "arjun-kapil",
     "realisedST": null,
     "realisedLT": null,
     "unrealisedST": null,
@@ -24976,9 +24976,9 @@ export const BOOK_CAPITAL_GAINS: EntityCG[] = [
     "absent": "no capital gain statement issued for this account in this drop"
   },
   {
-    "entity": "Kapil Verma · Sanshi 9039671912",
+    "entity": "Chiraag Kapil · Sanshi 9039671912",
     "accountId": "sanshi-fund-9039671912",
-    "ownerId": "kapil-verma",
+    "ownerId": "chiraag-kapil",
     "realisedST": null,
     "realisedLT": null,
     "unrealisedST": null,
@@ -24990,9 +24990,9 @@ export const BOOK_CAPITAL_GAINS: EntityCG[] = [
     "absent": "no capital gain statement issued for this account in this drop"
   },
   {
-    "entity": "Nisha Verma · Sanshi 9069671554",
+    "entity": "Meera Kapil · Sanshi 9069671554",
     "accountId": "sanshi-fund-9069671554",
-    "ownerId": "nisha-verma",
+    "ownerId": "meera-kapil",
     "realisedST": null,
     "realisedLT": null,
     "unrealisedST": null,
@@ -25004,9 +25004,9 @@ export const BOOK_CAPITAL_GAINS: EntityCG[] = [
     "absent": "no capital gain statement issued for this account in this drop"
   },
   {
-    "entity": "Kapil Verma · Sanshi 9069671634",
+    "entity": "Chiraag Kapil · Sanshi 9069671634",
     "accountId": "sanshi-fund-9069671634",
-    "ownerId": "kapil-verma",
+    "ownerId": "chiraag-kapil",
     "realisedST": null,
     "realisedLT": null,
     "unrealisedST": null,
@@ -25018,9 +25018,9 @@ export const BOOK_CAPITAL_GAINS: EntityCG[] = [
     "absent": "no capital gain statement issued for this account in this drop"
   },
   {
-    "entity": "Rohan Verma · Sky SKY003",
+    "entity": "Arjun Kapil · Sky SKY003",
     "accountId": "sky-capital-rising-titans-fund-SKY003",
-    "ownerId": "rohan-verma",
+    "ownerId": "arjun-kapil",
     "realisedST": null,
     "realisedLT": null,
     "unrealisedST": null,
@@ -25032,9 +25032,9 @@ export const BOOK_CAPITAL_GAINS: EntityCG[] = [
     "absent": "no capital gain statement issued for this account in this drop"
   },
   {
-    "entity": "Kapil Verma · Sky SKY022",
+    "entity": "Chiraag Kapil · Sky SKY022",
     "accountId": "sky-capital-rising-titans-fund-SKY022",
-    "ownerId": "kapil-verma",
+    "ownerId": "chiraag-kapil",
     "realisedST": null,
     "realisedLT": null,
     "unrealisedST": null,
@@ -25046,9 +25046,9 @@ export const BOOK_CAPITAL_GAINS: EntityCG[] = [
     "absent": "no capital gain statement issued for this account in this drop"
   },
   {
-    "entity": "Verma Family Trust 2 · Sky SKY023",
+    "entity": "Kapil Family Trust 2 · Sky SKY023",
     "accountId": "sky-capital-rising-titans-fund-SKY023",
-    "ownerId": "verma-family-trust-2",
+    "ownerId": "kapil-family-trust-2",
     "realisedST": null,
     "realisedLT": null,
     "unrealisedST": null,
@@ -25060,9 +25060,9 @@ export const BOOK_CAPITAL_GAINS: EntityCG[] = [
     "absent": "no capital gain statement issued for this account in this drop"
   },
   {
-    "entity": "Verma Family Trust 3 · Sky SKY024",
+    "entity": "Kapil Family Trust 3 · Sky SKY024",
     "accountId": "sky-capital-rising-titans-fund-SKY024",
-    "ownerId": "verma-family-trust-3",
+    "ownerId": "kapil-family-trust-3",
     "realisedST": null,
     "realisedLT": null,
     "unrealisedST": null,
@@ -25074,9 +25074,9 @@ export const BOOK_CAPITAL_GAINS: EntityCG[] = [
     "absent": "no capital gain statement issued for this account in this drop"
   },
   {
-    "entity": "Kapil Verma · SVAN 8710067",
+    "entity": "Chiraag Kapil · SVAN 8710067",
     "accountId": "svan-investment-managers-llp-8710067",
-    "ownerId": "kapil-verma",
+    "ownerId": "chiraag-kapil",
     "realisedST": 5066073.87,
     "realisedLT": 2946660.29,
     "unrealisedST": null,
@@ -25095,9 +25095,9 @@ export const BOOK_CAPITAL_GAINS: EntityCG[] = [
     "source": "svan-investment-managers-llp-8710067-2026-09-30-capital-gain"
   },
   {
-    "entity": "Rohan Verma · SVAN 8710090",
+    "entity": "Arjun Kapil · SVAN 8710090",
     "accountId": "svan-investment-managers-llp-8710090",
-    "ownerId": "rohan-verma",
+    "ownerId": "arjun-kapil",
     "realisedST": 3115464.6,
     "realisedLT": 2414024.55,
     "unrealisedST": null,
@@ -25116,9 +25116,9 @@ export const BOOK_CAPITAL_GAINS: EntityCG[] = [
     "source": "svan-investment-managers-llp-8710090-2026-09-30-capital-gain"
   },
   {
-    "entity": "Verma Family Trust 2 · Transition TVC262",
+    "entity": "Kapil Family Trust 2 · Transition TVC262",
     "accountId": "transition-venture-capital-TVC262",
-    "ownerId": "verma-family-trust-2",
+    "ownerId": "kapil-family-trust-2",
     "realisedST": null,
     "realisedLT": null,
     "unrealisedST": null,
@@ -25130,9 +25130,9 @@ export const BOOK_CAPITAL_GAINS: EntityCG[] = [
     "absent": "no capital gain statement issued for this account in this drop"
   },
   {
-    "entity": "Verma Family Trust 3 · Transition TVC263",
+    "entity": "Kapil Family Trust 3 · Transition TVC263",
     "accountId": "transition-venture-capital-TVC263",
-    "ownerId": "verma-family-trust-3",
+    "ownerId": "kapil-family-trust-3",
     "realisedST": null,
     "realisedLT": null,
     "unrealisedST": null,
@@ -25144,9 +25144,9 @@ export const BOOK_CAPITAL_GAINS: EntityCG[] = [
     "absent": "no capital gain statement issued for this account in this drop"
   },
   {
-    "entity": "Nisha Verma · V.E.C 128004",
+    "entity": "Meera Kapil · V.E.C 128004",
     "accountId": "v-e-c-assago-capital-management-llp-128004",
-    "ownerId": "nisha-verma",
+    "ownerId": "meera-kapil",
     "realisedST": 8760104.31,
     "realisedLT": 3169080.6,
     "unrealisedST": null,
@@ -25165,9 +25165,9 @@ export const BOOK_CAPITAL_GAINS: EntityCG[] = [
     "source": "v-e-c-assago-capital-management-llp-128004-2026-10-07-capital-gain"
   },
   {
-    "entity": "Kapil Verma · V.E.C 128005",
+    "entity": "Chiraag Kapil · V.E.C 128005",
     "accountId": "v-e-c-assago-capital-management-llp-128005",
-    "ownerId": "kapil-verma",
+    "ownerId": "chiraag-kapil",
     "realisedST": 11221506.09,
     "realisedLT": 0,
     "unrealisedST": null,
@@ -25191,7 +25191,7 @@ export const BOOK_CAPITAL_GAINS: EntityCG[] = [
 export const BOOK_REALISED_BY_CLASS: RealisedByClass[] = [
   {
     "accountId": "ask-investment-managers-limited-10034025",
-    "entity": "Kapil Verma · ASK 10034025",
+    "entity": "Chiraag Kapil · ASK 10034025",
     "assetClass": "Equity",
     "lots": 840,
     "realisedST": 2525818.33,
@@ -25233,7 +25233,7 @@ export const BOOK_REALISED_BY_CLASS: RealisedByClass[] = [
   },
   {
     "accountId": "carnelian-asset-management-and-advisors-pvt-ltd-3517383",
-    "entity": "Kapil Verma · Carnelian 3517383",
+    "entity": "Chiraag Kapil · Carnelian 3517383",
     "assetClass": "Equity",
     "lots": 29,
     "realisedST": -16568583.12,
@@ -25250,7 +25250,7 @@ export const BOOK_REALISED_BY_CLASS: RealisedByClass[] = [
   },
   {
     "accountId": "green-lantern-capital-llp-510861",
-    "entity": "Kapil Verma · Green 510861",
+    "entity": "Chiraag Kapil · Green 510861",
     "assetClass": "Equity",
     "lots": 83,
     "realisedST": -1382686.39,
@@ -25272,7 +25272,7 @@ export const BOOK_REALISED_BY_CLASS: RealisedByClass[] = [
   },
   {
     "accountId": "marathon-trends-advisory-pvt-ltd-5110837",
-    "entity": "Kapil Verma · Marathon 5110837",
+    "entity": "Chiraag Kapil · Marathon 5110837",
     "assetClass": "Equity",
     "lots": 109,
     "realisedST": 13538788.36,
@@ -25315,7 +25315,7 @@ export const BOOK_REALISED_BY_CLASS: RealisedByClass[] = [
   },
   {
     "accountId": "molecule-ventures-llp-7810404",
-    "entity": "Kapil Verma · Molecule 7810404",
+    "entity": "Chiraag Kapil · Molecule 7810404",
     "assetClass": "Equity",
     "lots": 1,
     "realisedST": 0,
@@ -25326,7 +25326,7 @@ export const BOOK_REALISED_BY_CLASS: RealisedByClass[] = [
   },
   {
     "accountId": "svan-investment-managers-llp-8710067",
-    "entity": "Kapil Verma · SVAN 8710067",
+    "entity": "Chiraag Kapil · SVAN 8710067",
     "assetClass": "Equity",
     "lots": 26,
     "realisedST": 5066073.87,
@@ -25346,7 +25346,7 @@ export const BOOK_REALISED_BY_CLASS: RealisedByClass[] = [
   },
   {
     "accountId": "v-e-c-assago-capital-management-llp-128005",
-    "entity": "Kapil Verma · V.E.C 128005",
+    "entity": "Chiraag Kapil · V.E.C 128005",
     "assetClass": "Equity",
     "lots": 3,
     "realisedST": 11221506.09,
@@ -25357,7 +25357,7 @@ export const BOOK_REALISED_BY_CLASS: RealisedByClass[] = [
   },
   {
     "accountId": "ask-investment-managers-limited-10032723",
-    "entity": "Nisha Verma · ASK 10032723",
+    "entity": "Meera Kapil · ASK 10032723",
     "assetClass": "Equity",
     "lots": 889,
     "realisedST": 1413459.05,
@@ -25400,7 +25400,7 @@ export const BOOK_REALISED_BY_CLASS: RealisedByClass[] = [
   },
   {
     "accountId": "green-lantern-capital-llp-510854",
-    "entity": "Nisha Verma · Green 510854",
+    "entity": "Meera Kapil · Green 510854",
     "assetClass": "Equity",
     "lots": 84,
     "realisedST": -710831.73,
@@ -25422,7 +25422,7 @@ export const BOOK_REALISED_BY_CLASS: RealisedByClass[] = [
   },
   {
     "accountId": "marathon-trends-advisory-pvt-ltd-5110758",
-    "entity": "Nisha Verma · Marathon 5110758",
+    "entity": "Meera Kapil · Marathon 5110758",
     "assetClass": "Equity",
     "lots": 125,
     "realisedST": 705286.11,
@@ -25468,7 +25468,7 @@ export const BOOK_REALISED_BY_CLASS: RealisedByClass[] = [
   },
   {
     "accountId": "v-e-c-assago-capital-management-llp-128004",
-    "entity": "Nisha Verma · V.E.C 128004",
+    "entity": "Meera Kapil · V.E.C 128004",
     "assetClass": "Equity",
     "lots": 5,
     "realisedST": 8760104.31,
@@ -25480,7 +25480,7 @@ export const BOOK_REALISED_BY_CLASS: RealisedByClass[] = [
   },
   {
     "accountId": "lkp-securities-98245",
-    "entity": "Rohan Verma · LKP 98245",
+    "entity": "Arjun Kapil · LKP 98245",
     "assetClass": "Equity",
     "lots": 10,
     "realisedST": 1241115.44,
@@ -25496,7 +25496,7 @@ export const BOOK_REALISED_BY_CLASS: RealisedByClass[] = [
   },
   {
     "accountId": "svan-investment-managers-llp-8710090",
-    "entity": "Rohan Verma · SVAN 8710090",
+    "entity": "Arjun Kapil · SVAN 8710090",
     "assetClass": "Equity",
     "lots": 26,
     "realisedST": 3115464.6,
@@ -25516,7 +25516,7 @@ export const BOOK_REALISED_BY_CLASS: RealisedByClass[] = [
   },
   {
     "accountId": "ask-investment-managers-limited-10034025",
-    "entity": "Kapil Verma · ASK 10034025",
+    "entity": "Chiraag Kapil · ASK 10034025",
     "assetClass": null,
     "lots": 201,
     "realisedST": 7480602.79,
@@ -25539,7 +25539,7 @@ export const BOOK_REALISED_BY_CLASS: RealisedByClass[] = [
   },
   {
     "accountId": "marathon-trends-advisory-pvt-ltd-5110837",
-    "entity": "Kapil Verma · Marathon 5110837",
+    "entity": "Chiraag Kapil · Marathon 5110837",
     "assetClass": null,
     "lots": 6,
     "realisedST": -830140.3,
@@ -25551,7 +25551,7 @@ export const BOOK_REALISED_BY_CLASS: RealisedByClass[] = [
   },
   {
     "accountId": "ask-investment-managers-limited-10032723",
-    "entity": "Nisha Verma · ASK 10032723",
+    "entity": "Meera Kapil · ASK 10032723",
     "assetClass": null,
     "lots": 212,
     "realisedST": 4130072.68,
@@ -25574,7 +25574,7 @@ export const BOOK_REALISED_BY_CLASS: RealisedByClass[] = [
   },
   {
     "accountId": "marathon-trends-advisory-pvt-ltd-5110758",
-    "entity": "Nisha Verma · Marathon 5110758",
+    "entity": "Meera Kapil · Marathon 5110758",
     "assetClass": null,
     "lots": 7,
     "realisedST": -958226.47,
@@ -27109,27 +27109,27 @@ export const BOOK_ACCOUNT_RETURN_RECORDS: Record<string, AccountReturnCoverage> 
     "record": null,
     "gap": "Opening valuation and complete dated cash flows are missing"
   },
-  "review-kapil-verma": {
+  "review-chiraag-kapil": {
     "latestValuationDate": "2026-06-30",
     "record": null,
     "gap": "Opening valuation and complete dated cash flows are missing"
   },
-  "review-nisha-verma": {
+  "review-meera-kapil": {
     "latestValuationDate": "2026-06-30",
     "record": null,
     "gap": "Opening valuation and complete dated cash flows are missing"
   },
-  "review-rohan-verma": {
+  "review-arjun-kapil": {
     "latestValuationDate": "2026-06-30",
     "record": null,
     "gap": "Opening valuation and complete dated cash flows are missing"
   },
-  "review-verma-family-trust-2": {
+  "review-kapil-family-trust-2": {
     "latestValuationDate": "2026-06-30",
     "record": null,
     "gap": "Opening valuation and complete dated cash flows are missing"
   },
-  "review-verma-family-trust-3": {
+  "review-kapil-family-trust-3": {
     "latestValuationDate": "2026-06-30",
     "record": null,
     "gap": "Opening valuation and complete dated cash flows are missing"
@@ -34517,7 +34517,7 @@ export const BOOK_SHARE_MOVEMENTS: Record<string, ShareMovement> = {
  * everything they own, so their accounts' flows merge here.
  */
 export const BOOK_ENTITY_CASH_FLOWS: Record<string, CashFlow[]> = {
-  "Nisha Verma": [
+  "Meera Kapil": [
     {
       "date": "2019-07-26",
       "amount": -10000000,
@@ -34744,7 +34744,7 @@ export const BOOK_ENTITY_CASH_FLOWS: Record<string, CashFlow[]> = {
       "description": "TDS Trf to Capital A/c"
     }
   ],
-  "Kapil Verma": [
+  "Chiraag Kapil": [
     {
       "date": "2019-09-06",
       "amount": -25000000,
@@ -35056,7 +35056,7 @@ export const BOOK_ENTITY_CASH_FLOWS: Record<string, CashFlow[]> = {
       "description": "TDS Trf to Capital A/c"
     }
   ],
-  "Rohan Verma": [
+  "Arjun Kapil": [
     {
       "date": "2026-07-03",
       "amount": 4764,
@@ -38148,7 +38148,7 @@ export const BOOK_COMMITMENTS: Commitment[] = [
     "accountId": "baring-private-equity-india-fund-AIFM_BPEPF6_0584",
     "name": "Baring Private Equity India Fund",
     "provider": "Baring Private Equity India Fund",
-    "ownerId": "nisha-verma",
+    "ownerId": "meera-kapil",
     "asOf": "2026-03-31",
     "committed": 50000000,
     "drawn": 20250000,
@@ -38205,7 +38205,7 @@ export const BOOK_COMMITMENTS: Commitment[] = [
     "accountId": "carnelian-bharat-amritkaal-fund-4551",
     "name": "Carnelian Bharat Amritkaal Fund",
     "provider": "Carnelian Bharat Amritkaal Fund",
-    "ownerId": "nisha-verma",
+    "ownerId": "meera-kapil",
     "asOf": "2026-07-31",
     "committed": 150000000,
     "drawn": 150000000,
@@ -38233,7 +38233,7 @@ export const BOOK_COMMITMENTS: Commitment[] = [
     "accountId": "india-sme-investments-175962",
     "name": "India SME Investments",
     "provider": "India SME Investments",
-    "ownerId": "kapil-verma",
+    "ownerId": "chiraag-kapil",
     "asOf": "2026-06-30",
     "committed": 150000000,
     "drawn": 81000000,
@@ -38291,7 +38291,7 @@ export const BOOK_COMMITMENTS: Commitment[] = [
     "accountId": "india-sme-investments-175964",
     "name": "India SME Investments",
     "provider": "India SME Investments",
-    "ownerId": "rohan-verma",
+    "ownerId": "arjun-kapil",
     "asOf": "2026-06-30",
     "committed": 50000000,
     "drawn": 27000000,
@@ -38349,7 +38349,7 @@ export const BOOK_COMMITMENTS: Commitment[] = [
     "accountId": "india-sme-investments-177302",
     "name": "India SME Investments",
     "provider": "India SME Investments",
-    "ownerId": "nisha-verma",
+    "ownerId": "meera-kapil",
     "asOf": "2026-06-30",
     "committed": 50000000,
     "drawn": 27000000,
@@ -38402,7 +38402,7 @@ export const BOOK_COMMITMENTS: Commitment[] = [
     "accountId": "motilal-oswal-delphi-equity-fund-9049241536",
     "name": "Motilal Oswal Delphi Equity Fund",
     "provider": "Motilal Oswal Delphi Equity Fund",
-    "ownerId": "kapil-verma",
+    "ownerId": "chiraag-kapil",
     "asOf": "2026-06-30",
     "committed": 100000000,
     "drawn": 100000000,
@@ -38425,7 +38425,7 @@ export const BOOK_COMMITMENTS: Commitment[] = [
     "accountId": "motilal-oswal-founders-fund-90410016093",
     "name": "Motilal Oswal Founders Fund",
     "provider": "Motilal Oswal Founders Fund",
-    "ownerId": "nisha-verma",
+    "ownerId": "meera-kapil",
     "asOf": "2026-09-30",
     "committed": 100000000,
     "drawn": 100000000,
@@ -38458,7 +38458,7 @@ export const BOOK_COMMITMENTS: Commitment[] = [
     "accountId": "motilal-oswal-founders-fund-90410016104",
     "name": "Motilal Oswal Founders Fund",
     "provider": "Motilal Oswal Founders Fund",
-    "ownerId": "kapil-verma",
+    "ownerId": "chiraag-kapil",
     "asOf": "2026-09-30",
     "committed": 200000000,
     "drawn": 200000000,
@@ -38486,7 +38486,7 @@ export const BOOK_COMMITMENTS: Commitment[] = [
     "accountId": "neo-infra-income-opportunities-fund-9039920536",
     "name": "Neo Infra Income Opportunities Fund",
     "provider": "Neo Infra Income Opportunities Fund",
-    "ownerId": "kapil-verma",
+    "ownerId": "chiraag-kapil",
     "asOf": "2026-06-30",
     "committed": 50000000,
     "drawn": 50000000,
@@ -38832,7 +38832,7 @@ export const BOOK_COMMITMENTS: Commitment[] = [
     "accountId": "sky-capital-rising-titans-fund-SKY003",
     "name": "Sky Capital Rising Titans Fund",
     "provider": "Sky Capital Rising Titans Fund",
-    "ownerId": "rohan-verma",
+    "ownerId": "arjun-kapil",
     "asOf": "2026-08-31",
     "committed": 17285000,
     "drawn": 17285000,
@@ -38880,7 +38880,7 @@ export const BOOK_COMMITMENTS: Commitment[] = [
     "accountId": "sky-capital-rising-titans-fund-SKY022",
     "name": "Sky Capital Rising Titans Fund",
     "provider": "Sky Capital Rising Titans Fund",
-    "ownerId": "kapil-verma",
+    "ownerId": "chiraag-kapil",
     "asOf": "2026-08-31",
     "committed": 15000000,
     "drawn": 15000000,
@@ -38903,7 +38903,7 @@ export const BOOK_COMMITMENTS: Commitment[] = [
     "accountId": "sky-capital-rising-titans-fund-SKY023",
     "name": "Sky Capital Rising Titans Fund",
     "provider": "Sky Capital Rising Titans Fund",
-    "ownerId": "verma-family-trust-2",
+    "ownerId": "kapil-family-trust-2",
     "asOf": "2026-08-31",
     "committed": 7500000,
     "drawn": 7500000,
@@ -38926,7 +38926,7 @@ export const BOOK_COMMITMENTS: Commitment[] = [
     "accountId": "sky-capital-rising-titans-fund-SKY024",
     "name": "Sky Capital Rising Titans Fund",
     "provider": "Sky Capital Rising Titans Fund",
-    "ownerId": "verma-family-trust-3",
+    "ownerId": "kapil-family-trust-3",
     "asOf": "2026-08-31",
     "committed": 7500000,
     "drawn": 7500000,
@@ -38949,7 +38949,7 @@ export const BOOK_COMMITMENTS: Commitment[] = [
     "accountId": "transition-venture-capital-TVC262",
     "name": "Transition Venture Capital Fund I",
     "provider": "Transition Venture Capital",
-    "ownerId": "verma-family-trust-2",
+    "ownerId": "kapil-family-trust-2",
     "asOf": "2026-03-31",
     "committed": 15000000,
     "drawn": 7500000,
@@ -38972,7 +38972,7 @@ export const BOOK_COMMITMENTS: Commitment[] = [
     "accountId": "transition-venture-capital-TVC263",
     "name": "Transition Venture Capital Fund I",
     "provider": "Transition Venture Capital",
-    "ownerId": "verma-family-trust-3",
+    "ownerId": "kapil-family-trust-3",
     "asOf": "2026-03-31",
     "committed": 15000000,
     "drawn": 7500000,

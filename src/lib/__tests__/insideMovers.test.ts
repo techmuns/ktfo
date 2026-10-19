@@ -292,7 +292,7 @@ for (const spelling of ["POLYCAB INDIA LTD", "Polycab India Ltd.", "POLYCAB INDI
 }
 const doc = (lines: { security: string; pct: number | null }[]): ArchiveDoc => ({
   docKey: "test-fund-2026-08-31-portfolio-snap", provider: "Test Fund", accountNo: "1",
-  owner: "Kapil Verma", ownerId: "ajay", asOf: "2026-08-31", reportType: "portfolio-snap",
+  owner: "Chiraag Kapil", ownerId: "ajay", asOf: "2026-08-31", reportType: "portfolio-snap",
   sourcePath: "test.pdf", pages: 1, sections: [], status: "parsed", periodFrom: null, periodTo: null,
   holdings: [{ security: "Test Fund Class A", securityKey: "test-fund-class-a", assetClass: "AIF",
     quantity: 100, costBasis: 1000, marketValue: 2000 }],

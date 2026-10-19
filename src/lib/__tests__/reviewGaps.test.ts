@@ -250,7 +250,7 @@ const REPORT = readFileSync("docs/REVIEW-RECONCILIATION.md", "utf8");
   // and the rate it prices the line at. Read the way `fundNavs.test.ts` reads
   // them; the review is the claim being checked, never the witness.
   const REVIEW = path.join(process.cwd(), "source", "august-2026-d",
-    "Final Consolidated Verma Family Review as on 30 June 2026.xlsx");
+    "Final Consolidated Kapil Family Review as on 30 June 2026.xlsx");
   type Row = { holder: string; product: string; date: string; units: number; rate: number };
   const buys: Row[] = [];
   const closings: Row[] = [];
@@ -389,7 +389,7 @@ const REPORT = readFileSync("docs/REVIEW-RECONCILIATION.md", "utf8");
     { docKey: string; accountNo?: string | null; owner?: string | null; reportType?: string | null }[];
   const accounts = new Set(BOOK_ACCOUNTS.map((a) => a.accountNo));
   const REVIEW = path.join(process.cwd(), "source", "august-2026-d",
-    "Final Consolidated Verma Family Review as on 30 June 2026.xlsx");
+    "Final Consolidated Kapil Family Review as on 30 June 2026.xlsx");
   const closings: { holder: string; product: string; rate: number }[] = [];
   if (existsSync(REVIEW)) {
     const wb = XLSX.readFile(REVIEW);
@@ -567,7 +567,7 @@ const REPORT = readFileSync("docs/REVIEW-RECONCILIATION.md", "utf8");
 // Section B used to call a holder "not in the book" whenever the book carried
 // no VALUED position for it, and the bridge's "holders with no account in this
 // book" step subtracted that holder's whole review total. Since Stage 10db the
-// unnumbered Verma Family Trust has an account in the registry — a
+// unnumbered Kapil Family Trust has an account in the registry — a
 // Motilal demat whose statement records its funds as quantities only — so its
 // ₹5.96 Cr was subtracted twice: once as a holder with no account, and again in
 // section D, which files both its closings as "a quantity this book does not

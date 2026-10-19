@@ -218,10 +218,10 @@ function pagesForSection(pages, re) {
  * The flat-text classifier cannot do this. Every inner page prints
  *
  *     Family Name :            Client Name :
- *     Kapil Verma (FRN…)  Mr. KAPIL VERMA (CRN37702)
+ *     Chiraag Kapil (FRN…)  Mr. CHIRAAG KAPIL (CRN37702)
  *
  * as two LINES — both labels, then both values — so a scan for "Client Name :"
- * followed by a name returns `Kapil Verma (FRN_L28405) Mr. AJAY`: the wrong
+ * followed by a name returns `Chiraag Kapil (FRN_L28405) Mr. AJAY`: the wrong
  * person's name glued to the start of the right one's. Cover page 1 is no better,
  * where the address block interleaves with "Report As On Date".
  *

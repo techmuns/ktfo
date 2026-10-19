@@ -407,7 +407,7 @@ for (const key of [K_AJAY, K_ANKITA]) {
 
 // ── 4. A TABLE THAT RUNS ONTO A SECOND PAGE ──────────────────────────────────
 {
-  // Nisha's table breaks across two pages: the footer every page carries — the
+  // Meera's table breaks across two pages: the footer every page carries — the
   // manager's name, its office, its phone — lands INSIDE the table, and the
   // running title opens the second page. The footer is furniture only because
   // the same lines are printed again after the notes have ended.

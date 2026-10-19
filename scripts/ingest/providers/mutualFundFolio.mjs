@@ -8,8 +8,8 @@
 //   ABSL  1019265797   HOPE INDIA TRUST        Status : Trust
 //   Kotak 4295974      Hope India Trust        Tax Status : Trust
 //   Mirae 70413280453  HOPE INDIA TRUST        Status TRUST
-//   HDFC  16180583/58  Bharat A Verma    Tax Status : Individual
-//                      Joint 1: NISHA VERMA
+//   HDFC  16180583/58  Bharat A Kapil    Tax Status : Individual
+//                      Joint 1: MEERA KAPIL
 //
 // The HDFC folio is held by two people already in this book, jointly, with both
 // their PANs on the page. It is not the trust's and never was — it was excluded
@@ -395,7 +395,7 @@ export function extract({ grid, meta }) {
    * This is the field that decides whether a folio belongs in a family book, and
    * every one of these statements prints it because the AMC is required to. It
    * is read rather than inferred from the name — `HOPE INDIA TRUST` looks like a
-   * trust, but `Bharat A Verma` looks like an individual and one of these
+   * trust, but `Bharat A Kapil` looks like an individual and one of these
    * five is filed the way the name suggests only by coincidence.
    */
   const printedStatus = (/(?:Tax\s+)?Status\s*:?\s*([A-Za-z]{4,})\b/.exec(flat) || [])[1] ?? null;
@@ -405,7 +405,7 @@ export function extract({ grid, meta }) {
   const pan = pans[0] ?? null;
   /**
    * A JOINT FOLIO HAS MORE THAN ONE OWNER, and this book has an accountId per
-   * account, not per person. HDFC 16180583 is held by Bharat with Nisha as
+   * account, not per person. HDFC 16180583 is held by Bharat with Meera as
    * first joint holder — two PANs on the page, both already in the registry.
    *
    * The account is attributed to the FIRST holder, which is whose PAN the AMC
@@ -434,7 +434,7 @@ export function extract({ grid, meta }) {
     // ABSL / Mirae / Kotak: the name shares a line with the next label.
     ...[...flat.matchAll(/\n\s*([A-Z][A-Za-z0-9 .&'-]{4,60}?)\s+(?:Status|Mode of Holding|Nominee\s*\d|Email Address|Joint\s*\d)\b/g)].map((m) => m[1]),
     // HDFC: the name is alone on its line above `Mode of Holding`.
-    ...[...flat.matchAll(/\n\s*((?:[A-Z][A-Za-z.'-]+\s+){1,4}(?:TRUST|Trust|Verma))\s*\n/g)].map((m) => m[1]),
+    ...[...flat.matchAll(/\n\s*((?:[A-Z][A-Za-z.'-]+\s+){1,4}(?:TRUST|Trust|Kapil))\s*\n/g)].map((m) => m[1]),
   ].map((x) => x.trim()).filter(Boolean);
   /**
    * `NON-TRANSFERABLE` is a WATERMARK, not a holder.
@@ -491,7 +491,7 @@ export function extract({ grid, meta }) {
     ? null
     : `holder ${owner ?? "(unread)"} is filed by the AMC as ${printedStatus ?? "an entity of unstated status"}`
       + `${panKind && panKind !== "individual" ? `, and its PAN carries the ${panKind} holder code` : ""}`
-      + " — a separate taxpayer, not a Verma individual. Consolidating it would put another taxpayer's assets "
+      + " — a separate taxpayer, not a Kapil individual. Consolidating it would put another taxpayer's assets "
       + "into a person's net worth. Add the holder to shared/owners.mjs if the family confirms it belongs in this book.";
 
   const printedValue = holdings.reduce((t, h) => t + (h.printed?.marketValue ?? 0), 0);

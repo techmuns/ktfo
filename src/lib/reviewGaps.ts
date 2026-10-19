@@ -179,8 +179,8 @@ export const REVIEW_LINE_ISINS: ReadonlyMap<string, readonly string[]> = new Map
   // units: the depository's closing balance on the same demat, to the third
   // decimal.
   ["HDFC Liquid Fund -Direct(G)", ["INF179KB1HP9"]],
-  // A-17: the review's transaction sheet closes Simran at 2,42,412.122 units and
-  // Nisha at 3,93,095.951 — the two Motilal Oswal holding statements' own
+  // A-17: the review's transaction sheet closes Riya at 2,42,412.122 units and
+  // Meera at 3,93,095.951 — the two Motilal Oswal holding statements' own
   // balances of ABSL BAL ADV-GROWTH, to the third decimal. Those statements
   // record the units and print no rate, and the live book values them at AMFI's
   // NAV (`unpricedStatementUnits`); Bharat's statement prices the same scheme.
@@ -204,17 +204,17 @@ export const REVIEW_LINE_ISINS: ReadonlyMap<string, readonly string[]> = new Map
   // shares by then, and still holds both at 31 July.
   ["IFB Inds.", ["INE559A01017"]],
   ["NLC INDIA", ["INE589A01014"]],
-  // Simran's demat walks to 5,169.754 Liquid BeES units on 30 June and Bharat's
+  // Riya's demat walks to 5,169.754 Liquid BeES units on 30 June and Bharat's
   // to 3,816.251, the review's two closings.
   ["Nippon India ETF Nifty 1D Rate Liquid Bees-IDCW", ["INF732E01037"]],
-  // Both plans. Nisha's demat walks to 46,162.731 Regular units on 30 June and
+  // Both plans. Meera's demat walks to 46,162.731 Regular units on 30 June and
   // Bharat's to 27,779.278 Direct units, two of the review's four closings.
-  // Kapil's 83,001.863 and Nisha's other 49,917.632 are on no statement.
+  // Kapil's 83,001.863 and Meera's other 49,917.632 are on no statement.
   ["HDFC Balanced Advantage Fund", ["INF179K01830", "INF179K01WA6"]],
   // Bharat's demat walks to 1,46,856.943 Direct units on 30 June, the review's
   // closing for him. Kapil's 21,70,488.137 are on no statement.
   ["ICICI Pru Balanced Advantage Fund", ["INF109K012B0"]],
-  // Simran's demat walks to 21,012.887 units on 30 June and Nisha's to
+  // Riya's demat walks to 21,012.887 units on 30 June and Meera's to
   // 1,568.013, two of the review's three closings, to the unit. The third, the
   // family trust's 46,654.378, is its own demat's balance (Stage 10db): the
   // trust's holding statement of 31 July prints it, and its tape from 1 April
@@ -225,7 +225,7 @@ export const REVIEW_LINE_ISINS: ReadonlyMap<string, readonly string[]> = new Map
   // from 1 April does not move the scheme. The regular-plan line, Kapil's
   // 7,99,864.748 units, is on no statement and is a different review line.
   ["Invesco India Arbitrage Fund-Direct(G)", ["INF205K01KR8"]],
-  // Nisha's and Bharat's holding statements print 39,15,742.08 and
+  // Meera's and Bharat's holding statements print 39,15,742.08 and
   // 13,66,820.78 units, the review's closings for them. Neither demat moved
   // the scheme this year. Kapil's 70,52,224.197 are on no statement.
   ["WhiteOak Capital Multi Asset Allocation Fund-Direct(G)", ["INF03VN01761"]],

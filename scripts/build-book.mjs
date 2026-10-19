@@ -1809,7 +1809,7 @@ function lotGain(l) {
  * printed name, `KAYNES TECHNOLOGY INDIA LIMITED # EQUITY SHARES`, whose key
  * (`kaynes-technology-india-limited-equity-shares`) matches NO row anywhere in
  * the book. The window was generated, correct, and filed where no page could
- * ever read it: the Kaynes page showed Nisha's demat alone, and the one record
+ * ever read it: the Kaynes page showed Meera's demat alone, and the one record
  * in this book that answers the client's question was invisible.
  *
  * The ISIN IS the security, and the book already carries a key for it. So a
@@ -1875,7 +1875,7 @@ function shareMovementsFrom(docs, positions, accounts, notes, unvalued = []) {
   // has said it cannot establish. Demat 32387399 was that account until Stage
   // 10db: its three identifiers gave three answers, and it is in the registry
   // now because the family's own register and review name its holder — the
-  // Verma Family Trust (`BENEFICIAL_OWNER_BY_CLIENT_ID` in
+  // Kapil Family Trust (`BENEFICIAL_OWNER_BY_CLIENT_ID` in
   // `providers/motilalDemat.mjs`).
   const known = new Set(accounts.map((a) => a.accountId));
   /**
@@ -2726,7 +2726,7 @@ function build(archived) {
      *
      * THE CASE THAT PRODUCED THIS: 360 ONE Alternates folio 1000633 is named
      * only on two ENCRYPTED statements. Extracted with the password they read
-     * and the folio is Rohan Verma's; extracted without it they fail,
+     * and the folio is Arjun Kapil's; extracted without it they fail,
      * and the one other document mentioning the folio prints the holder as the
      * literal word "Investor". So the owner is genuinely unreadable, and
      * guessing it from a filename would be exactly the fabrication this book
@@ -3258,7 +3258,7 @@ function build(archived) {
       const unitsHeld = qty !== null ? units(qty) : "these";
       const money = (v) => `₹${v.toLocaleString("en-IN", { maximumFractionDigits: 3 })}`;
       // THE FAMILY'S DECISION OUTRANKS THE STATEMENT'S OWN REASON, AND KEEPS ITS
-      // FACTS. Where the family have decided a row stays unvalued (Nisha's
+      // FACTS. Where the family have decided a row stays unvalued (Meera's
       // locked-in Clean Max shares, 28 Sep 2026) the reason says so, so the
       // absence reads as chosen rather than missed. It never values the row —
       // and the live layer reads the same table (`src/lib/depositoryShares.ts`),

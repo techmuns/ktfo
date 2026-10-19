@@ -28,11 +28,11 @@ export const REVIEW_ACCOUNT_PREFIX = "review-";
 export const NOT_ATTRIBUTED = "not-attributed";
 export const NOT_ATTRIBUTED_NAME = "Not attributed to a member";
 
-const AJ = "kapil-verma";
-const BH = "rohan-verma";
-const AN = "nisha-verma";
-const T2 = "verma-family-trust-2";
-const T3 = "verma-family-trust-3";
+const AJ = "chiraag-kapil";
+const BH = "arjun-kapil";
+const AN = "meera-kapil";
+const T2 = "kapil-family-trust-2";
+const T3 = "kapil-family-trust-3";
 const NA = NOT_ATTRIBUTED;
 
 /** The register is the family's own record of what each member paid. */
@@ -123,7 +123,7 @@ export const PRIVATE_INVESTMENT_HOLDERS = [
   { line: /^Sky Vision Cure LLP$/, assetClass: "Unlisted", ...one(AN) },
   { line: /^Blue Ashva India Pool Account$/, assetClass: "AIF",
     split: [{ owner: AN, cost: 15251640 }, { owner: AJ, cost: 5108000 }, { owner: NA, cost: 17048360 }],
-    why: `${REG} records Nisha's ₹1,52,51,640 and Kapil's ₹51,08,000 into the pool account; the rest of the review's line names no holder` },
+    why: `${REG} records Meera's ₹1,52,51,640 and Kapil's ₹51,08,000 into the pool account; the rest of the review's line names no holder` },
   { line: /^Electromech Infraprojects/, key: "electromech-infraprojects", assetClass: "Unlisted", ...one(AJ) },
   // The two family trusts' 347 Pre-Series-A CCPS each — on both trusts' HDFC NSDL statements.
   { line: /^Swapeco Solutions Private Limited$/, key: "swapeco-solutions", assetClass: "Unlisted",
@@ -164,7 +164,7 @@ export const VALUED_HOLDERS = [
     why: "each folio's own statement; the review's closings (₹1,180 a unit on 31 Mar 2026), and the units the fund's own statements print" },
   { tab: "peFunds", line: /^Baring PE India Fund 6$/, name: "Baring Private Equity India Fund 6 — Class A1", key: "baring-private-equity-india-fund-6-class-a1", assetClass: "AIF",
     split: [{ owner: AN, account: "baring-private-equity-india-fund-AIFM_BPEPF6_0584", cost: 20250000, value: 18842208.74, qty: 202.5 }],
-    why: "Nisha's folio" },
+    why: "Meera's folio" },
   { tab: "peFunds", line: /^360 One Special Opportunities Fund/, name: "360 ONE Special Opportunities Fund — Series 8 — Class A3 (AIF Category II)", key: "360-one-special-opportunities-fund-series-8-class-a3-aif-category-ii", assetClass: "AIF",
     split: [
       { owner: AJ, account: "360-one-private-wealth-37702", cost: 9921180.02, value: 14580413, qty: 990429.68 },
@@ -188,7 +188,7 @@ export const VALUED_HOLDERS = [
       { owner: T3, account: "transition-venture-capital-TVC263", cost: 7500000, value: 9680754, qty: 7500 },
       { owner: AN, cost: 2500000, value: 3285877, qty: 2500 },
     ],
-    why: "each trust's own folio, and Nisha's 2,500 units on the review's Transactions" },
+    why: "each trust's own folio, and Meera's 2,500 units on the review's Transactions" },
   // NOW A LISTED COMPANY. The review (MOPWM, 30 Jun 2026) carries NSE under its
   // `Direct Equity - Unlisted` block, so `tab` and `reviewSource` keep that
   // citation — a provenance record of where the line came from, true of the
@@ -211,7 +211,7 @@ export const VALUED_HOLDERS = [
       { owner: AJ, cost: 75531250, value: 259375000, qty: 125000 },
       { owner: AN, cost: 45318750, value: 155625000, qty: 75000 },
     ],
-    why: "1,25,000 shares on Kapil's ICICI Bank NSDL statement and 75,000 on Nisha's Motilal Oswal demat; the review's ₹12.085 Cr cost split by shares, which is this book's judgement — the review prints one cost for the 2,00,000" },
+    why: "1,25,000 shares on Kapil's ICICI Bank NSDL statement and 75,000 on Meera's Motilal Oswal demat; the review's ₹12.085 Cr cost split by shares, which is this book's judgement — the review prints one cost for the 2,00,000" },
   { tab: "unlisted", line: /^Zepto$/, name: "Zepto", key: "zepto", assetClass: "Unlisted",
     split: [{ owner: AJ, cost: 150015960, value: 228285156.52, qty: 4716 }],
     why: "the review's own Transactions rows — 4,716 bought on 24 Feb 2025, closing at ₹22.83 Cr on 31 Jul 2025" },
@@ -257,7 +257,7 @@ export const SUPERSEDED = [
   ...["TVC262", "TVC263"].map((n) => ({ accountId: `transition-venture-capital-${n}`, securityKey: "transition-venture-capital-fund-i-class-a1", kind: "position" })),
   ...["zepto-limited-0-01-div-cum-comp-conv-pref-sh-sr-ii-g-rd-14-11-2044", "zepto-limited-new-equity-shares-with-face-value-rs-5-after-sub-division"]
     .map((securityKey) => ({ accountId: "motilal-oswal-financial-services-demat-1201090012539150", securityKey, kind: "window" })),
-  // The 60 Everest Fleet preference shares' window on Nisha's demat goes with the
+  // The 60 Everest Fleet preference shares' window on Meera's demat goes with the
   // recorded line it is the quantity account of (`efpl-pref-18042043`, above). Its
   // key is the transaction statement's own spelling, so it is named by its ISIN.
   { accountId: "motilal-oswal-financial-services-demat-1201090012838316", isin: "INE0LTR03090", line: "efpl-pref-18042043", kind: "window" },
@@ -286,7 +286,7 @@ export const FRESHER_STATEMENT = [
   { key: "sky-capital-rising-titans-fund-i", owner: BH,
     text: "SKY003's statement of 31 Jul 2026 prints ₹1,72,85,000 drawn — its 22 Apr 2026 call of ₹1,35,000 is on no row of the review" },
   { key: "baring-private-equity-india-fund-6-class-a1", owner: AN,
-    text: "Nisha's Motilal Oswal demat records 252.5 units on 31 Jul 2026, against the 202.5 the fund's statement and the review carry" },
+    text: "Meera's Motilal Oswal demat records 252.5 units on 31 Jul 2026, against the 202.5 the fund's statement and the review carry" },
   { key: "baring-private-equity-india-fund-6-class-a1", owner: AN,
     text: "the fund's statement of 31 Mar 2026 prints ₹56,161 paid out (₹18,909 on 30 Sep 2025 and ₹37,252 on 31 Mar 2026) where the review carries ₹1,42,867" },
   { key: "zepto", owner: AJ,

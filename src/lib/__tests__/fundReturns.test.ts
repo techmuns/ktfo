@@ -136,7 +136,7 @@ console.log("── the record is built over the row's own folios ──");
     const folios = scope.dedupedRows.filter((p) => p.securityKey === dec.securityKey);
     ok(`${dec.securityKey.slice(0, 40)}: every folio the family named is a part of its row`,
       // The family's consolidated review may carry the same fund under ANOTHER
-      // member as well (Nisha's own Transition Venture units, Stage 10dh) —
+      // member as well (Meera's own Transition Venture units, Stage 10dh) —
       // a separate investment, and a part of the row like any other.
       !!d && d.parts.length === folios.length
         && folios.filter((p) => named(p.accountId, dec)).length === dec.accounts.length
@@ -212,7 +212,7 @@ console.log("── folios valued on different dates ──");
     return !d.gap && d.parts.length > 1 && d.tranches === 1 && d.paidOut === 0 && d.payouts !== "unknown";
   });
   // THE REVIEW DATES EACH LINE (Stage 10dh): Transition Venture's trusts and
-  // Nisha's own units were called on different dates, so this book may carry
+  // Meera's own units were called on different dates, so this book may carry
   // no such fund. That is EVIDENCED, never silently passed.
   if (!shared) {
     const multi = funds.filter((f) => dated.get(f.securityKey)!.parts.length > 1)

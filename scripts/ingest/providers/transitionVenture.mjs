@@ -20,7 +20,7 @@
 //                                      income, expenditure, closing balance
 //
 // TWO TRUSTS, IDENTICAL FIGURES, AND THEY ARE NOT A DUPLICATE. `BHARAT
-// VERMA FAMILY TRUST 2` and `TRUST 3` each committed ₹1.5 Cr, each drew
+// KAPIL FAMILY TRUST 2` and `TRUST 3` each committed ₹1.5 Cr, each drew
 // ₹75 L on the same day at the same NAV, and each holds 7,500 units. Two separate
 // legal entities that made the same investment — so both count, and the
 // duplicate check (c) will flag them for a human exactly as it should.
@@ -117,7 +117,7 @@ export function extract({ grid, meta }) {
 
   // ── identity ──────────────────────────────────────────────────────────────
   // The holder here is a TRUST, not a natural person, so the name is taken
-  // verbatim rather than through trimPersonName — "BHARAT VERMA FAMILY
+  // verbatim rather than through trimPersonName — "BHARAT KAPIL FAMILY
   // TRUST 2" would lose its distinguishing numeral to a person-name trimmer, and
   // Trust 2 and Trust 3 would become one entity holding twice as much.
   const owner = (/\bName\s+([A-Z][A-Z0-9 .&'-]*?TRUST\s*\d*)\b/i.exec(flat) || [])[1]?.trim()

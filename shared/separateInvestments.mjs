@@ -19,7 +19,7 @@
  *     manager's view of the same two holdings, so their identical income
  *     statements are two incomes, one per holder.
  *   • Transition Venture Capital Fund I Class A1 — 7,500 units under Bharat
- *     Verma Family Trust 2 (TVC262) AND 7,500 more under Trust 3
+ *     Kapil Family Trust 2 (TVC262) AND 7,500 more under Trust 3
  *     (TVC263), each trust's own ₹75 L paid in.
  *
  * A decision about the family's affairs, not a parsing rule, so it is a

@@ -745,7 +745,7 @@ export const CASH_EQUIVALENT_KEYS: Readonly<Record<string, string>> = {
   "bandhan-amc-ltd-bandhan-mf-bandhan-arbitrage-fund-direct-pl-growth":
     "Bandhan Arbitrage Fund - Direct Growth (INF194K01Y60) — AMFI: Hybrid Scheme - Arbitrage Fund; the family's instruction",
   /**
-   * THE BHARAT VERMA FAMILY TRUST'S DEMAT (Stage 10db). Its holding
+   * THE BHARAT KAPIL FAMILY TRUST'S DEMAT (Stage 10db). Its holding
    * statement spells two of its three funds the depository's clipped way, and
    * the third, ICICI Pru Liquid, shares `icici-liqf-d-growth` with the other
    * demats and is listed above.
@@ -967,9 +967,9 @@ export const isMandateHeld = (engagement: string | null | undefined) =>
  * A mandate's own name is `Account.strategy`, which the statements print
  * ("CARNELIAN BESPOKE PORTFOLIO", "Aristos Equity Portfolio"). Four of this
  * book's ten mandates SHARE that name with another one, because the same
- * strategy is run for two family members: Goldstandard's Aristos for Nisha and
+ * strategy is run for two family members: Goldstandard's Aristos for Meera and
  * Kapil, SVAN's Velocity for Kapil and Bharat, Green Lantern's GLC Growth Fund
- * for Nisha and Kapil, V.E.C Assago's Small and Mid-Cap Growth for both. Listed
+ * for Meera and Kapil, V.E.C Assago's Small and Mid-Cap Growth for both. Listed
  * on strategy alone that is four pairs of rows that look like duplicates of each
  * other, and a reader who sees "Aristos Equity Portfolio" twice with two
  * different values has no way to tell which is whose.

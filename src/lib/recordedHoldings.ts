@@ -101,7 +101,7 @@ export function recordedLineFor(
  *
  * Without the second half, a company the family holds only as a recorded line
  * joined to nothing, and the look-through filed its funds' lines under the
- * FILING's name for it: Nisha's 4,875 Kaynes stood on the Portfolio Monitor as
+ * FILING's name for it: Meera's 4,875 Kaynes stood on the Portfolio Monitor as
  * `kaynes-technology-india` until a live quote made the demat line a row, and
  * as `kaynes-technology` after — one company under two keys, decided by
  * whether the quote feed had answered. Its company page drew none of the funds
@@ -130,7 +130,7 @@ export function lookthroughCompanies(
  * holds only as a recorded line is still THEIRS, so a row or an option standing
  * for it wears their statement's name, never a fund's filing: without this the
  * Portfolio Monitor offered `Kaynes Technology India Limited` — HDFC Balanced
- * Advantage's spelling — for Nisha's own 4,875 shares, and the company page one
+ * Advantage's spelling — for Meera's own 4,875 shares, and the company page one
  * click away named it `Kaynes Technology`.
  */
 export function recordedLabel(homeKey: string, lines: readonly RecordedLine[] = RECORDED): string | null {

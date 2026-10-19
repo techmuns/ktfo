@@ -227,19 +227,19 @@ function solveXirr(recordKeys: readonly string[]): number | null {
 // ── THE SHEETS ──────────────────────────────────────────────────────────────
 const TXNS: Txn[] = [
   { date: "2026-08-13", security: "Shoppers Stop Ltd", securityKey: "shoppers-stop", side: "Buy",
-    qty: 3859.667, price: 421.5049, amount: 1629797.03, realized: null, account: "AJAY VERMA · V.E.C 128005",
+    qty: 3859.667, price: 421.5049, amount: 1629797.03, realized: null, account: "AJAY KAPIL · V.E.C 128005",
     ownerId: "ajay" } as unknown as Txn,
   { date: "2026-08-10", security: "Aditya Birla Capital Ltd", securityKey: "aditya-birla-capital", side: "Sell",
-    qty: 50369, price: 407.75, amount: 20537000, realized: 11600000, account: "AJAY T VERMA · Carnelian 3517383",
+    qty: 50369, price: 407.75, amount: 20537000, realized: 11600000, account: "AJAY T KAPIL · Carnelian 3517383",
     ownerId: "ajay" } as unknown as Txn,
   // A sale that realised exactly nothing is a MEASURED zero — never a dash.
   { date: "2026-08-09", security: "Test Flat Sale Ltd", securityKey: "test-flat-sale", side: "Sell",
-    qty: 10, price: 100, amount: 1000, realized: 0, account: "AJAY T VERMA · Carnelian 3517383",
+    qty: 10, price: 100, amount: 1000, realized: 0, account: "AJAY T KAPIL · Carnelian 3517383",
     ownerId: "ajay" } as unknown as Txn,
   // …and a statement that prints a price of nil prints a figure: `|| DASH` sent
   // it to the same dash as a price nobody printed.
   { date: "2026-08-08", security: "Test Nil Price Credit Ltd", securityKey: "test-nil-price", side: "Buy",
-    qty: 5, price: 0, amount: 0, realized: null, account: "AJAY T VERMA · Carnelian 3517383",
+    qty: 5, price: 0, amount: 0, realized: null, account: "AJAY T KAPIL · Carnelian 3517383",
     ownerId: "ajay" } as unknown as Txn,
 ];
 

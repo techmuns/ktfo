@@ -42,7 +42,7 @@ const near = (name: string, a: number | null, b: number | null, tol = 0.01) =>
 
 // ── fixtures ────────────────────────────────────────────────────────────────
 const acct = (o: Partial<Account>): Account => ({
-  accountId: "gl", provider: "Green Lantern", accountNo: "510861", owner: "Kapil Verma",
+  accountId: "gl", provider: "Green Lantern", accountNo: "510861", owner: "Chiraag Kapil",
   ownerId: "ajay", strategy: "GLC Growth Fund", engagement: "PMS", providerEngagement: null,
   members: [], asOf: "2026-07-27", inceptionDate: "2025-01-16", custodian: null,
   noPositionsReason: null, ...o,
@@ -282,7 +282,7 @@ const valueOf = (id: string) => (id === "gl" ? 114_000_000 : 0);
 // members' and nobody else's.
 {
   const a1 = acct({});
-  const a2 = acct({ accountId: "gl2", accountNo: "510854", owner: "Nisha Verma", ownerId: "ankita" });
+  const a2 = acct({ accountId: "gl2", accountNo: "510854", owner: "Meera Kapil", ownerId: "ankita" });
   const a3 = acct({ accountId: "sv", provider: "SVAN", accountNo: "8710067", strategy: "Velocity" });
   const values: Record<string, number> = { gl: 114_000_000, gl2: 60_000_000, sv: 30_000_000 };
   const cap = capitalRollup(

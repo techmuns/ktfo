@@ -378,7 +378,7 @@ function extractOne(file, grid, part = null, providerWitness = null) {
  * The test is CATEGORICAL rather than a threshold on how much text is "enough":
  * a document with pages and not one text row anywhere has no text layer at all.
  * `source/august-2026-e/HOLDING STATEMENT AS ON 31 MARCH 2026.pdf` is four such
- * pages — Rohan Verma's NSDL statement at HDFC Bank, scanned to JPEG.
+ * pages — Arjun Kapil's NSDL statement at HDFC Bank, scanned to JPEG.
  */
 /**
  * A DOCUMENT NOBODY ISSUED HAS NO READER *BY DECISION*, AND MUST NOT SAY
@@ -559,7 +559,7 @@ function noTextLayer(grid) {
   // The PRINTED account number is the record, and the extractor reads it off the
   // page while the classifier only had the file name to go on. They disagree
   // here: `G100023_100023_PortFolioFactSheet.pdf` prints `Account: 100022`, and
-  // keying that document under 100023 files Nisha's fact sheet with Kapil's
+  // keying that document under 100023 files Meera's fact sheet with Kapil's
   // statements.
   return assertNormalized(rekey(doc));
 }
@@ -591,7 +591,7 @@ function rekey(doc) {
  * statements as the mapping.
  *
  * Green Lantern and Carnelian print two identifiers for the same account: the
- * account number (`Account : 510861`) and a client code (`AJAY T VERMA -
+ * account number (`Account : 510861`) and a client code (`AJAY T KAPIL -
  * GLC0780`). Several of their reports carry only the code, which leaves those
  * documents keyed `…-unknown-…` and scattered away from the account they belong
  * to.
@@ -1154,7 +1154,7 @@ async function main() {
    *
    * Two files printing IDENTICAL text in different bytes (a statement saved under
    * two names — the ASK Absolute Return Fund folio arrives as "ATJ - …" and
-   * "Simran J - …", the first holder and the joint holder) are both read, and the
+   * "Riya J - …", the first holder and the joint holder) are both read, and the
    * second is filed `-2` exactly as the four such pairs already in the archive
    * are. That costs nothing in the book: a snapshot is taken once per account and
    * date, and a dated row printed on two issues is counted once (`datedRowsAcross`).

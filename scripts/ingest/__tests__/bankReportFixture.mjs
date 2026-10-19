@@ -251,7 +251,7 @@ export async function installBankFixture({ root, archive }) {
 
     const d = {
       ...doc, docKey: f.docKey, fileKey: f.docKey, accountNo: f.accountNo,
-      owner: "Kapil Verma", ownerId: "kapil-verma",
+      owner: "Chiraag Kapil", ownerId: "chiraag-kapil",
       asOf: f.asOf, reportType: "bank-statement", sourcePath: f.sourcePath, pages: 1,
     };
     fs.mkdirSync(path.join(archive, f.docKey), { recursive: true });

@@ -7,7 +7,7 @@
  *
  * — one sum over SEVEN accounts held by THREE people. Tax is assessed per
  * person, so that pooled one member's short-term loss against the other
- * members' short-term gains: Kapil's −₹70.9 L wiped out Nisha's and Bharat's
+ * members' short-term gains: Kapil's −₹70.9 L wiped out Meera's and Bharat's
  * +₹92.9 L, and the tile printed ₹18.2 L. Nothing was mis-added; the SET the
  * arithmetic ran over was wrong.
  *

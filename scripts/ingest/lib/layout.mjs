@@ -565,7 +565,7 @@ export async function extractLayout(bytes, opts = {}) {
 /**
  * WHAT IS ON A PAGE THAT CARRIES NO TEXT — and why the answer is not always "a scan".
  *
- * `no-text-layer` was written against Rohan Verma's HDFC NSDL statement:
+ * `no-text-layer` was written against Arjun Kapil's HDFC NSDL statement:
  * four DCTDecode JPEGs, zero font objects, a photograph of a document. The right
  * ask there is the issuer re-sending it as a text PDF, because OCR on a
  * photograph produces a figure that cannot be traced to what the statement

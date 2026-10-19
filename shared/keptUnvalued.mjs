@@ -8,10 +8,10 @@
 // their own decisions. `build-book` reads it and the row's reason says so, so a
 // reader sees the absence is chosen, not missed.
 //
-// *"keep them unvalued for now"* — the family, 28 Sep 2026, about Nisha's
+// *"keep them unvalued for now"* — the family, 28 Sep 2026, about Meera's
 // 94,967 Clean Max Enviro Energy Solutions shares.
 //
-// WHAT THE STATEMENT SAYS, READ OFF THE PAGE'S OWN COLUMNS. Nisha's Motilal Oswal
+// WHAT THE STATEMENT SAYS, READ OFF THE PAGE'S OWN COLUMNS. Meera's Motilal Oswal
 // demat statement of 31 Jul 2026 prints each holding as a row and wraps its
 // middle balances onto two more lines. The page's x positions put the 94,967 in
 // the "LOCKIN + FREEZE BAL" column, with FREE BAL. at 0.000 and a Rs RATE of
@@ -23,9 +23,9 @@
 // WHY A BORROWED MARK WAS THE QUESTION. Kapil's ICICI Bank NSDL statement of
 // 31 Mar 2026 carries the same count of the same company, 94,967 Clean Max
 // shares, as "Beneficiary - Pre IPO Shares/27-AUG-26", and values them at
-// ₹1,336.50 a share. At that borrowed mark Nisha's shares would read about
+// ₹1,336.50 a share. At that borrowed mark Meera's shares would read about
 // ₹12.69 Cr. Whether they are those shares moved, or a second equal allotment,
-// no statement here says, and the family have chosen to keep Nisha's shares a
+// no statement here says, and the family have chosen to keep Meera's shares a
 // quantity with no value until a statement for that account prices them.
 //
 // Keyed on the ACCOUNT the statement names (provider and account number, as
@@ -42,7 +42,7 @@
 // quote, and only while the feed prices it — never at a borrowed mark.
 //
 // THE CLEAN MAX ENTRY WAS WITHDRAWN BY THE FAMILY ON 14 OCT 2026 — *"include
-// this in the dashboard data as well"* — so the table is empty. Nisha's 94,967
+// this in the dashboard data as well"* — so the table is empty. Meera's 94,967
 // shares are a quantity on the statement basis (no rate is printed) and valued
 // at the live CLEANMAX quote on every live page, exactly as Stage 10cy built
 // them. The mechanism stays, so the next decision of this kind is one entry.

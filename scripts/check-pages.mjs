@@ -775,7 +775,7 @@ const SECURITY_AXIS_BOOK = (() => {
      * under the key the live layer files each by, AFTER the book's own rows so
      * a statement's ISIN still wins. Re-derived through this file's own
      * `recordedHomes`, never `lookthroughCompanies`. Without them a fund's
-     * Kaynes line stood on the filing's spelling until a quote made Nisha's
+     * Kaynes line stood on the filing's spelling until a quote made Meera's
      * demat line a row, and on the book's key after.
      */
     const recordedCos = (recordedHomes(src) ?? []).filter((u) => u.assetClass === "Equity")
@@ -4094,7 +4094,7 @@ const REVIEW_GAP_BOOK = (() => {
             if (t.isin && isins.has(String(t.isin).toUpperCase()) && t.date && typeof t.quantity === "number" && t.quantity > 0) credits.push(t);
         } catch { /* a document that will not read contributes no credit */ }
       }
-      const wb = XLSX.read(readFileSync(new URL("../source/august-2026-d/Final Consolidated Verma Family Review as on 30 June 2026.xlsx", import.meta.url)));
+      const wb = XLSX.read(readFileSync(new URL("../source/august-2026-d/Final Consolidated Kapil Family Review as on 30 June 2026.xlsx", import.meta.url)));
       const sheet = wb.SheetNames.find((n) => /transactions since inception/i.test(n));
       const rows = sheet ? XLSX.utils.sheet_to_json(wb.Sheets[sheet], { header: 1, blankrows: false, defval: "" }) : [];
       const excelDate = (n) => new Date(Date.UTC(1899, 11, 30) + n * 86_400_000).toISOString().slice(0, 10);
@@ -4161,7 +4161,7 @@ const REVIEW_GAP_BOOK = (() => {
       const ownerOf = new Map(accounts.map((a) => [a.accountId, a.owner]));
       const first = (s) => String(s ?? "").trim().split(/\s+/)[0].toLowerCase();
       const upper = (x) => String(x ?? "").trim().toUpperCase();
-      const wb = XLSX.read(readFileSync(new URL("../source/august-2026-d/Final Consolidated Verma Family Review as on 30 June 2026.xlsx", import.meta.url)));
+      const wb = XLSX.read(readFileSync(new URL("../source/august-2026-d/Final Consolidated Kapil Family Review as on 30 June 2026.xlsx", import.meta.url)));
       const sheet = wb.SheetNames.find((n) => /transactions since inception/i.test(n));
       const rows = sheet ? XLSX.utils.sheet_to_json(wb.Sheets[sheet], { header: 1, blankrows: false, defval: "" }) : [];
       const excelDate = (n) => new Date(Date.UTC(1899, 11, 30) + n * 86_400_000).toISOString().slice(0, 10);
@@ -6383,7 +6383,7 @@ const SOLD_ELSEWHERE = (() => {
     const moves = bookObject(src, "BOOK_SHARE_MOVEMENTS");
     const positions = bookArray(src, "BOOK_POSITIONS") ?? [];
     // A SHARE A STATEMENT RECORDS AND PRICES NOTHING IS STILL HELD (Stage 10cz).
-    // Nisha's 4,875 Kaynes on her Motilal demat left BOOK_POSITIONS when the
+    // Meera's 4,875 Kaynes on her Motilal demat left BOOK_POSITIONS when the
     // demat's "Rate" turned out to be the price of the last depository movement
     // rather than a mark — the line is still hers, recorded with its quantity.
     // Reading positions alone, the family's own Kaynes case vanished from this
@@ -11215,7 +11215,7 @@ const MARK_BY_SYMBOL = (() => {
  * units, not another statement's copy (`sameUnitsReportedBy`), its own account
  * holding no position of that ISIN, no account of the SAME OWNER carrying the
  * ISIN at the same units, and not a row the family decided to keep unvalued
- * (Nisha's Clean Max, Stage 10cx's FQ-3).
+ * (Meera's Clean Max, Stage 10cx's FQ-3).
  *
  * Both need an NSE symbol reached BY IDENTIFIER — a book position of the same
  * ISIN, the committed bridge for the record's own key, or Upstox's own
@@ -12114,7 +12114,7 @@ const UNVALUED_AIF_BOOK = (() => {
  * `holdings-book-filter` is an identity among figures the page prints.
  *
  * GROUPED ON THE WORD, NOT THE KEY (Stage 10cz). The case this found was ICICI
- * Bank — a mandate's costed rows and Nisha's demat row with no cost — and that
+ * Bank — a mandate's costed rows and Meera's demat row with no cost — and that
  * demat row is a recorded line now, carried by no position until a quote
  * prices it. What the page's search matches is a NAME, so the word is what the
  * derivation groups on: Borosil Renewables' share in two mandates, with a
@@ -12406,7 +12406,7 @@ const UNPRICED_BOOK = (() => {
 /**
  * THE ROW THE FAMILY FIRST KEPT UNVALUED (FQ-3, 28 Sep 2026) AND THEN ASKED TO
  * INCLUDE (14 Oct 2026, "include this in the dashboard data as well") —
- * Nisha's 94,967 Clean Max shares on Motilal Oswal demat 1201090012838316,
+ * Meera's 94,967 Clean Max shares on Motilal Oswal demat 1201090012838316,
  * ISIN INE647U01026. `shared/keptUnvalued.mjs` is empty again; this names the
  * row by its account number and ISIN so the route can hold the REVERSAL: the
  * statement still prints no rate, so it is a quantity on the statement basis,
@@ -12456,7 +12456,7 @@ const KEPT_UNVALUED_BOOK = (() => {
  * dated lines' own first payment would print a date about part of the money
  * under a heading a reader reads as all of it. So the set is keyed on EVERY
  * drawn line, not on any of them: the family's consolidated review adds
- * Nisha's undated Transition Venture line beside the two trusts' dated ones,
+ * Meera's undated Transition Venture line beside the two trusts' dated ones,
  * and on an any-line rule this check demanded a date from a row that correctly
  * prints a dash. The drawn lines are the ones a SECURITY row is built from —
  * current, each `dedupeGroup` once, and never a mandate's, which the page lifts
@@ -12672,7 +12672,7 @@ const CLOSED_MANDATE_BOOK = (() => {
 /**
  * ── UNDER THE ENTITY FILTER, A MEMBER'S REALISED IS THEIR OWN (MH-03) ─────────
  *
- * The audit found the Realised column keyed by SECURITY: picking Nisha kept
+ * The audit found the Realised column keyed by SECURITY: picking Meera kept
  * every other member's sales of the same names, so her footer would have read
  * +₹15.63 L where her own statements carry +₹5.25 L. Stage 10ca put realised on
  * the HOLDING, so the figure is per account again — and nothing asserted it,
@@ -21706,7 +21706,7 @@ const INVARIANTS = {
       // than the whole family, or this check could not tell the two apart.
       return Number.isFinite(shown) && Math.abs(shown - SCOPE_BOOK.pairTotal) <= 0.06
         && SCOPE_BOOK.wholeTotal - SCOPE_BOOK.pairTotal > 1
-        && /Kapil|Nisha|Bharat|\+/.test(d.totalTitle ?? "");
+        && /Kapil|Meera|Bharat|\+/.test(d.totalTitle ?? "");
     }],
     ["the Portfolio value tile is the same scoped figure", (t, ctx) => {
       const v = ctx?.kpiTiles?.find((x) => x.slot === "value");
@@ -23671,7 +23671,7 @@ const INVARIANTS = {
     /**
      * …NOR ONE THE LIVE BOOK VALUES FROM UNITS A HOLDING STATEMENT RECORDS
      * WITH NO RATE (A-17). The review prints "Aditya Birla SL Balanced Advantage
-     * Fund(G)"; Nisha's and Simran's Motilal Oswal statements record those units
+     * Fund(G)"; Meera's and Riya's Motilal Oswal statements record those units
      * and print no rate, Bharat's statement prices the scheme, and the live book
      * values them at AMFI's NAV. The note must not say no statement reports it.
      */
@@ -25171,7 +25171,7 @@ const INVARIANTS = {
      * NOTHING VALUES IT, THAT IT IS NOT VALUED AND HOW MANY UNITS IT IS (Stage
      * 10cz). A Motilal demat's "Rate" is the price of the holding's last
      * movement, so those lines are quantities; with no live quote a company
-     * held only there — Nisha's 4,875 Kaynes — is found from the statement's
+     * held only there — Meera's 4,875 Kaynes — is found from the statement's
      * own line, "Not valued · 4,875 units", with no ₹ because nothing on this
      * page values it. So a holding row with no figure must be one of the two
      * states that have none: redeemed, or recorded and not valued. The second is
@@ -28119,7 +28119,7 @@ const INVARIANTS = {
     }],
     /**
      * VD-6 — A STATEMENT THE DEPOSITORY HAS SINCE OVERTAKEN SAYS SO, ON THE
-     * ROW. Baring's 31 Mar statement prints 202.5 units; Nisha's Motilal Oswal
+     * ROW. Baring's 31 Mar statement prints 202.5 units; Meera's Motilal Oswal
      * demat holds 252.5 at 31 Jul. The row must carry the depository's count,
      * name the account, and say a newer statement is needed — and no other row
      * may claim it. Joined on the ISIN and the holder, never a name.
@@ -33773,7 +33773,7 @@ const INVARIANTS = {
     /**
      * ── EACH MONEY-WEIGHTED FIGURE SAYS WHAT IT COVERS (FS-8) ────────────────
      *
-     * Kapil's +25.91% and Nisha's +28.68% pool four and three of the seven
+     * Kapil's +25.91% and Meera's +28.68% pool four and three of the seven
      * accounts Morning CIO's +26.46% pools, each over its own window. A reader
      * setting them side by side has to be told which accounts and which dates,
      * or the tile reads as contradicting the rows. Struck on the cell's own
@@ -35439,7 +35439,7 @@ const INVARIANTS = {
   ],
   /**
    * FQ-3 — *"keep them unvalued for now"* (the family, 28 Sep 2026), about
-   * Nisha's 94,967 Clean Max shares. Nisha's card must carry the line, as a
+   * Meera's 94,967 Clean Max shares. Meera's card must carry the line, as a
    * QUANTITY, and its hover must say both halves of why it has no value: what
    * the STATEMENT says (the shares sit in its lock-in + freeze balance, none
    * free, with no rate) and what the FAMILY decided (with its date and their
@@ -35710,7 +35710,7 @@ const INVARIANTS = {
      * ── CAPITAL GAINS: THE TAX IS STRUCK PER TAXPAYER (XA-1) ─────────────────
      *
      * The tile pooled every member's heads before applying the rates, so Kapil's
-     * −₹70.9 L of short-term losses erased Nisha's and Bharat's short-term gains
+     * −₹70.9 L of short-term losses erased Meera's and Bharat's short-term gains
      * and the tile read ₹18.2 L against ₹33.1 L on the page's own rules. Struck on
      * the tile's own handle (the figure as the helper computed it) AND its
      * rendered text, each against the per-taxpayer figure re-expressed above — and
@@ -37289,7 +37289,7 @@ for (const theme of THEMES) {
            * axis a demat line no price reaches is no holding row, so the list
            * offers no option for it — and the search's empty note must then
            * name it as a holding a statement records, or "no holdings match"
-           * reads as the dashboard having lost Nisha's 4,875 Kaynes. The
+           * reads as the dashboard having lost Meera's 4,875 Kaynes. The
            * first long word of the book's key, typed as a reader types it; the
            * box is emptied again before the list closes, so nothing the note
            * says reaches the text the route's other checks read.

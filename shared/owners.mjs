@@ -3,9 +3,9 @@
 // THE PROBLEM THIS SOLVES. The same person is printed differently by every
 // provider, and by the same provider in different places:
 //
-//     "Mr. KAPIL VERMA"        360 ONE, CRN37702
-//     "Kapil Verma"    GoldStandard, account 100023
-//     "Kapil Verma"              360 ONE family-name field
+//     "Mr. CHIRAAG KAPIL"        360 ONE, CRN37702
+//     "Chiraag Kapil"    GoldStandard, account 100023
+//     "Chiraag Kapil"              360 ONE family-name field
 //
 // Treated as strings those are three people, and the family book silently
 // splits three ways — every per-entity total, allocation and XIRR is then wrong
@@ -24,8 +24,8 @@
 // PAN they are one person — no rule about middle names required, and none should
 // be allowed to override it.
 //
-// That mattered here. `BHARAT AJAY VERMA` (Sanshi Fund) and `BHARAT
-// VERMA` (SVAN) print THE SAME PAN. They are the same man, and this book
+// That mattered here. `BHARAT AJAY KAPIL` (Sanshi Fund) and `BHARAT
+// KAPIL` (SVAN) print THE SAME PAN. They are the same man, and this book
 // previously carried a note reasoning the opposite way — that `Bharat Kapil` must
 // be a different person from `Bharat Thakurdas` because the initials rule says
 // so. The initials rule is still right about what it can see; it simply had no
@@ -45,7 +45,7 @@
 // so, exactly as the Bharat entry does.
 //
 // Two aliases have been REMOVED for the same reason. `Bharat Thakurdas
-// Verma` and `Mr. BHARAT T VERMA` appear on no statement in this
+// Kapil` and `Mr. BHARAT T KAPIL` appear on no statement in this
 // drop — they were seeded by analogy with Kapil's, and the paperwork says Bharat's
 // middle name is Kapil, not Thakurdas. An alias nobody has observed is not
 // harmless: it is a standing instruction to merge a person who may exist.
@@ -53,9 +53,9 @@
 // THE FOURTH CHARACTER OF A PAN IS THE HOLDER TYPE, and it is what keeps two
 // trusts from being folded into the man they are named after:
 //
-//     …P…   P → Individual   Rohan Verma   (PAN withheld, see above)
-//     AAATV4567D   T → Trust  Verma Family Trust 2
-//     AAATV5678E   T → Trust  Verma Family Trust 3
+//     …P…   P → Individual   Arjun Kapil   (PAN withheld, see above)
+//     AAATV4567D   T → Trust  Kapil Family Trust 2
+//     AAATV5678E   T → Trust  Kapil Family Trust 3
 //
 // Three PANs, three taxpayers. `kind` records which, so a per-person total and a
 // per-entity total are different questions with different answers.
@@ -84,32 +84,32 @@ export function panHolderType(pan) {
 /** @type {CanonicalOwner[]} */
 export const OWNERS = [
   {
-    ownerId: "kapil-verma",
-    displayName: "Kapil Verma",
+    ownerId: "chiraag-kapil",
+    displayName: "Chiraag Kapil",
     kind: "individual",
     pans: ["AAAPV1234A"],
     aliases: [
-      "Mr. KAPIL VERMA",
-      "Kapil Verma",
-      "Kapil Verma",
-      "Kapil Verma",
+      "Mr. CHIRAAG KAPIL",
+      "Chiraag Kapil",
+      "Chiraag Kapil",
+      "Chiraag Kapil",
     ],
   },
   {
-    ownerId: "nisha-verma",
-    displayName: "Nisha Verma",
+    ownerId: "meera-kapil",
+    displayName: "Meera Kapil",
     kind: "individual",
     pans: ["AAAPV2345B"],
     aliases: [
       // As printed: Goldstandard/Aristos gives the full name, Green Lantern the short one.
-      "Nisha Verma",
-      "NISHA VERMA",
-      "Nisha Verma",
+      "Meera Kapil",
+      "MEERA KAPIL",
+      "Meera Kapil",
     ],
   },
   {
-    ownerId: "rohan-verma",
-    displayName: "Rohan Verma",
+    ownerId: "arjun-kapil",
+    displayName: "Arjun Kapil",
     kind: "individual",
     /**
      * NO PAN HERE ON PURPOSE. His is also the password on six encrypted
@@ -118,16 +118,16 @@ export const OWNERS = [
      */
     pans: [],
     aliases: [
-      "Rohan Verma",
+      "Arjun Kapil",
       // Confirmed by PAN, not by a naming convention — see the note above.
-      "Rohan Verma",
+      "Arjun Kapil",
     ],
   },
   {
     /**
      * A FOURTH FAMILY MEMBER, added on her own PAN and her own folio.
      *
-     * `AARTI AJAY VERMA` (AAAPV3456C) holds a Sanshi Fund folio and appears
+     * `AARTI AJAY KAPIL` (AAAPV3456C) holds a Sanshi Fund folio and appears
      * on no other statement in this drop. Leaving her unresolved was not the
      * neutral choice it looked like: her holding still counts in the consolidated
      * total, so the book showed money belonging to nobody, and every per-entity
@@ -137,13 +137,13 @@ export const OWNERS = [
      * the statements say she is a taxpayer with a folio, and that is all this
      * records.
      */
-    ownerId: "simran-verma",
-    displayName: "Simran Verma",
+    ownerId: "riya-kapil",
+    displayName: "Riya Kapil",
     kind: "individual",
     pans: ["AAAPV3456C"],
     aliases: [
-      "Simran Verma",
-      "Simran Verma",
+      "Riya Kapil",
+      "Riya Kapil",
     ],
   },
   {
@@ -153,7 +153,7 @@ export const OWNERS = [
      * Both are named after him and both hold Transition Venture Capital
      * commitments, but their PANs carry `T` in the fourth position — a separate
      * taxpayer, not a nickname for an individual. Folding them into
-     * `rohan-verma` would put a trust's assets into a person's net worth,
+     * `arjun-kapil` would put a trust's assets into a person's net worth,
      * which is wrong as tax, wrong as estate planning and wrong on screen.
      *
      * They are also NOT each other: Trust 2 and Trust 3 have different PANs, and
@@ -162,18 +162,18 @@ export const OWNERS = [
      * twice as much — which is why the Transition Venture reader takes its holder
      * name verbatim.
      */
-    ownerId: "verma-family-trust-2",
-    displayName: "Verma Family Trust 2",
+    ownerId: "kapil-family-trust-2",
+    displayName: "Kapil Family Trust 2",
     kind: "trust",
     pans: ["AAATV4567D"],
-    aliases: ["Verma Family Trust 2"],
+    aliases: ["Kapil Family Trust 2"],
   },
   {
-    ownerId: "verma-family-trust-3",
-    displayName: "Verma Family Trust 3",
+    ownerId: "kapil-family-trust-3",
+    displayName: "Kapil Family Trust 3",
     kind: "trust",
     pans: ["AAATV5678E"],
-    aliases: ["Verma Family Trust 3"],
+    aliases: ["Kapil Family Trust 3"],
   },
   {
     /**
@@ -182,7 +182,7 @@ export const OWNERS = [
      *
      * The family's own two documents name it, apart from Trust 2 and Trust 3:
      * their investment register files ₹6.77 Cr of liquid and arbitrage funds
-     * under "Verma Family Trust" on 1 Jul 2025, and their 30 June
+     * under "Kapil Family Trust" on 1 Jul 2025, and their 30 June
      * review carries the same two funds under that name, rows of their own
      * beside the "Trust II" and "Trust III" rows. The depository statement
      * prints the TRUSTEES on its holder lines, so the account is attributed by
@@ -198,11 +198,11 @@ export const OWNERS = [
      * which is not the `Individual-Resident` every family member's own demat
      * prints.
      */
-    ownerId: "verma-family-trust",
-    displayName: "Verma Family Trust",
+    ownerId: "kapil-family-trust",
+    displayName: "Kapil Family Trust",
     kind: "trust",
     pans: [],
-    aliases: ["Verma Family Trust"],
+    aliases: ["Kapil Family Trust"],
   },
 ];
 
@@ -239,8 +239,8 @@ export function normalizeOwnerName(raw) {
 
 /**
  * Initials form: first name in full, every following name reduced to its
- * initial — "ajay thakurdas verma" and "ajay t verma" both become
- * "ajay t verma". This is what bridges the two spellings of one person
+ * initial — "ajay thakurdas kapil" and "ajay t kapil" both become
+ * "ajay t kapil". This is what bridges the two spellings of one person
  * without merging "ajay" and "bharat", whose first names differ.
  */
 function initialsForm(normalized) {

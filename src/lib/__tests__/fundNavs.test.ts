@@ -481,13 +481,13 @@ ok("...and counts one fewer holding as not valued",
  * ── …AND THE LISTED SHARES A HOLDING STATEMENT PRINTS NO USABLE PRICE FOR ───
  *
  * Two accounts DID send a holding statement and still put no price on a listed
- * share: Nisha's Motilal demat prints Clean Max at a rate of 0.000, and Kapil's
+ * share: Meera's Motilal demat prints Clean Max at a rate of 0.000, and Kapil's
  * ICICI NSDL statement records ESDS Software at the Re 1 face value it was
  * allotted at. Both are NSE listings by their own ISIN, so the one price either
  * can have is the market's — the live quote, and no row where the feed did not
  * price it. The review is the witness that Clean Max is two holdings and not one
  * counted twice: it carries 1,89,934 across ICICI Bank and MOPWM, which is the
- * 94,967 on Kapil's ICICI row plus the 94,967 on Nisha's Motilal one.
+ * 94,967 on Kapil's ICICI row plus the 94,967 on Meera's Motilal one.
  *
  * THE FAMILY FIRST KEPT ANKITA'S UNVALUED (28 Sep 2026, Stage 10cx's FQ-3) and
  * then asked for it to be included (14 Oct 2026, "include this in the dashboard
@@ -500,7 +500,7 @@ const NP = unpricedStatementShareCandidates();
 const npOf = (isin: string) => NP.find((p) => p.isin?.toUpperCase() === isin);
 const cleanMax = npOf("INE647U01026");
 const esds = npOf("INE0DRI01029");
-ok("Clean Max on Nisha's Motilal demat is a candidate at its 94,967 shares — the family asked on 14 Oct 2026 for it to be included",
+ok("Clean Max on Meera's Motilal demat is a candidate at its 94,967 shares — the family asked on 14 Oct 2026 for it to be included",
   !!cleanMax && cleanMax.accountId === "motilal-oswal-financial-services-demat-1201090012838316" && cleanMax.quantity === 94967
     && cleanMax.symbol === "CLEANMAX" && cleanMax.securityKey === "clean-max-enviro-energy-solutions"
     && cleanMax.depositoryUnits?.kind === "no-price",
@@ -538,20 +538,20 @@ ok("the page's list of what is not valued reads both routes' candidates",
 // owner in another account is one holding moved, not a second one.
 const ajayMain = "motilal-oswal-financial-services-demat-1201090012539150";
 const cmRow = BOOK_UNVALUED_HOLDINGS.find((u) => u.isin?.toUpperCase() === "INE647U01026");
-const movedSameOwner = cmRow ? unpricedStatementShareCandidates([{ ...cmRow, accountId: ajayMain, ownerId: "kapil-verma" }]) : [];
+const movedSameOwner = cmRow ? unpricedStatementShareCandidates([{ ...cmRow, accountId: ajayMain, ownerId: "chiraag-kapil" }]) : [];
 ok("the same units under the SAME owner in another account are refused — one holding, not two",
   !!cmRow && movedSameOwner.length === 0, movedSameOwner.map((p) => p.accountId).join("; "));
 // Gate 6 names no row now, so the same row on an account of a DIFFERENT owner
 // passes exactly as the real one does, at 94,967 shares, under the book's own
 // key and the listing's symbol.
 const aartiDemat = "motilal-oswal-financial-services-demat-1201090012838335";
-const cmElsewhere = cmRow ? unpricedStatementShareCandidates([{ ...cmRow, accountId: aartiDemat, ownerId: "simran-verma" }]) : [];
+const cmElsewhere = cmRow ? unpricedStatementShareCandidates([{ ...cmRow, accountId: aartiDemat, ownerId: "riya-kapil" }]) : [];
 ok("the same row on another owner's account, which no decision names, IS a candidate — so gates 1–5 let it through",
   cmElsewhere.length === 1 && cmElsewhere[0].quantity === 94967 && cmElsewhere[0].symbol === "CLEANMAX"
     && cmElsewhere[0].securityKey === "clean-max-enviro-energy-solutions",
   cmElsewhere.map((p) => `${p.accountId} ${p.quantity} ${p.symbol} ${p.securityKey}`).join("; ") || "none");
 const realRow = cmRow ? unpricedStatementShareCandidates([cmRow]) : [];
-ok("...and the real row, on Nisha's account, is a candidate too — no decision refuses it",
+ok("...and the real row, on Meera's account, is a candidate too — no decision refuses it",
   !!cmRow && cmRow.accountId === "motilal-oswal-financial-services-demat-1201090012838316" && realRow.length === 1,
   realRow.map((p) => p.accountId).join("; ") || "none");
 const npFeed = (sym: string, price: number): QuoteFeed => ({
@@ -592,7 +592,7 @@ ok("a list mixing a closing balance and a no-price share names both sources",
  */
 console.log("── the depository's units and AMFI's NAV are one unit ──");
 const REVIEW = path.join(process.cwd(), "source", "august-2026-d",
-  "Final Consolidated Verma Family Review as on 30 June 2026.xlsx");
+  "Final Consolidated Kapil Family Review as on 30 June 2026.xlsx");
 if (!existsSync(REVIEW)) {
   ok("the family's consolidated review is on disk to witness the unit basis", false, REVIEW);
 } else {

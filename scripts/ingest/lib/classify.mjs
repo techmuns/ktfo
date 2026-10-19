@@ -554,7 +554,7 @@ function matchGoldstandard(text, name) {
     : /Trend\s+Following\s*-\s*Flexicap\s+Growth/i.test(text) ? "Trend Following - Flexicap Growth"
     : null;
   // ASK prints TWO numbers before the holder — `Account : 10034025 0034926 -
-  // Kapil Verma` (the fact sheet hyphenates both gaps). The first is the
+  // Chiraag Kapil` (the fact sheet hyphenates both gaps). The first is the
   // account its file name and every statement carry; the second is the house's
   // client code. The generic pattern below cannot read it: after the first
   // number it wants a NAME, finds the client code, and gives up.
@@ -567,13 +567,13 @@ function matchGoldstandard(text, name) {
   let accountNo = acct ? acct[1] : null;
   // The strategy name sits right after the owner on the same header line, so its
   // leading token has to stop the name or it reads as part of it. ASK's fact
-  // sheet runs the holdings table into the same line (`… Verma 1 BANK
+  // sheet runs the holdings table into the same line (`… Kapil 1 BANK
   // Cash and …`), and its other statements run into `ASK Indian Entrepreneur
   // Portfolio`, so `ASK` stops the name there.
   // Buoyant prints its holder on the TITLE line with no label after it —
-  // `Account : 103473 AJAY THAKURDAS VERMA Buoyant Opportunities Strategy
+  // `Account : 103473 AJAY THAKURDAS KAPIL Buoyant Opportunities Strategy
   // - Investor` once the text is flattened — so the scheme name ran straight
-  // into the owner ("AJAY THAKURDAS VERMA Buoyant Opportunities"). The
+  // into the owner ("AJAY THAKURDAS KAPIL Buoyant Opportunities"). The
   // owner still RESOLVED, by the PAN the reader finds, which is exactly how a
   // polluted name hides; the inventory printed it as the holder.
   const stops = [
@@ -904,7 +904,7 @@ const ISSUER_PROVIDER_RULES = [
    *
    * The title alone is not enough either. In the FLAT reading order the
    * inventory uses, the address block lands between the two halves of it —
-   * `PORTFOLIO Mr. KAPIL VERMA, 1301 B BEAU MONDE … ANALYSIS REPORT
+   * `PORTFOLIO Mr. CHIRAAG KAPIL, 1301 B BEAU MONDE … ANALYSIS REPORT
    * CLIENT LEVEL` — so the title matches in the coordinate grid and not in the
    * inventory's text, and the two stages disagreed about a file they both read.
    *

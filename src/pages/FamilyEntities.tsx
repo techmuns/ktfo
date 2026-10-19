@@ -107,8 +107,8 @@ const bucketOrd = (b: string) => { const i = BUCKET_ORDER.indexOf(b); return i <
  * caller but a mouse.
  *
  * The param takes EITHER identifier a reader might have: the canonical
- * `ownerId` slug (`kapil-verma`) or the display name the chips print
- * (`Kapil Verma`). `ownerDisplayName` is the registry's own resolution and
+ * `ownerId` slug (`chiraag-kapil`) or the display name the chips print
+ * (`Chiraag Kapil`). `ownerDisplayName` is the registry's own resolution and
  * returns the id unchanged when it is not one, so both forms land in one call
  * and no second name-matching rule is invented here.
  *
@@ -194,8 +194,8 @@ export function FamilyEntities() {
    *
    *   Kapil     54.4% Unclassified, 11 sectors  →   8.6%, 12 sectors
    *   Bharat  100.0% Unclassified,  1 sector   →   4.5%, 10 sectors
-   *   Nisha   40.8% Unclassified, 11 sectors  →   0.0%, 12 sectors
-   *   Simran   100.0% Unclassified,  1 sector   →   0.0%,  1 sector
+   *   Meera   40.8% Unclassified, 11 sectors  →   0.0%, 12 sectors
+   *   Riya   100.0% Unclassified,  1 sector   →   0.0%,  1 sector
    *
    * and Unclassified is the top bar for none of the four, which is the ask.
    *
@@ -227,7 +227,7 @@ export function FamilyEntities() {
    * a company's sector does not depend on how much of it the family holds. The
    * page's own rows ARE current holdings now (see `p` below), so the index is
    * simply wider than anything drawn — a classification, in no total. (This
-   * note used to say narrowing it would send Nisha's ₹60 preference line and
+   * note used to say narrowing it would send Meera's ₹60 preference line and
    * ₹580 demat row to Unclassified; they were Unclassified either way, and
    * since FS-5 they are not drawn at all.)
    *
@@ -301,9 +301,9 @@ export function FamilyEntities() {
    * Both dashes named a cause that was not the cause. YTD said no statement
    * carries a per-entity value on 1 April — beside a Return (to date) struck
    * from the 1 April opening portfolio values four of Kapil's and three of
-   * Nisha's statements DO carry. Return (to date) said a money-weighted
+   * Meera's statements DO carry. Return (to date) said a money-weighted
    * return "needs" an opening value on both sides — false of a capital record
-   * that starts at inception, which Simran's, Bharat's and both trusts'
+   * that starts at inception, which Riya's, Bharat's and both trusts'
    * accounts publish and the Transactions tab strikes a return on. What is
    * true, counted here off the same data the figures are struck from:
    *
@@ -688,7 +688,7 @@ export function FamilyEntities() {
     // THIS CARD IS "IN NO TOTAL", so a line the live book values at AMFI's NAV
     // is not LISTED here — it IS in the figure above. It is counted in its
     // account's hover, and an account whose every recorded line is valued that
-    // way (Simran's ABSL units) has nothing to list and draws no line at all.
+    // way (Riya's ABSL units) has nothing to list and draws no line at all.
     .map((g) => ({
       ...g,
       live: g.lines.filter((l) => l.valuedLive).length,
@@ -715,7 +715,7 @@ export function FamilyEntities() {
    * A GICS sector is a property of a COMPANY. An AIF folio, a mutual-fund scheme
    * and an ETF are each one line standing for a portfolio somebody else
    * assembled, and no statement in this book prints a sector for one — they all
-   * carry "Unclassified". Charted over every position, Simran's ₹97.68 Cr AIF
+   * carry "Unclassified". Charted over every position, Riya's ₹97.68 Cr AIF
    * folio and ₹17.65 Cr of ETFs would have made "Unclassified" the largest bar
    * on her sector chart while describing nothing.
    *
@@ -1641,7 +1641,7 @@ export function FamilyEntities() {
 
           {/* ── THE ACCOUNTS THIS ENTITY HOLDS THAT THE BOOK CANNOT VALUE ──
               *
-              *   "Rohan Verma Trust looks empty on holdings, so check
+              *   "Arjun Kapil Trust looks empty on holdings, so check
               *    that as well since the client has provided half of the
               *    statements already."
               *

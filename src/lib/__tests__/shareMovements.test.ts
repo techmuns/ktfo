@@ -126,7 +126,7 @@ ok("...and the nil closes are there — securities an account sold out of during
 // A WINDOW THE REVIEW SUPERSEDES GOES WITH ITS LINE, AND IS NAMED (Stage 10dh).
 // A window is a line's quantity account; where the family's consolidated review
 // now stands for the line, its window leaves the movements with it — the Zepto
-// pair on Kapil's demat, and the Everest Fleet preference shares on Nisha's,
+// pair on Kapil's demat, and the Everest Fleet preference shares on Meera's,
 // named by the ISIN its tape prints. Each is NAMED in BOOK_REVIEW_SUPERSEDED with
 // the depository's own spelling and the units it closed at, never dropped.
 const supWindows = BOOK_REVIEW_SUPERSEDED.filter((s) => s.kind === "window");
@@ -193,7 +193,7 @@ ok("...and some of them reach the company only because of the ISIN", respelled.l
 // what the Monitor's expansion and the stock page draw as "sold out in this
 // window" — without it they have nothing to draw and Kapil's Kaynes vanishes.
 //
-// "STILL HOLDS" INCLUDES A QUANTITY LINE. Nisha's 4,875 Kaynes shares are a
+// "STILL HOLDS" INCLUDES A QUANTITY LINE. Meera's 4,875 Kaynes shares are a
 // recorded line since Stage 10cz, not a position — so struck on positions alone
 // this check stopped seeing the very case it was written for, and went on
 // passing on ICICI Bank and SBI, whose own accounts still record them as lines:

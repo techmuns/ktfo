@@ -282,7 +282,7 @@ function countedOnce({ label, b, overlap }: Run) {
     /**
      * OF THE PAIR, ONE STATEMENT; AND EVERY OTHER HOLDER'S OWN. Since Stage 10dh
      * the fund's row also carries a holding outside the pair — the review's
-     * 2,500 units of Nisha's — so the row is not one statement's any more. What
+     * 2,500 units of Meera's — so the row is not one statement's any more. What
      * must still hold is that exactly one of the PAIR's statements is counted,
      * that the capital beside it is that one's alone (a review holder's line
      * brings none), and that units and cost are the counted lines' and nothing

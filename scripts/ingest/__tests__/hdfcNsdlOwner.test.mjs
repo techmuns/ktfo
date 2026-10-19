@@ -1,10 +1,10 @@
 // THE BENEFICIAL-OWNER JOIN ON THE HDFC NSDL STATEMENTS.
 // Run: node scripts/ingest/__tests__/hdfcNsdlOwner.test.mjs
 //
-//   "Rohan Verma Trust looks empty on holdings, so check that as well
+//   "Arjun Kapil Trust looks empty on holdings, so check that as well
 //    since the client has provided half of the statements already."
 //
-// Both statements print `AJAY T VERMA` on the holder line — he is the
+// Both statements print `AJAY T KAPIL` on the holder line — he is the
 // TRUSTEE — and the family's own investment register records the 347 Swapeco
 // preference shares each one holds under a family trust. `hdfcNsdl.mjs` carries
 // that join, keyed on the DP account number the page prints.
@@ -41,7 +41,7 @@ console.log("hdfcNsdlOwner");
  * rows of cells. `flatten` joins the cells with spaces and the rows with
  * newlines, which is what the header regexes run against.
  */
-function statement(dpAccount, holder = "AJAY T VERMA") {
+function statement(dpAccount, holder = "AJAY T KAPIL") {
   const line = (...cells) => ({ cells: cells.map((text) => ({ text })) });
   return {
     grid: {
@@ -51,7 +51,7 @@ function statement(dpAccount, holder = "AJAY T VERMA") {
           line("Holding Statement as on : 29/08/2026 Business Date: 31/08/2026"),
           line(`DP Account No : ${dpAccount}`),
           line(holder),
-          line("AARTI AJAY VERMA"),
+          line("AARTI AJAY KAPIL"),
           line("MUMBAI"),
           line("Account Type : Free Balance"),
           line("ISIN Company Name Scrip Type Market Value"),
@@ -76,7 +76,7 @@ for (const [acct, entry] of Object.entries(BENEFICIAL_OWNER_BY_DP_ACCOUNT)) {
   ok(`${acct} records the join as a warning`, !!w);
   // THE PRINTED HOLDER SURVIVES IN THE RECORD. A re-attribution nobody can
   // trace is worse than none, and the archive is where it has to be traceable.
-  ok(`${acct}'s warning names the holder the page prints`, !!w && w.detail.includes("AJAY T VERMA"));
+  ok(`${acct}'s warning names the holder the page prints`, !!w && w.detail.includes("AJAY T KAPIL"));
   ok(`${acct}'s warning cites the register`, !!w && /register/i.test(w.detail));
   // AND THE HOLDING IS UNTOUCHED — this join moves an owner, never a figure.
   ok(`${acct} still reads its holding`, (d.holdings ?? []).length === 1);
@@ -91,7 +91,7 @@ for (const [acct, entry] of Object.entries(BENEFICIAL_OWNER_BY_DP_ACCOUNT)) {
 // hand somebody else's holding to a trust.
 {
   const d = extract(statement("12345678"));
-  ok("an unmapped account keeps its printed holder", d.owner === "AJAY T VERMA", `got ${d.owner}`);
+  ok("an unmapped account keeps its printed holder", d.owner === "AJAY T KAPIL", `got ${d.owner}`);
   ok("an unmapped account records no join", ownerWarning(d) === null);
 }
 
@@ -105,7 +105,7 @@ for (const [acct, entry] of Object.entries(BENEFICIAL_OWNER_BY_DP_ACCOUNT)) {
   for (const near of [`${mapped}0`, mapped.slice(0, -1)]) {
     const d = extract(statement(near));
     ok(`${near} does not borrow ${mapped}'s owner`,
-      d.owner === "AJAY T VERMA" && ownerWarning(d) === null, `got ${d.owner}`);
+      d.owner === "AJAY T KAPIL" && ownerWarning(d) === null, `got ${d.owner}`);
   }
 }
 

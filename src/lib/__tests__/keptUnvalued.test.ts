@@ -1,7 +1,7 @@
 // THE FAMILY'S "KEEP THEM UNVALUED" — DECIDED 28 SEP 2026, REVERSED 14 OCT 2026.
 //
 //   "keep them unvalued for now" (28 Sep), then "include this in the dashboard
-//   data as well" (14 Oct) — about Nisha's 94,967 Clean Max Enviro Energy
+//   data as well" (14 Oct) — about Meera's 94,967 Clean Max Enviro Energy
 //   Solutions shares on her Motilal Oswal demat 1201090012838316.
 //
 // The table in `shared/keptUnvalued.mjs` is empty again. This suite holds the
@@ -24,11 +24,11 @@ const ok = (name: string, pass: boolean, detail = "") => {
 
 const ISIN = "INE647U01026";
 const acc = BOOK_ACCOUNTS.filter((a) => String(a.accountNo) === "1201090012838316");
-ok("Nisha's demat is one account in the book", acc.length === 1, `${acc.length} found`);
+ok("Meera's demat is one account in the book", acc.length === 1, `${acc.length} found`);
 const a = acc[0];
 
 ok("the table names no Clean Max row", !KEPT_UNVALUED.some((d: { isin: string }) => d.isin === ISIN), String(KEPT_UNVALUED.length));
-ok("the helper finds no decision for Nisha's row",
+ok("the helper finds no decision for Meera's row",
   keptUnvaluedFor({ provider: a?.provider ?? "", accountNo: a?.accountNo ?? "", isin: ISIN }) === null);
 
 const rows = BOOK_UNVALUED_HOLDINGS.filter((u) => u.accountId === a?.accountId && u.isin === ISIN);

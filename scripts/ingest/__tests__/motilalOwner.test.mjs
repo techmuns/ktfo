@@ -1,11 +1,11 @@
 // THE CLIENT-ID JOIN ON THE MOTILAL OSWAL DEMAT STATEMENTS (Stage 10db).
 // Run: node scripts/ingest/__tests__/motilalOwner.test.mjs
 //
-// Demat 1201090032387399 prints Simran as its first holder, Kapil and Simran as
+// Demat 1201090032387399 prints Riya as its first holder, Kapil and Riya as
 // the second and third, `A/C Type: NIN`, and a masked PAN that fits nobody in
 // the registry. It was excluded from the book because those identifiers gave
 // three answers. The family's own investment register and their 30 June review
-// both name its holder — the Verma Family Trust — and
+// both name its holder — the Kapil Family Trust — and
 // `motilalDemat.mjs` carries that join, keyed on the client ID the page prints.
 //
 // ── WHAT THIS SUITE IS FOR ──────────────────────────────────────────────────
@@ -48,7 +48,7 @@ const ok = (label, cond, detail = "") => {
 console.log("motilalOwner");
 
 const TRUST_ID = "1201090032387399";
-const TRUST = "Verma Family Trust";
+const TRUST = "Kapil Family Trust";
 const code = (id, c) => (id.warnings ?? []).find((w) => w.code === c) ?? null;
 
 /** A mask in the statement's own form, built from a registry PAN. Never printed. */
@@ -68,8 +68,8 @@ function archivedText(docKey) {
  * real page carries is left out: it is not read, and it is a contact detail.
  */
 function page({
-  clientId = TRUST_ID, acType = "NIN", holder = "AARTI AJAY VERMA",
-  maskedPan = "ZZXXX-XX-0Z", second = "AJAY T VERMA", third = "AARTI AJAY VERMA",
+  clientId = TRUST_ID, acType = "NIN", holder = "AARTI AJAY KAPIL",
+  maskedPan = "ZZXXX-XX-0Z", second = "AJAY T KAPIL", third = "AARTI AJAY KAPIL",
 } = {}) {
   const acTypePart = acType == null ? "" : ` A/C Type: ${acType}`;
   const panPart = maskedPan == null ? "PAN No:" : `PAN No: ${maskedPan}`;
@@ -94,7 +94,7 @@ function page({
   const fitsSomebody = OWNERS.some((o) => (o.pans ?? []).some((p) => maskedPanMatches("ZZXXX-XX-0Z", p) === true));
   ok("the synthetic mask fits no registered PAN", !fitsSomebody);
   const trust = resolveOwner(TRUST);
-  ok("the trust is a canonical owner", trust.owner?.ownerId === "verma-family-trust" && trust.matchedBy === "alias",
+  ok("the trust is a canonical owner", trust.owner?.ownerId === "kapil-family-trust" && trust.matchedBy === "alias",
     `got ${trust.owner?.ownerId} by ${trust.matchedBy}`);
   ok("…of kind trust", trust.owner?.kind === "trust");
   ok("the replay recognises both of the join's warning codes",
@@ -121,12 +121,12 @@ for (const entry of trustDocs) {
   const label = entry.reportType;
 
   ok(`${label}: the page is read as client ${TRUST_ID}`, now.clientId === TRUST_ID, `got ${now.clientId}`);
-  ok(`${label}: with the entry it is the trust's`, now.owner === TRUST && now.ownerId === "verma-family-trust",
+  ok(`${label}: with the entry it is the trust's`, now.owner === TRUST && now.ownerId === "kapil-family-trust",
     `got ${now.owner} (${now.ownerId})`);
   ok(`${label}: …and it is in the book`, now.excludedFromBook === null);
   const w = code(now, "owner-from-register");
   ok(`${label}: …and the join is recorded as a warning`, !!w);
-  ok(`${label}: the warning names the holder the page prints`, !!w && w.detail.includes("AARTI AJAY VERMA"));
+  ok(`${label}: the warning names the holder the page prints`, !!w && w.detail.includes("AARTI AJAY KAPIL"));
   ok(`${label}: the warning cites the register and the review`, !!w && /register/i.test(w.detail) && /review/i.test(w.detail));
   ok(`${label}: no refusal or contradiction is recorded beside it`,
     !code(now, "beneficial-owner-refused") && !code(now, "pan-contradicts-name") && !code(now, "owner-unresolved"));
@@ -146,10 +146,10 @@ for (const entry of trustDocs) {
 
   // AND THE ARCHIVE CARRIES WHAT THE READER NOW PRODUCES — the replay landed it.
   const doc = JSON.parse(fs.readFileSync(path.join(AUDIT, entry.docKey, "document.json"), "utf8"));
-  ok(`${label}: the archived document is the trust's`, doc.owner === TRUST && doc.ownerId === "verma-family-trust",
+  ok(`${label}: the archived document is the trust's`, doc.owner === TRUST && doc.ownerId === "kapil-family-trust",
     `got ${doc.owner} (${doc.ownerId})`);
   ok(`${label}: …and is not excluded`, (doc.excludedFromBook ?? null) === null);
-  ok(`${label}: the manifest agrees`, entry.owner === TRUST && entry.ownerId === "verma-family-trust");
+  ok(`${label}: the manifest agrees`, entry.owner === TRUST && entry.ownerId === "kapil-family-trust");
 }
 
 // ── 2. THE JOIN FIRES ON NO OTHER MOTILAL DOCUMENT ───────────────────────────
@@ -189,12 +189,12 @@ for (const near of [`${TRUST_ID}0`, TRUST_ID.slice(0, -1), `${TRUST_ID.slice(0, 
   const id = identityOf(page());
   ok("the synthetic page resolves to the trust", id.owner === TRUST && id.excludedFromBook === null, `got ${id.owner}`);
   const doc = extract({ grid: { pages: [{ text: page() }] }, meta: { docKey: "test" } });
-  ok("extract() carries the trust into the document", doc?.owner === TRUST && doc?.ownerId === "verma-family-trust",
+  ok("extract() carries the trust into the document", doc?.owner === TRUST && doc?.ownerId === "kapil-family-trust",
     `got ${doc?.owner}`);
   ok("…keyed on the client ID, not the file name", doc?.accountNo === TRUST_ID);
   ok("…and in the book", doc?.excludedFromBook === null);
   ok("…with the depository's own account type in its engagement", /NIN/.test(doc?.providerEngagement ?? ""));
-  ok("…and the trustees as joint holders", JSON.stringify(doc?.jointHolders) === JSON.stringify(["AJAY T VERMA", "AARTI AJAY VERMA"]),
+  ok("…and the trustees as joint holders", JSON.stringify(doc?.jointHolders) === JSON.stringify(["AJAY T KAPIL", "AARTI AJAY KAPIL"]),
     JSON.stringify(doc?.jointHolders));
 }
 
@@ -217,7 +217,7 @@ refused("an owner the registry does not carry", page(),
   /is not a canonical owner/, { owner: null, excluded: true });
 
 refused("an owner who is a person", page(),
-  { [TRUST_ID]: { owner: "Kapil Verma", via: "test" } },
+  { [TRUST_ID]: { owner: "Chiraag Kapil", via: "test" } },
   /is not a trust/, { owner: null, excluded: true });
 
 refused("a page with no account type", page({ acType: null }),
@@ -233,39 +233,39 @@ refused("a page that is a person's account", page({ acType: "Individual-Resident
 // treated a missing PAN.
 refused("a page with no masked PAN", page({ maskedPan: null }),
   BENEFICIAL_OWNER_BY_CLIENT_ID,
-  /no masked PAN/, { owner: "Simran Verma", excluded: false });
+  /no masked PAN/, { owner: "Riya Kapil", excluded: false });
 
 // A mask that fits the PRINTED holder's own PAN: the account is hers, and the
 // join must not take it from her.
 {
-  const pan = panOf("simran-verma");
+  const pan = panOf("riya-kapil");
   ok("the registry carries the printed holder's PAN", !!pan);
   if (pan) {
     refused("a mask that fits the printed holder's PAN", page({ maskedPan: maskOf(pan) }),
       BENEFICIAL_OWNER_BY_CLIENT_ID,
-      /fits Simran Verma's PAN/, { owner: "Simran Verma", excluded: false });
+      /fits Riya Kapil's PAN/, { owner: "Riya Kapil", excluded: false });
   }
 }
 
 // A mask that fits a THIRD taxpayer: neither the trust nor the printed holder.
 {
-  const pan = panOf("kapil-verma");
+  const pan = panOf("chiraag-kapil");
   ok("the registry carries a third taxpayer's PAN", !!pan);
   if (pan) {
     refused("a mask that fits another registered taxpayer", page({ maskedPan: maskOf(pan) }),
       BENEFICIAL_OWNER_BY_CLIENT_ID,
-      /fits Kapil Verma's PAN/, { owner: null, excluded: true });
+      /fits Chiraag Kapil's PAN/, { owner: null, excluded: true });
   }
 }
 
 // A trust the registry carries a PAN for: the mask must fit THAT PAN.
 {
-  const t2 = "Verma Family Trust 2";
-  const pan = panOf("verma-family-trust-2");
+  const t2 = "Kapil Family Trust 2";
+  const pan = panOf("kapil-family-trust-2");
   ok("the registry carries a PAN for a trust", !!pan);
   refused("a mask that does not fit the trust's own PAN", page(),
     { [TRUST_ID]: { owner: t2, via: "test" } },
-    /does not fit Verma Family Trust 2's own PAN/, { owner: null, excluded: true });
+    /does not fit Kapil Family Trust 2's own PAN/, { owner: null, excluded: true });
   if (pan) {
     const id = identityOf(page({ maskedPan: maskOf(pan) }), { [TRUST_ID]: { owner: t2, via: "test" } });
     ok("a mask that fits the trust's own PAN is accepted", id.owner === t2 && id.excludedFromBook === null && !!code(id, "owner-from-register"),

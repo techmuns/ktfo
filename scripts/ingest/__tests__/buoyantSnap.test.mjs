@@ -260,7 +260,7 @@ for (const K of [K_ANKITA, K_AJAY]) {
 }
 
 // ── 3. Page 3 does not restate page 1 — each check, one figure at a time ────
-// On Nisha's snap. Every case expects EXACTLY the failures it names: a check
+// On Meera's snap. Every case expects EXACTLY the failures it names: a check
 // that fired for the wrong reason, or a second check that fired with it, is as
 // much a finding as one that did not fire at all.
 {

@@ -2133,7 +2133,7 @@ export function StockInfo() {
             {/* OPENING, PLUS, MINUS, CLOSING — read off the depository statement,
                 which prints all four. Above the tape deliberately: the family
                 asked for the quantity account first and the dated rows second. */}
-            {/* AN ACCOUNT HOLDING A RECORDED LINE HOLDS IT (Stage 10cz): Nisha's
+            {/* AN ACCOUNT HOLDING A RECORDED LINE HOLDS IT (Stage 10cz): Meera's
                 4,875 Kaynes are on the Position table above, "not valued" with
                 the reason. Marking her window "held, and not valued here" too
                 would say it twice, and with the wrong reason for a statement

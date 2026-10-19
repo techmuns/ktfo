@@ -800,7 +800,7 @@ if (await catTab.count()) {
   const links = await page.locator('a[href^="/mandate/"]').count();
   // ONE ROW PER STRATEGY since Stage 10dn. A strategy run for one account links
   // its name to that account's page; one run for several (Aristos for Kapil and
-  // for Nisha) is not a link — it would have to pick one member — and each of
+  // for Meera) is not a link — it would have to pick one member — and each of
   // its account lines links instead. So the collapsed table carries exactly one
   // link per single-account row.
   const singles = mandateRows.filter((m) => m.lines === 1).length;
@@ -1354,7 +1354,7 @@ const RESEARCH_SHARE = (() => {
 
 // ── AN ENTITY'S HOLDINGS THIS BOOK CANNOT VALUE ARE NAMED, NOT DROPPED ─────
 //
-//   "Rohan Verma Trust looks empty on holdings, so check that as well
+//   "Arjun Kapil Trust looks empty on holdings, so check that as well
 //    since the client has provided half of the statements already."
 //
 // The trusts hold three accounts each and ONE yields a valued position, so the

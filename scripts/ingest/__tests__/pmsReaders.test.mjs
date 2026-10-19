@@ -54,7 +54,7 @@ const trade = (y, t) => [
 ];
 const top = [
   [35, 560, "Transaction Statement"],
-  [35, 545, "Account : 103473 AJAY THAKURDAS VERMA - BOUYA388"],
+  [35, 545, "Account : 103473 AJAY THAKURDAS KAPIL - BOUYA388"],
   [35, 515, "From 01/04/2026 to 31/07/2026"],
 ];
 const BUOYANT = { docKey: "t-buoyant", fileName: "I83_103473_TransactionStatement.pdf", provider: "Buoyant Capital", reportType: "transaction-statement", accountNo: "103473" };
@@ -94,7 +94,7 @@ const allotments = [
 // printed rate, so it carries no precision allowance.
 {
   const spans = [
-    ...top.map(([x, y, s]) => [x, y, s.replace("103473 AJAY THAKURDAS VERMA - BOUYA388", "3517383 AJAY T VERMA - CBP0142")]), ...header,
+    ...top.map(([x, y, s]) => [x, y, s.replace("103473 AJAY THAKURDAS KAPIL - BOUYA388", "3517383 AJAY T KAPIL - CBP0142")]), ...header,
     [X.desc, 452, "Shares - Listed"],
     ...trade(437, { desc: "Buy", date: "02/04/2026", sec: "BIOCON LTD.", exchg: "NSE", qty: "22,476", price: "128.8256", brkg: "0.1288", stt: "2,895.00", amount: "29,01,274.59" }),
     ...trade(424, { desc: "Sell", date: "03/04/2026", sec: "SYNGENE INTERNATIONAL LTD.", exchg: "BSE", qty: "1,500", price: "640.1000", brkg: "0.6400", stt: "960.00", amount: "9,58,229.00" }),
@@ -146,7 +146,7 @@ const allotments = [
 const GL = { docKey: "t-gl", fileName: "TRANSACTION STATEMENT GREEN LANTERN - AJAY.pdf", provider: "Green Lantern Capital LLP", reportType: "transaction-statement", accountNo: "510861" };
 const glTop = [
   [35, 560, "TRANSACTION STATEMENT"],
-  [35, 545, "Account : 510861 AJAY T VERMA - GLC0780"],
+  [35, 545, "Account : 510861 AJAY T KAPIL - GLC0780"],
   [35, 530, "GREEN LANTERN CAPITAL LLP - GLC GROWTH FUND"],
   [35, 515, "From 16/01/2025 to 22/09/2026"],
 ];
@@ -293,7 +293,7 @@ const CARNELIAN = { provider: "Carnelian Asset Management and Advisors Pvt Ltd",
 const lines = (rows, x = 300) => rows.flatMap(([label, value], i) => [[40, 470 - i * 14, label], [x, 470 - i * 14, value]]);
 const letterhead = [
   [40, 560, "CARNELIAN ASSET MANAGEMENT AND ADVISORS PVT LTD"],
-  [40, 530, "Account : 3517383 AJAY T VERMA - CBP0142"],
+  [40, 530, "Account : 3517383 AJAY T KAPIL - CBP0142"],
   [40, 516, "CARNELIAN BESPOKE PORTFOLIO"],
 ];
 

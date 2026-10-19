@@ -112,12 +112,12 @@ try {
     await table(key).waitFor();
     assert.ok((await order(key)).includes(field) === !before.includes(field));
   }
-  await page.goto(BASE + "/monitor?members=kapil-verma", { waitUntil: "domcontentloaded" });
+  await page.goto(BASE + "/monitor?members=chiraag-kapil", { waitUntil: "domcontentloaded" });
   await table("monitor").waitFor();
   const scopedDates = table("monitor").locator('[data-col-cell="review:investmentRange"]');
   assert.ok(await scopedDates.count() > 0);
   assert.ok((await scopedDates.allTextContents()).every((value) => value.trim() === "—"), "Family-wide dates leaked into a member-scoped row");
-  await page.goto(BASE + "/family?members=kapil-verma", { waitUntil: "domcontentloaded" });
+  await page.goto(BASE + "/family?members=chiraag-kapil", { waitUntil: "domcontentloaded" });
   await table("family-entities").waitFor();
   assert.ok(await table("family-entities").locator('[data-review-source^="Investorwise Summary!"]').count() > 0, "Whole-family entity page lost its exact review values");
   await page.goto(BASE + "/private-market?view=transactions&members=", { waitUntil: "domcontentloaded" });

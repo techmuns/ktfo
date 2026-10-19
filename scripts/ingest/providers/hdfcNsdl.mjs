@@ -29,15 +29,15 @@
 //
 // ── THE FILENAME NAMES THE WRONG HOLDER, FOR THE FOURTH TIME ────────────────
 //
-// Both files are named for a Rohan Verma family trust; both statements
-// print `AJAY T VERMA` and `AARTI AJAY VERMA` as joint holders at
+// Both files are named for a Arjun Kapil family trust; both statements
+// print `AJAY T KAPIL` and `AARTI AJAY KAPIL` as joint holders at
 // Kapil's own address. The account is therefore resolved on the `DP Account No:`
 // the page prints — 67786547 and 67786137 — which is `motilalDemat.mjs`'s rule
 // arriving through a third issuer.
 //
 // ── AND THE HOLDER LINE PRINTS THE TRUSTEES, NOT THE TRUST ──────────────────
 //
-//   "Rohan Verma Trust looks empty on holdings, so check that as well
+//   "Arjun Kapil Trust looks empty on holdings, so check that as well
 //    since the client has provided half of the statements already."
 //
 // CLAUDE.md named this join and never made it: *"a reader must resolve each
@@ -51,7 +51,7 @@
 // `TRUST INVESTMENT` sheet is the only place in the corpus that records who
 // holds this instrument:
 //
-//   row 1  SWAPECO SOLUTIONS PRIVATE LIMITED   BHARAT VERMA FAMILY TRUST 2
+//   row 1  SWAPECO SOLUTIONS PRIVATE LIMITED   BHARAT KAPIL FAMILY TRUST 2
 //          "2807 PRE SERIRES A CCPS OF FACE VALUE RS. 100 EACH
 //           (NO OF PREFERENCE SHARE 347)"                      ₹1,35,00,875
 //   row 2  …the same line, under FAMILY TRUST 3                ₹1,35,00,875
@@ -65,10 +65,10 @@
 //   3. NOBODY ELSE HOLDS IT. Searched across all eight sheets of the register:
 //      Swapeco appears exactly three times — 347 CCPS under each trust, and 244
 //      EQUITY shares (a DIFFERENT instrument and quantity) under Bharat
-//      personally. Neither Kapil nor Simran holds Swapeco anywhere in it.
+//      personally. Neither Kapil nor Riya holds Swapeco anywhere in it.
 //   4. THE COUNTS MATCH. Two such statements exist and there are two trusts.
 //
-// A TRUSTEE IS NOT A BENEFICIAL OWNER, which is the whole point: Kapil and Simran
+// A TRUSTEE IS NOT A BENEFICIAL OWNER, which is the whole point: Kapil and Riya
 // hold these accounts FOR the trusts, and filing them under Kapil puts a trust's
 // assets into a person's net worth — "wrong as tax, wrong as estate planning
 // and wrong on screen", in `shared/owners.mjs`'s own words about these same two
@@ -135,14 +135,14 @@ export const matches = (text) =>
  */
 export const BENEFICIAL_OWNER_BY_DP_ACCOUNT = {
   67786547: {
-    owner: "Verma Family Trust 2",
+    owner: "Kapil Family Trust 2",
     via: "the family's own investment register (`NEW INVESTMENT SHEET.xlsx`, sheet `TRUST INVESTMENT`, "
       + "row 1) records 347 Swapeco Pre-Series-A CCPS of ₹100 face under this trust — the exact instrument "
       + "and quantity this statement prints, whose 347 × ₹100 is the ₹34,700 total it prints. The holder "
       + "line names the TRUSTEES; no Swapeco holding appears under them anywhere in the register.",
   },
   67786137: {
-    owner: "Verma Family Trust 3",
+    owner: "Kapil Family Trust 3",
     via: "the family's own investment register (`NEW INVESTMENT SHEET.xlsx`, sheet `TRUST INVESTMENT`, "
       + "row 2) records 347 Swapeco Pre-Series-A CCPS of ₹100 face under this trust — the exact instrument "
       + "and quantity this statement prints, whose 347 × ₹100 is the ₹34,700 total it prints. The holder "

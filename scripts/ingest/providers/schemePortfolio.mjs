@@ -3,7 +3,7 @@
 // `White Oak - Kapil.xlsx` is WhiteOak Capital Multi Asset Allocation Fund's
 // monthly portfolio statement: the SCHEME's holdings, published under SEBI's
 // disclosure rules, 348 rows of what the fund owns. What it does not contain,
-// anywhere, is a client. No folio, no units, no PAN, no Verma.
+// anywhere, is a client. No folio, no units, no PAN, no Kapil.
 //
 // ── WHY THAT NEEDS A READER RATHER THAN A SHRUG ─────────────────────────────
 //

@@ -46,7 +46,7 @@ const row = (y, cells) => Object.entries(cells).map(([k, v]) => [COL[k], y, v]);
 
 const appraisalSpans = [
   [30, 560, "GOLDSTANDARD WEALTH PRIVATE LIMITED"],
-  [30, 548, "Account : 100023  Kapil Verma"],
+  [30, 548, "Account : 100023  Chiraag Kapil"],
   [30, 536, "Aristos Equity Portfolio"],
   [30, 524, "Report Date : 10/07/2026"],
   // Header line 1
@@ -176,7 +176,7 @@ eq("no members -> unknown, NOT Advisory", dominantEngagement([]), "unknown");
 // computed fields do not exist until then.
 const mkDoc = (over) => assertNormalized(deriveDocument(makeDocument({
   docKey: over.docKey, provider: GS, accountNo: "100023", asOf: "2026-07-10",
-  owner: "Kapil Verma", ownerId: "kapil-verma",
+  owner: "Chiraag Kapil", ownerId: "chiraag-kapil",
   sourcePath: "source/x.pdf", status: "ok", reportType: over.reportType,
   holdings: over.holdings ?? [], totals: over.totals ?? null,
 })));
@@ -270,12 +270,12 @@ const sharedHolding = () => deriveHolding(makeHolding({
 }));
 const ajayDoc = assertNormalized(makeDocument({
   docKey: "d-ajay", provider: "360 ONE Private Wealth", accountNo: "37702", asOf: "2026-06-30",
-  owner: "Mr. KAPIL VERMA", ownerId: "kapil-verma", sourcePath: "a.pdf",
+  owner: "Mr. CHIRAAG KAPIL", ownerId: "chiraag-kapil", sourcePath: "a.pdf",
   status: "ok", reportType: "holdings", holdings: [sharedHolding()],
 }));
 const bharatDoc = assertNormalized(makeDocument({
   docKey: "d-bharat", provider: "360 ONE Private Wealth", accountNo: "60117", asOf: "2026-06-30",
-  owner: "Rohan Verma", ownerId: "rohan-verma", sourcePath: "b.pdf",
+  owner: "Arjun Kapil", ownerId: "arjun-kapil", sourcePath: "b.pdf",
   status: "ok", reportType: "holdings", holdings: [sharedHolding()],
 }));
 r = reconcile([ajayDoc, bharatDoc]);
@@ -290,8 +290,8 @@ ok("a dedupeGroup id was assigned", !!dup?.dedupeGroup, String(dup?.dedupeGroup)
   const rep = reconcile([ajayDoc, bharatDoc]);
   const ajayRow = ajayDoc.holdings[0], bharatRow = bharatDoc.holdings[0];
   ok("both rows tagged with the SAME group", !!ajayRow.dedupeGroup && ajayRow.dedupeGroup === bharatRow.dedupeGroup);
-  eq("ajay row knows bharat also reports it", ajayRow.alsoReportedUnder[0], "rohan-verma");
-  eq("bharat row knows ajay also reports it", bharatRow.alsoReportedUnder[0], "kapil-verma");
+  eq("ajay row knows bharat also reports it", ajayRow.alsoReportedUnder[0], "arjun-kapil");
+  eq("bharat row knows ajay also reports it", bharatRow.alsoReportedUnder[0], "chiraag-kapil");
   // Each owner's own view is untouched; only the consolidated figure collapses.
   eq("naive sum double-counts", rep.consolidated.naive, 29160825.02);
   eq("consolidated counts it ONCE", rep.consolidated.deduped, 14580412.51);
@@ -384,7 +384,7 @@ ok("unknown engagement rejected", threw);
   // names Aristos, must still be claimed by its own house rule.
   const real = classify({
     fileName: "G100023_100023_PortFolioAppraisal.pdf",
-    text: "GOLDSTANDARD WEALTH PRIVATE LIMITED Aristos Equity Portfolio Account : 100023  Kapil Verma",
+    text: "GOLDSTANDARD WEALTH PRIVATE LIMITED Aristos Equity Portfolio Account : 100023  Chiraag Kapil",
   });
   eq("a real Goldstandard appraisal still resolves", real.provider, "Goldstandard Wealth Private Limited");
   ok("a real Goldstandard appraisal is not a non-statement",

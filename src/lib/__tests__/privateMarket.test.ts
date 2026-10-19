@@ -182,7 +182,7 @@ ok("…and so is the whole book's: every position is in its consolidated total",
  * match no row and this would fail rather than pass over nothing.
  *
  * THE ROWS ARE COUNTED UNDER THE ACCOUNTS NAMED, because the review adds a
- * third holding of one of the two funds: Nisha's own 2,500 Transition
+ * third holding of one of the two funds: Meera's own 2,500 Transition
  * Venture units, on the review's Transactions and in her review holder
  * account. That is a third investment, not a third statement of the pair —
  * so it is allowed beside the pair only in a review holder account.
@@ -269,7 +269,7 @@ eq("the folio count adds to the RAW row count, not the deduped one",
 {
   // Each separate pair is ONE fund row over every folio of the fund, each
   // counted: the two the family named, and — for Transition Venture — the
-  // review's third holding, Nisha's own units. The count and the value beside
+  // review's third holding, Meera's own units. The count and the value beside
   // it are on one basis, because nothing is counted once. The inequality this
   // used to assert is proven on a tagged copy of the same rows below
   // (§ "the count-once policy, on a tagged copy").

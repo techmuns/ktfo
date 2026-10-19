@@ -318,8 +318,8 @@ export function depositoryCashHoldings(
  * quantity, never a valuation of the balance (Stage 10cz; the reader reads them
  * as `lastMovementRate`). So since that correction every fund those statements
  * carry is a quantity in the book (`BOOK_UNVALUED_HOLDINGS`) and no statement
- * values it: Nisha's Bandhan, Helios, ICICI and WhiteOak units, Bharat's and
- * Simran's ABSL, HDFC and Kotak units, the Liquid BeES on all three. Before A-17
+ * values it: Meera's Bandhan, Helios, ICICI and WhiteOak units, Bharat's and
+ * Riya's ABSL, HDFC and Kotak units, the Liquid BeES on all three. Before A-17
  * found them, ABSL Balanced Advantage on two of those demats was on no screen at
  * all for the same reason: a unit count with no price beside it.
  *
@@ -342,7 +342,7 @@ export function depositoryCashHoldings(
  *          the scheme on the movement's date, struck on the units the statement
  *          counts;
  *        - where the statement prints no rate against the row (ABSL Balanced
- *          Advantage on Nisha's and Simran's statements), a per-unit price for
+ *          Advantage on Meera's and Riya's statements), a per-unit price for
  *          the same ISIN on ANOTHER account at the SAME depository whose
  *          statement is dated the SAME day — a position's mark, or another row's
  *          last-movement rate. The depository prints units on one basis across

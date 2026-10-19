@@ -426,7 +426,7 @@ const familyEntries = (p: { security: string }, acct: { strategy?: string | null
   // 2026, `shared/separateInvestments.mjs`); now each is two holdings, so every
   // row of each is counted and nothing on the page is counted once.
   // Struck on the rows IN THE NAMED ACCOUNTS: since Stage 10dh the review also
-  // carries Nisha's own 2,500 Transition Venture units under the same key, in
+  // carries Meera's own 2,500 Transition Venture units under the same key, in
   // her review account, which is a third holding and no part of the pair.
   const inPair = (d: typeof SEPARATE_INVESTMENTS[number]) => (p: { securityKey: string; accountId: string }) => {
     const a = idx.get(p.accountId);

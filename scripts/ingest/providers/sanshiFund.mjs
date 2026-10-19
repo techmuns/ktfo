@@ -66,7 +66,7 @@ const SUMMARY_ROW = new RegExp(
  *
  * The page has no line breaks worth trusting and the labels run together, so an
  * unanchored capture after `Investor Name :` reads straight on into the next
- * column — it returned `AARTI AJAY VERMA Bank Name : HDFC BANK`, and the
+ * column — it returned `AARTI AJAY KAPIL Bank Name : HDFC BANK`, and the
  * folio came back as `9039671821 Date: 30 Jun 2026`. Each field is therefore cut
  * at the first token that starts another label, and the folio is matched as
  * DIGITS ONLY because that is what a folio is.

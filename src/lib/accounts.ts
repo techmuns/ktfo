@@ -99,7 +99,7 @@ export function stalenessNote(portfolio: Portfolio): string | null {
 
 // ── THE ACCOUNTS AN ENTITY HOLDS THAT THIS BOOK CANNOT VALUE ────────────────
 //
-//   "Rohan Verma Trust looks empty on holdings, so check that as well
+//   "Arjun Kapil Trust looks empty on holdings, so check that as well
 //    since the client has provided half of the statements already."
 //
 // The trusts' entity page listed ONE holding, and the trusts hold three

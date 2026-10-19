@@ -8,9 +8,9 @@
 //
 // ── THE FILE NAME IS NOT THE ACCOUNT, AND HERE IT IS WRONG THREE TIMES ──────
 //
-// `H46082_Simran Verma_Transation 1.pdf` is AJAY's account 37359311.
-// `H43383 -BHARAT VERMA FAMILY TRUST_Transaction.pdf` is BHARAT's 12838320.
-// `H46082_Simran Verma_Transation.pdf` is account 32387399, the one the
+// `H46082_Riya Kapil_Transation 1.pdf` is AJAY's account 37359311.
+// `H43383 -BHARAT KAPIL FAMILY TRUST_Transaction.pdf` is BHARAT's 12838320.
+// `H46082_Riya Kapil_Transation.pdf` is account 32387399, the one the
 // OTHER file names call the family trust. Every one of those would have filed a
 // statement under the wrong member. The account is the `Client ID:` the page
 // prints, and nothing else — the same rule that made `rekey()` necessary when a
@@ -86,9 +86,9 @@
 //
 // Every account prints `PAN No: AAXXX-XX-9J` — three characters of ten. That
 // cannot resolve an owner, but it can REFUSE one, and on this drop it does:
-// account 32387399 prints `Client Name: AARTI AJAY VERMA` with
-// `AAXXX-XX-8H`, and Simran's PAN is AAAPV3456C. The name says Simran, the PAN
-// says not-Simran, and the file name says a family trust whose two known PANs
+// account 32387399 prints `Client Name: AARTI AJAY KAPIL` with
+// `AAXXX-XX-8H`, and Riya's PAN is AAAPV3456C. The name says Riya, the PAN
+// says not-Riya, and the file name says a family trust whose two known PANs
 // (…3D and …4G) it does not match either. Three identifiers, three answers.
 // The account is EXCLUDED with the reason rather than attributed to a guess,
 // by the same mechanism that held folio 1000633 out until its password arrived.
@@ -96,11 +96,11 @@
 // ── AND THE FAMILY'S OWN DOCUMENTS NAME THE HOLDER (Stage 10db) ─────────────
 //
 // The paragraph above is kept as it was learnt; its three answers were three
-// readings of ONE fact. The holder lines print the TRUSTEES — Simran first, Kapil
-// second, Simran third — of a trust, which is why the PAN that rides with them
+// readings of ONE fact. The holder lines print the TRUSTEES — Riya first, Kapil
+// second, Riya third — of a trust, which is why the PAN that rides with them
 // fits neither: it is the trust's, and the statement prints three characters of
 // it. The family's own two documents say which trust, and it is neither Trust 2
-// nor Trust 3 but the UNNUMBERED "Verma Family Trust":
+// nor Trust 3 but the UNNUMBERED "Kapil Family Trust":
 //
 //   their investment register (`NEW INVESTMENT SHEET.xlsx`, `TRUST INVESTMENT`,
 //   row 17) records ₹6.77 Cr paid on 1 Jul 2025 under that name, into "ICICI
@@ -120,7 +120,7 @@
 // of the family's own demats prints `Individual-Resident`; the masked PAN fits
 // no taxpayer the registry carries a PAN for; and the trust is a canonical owner
 // of kind `trust`. The contact number and e-mail the page masks are the ones
-// Bharat's own two demats print, not Simran's, and the UCC (H43383) is the one
+// Bharat's own two demats print, not Riya's, and the UCC (H43383) is the one
 // the holding statement's own file name gives the trust — both checked by hand
 // rather than in code, because a file name is not evidence this reader will
 // rest on and a contact detail is not an identity. If any check the code does
@@ -295,8 +295,8 @@ const FIELD = (text, label, stop = "\\s{2,}|$") =>
  */
 export const BENEFICIAL_OWNER_BY_CLIENT_ID = {
   "1201090032387399": {
-    owner: "Verma Family Trust",
-    via: "the family's investment register records ₹6.77 Cr paid under \"Verma Family Trust\" on 1 Jul 2025 into the ICICI Prudential Liquid and Invesco India Arbitrage direct plans (TRUST INVESTMENT, row 17), and their 30 June review carries both funds under that name with closings of 46,654.378 and 1,092,470.994 units, this account's own balances (Transactions since inception, rows 135–137 and 148–149). The holder lines print the trust's trustees.",
+    owner: "Kapil Family Trust",
+    via: "the family's investment register records ₹6.77 Cr paid under \"Kapil Family Trust\" on 1 Jul 2025 into the ICICI Prudential Liquid and Invesco India Arbitrage direct plans (TRUST INVESTMENT, row 17), and their 30 June review carries both funds under that name with closings of 46,654.378 and 1,092,470.994 units, this account's own balances (Transactions since inception, rows 135–137 and 148–149). The holder lines print the trust's trustees.",
   },
 };
 

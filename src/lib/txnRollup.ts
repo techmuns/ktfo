@@ -231,7 +231,7 @@ export function realisedCoverageNote(sales: Txn[]): string {
  *
  * The label for a PMS account is the MANDATE, qualified by whose money it runs:
  * four pairs of mandates in this book share a strategy name (Goldstandard's
- * Aristos for Nisha and Kapil, SVAN's Velocity, Green Lantern's GLC Growth,
+ * Aristos for Meera and Kapil, SVAN's Velocity, Green Lantern's GLC Growth,
  * V.E.C's Small & Mid-Cap), and unqualified they would draw as identical rows.
  * Everything else is grouped by its PROVIDER, which is how the family names
  * these — "the direct stocks" is the broker, not a mandate.

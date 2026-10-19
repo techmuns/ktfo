@@ -635,7 +635,7 @@ export function PrivateMarket() {
        * depository window for the same ISIN in another account of the SAME
        * holder that runs past the fund statement's own date and closes on a
        * different unit count. Baring's 31 Mar statement prints 202.5 units, and
-       * Nisha's Motilal Oswal demat holds 252.5 at 31 Jul — so the row is a
+       * Meera's Motilal Oswal demat holds 252.5 at 31 Jul — so the row is a
        * statement the depository has since overtaken, and says so.
        */
       newerUnits: (() => {

@@ -6,12 +6,12 @@
  *
  * ── WHAT IT LANDS ───────────────────────────────────────────────────────────
  *
- *   "Rohan Verma Trust looks empty on holdings, so check that as well
+ *   "Arjun Kapil Trust looks empty on holdings, so check that as well
  *    since the client has provided half of the statements already."
  *
  * The two HDFC Bank NSDL statements in `source/august-2026-f/` hold 347 Swapeco
  * Pre-Series-A CCPS each — the family trusts' holdings, per the family's own
- * investment register — and print `AJAY T VERMA` on the holder line,
+ * investment register — and print `AJAY T KAPIL` on the holder line,
  * because he is the TRUSTEE. `providers/hdfcNsdl.mjs` now carries the join, keyed
  * on the DP account number the page prints and cited to the register; see the
  * long note at the top of that file for the four things that had to hold before
@@ -48,7 +48,7 @@
  * ── AND A SECOND JOIN, ON A SECOND DEPOSITORY (Stage 10db) ──────────────────
  *
  * Motilal Oswal demat 1201090032387399 prints the trustees of the unnumbered
- * "Verma Family Trust" on its holder lines, and its masked PAN fits
+ * "Kapil Family Trust" on its holder lines, and its masked PAN fits
  * none of them, so it sat EXCLUDED as an account whose holder could not be
  * established. `providers/motilalDemat.mjs` now carries the join, keyed on the
  * client ID the page prints and cited to the family's own register and review;

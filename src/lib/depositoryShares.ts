@@ -43,7 +43,7 @@
 // ── AND THE SHARES A HOLDING STATEMENT RECORDS WITH NO USABLE PRICE ─────────
 //
 // The same question arrives from a second direction. Two holding statements
-// record a LISTED share and print no price this book may use: Nisha's Motilal
+// record a LISTED share and print no price this book may use: Meera's Motilal
 // Oswal demat prints Clean Max Enviro Energy at a rate of 0.000, and Kapil's
 // ICICI NSDL statement records ESDS Software Solution at the face value it was
 // allotted at, which is not a mark (§"the value column is a mark on 14 rows and
@@ -54,7 +54,7 @@
 // because its account DID send a holding statement and the sentence a page
 // shows must say so.
 //
-// EXCEPT WHERE THE FAMILY HAVE DECIDED OTHERWISE. Nisha's 94,967 Clean Max
+// EXCEPT WHERE THE FAMILY HAVE DECIDED OTHERWISE. Meera's 94,967 Clean Max
 // shares sit in her statement's lock-in + freeze balance, and on 28 Sep 2026
 // the family answered *"keep them unvalued for now"* (Stage 10cx,
 // `shared/keptUnvalued.mjs`). The book's reason for that row names the
@@ -62,7 +62,7 @@
 // either — a price from any source, not only the ICICI statement's mark the
 // question was asked about. ESDS, which no decision names, is still valued.
 // REVERSED 14 Oct 2026 (Stage 10dz, "include this in the dashboard data as
-// well"): the table is empty, so Nisha's Clean Max is valued again. Gate 6
+// well"): the table is empty, so Meera's Clean Max is valued again. Gate 6
 // stays for the next decision.
 //
 // ── AND EVERY SHARE THE THREE MOTILAL HOLDING STATEMENTS RECORD (Stage 10cz) ─
@@ -237,14 +237,14 @@ export function depositoryShareCandidates(
  *      read on the row's own account and ISIN, the key `build-book` reads it on).
  *
  * CLEAN MAX IS THE CASE GATE 4 WAS WRITTEN AROUND. Kapil's ICICI NSDL statement
- * carries 94,967 shares of it and Nisha's Motilal Oswal statement another
+ * carries 94,967 shares of it and Meera's Motilal Oswal statement another
  * 94,967, at a rate of 0.000. Same ISIN and same count, so it had to be settled
  * whether these are one holding or two — and the family's own review carries
  * 1,89,934 across "ICICI Bank / MOPWM", exactly twice 94,967. Two owners, two
  * statements, two holdings; a transfer between two accounts of ONE owner would
- * be refused. Gate 4 lets Nisha's through, and gate 6 then stops it: the family
+ * be refused. Gate 4 lets Meera's through, and gate 6 then stops it: the family
  * decided on 28 Sep 2026 to keep those shares unvalued — reversed on 14 Oct
- * 2026 (Stage 10dz), so on this book gate 6 refuses nothing and Nisha's row is
+ * 2026 (Stage 10dz), so on this book gate 6 refuses nothing and Meera's row is
  * a candidate.
  */
 export function unpricedStatementShareCandidates(

@@ -120,7 +120,7 @@ const vehicles = heldFundVehicles(ded);
  * statement records and nothing values, under the key the live layer files them
  * by (`lookthroughCompanies`, Stage 10cz). Built off `stocks` alone, a fund's
  * Kaynes line landed on the filing's spelling here while the page — on a day no
- * quote had made Nisha's demat line a row — needed the recorded line to put it
+ * quote had made Meera's demat line a row — needed the recorded line to put it
  * on the family's own Kaynes.
  */
 const companies = lookthroughCompanies(ded);

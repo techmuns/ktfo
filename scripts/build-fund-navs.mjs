@@ -317,7 +317,7 @@ function indexByIsin(text) {
  * Keyed on the line AND on the scheme. A previous NAV is a fact about the
  * SCHEME — the ISIN AMFI publishes it against — and not about which of the
  * book's lines happened to reach that ISIN on the last run. When a new line
- * reaches an ISIN first (Stage 10db: the Verma Family Trust's
+ * reaches an ISIN first (Stage 10db: the Kapil Family Trust's
  * demat entered the book holding the Kotak Arbitrage units Kapil's depository
  * tape also carries), the entry moves to the new line's key, and a lookup on
  * the key alone dropped the scheme's day change for a day. The key still wins

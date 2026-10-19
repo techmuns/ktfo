@@ -78,7 +78,7 @@ export function extract({ grid, meta }) {
   const pan = (/PAN\s*No\.?\s*:?\s*([A-Z]{5}\d{4}[A-Z])/i.exec(flat) || [])[1] || null;
   const klass = (/(?:Unit\s*)?Class\s*(?:of\s*Units)?\s*:?\s*([A-Z]\d?)\b/i.exec(flat) || [])[1] || null;
   const units = num((/Total\s*Units\s*(?:Outstanding)?\s*:?\s*([\d,]+\.\d+)/i.exec(flat) || [])[1]);
-  // `Dear Rohan Verma,` is the most reliable name on the page — the
+  // `Dear Arjun Kapil,` is the most reliable name on the page — the
   // address block wraps and the letterhead is the manager's.
   const owner = trimPersonName((/Dear\s+([A-Z][A-Za-z .']{3,50}?)\s*,/.exec(flat) || [])[1]);
 

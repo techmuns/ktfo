@@ -8,7 +8,7 @@
 //   Buoyant Opportunities Strategy — Cat III, Class A4   Kapil    ₹49.30 Cr
 //   Helios Flexi Cap Fund — Direct Growth                Kapil    ₹31.00 Cr
 //   Motilal Oswal Founders Fund Series II — Class G1     Kapil    ₹21.83 Cr
-//   Motilal Oswal Active Momentum Fund — Direct Growth   Nisha  ₹21.42 Cr
+//   Motilal Oswal Active Momentum Fund — Direct Growth   Meera  ₹21.42 Cr
 //
 // ── ONE READER, SIX DECLARED LAYOUTS ────────────────────────────────────────
 //
@@ -410,7 +410,7 @@ export function mfPurchaseFlows({ net, heldUnits, security }) {
 // family's own consolidated review, which carries Buoyant at ₹70.86 Cr invested.
 //
 // THE GAP IS A CLASS SWITCH. Both folios began in Class A1 and were moved into
-// Class A4 on the day of a top-up — Nisha's on 01/02/2025 beside a ₹10 Cr
+// Class A4 on the day of a top-up — Meera's on 01/02/2025 beside a ₹10 Cr
 // deposit, Kapil's on 01/06/2026 beside a ₹25 Cr one. The fund books a switch as
 // a Unit Redemption of the old class and a Units Allotment of the new one AT
 // THAT DAY'S NAV, so the Cost it prints for the Class A4 units restarts at the
@@ -1409,7 +1409,7 @@ function askArfJointHolders(text) {
  *
  * The fund's top holdings and the account's TWRR are ARCHIVED as sections, as
  * printed, and nothing reads either as a return or a look-through. The TWRR is
- * the ACCOUNT's, not the scheme's: Kapil's and Nisha's snaps print the same
+ * the ACCOUNT's, not the scheme's: Kapil's and Meera's snaps print the same
  * holdings to the line and the same 1-month and 3-month figures, and DIFFERENT
  * 1-year and since-inception ones (11.56% / 10.28% against 12.02% / 10.65%) —
  * the two folios sat in different unit classes until Kapil's switched in June
@@ -1708,7 +1708,7 @@ const LAYOUTS = [
     account: (text) => FIELD(text, "Account", String.raw`(\d{4,})`),
     folio: (text) => FIELD(text, "Folio", String.raw`([A-Z0-9]{4,})`),
     asOf: (text) => toIso((/As of\s+(\d{2}\/\d{2}\/\d{4})/i.exec(text) ?? [])[1]),
-    // `Account : 103473 AJAY THAKURDAS VERMA` — the holder is on the
+    // `Account : 103473 AJAY THAKURDAS KAPIL` — the holder is on the
     // title line, after the account number and with no label of its own.
     holder: (text) => (/Account\s*:\s*\d{4,}\s+([A-Z][A-Z\s]{6,44}?)\s*(?:\n|Buoyant)/i.exec(text) ?? [])[1],
     /** The deposits, the per-class allotments and the switch — see `buoyantFlows`. */
@@ -1892,7 +1892,7 @@ const LAYOUTS = [
     security: (_t, r) => r.scheme,
     folio: (text) => (/Folio No\.?\s*:\s*(\d{4,})/i.exec(text) ?? [])[1] ?? null,
     asOf: (text) => toIso((/Account Summary as on\s+(\d{2}-\d{2}-\d{4})/i.exec(text) ?? [])[1]),
-    // `AJAY VERMA Mode of Holding : SINGLE` — the holder shares its
+    // `AJAY KAPIL Mode of Holding : SINGLE` — the holder shares its
     // printed line with the next label, so it is cut at that label.
     holder: (text) => (/\n\s*([A-Z][A-Z\s]{6,44}?)\s+Mode of Holding/i.exec(text) ?? [])[1],
     flowsFrom: threePFlows,
@@ -2335,9 +2335,9 @@ const LAYOUTS = [
     /**
      * The holder sits on the line under the Personal Information header, with
      * the NEXT column's label running straight on after it — `ANKITA BHARAT
-     * VERMA Bank Account Details`. Cut at that label, not at whitespace:
+     * KAPIL Bank Account Details`. Cut at that label, not at whitespace:
      * the flat text collapses runs of spaces, so a `\s{2,}` cut took one letter
-     * of "Bank" with the name and produced "ANKITA BHARAT VERMA B".
+     * of "Bank" with the name and produced "ANKITA BHARAT KAPIL B".
      */
     holder: (text) => (/Personal Information Folio No[^\n]*\n\s*([A-Z][A-Z .]*?)(?=\s+(?:Bank|Address|Email|Mobile|Telephone|Joint|Nominee|DP|Client|Distributor)\b|\s*$)/m
       .exec(text) ?? [])[1]?.trim() ?? null,
@@ -2795,7 +2795,7 @@ const ALLOTMENT = new RegExp(
  * A labelled field, cut at the first token that begins another label.
  *
  * The capture is GREEDY TO END OF LINE and then cut, not lazy. These pages put
- * two columns on one printed line — `Investor Name : Kapil Verma Branch
+ * two columns on one printed line — `Investor Name : Chiraag Kapil Branch
  * Address : Imperial Mahal…` — and a lazy `([^\n]{1,80}?)` with nothing
  * anchoring its right edge matches the shortest thing that satisfies the
  * pattern, which is one character. It failed silently on every layout that
@@ -2813,7 +2813,7 @@ function FIELD(text, label, pattern = String.raw`([^\n]{1,90})`) {
  * the PAN is what settles who a name belongs to.
  *
  * Each issuer labels the holder differently and two of them do not label it at
- * all: Buoyant prints `Account : 103473 AJAY THAKURDAS VERMA` on the
+ * all: Buoyant prints `Account : 103473 AJAY THAKURDAS KAPIL` on the
  * title line, and Helios puts the name on its own line above the address. The
  * labels are tried in order and the bare-line fallback is LAST, so a labelled
  * name always wins over a guess at the layout.
@@ -2829,8 +2829,8 @@ function investor(text, layout) {
    * A TRUST IS NOT A PERSON, AND `trimPersonName` DOES NOT KNOW THAT.
    *
    * It strips trailing name-ish words, which is right for `Kapil Thakurdas
-   * Verma` and destroys `Verma Family Trust 2` — both trusts
-   * came back as plain "Rohan Verma", folding two separate taxpayers into
+   * Kapil` and destroys `Kapil Family Trust 2` — both trusts
+   * came back as plain "Arjun Kapil", folding two separate taxpayers into
    * the man they are named after AND into his own folio. Three PANs, one owner,
    * every per-entity total wrong.
    *

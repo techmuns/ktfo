@@ -21,7 +21,7 @@ import type { Account, Portfolio } from "@/lib/types";
 import type { TxnData, LotData, IncomeData } from "@/lib/ledgerModel";
 import { publicPrivateSplit } from "@/lib/analytics";
 
-/** The address parameter that carries a scope: `?members=kapil-verma,…`. */
+/** The address parameter that carries a scope: `?members=chiraag-kapil,…`. */
 export const MEMBERS_PARAM = "members";
 
 export type MemberKind = "member" | "trust" | "unattributed";
@@ -98,7 +98,7 @@ export function scopeLabel(ids: readonly string[] | null, options: readonly Memb
   return `${names.length} members`;
 }
 
-/** "Kapil Verma" → "Kapil"; a trust keeps enough of its name to stay distinct. */
+/** "Chiraag Kapil" → "Kapil"; a trust keeps enough of its name to stay distinct. */
 function firstName(label: string): string {
   const trust = label.match(/trust\s*(\d+)?$/i);
   if (trust) return trust[1] ? `Trust ${trust[1]}` : "Family Trust";

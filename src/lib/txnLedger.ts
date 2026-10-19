@@ -350,7 +350,7 @@ export function datedSectionRollup(
  *    of both the transactions even if they are held by 2 separate entities."*
  *
  * An ACCOUNT row is one account's record, so a strategy two members each hold —
- * Aristos for Kapil and for Nisha, Green Lantern's GLC Growth Fund, Sanshi's
+ * Aristos for Kapil and for Meera, Green Lantern's GLC Growth Fund, Sanshi's
  * five folios — drew one row per account. They are clubbed here into one line
  * whose figures are the members' own totals (`datedTotals`, so each is summed
  * the way the footer sums it, a withheld figure skipped and counted), and the

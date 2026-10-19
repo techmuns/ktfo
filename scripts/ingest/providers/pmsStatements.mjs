@@ -117,7 +117,7 @@ export const PROVIDERS = {
    * reader has to accept: the files carry no client-code prefix
    * (`askimpms_10034025_…`), and the account line carries a SECOND number, the
    * client code, before the name — `Account : 10034025 0034926 - Kapil T
-   * Verma` (see readIdentity).
+   * Kapil` (see readIdentity).
    */
   ask: {
     name: "ASK Investment Managers Limited",
@@ -152,7 +152,7 @@ export const PROVIDERS = {
  * V.E.C Assago filed as `VECBES0004_145052_…` for every drop until August, when
  * the same account arrived as `G128005_145052_…` — and `^G\d` is Goldstandard's
  * pattern. Twenty-three documents, two accounts and ₹15.8 Cr of Kapil's and
- * Nisha's money changed manager on a filename, while the letterhead on page one
+ * Meera's money changed manager on a filename, while the letterhead on page one
  * of every one of them said V.E.C ASSAGO CAPITAL MANAGEMENT LLP.
  *
  * The prefix stays as the LAST resort because it earns its place — the appraisal
@@ -501,7 +501,7 @@ function readIdentity(pages) {
 
   // Identity is read off INDIVIDUAL TEXT SPANS, anchored at both ends — not out
   // of the joined line. The report engine emits the header line as one span
-  // ("Account : 100023 Kapil Verma"), but the joined line runs on
+  // ("Account : 100023 Chiraag Kapil"), but the joined line runs on
   // into whatever else sits at that y: a column heading from the table below
   // ("Type Bonus", "Sale Amount", "Ex Date") reads as part of the owner's name
   // when the capture is unanchored, and the name then matches no canonical
@@ -513,10 +513,10 @@ function readIdentity(pages) {
   for (let i = 0; i < spans.length; i++) {
     const s = spans[i];
     // Three printed forms, one anchored pattern:
-    //   Account : 100023 Kapil Verma          (Goldstandard appraisal)
-    //   Account: 100022 - Nisha Verma          (Goldstandard fact sheet)
-    //   Account: 3517383 - AJAY T VERMA - CBP0142      (Carnelian / Green Lantern)
-    //   Account: 128005 - AJAY VERMA - VECBES0004      (V.E.C Assago)
+    //   Account : 100023 Chiraag Kapil          (Goldstandard appraisal)
+    //   Account: 100022 - Meera Kapil          (Goldstandard fact sheet)
+    //   Account: 3517383 - AJAY T KAPIL - CBP0142      (Carnelian / Green Lantern)
+    //   Account: 128005 - AJAY KAPIL - VECBES0004      (V.E.C Assago)
     // The name is optional, the separating dash is optional, and a trailing
     // client code is consumed rather than read as part of the name.
     //
@@ -532,8 +532,8 @@ function readIdentity(pages) {
     // ASK prints a SECOND NUMBER before the name — its own client code — in two
     // spellings, and the general pattern refuses both because a name may not
     // start with a digit:
-    //   Account : 10034025 0034926 - Kapil Verma      (dated statements)
-    //   Account: 10034025 - 0034926 - Kapil Verma     (fact sheet)
+    //   Account : 10034025 0034926 - Chiraag Kapil      (dated statements)
+    //   Account: 10034025 - 0034926 - Chiraag Kapil     (fact sheet)
     // The first number is the account (the file name agrees); the second is the
     // client code and is never read as the account.
     const ask = /^Account\s*:?\s*(\d{6,})\s*-?\s*(\d{5,})\s*-\s*([A-Za-z][A-Za-z.'\- ]{2,60}?)$/.exec(s);
@@ -564,8 +564,8 @@ function readIdentity(pages) {
       // The two delivery-specific spellings of the span BENEATH a bare account
       // number. Each is accepted only in this position — never as a free-floating
       // span — because a digit-led code is too weak a signal to read anywhere else.
-      //   0034926 - Kapil Verma     (ASK's P&L account: code, then name)
-      //   Kapil Verma - 02AS23        (Marathon: name, then a digit-led code)
+      //   0034926 - Chiraag Kapil     (ASK's P&L account: code, then name)
+      //   Chiraag Kapil - 02AS23        (Marathon: name, then a digit-led code)
       const askNext = /^(\d{5,})\s*-\s*([A-Za-z][A-Za-z.'\- ]{2,60}?)$/.exec(next);
       const marathonNext = /^([A-Za-z][A-Za-z.'\- ]{2,60}?)\s*-\s*(\d{2}[A-Z]{2,4}\d{2,4})$/.exec(next);
       if (acct[2]) out.owner ??= trimPersonName(acct[2].replace(/\s+/g, " "));
@@ -578,7 +578,7 @@ function readIdentity(pages) {
         out.owner ??= trimPersonName(marathonNext[1].replace(/\s+/g, " "));
       }
     }
-    // Green Lantern / Carnelian: `AJAY T VERMA - GLC0780`. The DIGITS in
+    // Green Lantern / Carnelian: `AJAY T KAPIL - GLC0780`. The DIGITS in
     // the client code are what makes this safe — the same dash form also carries
     // the fund ("GREEN LANTERN CAPITAL LLP - GLC GROWTH FUND"), and requiring a
     // numeric code stops the manager's own name being read as the client's.
@@ -1853,7 +1853,7 @@ function printedLines(flowOf, labels, values) {
  * The holding is the bank balance and only that, and only where the balance
  * sheet says it is all there is — investments at cost nil, no unrealised gain,
  * no current liabilities, no other current asset. Both of the family's ASK
- * mandates are closed: Kapil's balance sheet carries ₹0.34 at the bank, Nisha's
+ * mandates are closed: Kapil's balance sheet carries ₹0.34 at the bank, Meera's
  * ₹0.01. A measured nil, not an absence.
  */
 function readProfitAndLoss(pages, source, warnings, window) {
@@ -2164,7 +2164,7 @@ export function extract({ grid, meta }) {
     flows = readFactSheetSummary(pages, source, { periodFrom: id.inceptionDate, periodTo: id.asOf });
     if (!flows) warn(warnings, "portfolio-summary-not-found", reportType);
     // A fact sheet whose own summary prints a portfolio value of NIL has no
-    // holdings table to find — a closed mandate (Nisha's ASK account) holds
+    // holdings table to find — a closed mandate (Meera's ASK account) holds
     // nothing to list. "No sector table" there is the statement being right,
     // not the reader failing, and a warning would send the next reader looking
     // for a table that was never printed. Anywhere else the warning stands.

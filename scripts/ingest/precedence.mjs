@@ -139,7 +139,7 @@ export const PRECEDENCE = {
    * for holdings — not its own Category III account statement.
    *
    * Both report the same position for folio 103473 and agree, so for that folio
-   * the choice is cosmetic. It is not cosmetic for 103472: Nisha's ₹27.69 Cr
+   * the choice is cosmetic. It is not cosmetic for 103472: Meera's ₹27.69 Cr
    * folio sends the PMS set and NO account statement, so naming the account
    * statement authoritative would leave her holding out of the book entirely.
    * The appraisal also carries the primitives this book wants — quantity, unit

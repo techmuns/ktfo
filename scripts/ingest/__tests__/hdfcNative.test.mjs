@@ -84,7 +84,7 @@ function statement() {
     row(546.8, it(36.6, 222.7, "HDFC Bank Depository Holding Details")),
     row(519.6, it(37.0, 176.2, "Holding Statement as on : 05/10/2026"), it(657.9, 117.5, "Business Date : 06/10/2026")),
     row(488.8, it(36.4, 78.9, "DP ID : IN300476"), it(163.2, 128.9, "DP Account No : 10295743")),
-    row(459.4, it(36.4, 99.5, "AJAY T VERMA")),
+    row(459.4, it(36.4, 99.5, "AJAY T KAPIL")),
     row(437.0, it(36.4, 40.0, "MUMBAI")),
     row(374.0,
       it(44.0, 63.9, "Account Type"), it(151.8, 19.4, "ISIN"), it(245.9, 72.2, "Company Name"),
@@ -165,7 +165,7 @@ const near = (a, b, tol = 0.005) => typeof a === "number" && Math.abs(a - b) <= 
 const base = run(statement());
 ok("the native statement reads", base.status === "ok", `status ${base.status} · ${codes(base).join(", ")}`);
 ok("its account is the one the page prints", base.accountNo === "10295743", `got ${base.accountNo}`);
-ok("its holder is the one the page prints, verbatim", base.owner === "AJAY T VERMA", `got ${base.owner}`);
+ok("its holder is the one the page prints, verbatim", base.owner === "AJAY T KAPIL", `got ${base.owner}`);
 ok("its as-of is the balances' date, not the rates'", base.asOf === "2026-10-05", `got ${base.asOf}`);
 ok("it is a direct depository account", base.engagement === "Direct");
 ok("the engagement names the DP and the balance type",

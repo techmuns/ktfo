@@ -45,8 +45,8 @@ const reports = [
     nums: { O: "quantity", Q: "unitPrice", V: "brokerageRate", X: "stt", AB: "settlementAmount" } },
 ];
 const controls = {
-  "10032723": { owner: "nisha-verma", counts: [3644, 1101, 278, 1040], tdsTransfers: 195, closing: 0.01, contribution: 46000000, withdrawal: 85383320.61, dividend: 1197629.52, tds: 11152.10 },
-  "10034025": { owner: "kapil-verma", counts: [3523, 1041, 262, 968], tdsTransfers: 232, closing: 0.34, contribution: 85000000, withdrawal: 151211941.19, dividend: 1955242.11, tds: 22052.84 },
+  "10032723": { owner: "meera-kapil", counts: [3644, 1101, 278, 1040], tdsTransfers: 195, closing: 0.01, contribution: 46000000, withdrawal: 85383320.61, dividend: 1197629.52, tds: 11152.10 },
+  "10034025": { owner: "chiraag-kapil", counts: [3523, 1041, 262, 968], tdsTransfers: 232, closing: 0.34, contribution: 85000000, withdrawal: 151211941.19, dividend: 1955242.11, tds: 22052.84 },
 };
 const bookText = fs.readFileSync(path.join(ROOT, "src/data/glowData.ts"), "utf8");
 const book = (name) => JSON.parse(new RegExp(`export const ${name}[^=]*= ([\\s\\S]*?);\\n`).exec(bookText)[1]);
@@ -142,8 +142,8 @@ for (const [account, want] of Object.entries(controls)) {
 }
 
 for (const [account, owner, value, cost] of [
-  ["103472", "nisha-verma", 282663341.57, 248500000],
-  ["103473", "kapil-verma", 503276370.81, 460058861.66],
+  ["103472", "meera-kapil", 282663341.57, 248500000],
+  ["103473", "chiraag-kapil", 503276370.81, 460058861.66],
 ]) {
   const id = `buoyant-capital-${account}`;
   const a = accounts.find((a) => a.accountId === id);
@@ -153,8 +153,8 @@ for (const [account, owner, value, cost] of [
     && near(rows[0].marketValue, value) && near(rows[0].costBasis, cost));
 }
 for (const [account, owner, realised, returned, count] of [
-  ["9039917111", "kapil-verma", 8039138.56, 208039138.56, 2],
-  ["9039917144", "nisha-verma", 5908505.71, 193908505.71, 3],
+  ["9039917111", "chiraag-kapil", 8039138.56, 208039138.56, 2],
+  ["9039917144", "meera-kapil", 5908505.71, 193908505.71, 3],
 ]) {
   const id = `ask-absolute-return-fund-${account}`;
   const a = accounts.find((a) => a.accountId === id);

@@ -66,7 +66,7 @@
  * The look-through store is built from a READ-ONLY AmfiBeas checkout, and a
  * scheme reaches it only when `build-lookthrough` is run with that checkout
  * present. When a delivery brings a scheme the store has never seen — the
- * Verma Family Trust's demat brought Invesco India Arbitrage and
+ * Kapil Family Trust's demat brought Invesco India Arbitrage and
  * Kotak Arbitrage, printed `INVES ARBF D-GROW` and `KOTAK ARBFD DP GROW` — the
  * first tier has nothing to join, and the clipped spelling reached the screen.
  * A one-word search for "arbitrage" then found neither fund, while the same

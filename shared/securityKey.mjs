@@ -252,7 +252,7 @@ export function stripDepositoryTail(name) {
  * this join controls, agreeing:
  *
  *   sbi → state-bank-of-india
- *     `SBI - EQ`, Nisha's Motilal demat 1201090012838316, INE062A01020 → SBIN
+ *     `SBI - EQ`, Meera's Motilal demat 1201090012838316, INE062A01020 → SBIN
  *     `State Bank of India` / `State Bank Of India`, four PMS statements → SBIN
  *   the-karur-vys → karur-vysya-bank
  *     `THE KARUR VYS-EQ`, the same demat, INE036D01028 → KARURVYSYA

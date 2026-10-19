@@ -1115,7 +1115,7 @@ export function PortfolioMonitor() {
      *    cap and large cap both. It should be a single name only."
      *
      * The list offered `Kaynes Technology` AND `KAYNES TECHNOLOGY INDIA
-     * LIMITED`. They are one company: the book holds it (Nisha's demat) and
+     * LIMITED`. They are one company: the book holds it (Meera's demat) and
      * HDFC Balanced Advantage discloses it, and the look-through had already
      * joined the two on the ISIN — onto the SAME row. The list alone still
      * compared NAMES, so the fund's spelling of a company the book holds was
@@ -1379,7 +1379,7 @@ export function PortfolioMonitor() {
     }
     /**
      * ONE ROW PER STRATEGY, NOT PER ACCOUNT (Stage 10dn). Two members' accounts
-     * of one strategy — Goldstandard's Aristos for Kapil and Nisha, Green
+     * of one strategy — Goldstandard's Aristos for Kapil and Meera, Green
      * Lantern's GLC Growth, SVAN's Velocity, V.E.C's Small and Mid-Cap — were
      * two rows with one name, told apart only by the Entities column. They are
      * one row now, keyed on the manager and the strategy within the row's own
@@ -1533,7 +1533,7 @@ export function PortfolioMonitor() {
        * different decisions about one company and must read as two rows — one
        * under Direct Equity, one under the mandate that chose it — rather than
        * silently landing under whichever route the first lot happened to take.
-       * ICICI Bank is held both ways in this drop — Nisha's own demat and
+       * ICICI Bank is held both ways in this drop — Meera's own demat and
        * Goldstandard's Aristos mandate — and it is two rows, one under Direct
        * Equity and one inside the mandate, which is this key doing its job. It
        * carries no realised figure, so no money moves between them (MH-17).
@@ -4331,7 +4331,7 @@ export function PortfolioMonitor() {
                             <>
                               {/* ONE ACCOUNT, ONE PAGE: the name opens it. SEVERAL
                                   ACCOUNTS RUN ONE STRATEGY — Aristos for Kapil and for
-                                  Nisha — and are one row (Stage 10dn); there the name
+                                  Meera — and are one row (Stage 10dn); there the name
                                   is not a link, because it would have to pick one
                                   member's account, and each account's own line under it
                                   opens that account's page, where its shares are. */}
@@ -5987,8 +5987,8 @@ function TransactionsView({ selected, sector, entity, sectorByKey, axis, section
       (side === "all" || t.side === (side === "in" ? "Buy" : "Sell")) &&
       // Matched on the CANONICAL owner, not on the account label: the label
       // prints the owner's name as that statement spelled it ("Kapil Thakurdas
-      // Verma"), and the filter offers the canonical one ("Kapil
-      // Verma"). Comparing the two strings never matches, which would
+      // Kapil"), and the filter offers the canonical one ("Kapil
+      // Kapil"). Comparing the two strings never matches, which would
       // empty the tape the moment anyone filtered by entity.
       (entity === "All" || ownerDisplayName(t.ownerId) === entity) &&
       (sector === "All" || sectorByKey.get(t.securityKey) === sector) &&

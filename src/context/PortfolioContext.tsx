@@ -166,7 +166,7 @@ export type MemberScope = {
   /** Owner ids the address named that the book does not carry. */
   unknown: string[];
   options: MemberOption[];
-  /** The selector's own label: "Whole family", a name, "Kapil + Nisha", "3 members". */
+  /** The selector's own label: "Whole family", a name, "Kapil + Meera", "3 members". */
   label: string;
   setSelected: (ids: string[] | null) => void;
   /**

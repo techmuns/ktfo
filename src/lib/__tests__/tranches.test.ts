@@ -148,7 +148,7 @@ for (const k of keys) {
 ok("at least one position was bought over several dates", multiTranche > 0, `${multiTranche} of ${keys.length}`);
 
 console.log("\n── the earlier rupee is worth more, which is the whole question ──");
-// Nisha's Sanshi folio: four contributions, NAV 100.00 → 123.84. If the split
+// Meera's Sanshi folio: four contributions, NAV 100.00 → 123.84. If the split
 // were size-weighted rather than unit-weighted every tranche would show the same
 // return, which is exactly the figure the family asked to have broken apart.
 const ANKITA = trancheKey("sanshi-fund-9069671554", "sanshi-fund-i-open-ended-aif-cat-iii-class-e");

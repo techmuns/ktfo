@@ -34,7 +34,7 @@ const txn = (o: Partial<Txn>): Txn => ({
   side: "Buy", qty: 10, price: 100, amount: 1000, realized: null, isin: null, isinFrom: null, ...o,
 });
 const acct = (o: Partial<Account>): Account => ({
-  accountId: "a", provider: "Provider A", accountNo: "1", owner: "Kapil Verma",
+  accountId: "a", provider: "Provider A", accountNo: "1", owner: "Chiraag Kapil",
   ownerId: "ajay", strategy: null, engagement: "PMS", providerEngagement: null,
   members: [], asOf: "2026-04-01", inceptionDate: null, custodian: null,
   noPositionsReason: null, ...o,
@@ -184,11 +184,11 @@ const acct = (o: Partial<Account>): Account => ({
 {
   const rows = [
     txn({ provider: "Provider A", accountNo: "1", account: "Kapil · A 1" }),
-    txn({ provider: "Provider A", accountNo: "2", account: "Nisha · A 2" }),
+    txn({ provider: "Provider A", accountNo: "2", account: "Meera · A 2" }),
   ];
   const accounts = [
-    acct({ accountId: "a1", accountNo: "1", strategy: "Aristos Equity Portfolio", owner: "Kapil Verma" }),
-    acct({ accountId: "a2", accountNo: "2", strategy: "Aristos Equity Portfolio", owner: "Nisha Verma" }),
+    acct({ accountId: "a1", accountNo: "1", strategy: "Aristos Equity Portfolio", owner: "Chiraag Kapil" }),
+    acct({ accountId: "a2", accountNo: "2", strategy: "Aristos Equity Portfolio", owner: "Meera Kapil" }),
   ];
   const gs = rollup(rows, accounts, "manager");
   ok("two accounts on ONE strategy are two lines, not one", gs.length === 2);
@@ -220,8 +220,8 @@ const acct = (o: Partial<Account>): Account => ({
     txn({ provider: "P", accountNo: "2", securityKey: "x" }),
   ];
   const accounts = [
-    acct({ accountNo: "1", owner: "Kapil Verma", provider: "P" }),
-    acct({ accountNo: "2", owner: "Kapil Verma", provider: "P" }),
+    acct({ accountNo: "1", owner: "Chiraag Kapil", provider: "P" }),
+    acct({ accountNo: "2", owner: "Chiraag Kapil", provider: "P" }),
   ];
   ok("by entity, one member's two accounts are ONE line", rollup(rows, accounts, "entity").length === 1);
   ok("by manager, the same two are two", rollup(rows, accounts, "manager").length === 2);

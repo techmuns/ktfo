@@ -97,7 +97,7 @@ export function MemberScopeSelect() {
 /**
  * A page whose subject belongs only to members outside the chosen scope.
  *
- * A mandate page for Nisha's account, opened while the scope is Kapil alone,
+ * A mandate page for Meera's account, opened while the scope is Kapil alone,
  * must not say "no account in this book" or "fully exited": both are claims
  * about the BOOK, and the book carries it. What is true is that the scope at the
  * top of the page leaves it out, so this says that, names whose it is, and

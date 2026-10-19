@@ -47,7 +47,7 @@ const GOLDEN = [
     label: "Goldstandard · account 100023 · Aristos Equity Portfolio · as of 2026-07-10",
     match: { provider: /goldstandard/i, accountNo: "100023" },
     asOf: "2026-07-10",
-    owner: { printed: "Kapil Verma", ownerId: "kapil-verma" },
+    owner: { printed: "Chiraag Kapil", ownerId: "chiraag-kapil" },
     inceptionDate: "2025-12-26",
     strategy: "Aristos Equity Portfolio",
     engagement: "PMS",
@@ -167,7 +167,7 @@ const GOLDEN = [
     label: "Goldstandard · account 100022 · Aristos Equity Portfolio · as of 2026-07-10",
     match: { provider: /goldstandard/i, accountNo: "100022" },
     asOf: "2026-07-10",
-    owner: { printed: "Nisha Verma", ownerId: "nisha-verma" },
+    owner: { printed: "Meera Kapil", ownerId: "meera-kapil" },
     strategy: "Aristos Equity Portfolio",
     engagement: "PMS",
     totals: {
@@ -191,7 +191,7 @@ const GOLDEN = [
     label: "Green Lantern · account 510861 · GLC Growth Fund · as of 2026-06-25",
     match: { provider: /green lantern/i, accountNo: "510861" },
     asOf: "2026-06-25",
-    owner: { printed: "AJAY T VERMA", ownerId: "kapil-verma" },
+    owner: { printed: "AJAY T KAPIL", ownerId: "chiraag-kapil" },
     engagement: "PMS",
     totals: {
       reportType: "appraisal",
@@ -212,7 +212,7 @@ const GOLDEN = [
     label: "Carnelian · account 3517383 · Carnelian Bespoke Portfolio · as of 2026-07-10",
     match: { provider: /carnelian/i, accountNo: "3517383" },
     asOf: "2026-07-10",
-    owner: { printed: "AJAY T VERMA", ownerId: "kapil-verma" },
+    owner: { printed: "AJAY T KAPIL", ownerId: "chiraag-kapil" },
     engagement: "PMS",
     totals: {
       reportType: "appraisal",
@@ -223,10 +223,10 @@ const GOLDEN = [
     positionCounts: { equity: 9, cash: 2 },
   },
   {
-    label: "360 ONE · Rohan Verma CRN60117 · as on 2026-06-30",
+    label: "360 ONE · Arjun Kapil CRN60117 · as on 2026-06-30",
     match: { provider: /360 ?one/i, accountNo: "60117" },
     asOf: "2026-06-30",
-    owner: { printed: "Rohan Verma", ownerId: "rohan-verma" },
+    owner: { printed: "Arjun Kapil", ownerId: "arjun-kapil" },
     // p2 "SUMMARY BY ENGAGEMENT MODELS". Never Advisory-by-default.
     engagement: "Distribution",
     members: ["CRN60117LE53288", "CRN60117LE51867"],
@@ -257,10 +257,10 @@ const GOLDEN = [
     ],
   },
   {
-    label: "360 ONE · Kapil Verma CRN37702 · as on 2026-05-31",
+    label: "360 ONE · Chiraag Kapil CRN37702 · as on 2026-05-31",
     match: { provider: /360 ?one/i, accountNo: "37702" },
     asOf: "2026-05-31",
-    owner: { printed: "Mr. KAPIL VERMA", ownerId: "kapil-verma" },
+    owner: { printed: "Mr. CHIRAAG KAPIL", ownerId: "chiraag-kapil" },
     engagement: "Distribution",
     members: ["CRN37702LE53856", "CRN37702E29000"],
     holdings: [

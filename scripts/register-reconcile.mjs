@@ -214,7 +214,7 @@ for (const [k, v] of [...ownerRows].sort((a, b) => b[1] - a[1])) {
 say();
 say("   Every alias in the registry carries a surname and the initials rule returns a one-word");
 say("   name unchanged, so `AJAY`, `ANKITA`, `BHARAT` and `AARTI` can match nothing. Only the");
-say("   fully-spelled trust names resolve — and `Verma Family Trust` with no numeral");
+say("   fully-spelled trust names resolve — and `Kapil Family Trust` with no numeral");
 say("   resolves to neither trust, which is the hazard this book already names for that string.");
 say("   Adding four aliases would fix it and is a DECISION, not a parsing rule: a bare `AJAY` is");
 say("   unambiguous only because this family happens to have one, and the registry resolves on a");

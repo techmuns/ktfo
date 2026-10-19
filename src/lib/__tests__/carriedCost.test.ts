@@ -187,7 +187,7 @@ console.log("\n── and the family's own review agrees with the book, not with
 // they paid, product by product, cited through the taxonomy map rather than
 // typed.
 const WB = path.join(ROOT, "source/august-2026-d",
-  "Final Consolidated Verma Family Review as on 30 June 2026.xlsx");
+  "Final Consolidated Kapil Family Review as on 30 June 2026.xlsx");
 ok("the family's consolidated review is on disk to check against", fs.existsSync(WB), WB);
 if (fs.existsSync(WB)) {
   const wb = XLSX.readFile(WB);

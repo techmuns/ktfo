@@ -13,7 +13,7 @@
 //
 // A tranche's value today is ITS OWN units at today's NAV. Split a position's
 // value across its contributions by their SIZE instead and you have invented
-// the answer to the question being asked: Nisha's Sanshi folio bought units at
+// the answer to the question being asked: Meera's Sanshi folio bought units at
 // 100.00 in March and at 123.84 in October, so the March rupee is worth 24%
 // more than the October one. A size-weighted split reports both at the same
 // return — the average — which is precisely the figure the family is asking to

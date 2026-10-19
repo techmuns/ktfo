@@ -35,7 +35,7 @@ const read = (text) => {
 const BARING = `
 Baring Private Equity India Fund 6
 Statement of Account as on 31-Mar-2026
-Folio # AIFM_TEST_0001 : NISHA VERMA
+Folio # AIFM_TEST_0001 : MEERA KAPIL
 Class of Units / Class A1 / INF15Q422013 Hurdle Rate 10%.
 COMMITMENT AND CONTRIBUTION SUMMARY 2 AMOUNT (INR) UNITS % OF COMMITMENT
 Capital Commitment A 5,00,00,000 - -
