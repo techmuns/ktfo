@@ -1,0 +1,775 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --chart-tooltip-bg: #ffffff;
+  --chart-tooltip-border: #d8d3c4;
+  --chart-tooltip-text: #1a1830;
+  --chart-tooltip-muted: #6b6880;
+  --chart-tooltip-shadow: 0 6px 24px rgba(50, 45, 90, 0.14);
+  /*
+   * CHART INK, AS VARIABLES — because an SVG `stroke` is not a Tailwind utility
+   * and the light-mode remap check cannot see it.
+   *
+   * Every other colour in this app is a class, so `check:pages` resolves it in
+   * the browser and catches a dark value left on an ivory page. A hardcoded hex
+   * in a recharts prop is invisible to that sweep: `#2b2668` grid lines and a
+   * `#d9c48f` champagne series are a near-black web and a barely-visible line on
+   * white, and nothing would report it. Naming them here puts them back under
+   * the theme.
+   *
+   * The series colours follow the same rule the text utilities already do —
+   * champagne is darkened to a readable gold on light (cf. `.text-champagne-400`
+   * → #8a6a1c below), and indigo reads on both grounds unchanged.
+   */
+  --chart-grid: #ded9ca;
+  --chart-axis: #6b6880;
+  --chart-book: #8a6a1c;
+  --chart-index: #4f46e5;
+  --chart-nav: #7b8598;
+  --chart-band: rgba(138, 106, 28, 0.07);
+  /* The second shade of a striped table row — see `tbody > tr:nth-child(even)`. */
+  --row-alt: #f7f4ec;
+  /* The highlight a data row takes under the pointer — see the override below the
+     zebra rule. OPAQUE and distinctly warmer/darker than both the card (#f4f2ec,
+     odd rows) and `--row-alt` (even rows), so a hovered row never reads as a zebra
+     shade of its neighbours. */
+  --row-hover: #ece4ce;
+  --table-grid: #9690a3;
+  --table-grid-thin: #ddd7ca;
+}
+
+html.dark {
+  color-scheme: dark;
+  --chart-tooltip-bg: #151233;
+  --chart-tooltip-border: #2b2668;
+  --chart-tooltip-text: #ece9f6;
+  --chart-tooltip-muted: #a5a1c4;
+  --chart-tooltip-shadow: 0 6px 24px rgba(0, 0, 0, 0.5);
+  --chart-grid: #2b2668;
+  --chart-axis: #6b6880;
+  --chart-book: #d9c48f;
+  --chart-index: #818cf8;
+  --chart-nav: #64748b;
+  --chart-band: rgba(217, 196, 143, 0.07);
+  --row-alt: #1a1740;
+  /* Brighter than both the card and `--row-alt` (#1a1740), so a hover lifts the
+     row rather than darkening into its even-row neighbour. */
+  --row-hover: #2d2862;
+  --table-grid: #716b91;
+  --table-grid-thin: #3a3463;
+}
+
+html, body, #root { height: 100%; }
+
+/*
+ * A DRAGGED COLUMN LIFTS WHOLE — see `src/lib/columnDrag.ts`. While the copy is
+ * carried, the column it came from dims IN PLACE, so a reader can see the gap it
+ * left; and the whole page shows the grabbing hand and selects no text. Opacity
+ * only, so it reads on both themes and needs no light-mode remap.
+ */
+[data-col-lifted] { opacity: 0.22; transition: opacity 120ms ease-out; }
+html.col-dragging, html.col-dragging * { cursor: grabbing !important; user-select: none !important; }
+
+/*
+ * THE DEFAULT VIEW IS THE ZOOMED-OUT ONE.
+ *
+ * The family kept pressing Ctrl+- on this dashboard and said the result "becomes
+ * better and realigned" — and it does, for a reason that is measurable rather
+ * than aesthetic. At 100% the filter bar wraps its two buttons onto a second
+ * row, the Entity column breaks "AJAY VERMA · V.E.C 128005" across two
+ * lines, and a wide table loses its last column to the scroller. Zooming out
+ * buys CSS pixels and every one of those goes away. Asking a reader to zoom out
+ * on every visit is the same defect as asking them to scroll a table sideways
+ * to find the total.
+ *
+ * `zoom` is what browser zoom itself does: it REFLOWS at the new scale, so the
+ * filter bar genuinely fits on one row rather than being drawn smaller and
+ * still wrapped. A `transform: scale()` would shrink the picture and leave the
+ * layout believing it was still 1500px wide, which is the wrong half of the
+ * effect — the wrap would stay, just smaller.
+ *
+ * ONE NUMBER, IN ONE PLACE. `--app-zoom` is the whole control; nothing else in
+ * the app hard-codes a scale, and every px size in the components stays exactly
+ * as written. Set it to 1 and the app is what it was.
+ *
+ * NO HEIGHT COMPENSATION, AND THAT WAS MEASURED RATHER THAN REASONED. The
+ * obvious-looking `height: calc(100% / var(--app-zoom))` is WRONG on this
+ * property: Chrome's `zoom` already resolves a percentage height inside the
+ * zoomed coordinate space, so `100%` of a 900px viewport is the 1028px that
+ * paints back to 900. Dividing again gave `#root` 1175px, a used height of
+ * 1028px against a 900px viewport, and a permanent vertical scrollbar on every
+ * page — including the ones that fit. `height: 100%` is inherited from the rule
+ * above and is already correct; the full-height scroll panes the tables live in
+ * keep working untouched.
+ *
+ * AND NOTHING IN THE ZOOMED SUBTREE MAY BE SIZED IN `vh`. A viewport unit is
+ * resolved against the real viewport and is NOT rescaled by zoom, so the app
+ * shell's `h-screen` painted at 100vh x 0.875 — a 787px app in a 900px window,
+ * with a dead band under it that reads as a rendering fault. The shell, the
+ * sidebar and the error boundary are `h-full` now, which chains off the
+ * `height: 100%` on html/body/#root above and lands exactly on the viewport.
+ * A future `min-h-screen` anywhere under #root brings the band straight back.
+ *
+ * Held to >= 1024px deliberately. Below that the constraint is the reader's
+ * eyes rather than the column count: a phone has no wide table to fit and
+ * shrinking its body text buys nothing.
+ */
+:root { --app-zoom: 1; }
+
+@media (min-width: 1024px) {
+  :root { --app-zoom: 0.875; }
+  #root { zoom: var(--app-zoom); }
+}
+
+/*
+ * TYPE — Kapil Trust Research's, at the family's request: *"look how good the
+ * font is and the ui is of glow-central research … make this dashboard also
+ * with right color pallet and fonts."*
+ *
+ * Inter for reading, in its ordinary shapes (the single-storey `a` and the
+ * open digits this file used to switch on are gone, because GCR uses neither),
+ * and Plus Jakarta Sans for titles and headline figures (`font-display`).
+ *
+ * FIGURES ARE INTER NOW, NOT A MONOSPACE. `.mono` keeps its name — it is on
+ * four hundred cells, and what it promises is that a column of figures lines
+ * up, which tabular digits do exactly as well — but a table set in JetBrains
+ * Mono read as a terminal rather than as a statement. Every digit still has one
+ * width, so no column moves as a number changes.
+ */
+body {
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.tabular { font-variant-numeric: tabular-nums; }
+/* WHERE INTER CANNOT LOAD, A FIGURE FALLS BACK TO A MONOSPACE — the face these
+   columns were set in until now, and so exactly the widths every table here was
+   fitted to. A proportional fallback is wider per digit (DejaVu Sans: 0.64em
+   against the monospace's 0.60em) and pushed the company page's position table
+   16px past its card. With Inter loaded — every real reader — that table fits,
+   measured; the page check cannot fetch a web font, so this is also what it
+   measures, which keeps it measuring the WIDER of the two. */
+.mono { font-family: "Inter", ui-monospace, "DejaVu Sans Mono", monospace; font-variant-numeric: tabular-nums; }
+.font-display { letter-spacing: -0.01em; }
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(148, 163, 184, 0.18); border-radius: 8px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(148, 163, 184, 0.32); }
+
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(129, 140, 248, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(129, 140, 248, 0.05) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+@layer components {
+  .card { @apply rounded-2xl border border-ink-700 bg-ink-800 shadow-card; }
+  .card-pad { @apply card p-5; }
+  .label-xs { @apply text-[10px] font-semibold uppercase tracking-[0.14em] text-slate-500; }
+  .h-section { @apply font-display text-sm font-bold text-slate-100; }
+  .divider { @apply border-t border-ink-700; }
+  .ring-focus { @apply focus:outline-none focus:ring-2 focus:ring-champagne-500/40; }
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-lg px-3.5 py-2 text-sm font-medium ring-focus transition-colors; }
+  .btn-primary { @apply btn bg-champagne-500 text-ink-950 hover:bg-champagne-400; }
+  .btn-ghost { @apply btn border border-ink-600 bg-transparent text-slate-200 hover:bg-ink-700/60; }
+  .pill { @apply inline-flex items-center gap-1 rounded-full border border-ink-600 bg-ink-700/60 px-2 py-0.5 text-[11px] font-medium text-slate-300; }
+  /* The small tag beside a return figure (HPR / CAGR / XIRR / …) and in the
+     return-measure picker. One definition, because it renders on every row of
+     the Return column and in three places besides — and it must read clearly in
+     BOTH themes. The old `bg-ink-700/60 text-slate-500` did not: `bg-ink-700/70`
+     had no light remap at all (a dark box on the ivory dropdown), and the /60
+     variant washed the pill out to a near-invisible smudge on the page. This
+     carries explicit colours for each theme so neither can drift. */
+  .ret-tag { @apply rounded px-1 text-[9px] font-semibold tracking-wide; background-color: rgba(148, 163, 184, 0.22); color: #cbd5e1; }
+}
+
+/* ---------------------------------------------------------------------------
+   A KPI TILE THAT OPENS SOMETHING LOOKS LIKE A BUTTON
+
+   *"Just make the KPI tiles look like 3-d clickable buttons and remove every
+   other underlines/hyperlinks on the texts."*
+
+   The whole card is the click target, so the affordance has to be the CARD. It
+   used to be an underline on the label and a second, differently-dashed one on
+   the figure — two pieces of text advertising themselves as the thing to click,
+   on a tile where the text is not the thing to click.
+
+   WRITTEN AS PLAIN CSS WITH EXPLICIT COLOURS, deliberately. Tailwind emits each
+   `ink-*`/`slate-*` opacity variant as its own class and every one of them needs
+   a light-mode remap of its own; a four-layer shadow assembled from utilities
+   would need four remaps and would fail the first one somebody forgot. Two
+   rules here, one per theme, is the whole surface.
+
+   IT IS `.card.kpi-btn`, NOT `.kpi-btn`, AND THAT IS NOT COSMETIC. The first
+   draft rendered FLAT: `html:not(.dark) .card` sets its own box-shadow further
+   down this file at the same specificity, so source order decided it and the
+   tile lost — a raised button that was not raised, on a page where every other
+   check passed. `check:pages` resolves computed COLOUR and would never have
+   seen it. Qualifying with `.card` puts this rule above any `.card` rule at
+   equal specificity wherever either lands in the file, and an invariant now
+   reads the computed shadow so the flat version fails rather than ships.
+
+   The stack is: an inset top highlight (the lit edge), a hard offset shadow
+   (the tile's thickness) and a soft cast shadow (its distance from the page).
+   Hover lifts it and thickens the edge; :active presses it flat, and lands the
+   press on the same 2px the resting offset is, so the tile ends level with the
+   page rather than dipping below it. `:focus-within` matches hover so a
+   keyboard reader sees the same state the pointer does.
+   ------------------------------------------------------------------------- */
+.card.kpi-btn {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.055),
+    0 2px 0 0 #14142b,
+    0 5px 12px -4px rgba(0, 0, 0, 0.55);
+  transition: transform 120ms ease, box-shadow 120ms ease, border-color 120ms ease;
+}
+.card.kpi-btn:hover,
+.card.kpi-btn:focus-within {
+  transform: translateY(-1px);
+  border-color: rgba(217, 196, 143, 0.4);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.09),
+    0 3px 0 0 #14142b,
+    0 10px 20px -6px rgba(0, 0, 0, 0.6);
+}
+.card.kpi-btn:active {
+  transform: translateY(2px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.03),
+    0 0 0 0 #14142b,
+    0 1px 3px -1px rgba(0, 0, 0, 0.5);
+}
+
+/* ---------------------------------------------------------------------------
+   THE KPI STRIP'S COLUMNS FOLLOW HOW MANY TILES THE READER HAS CHOSEN.
+   *"we should be able to select different metrics and also add or remove number
+   of KPI tiles on the page."* A fixed six-column grid would leave a hole where a
+   removed tile was and push a seventh onto a row of its own; so at desktop width
+   the strip takes one column per tile up to six (`--kpi-cols`, set on the strip
+   by `SelectableTiles`), and wraps at six. A plain grid rule rather than a
+   Tailwind utility because the count is a runtime value.
+
+   `.grid.kpi-grid`, TWO CLASSES, AND THAT IS LOAD-BEARING. Tailwind emits its
+   responsive variants (`lg:grid-cols-3`) at the very END of the stylesheet, so a
+   one-class rule here loses on source order at equal specificity and the strip
+   stayed at three columns on a 1500px screen — measured, not reasoned about.
+   ------------------------------------------------------------------------- */
+@media (min-width: 1280px) {
+  .grid.kpi-grid { grid-template-columns: repeat(var(--kpi-cols, 6), minmax(0, 1fr)); }
+}
+
+/* A reader who has asked not to be animated gets the depth and none of the
+   movement — the shadow still says "raised", the tile just does not jump. */
+@media (prefers-reduced-motion: reduce) {
+  .card.kpi-btn, .card.kpi-btn:hover, .card.kpi-btn:focus-within, .card.kpi-btn:active { transform: none; }
+}
+
+/* ---------------------------------------------------------------------------
+   LIGHT MODE — Pearl / Ivory with indigo-tinted ink.
+   Remaps the dark ink-* (indigo) + slate-* utilities to a warm ivory palette
+   so the whole chassis shifts without rewriting components.
+   Palette: page #f4f2ec · low #efece3 · mid #faf8f1 · card #ffffff
+            border #d8d3c4 / #e4ddcd · text #1a1830 / #3d3a52 / #6b6880 / #9995ad
+   ------------------------------------------------------------------------- */
+html:not(.dark) { color-scheme: light; }
+
+.return-calculation::backdrop { background: rgb(15 23 42 / 0.5); }
+html:not(.dark) body { background: #f4f2ec; color: #1a1830; }
+/* A label a reader scans for — a column heading, a tile's name — in the ink
+   GCR sets its table headings in, a step darker than the grey that made every
+   heading on this dashboard read as a footnote. Placed BEFORE the slate text
+   remaps below on purpose: a label that also carries a colour class (an active
+   sort heading, a gold note) keeps that class's colour, because the remap comes
+   later at the same specificity. */
+html:not(.dark) .label-xs { color: #55516b; }
+
+/* Chassis backgrounds */
+html:not(.dark) .bg-ink-950 { background-color: #f4f2ec; }
+/* The Muns chat's modal scrim. Tailwind emits every opacity variant as its own
+   class, so this needs its own remap — unremapped it paints the dark chassis
+   colour over a light page, which `check:pages` reports as a dark surface in
+   light mode.
+   A SCRIM HAS TO DIM, and the first attempt did not: at 0.35 alpha over a 4px
+   blur the dashboard behind stayed fully legible and the dialog read as part of
+   the page. This is a warm mid-tone at 0.62 — dark enough to push the page back
+   under the panel's 20px blur, light enough that the utility still reads as
+   remapped rather than as the dark chassis colour leaking onto a light page. */
+html:not(.dark) .bg-ink-950\/70 { background-color: rgba(96, 91, 76, 0.62); }
+html:not(.dark) .bg-ink-900 { background-color: #efece3; }
+html:not(.dark) .bg-ink-900\/85 { background-color: rgba(239, 236, 227, 0.92); }
+html:not(.dark) .bg-ink-900\/60 { background-color: rgba(239, 236, 227, 0.7); }
+html:not(.dark) .bg-ink-800 { background-color: #ffffff; }
+html:not(.dark) .bg-ink-800\/85 { background-color: rgba(255, 255, 255, 0.92); }
+html:not(.dark) .bg-ink-800\/60 { background-color: rgba(255, 255, 255, 0.7); }
+html:not(.dark) .bg-ink-800\/30 { background-color: rgba(255, 255, 255, 0.4); }
+/* Section-heading rows inside a table (the ratio table's "Per Share Ratios").
+   Unremapped this inherits the DARK ink surface and renders as a heavy grey
+   bar across a white card; it wants a faint tint, not a block. */
+html:not(.dark) .bg-ink-800\/50 { background-color: #f4f1e8; }
+html:not(.dark) .bg-ink-700 { background-color: #faf8f1; }
+html:not(.dark) .bg-ink-700\/60 { background-color: rgba(250, 248, 241, 0.85); }
+html:not(.dark) .bg-ink-700\/40 { background-color: rgba(250, 248, 241, 0.7); }
+html:not(.dark) .bg-ink-700\/30 { background-color: rgba(250, 248, 241, 0.55); }
+html:not(.dark) .bg-ink-800\/40 { background-color: rgba(255, 255, 255, 0.55); }
+html:not(.dark) .bg-ink-900\/50 { background-color: rgba(239, 236, 227, 0.6); }
+/* Group header rows in the macro returns table. Tailwind emits every opacity
+   variant as its own class, so each one needs its own remap or it paints the
+   dark surface straight onto the light page. */
+html:not(.dark) .bg-ink-900\/40 { background-color: rgba(239, 236, 227, 0.55); }
+/* Active/selected nav item — was falling back to dark indigo; use a soft
+   champagne highlight so the dark label stays legible. */
+html:not(.dark) .bg-ink-700\/80 { background-color: rgba(217, 196, 143, 0.38); }
+/* Sidebar footer avatar — was dark indigo with dark text; make it champagne
+   (matches the logo) so the initials read. */
+html:not(.dark) .bg-ink-600 { background-color: #d9c48f; }
+
+/* The raised KPI tile, on ivory. The dark theme's edge is a near-black slab,
+   which on a light page reads as a bruise rather than a thickness — this is the
+   warm border colour darkened, so the tile looks lifted off the paper. */
+html:not(.dark) .card.kpi-btn {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 2px 0 0 #ded8c8,
+    0 5px 12px -5px rgba(90, 82, 60, 0.28);
+}
+html:not(.dark) .card.kpi-btn:hover,
+html:not(.dark) .card.kpi-btn:focus-within {
+  border-color: rgba(184, 154, 82, 0.55);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    0 3px 0 0 #d5cdb8,
+    0 10px 20px -7px rgba(90, 82, 60, 0.32);
+}
+html:not(.dark) .card.kpi-btn:active {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    0 0 0 0 #ded8c8,
+    0 1px 3px -1px rgba(90, 82, 60, 0.3);
+}
+
+/* Inner panels / hover surfaces (slate remaps) */
+html:not(.dark) .bg-slate-900 { background-color: #efece3; }
+html:not(.dark) .bg-slate-800 { background-color: #eae4d5; }
+html:not(.dark) .bg-slate-800\/80 { background-color: rgba(234, 228, 213, 0.85); }
+html:not(.dark) .bg-slate-800\/60 { background-color: rgba(234, 228, 213, 0.55); }
+html:not(.dark) .bg-slate-800\/40 { background-color: rgba(234, 228, 213, 0.4); }
+html:not(.dark) .bg-slate-800\/30 { background-color: rgba(234, 228, 213, 0.3); }
+html:not(.dark) .bg-slate-800\/20 { background-color: rgba(234, 228, 213, 0.2); }
+html:not(.dark) .bg-slate-700 { background-color: #d8d3c4; }
+
+/* Hover variants (Tailwind emits these as separate selectors) */
+html:not(.dark) .hover\:bg-ink-700\/60:hover { background-color: rgba(250, 248, 241, 0.9); }
+html:not(.dark) .hover\:bg-ink-700\/40:hover { background-color: rgba(234, 228, 213, 0.6); }
+html:not(.dark) .hover\:bg-ink-700\/30:hover { background-color: rgba(234, 228, 213, 0.5); }
+html:not(.dark) .hover\:bg-ink-700\/20:hover { background-color: rgba(234, 228, 213, 0.4); }
+/* HOVER TEXT THAT VANISHED. `text-slate-400 hover:text-slate-200` is the dark
+   theme's "dim label brightens on hover". slate-200 is #e2e8f0 — near white — so
+   on ivory the label disappeared exactly when the pointer was on it: sidebar
+   items, sort headers, the research tabs, the filter chips. The light theme wants
+   the opposite motion, so hover DARKENS instead. */
+html:not(.dark) .hover\:text-slate-200:hover { color: #1a1830; }
+html:not(.dark) .hover\:text-slate-300:hover { color: #26233d; }
+html:not(.dark) .text-slate-700 { color: #8d889f; }
+html:not(.dark) .hover\:bg-slate-800\/20:hover { background-color: rgba(234, 228, 213, 0.35); }
+html:not(.dark) .hover\:bg-slate-800\/30:hover { background-color: rgba(234, 228, 213, 0.45); }
+html:not(.dark) .hover\:bg-slate-800\/40:hover { background-color: rgba(234, 228, 213, 0.55); }
+html:not(.dark) .hover\:bg-slate-800\/60:hover { background-color: rgba(234, 228, 213, 0.7); }
+/* The pinned first column of a research table has to be opaque, or the columns
+   scrolling under it show through. That means it can't inherit the row's
+   translucent hover tint — it needs the composited colour spelled out. */
+html:not(.dark) .group:hover .group-hover\:bg-ink-700 { background-color: #f2efe6; }
+
+/* Borders.
+   THE OPACITY VARIANTS NEED THEIR OWN RULES. Tailwind emits `border-ink-700/60`
+   as a separate class from `border-ink-700`, so remapping the base does nothing
+   for it: the variant keeps the DARK indigo and paints a near-black rule across
+   an ivory table. Every variant actually used has to be listed, which is why
+   `npm run check:pages` resolves computed colour rather than trusting a grep —
+   a missing remap is invisible in the markup and obvious on screen. */
+html:not(.dark) .border-ink-700 { border-color: #e4ddcd; }
+html:not(.dark) .border-ink-700\/70 { border-color: rgba(228, 221, 205, 0.85); }
+html:not(.dark) .border-ink-700\/60 { border-color: rgba(228, 221, 205, 0.8); }
+html:not(.dark) .border-ink-600 { border-color: #d8d3c4; }
+html:not(.dark) .border-ink-600\/70 { border-color: rgba(197, 188, 165, 0.9); }
+html:not(.dark) .border-slate-800 { border-color: #e4ddcd; }
+html:not(.dark) .border-slate-700 { border-color: #d8d3c4; }
+/* `divide-*` MUST match Tailwind's own selector shape, not `> * + *`.
+   Tailwind emits `.divide-x > :not([hidden]) ~ :not([hidden])` — specificity
+   (0,3,0). A remap written as `html:not(.dark) .divide-x > * + *` is (0,2,1) and
+   LOSES, so the rule parses, looks right in the stylesheet, and changes nothing
+   on screen. Mirroring the selector puts it at (0,3,1) and it wins. */
+html:not(.dark) .divide-slate-800 > :not([hidden]) ~ :not([hidden]),
+html:not(.dark) .divide-slate-800\/70 > :not([hidden]) ~ :not([hidden]) { border-color: #e4ddcd; }
+html:not(.dark) .divide-ink-700 > :not([hidden]) ~ :not([hidden]),
+html:not(.dark) .divide-ink-700\/70 > :not([hidden]) ~ :not([hidden]),
+html:not(.dark) .divide-ink-700\/60 > :not([hidden]) ~ :not([hidden]),
+html:not(.dark) .divide-ink-700\/50 > :not([hidden]) ~ :not([hidden]) { border-color: #e8e2d4; }
+
+/* Text — remap slate greys to warm indigo-tinted ink */
+html:not(.dark) .text-slate-100 { color: #1a1830; }
+html:not(.dark) .text-slate-200 { color: #26233d; }
+html:not(.dark) .text-slate-300 { color: #3d3a52; }
+html:not(.dark) .text-slate-400 { color: #55516b; }
+html:not(.dark) .text-slate-500 { color: #6b6880; }
+/* The return tag, on the ivory page: a warm tan chip with near-ink text, so the
+   short form reads clearly instead of washing into the background. */
+html:not(.dark) .ret-tag { background-color: #e4ddc9; color: #2c2840; }
+html:not(.dark) .text-slate-600 { color: #7c7891; }
+html:not(.dark) input::placeholder, html:not(.dark) textarea::placeholder { color: #9995ad; }
+
+/* Champagne accent text — the pale gold (#ecdcae / #d9c48f) disappears on
+   light surfaces. Darken to a readable gold (AA on white and champagne
+   tints) for light mode; the dark theme keeps the brighter tones. */
+html:not(.dark) .text-champagne-400 { color: #8a6a1c; }
+html:not(.dark) .text-champagne-500 { color: #7d5f16; }
+/* Link-card titles/icons switch to champagne on hover (News, Announcements, the
+   alerts bell). The hover variant had no light-mode remap, so it fell back to the
+   pale #ecdcae and all but vanished on the light hover surface. Use a deep gold so
+   hovered headlines stay clearly readable. */
+html:not(.dark) .group:hover .group-hover\:text-champagne-400 { color: #5f4711; }
+/* AND THE PLAIN HOVER VARIANT, which had the same gap and was invisible for the
+   same reason it was invisible on `group-hover`: nothing in the sweep hovered
+   one. A route that CLICKS a control leaves it hovered, and the button came back
+   at #ecdcae on white — the exact failure the comment above records, one variant
+   over. This covers the Entities pill, the mandate links and the contribution
+   chevron, all of which already carried the class. */
+html:not(.dark) .hover\:text-champagne-400:hover { color: #5f4711; }
+/* AND THE OPACITY VARIANTS, which Tailwind emits as their own classes and which
+   therefore need their own remap. Three of them are on screen: the derived-column
+   marker on the Portfolio Monitor's stock axis and Sector Composition's derived
+   tile, and the fund look-through's loading sentence. That last one was invisible
+   until a route held the look-through's fetch open — it renders only while the
+   store is loading, so the class was on screen for nobody and reported by nothing.
+
+   THE ALPHA IS FLOORED AT 0.85, DELIBERATELY BELOW THE UTILITY'S OWN NUMBER. This
+   whole block already replaces the colour outright (champagne -> dark gold), so
+   faithfulness to the nominal alpha was never what it is for; legibility on white
+   is, and 0.7 of this gold is too pale to read. Flooring only ever DARKENS, so a
+   surface that passed the contrast check at the nominal alpha still passes. */
+html:not(.dark) .text-champagne-400\/90 { color: rgba(138, 106, 28, 0.9); }
+html:not(.dark) .text-champagne-400\/80 { color: rgba(138, 106, 28, 0.85); }
+html:not(.dark) .text-champagne-400\/70 { color: rgba(138, 106, 28, 0.85); }
+
+/* Gain / loss — darker in light mode for readable contrast (AA) on white rows
+   and on the row-hover tint. Dark theme keeps the brighter #10b981 / #ef4444. */
+html:not(.dark) .text-gain { color: #047857; }
+html:not(.dark) .text-loss { color: #b91c1c; }
+
+/* Amber — "still to invest" / dry-powder figures and alert accents. The bright
+   amber-400/300 washes out on the light surfaces; darken to a readable ochre for
+   light mode (AA on white) while dark mode keeps the brighter tone. */
+html:not(.dark) .text-amber-400 { color: #a1610a; }
+html:not(.dark) .text-amber-300 { color: #a1610a; }
+html:not(.dark) .text-amber-300\/90 { color: #a1610a; }
+/* The -200 tints are the PALEST of each ramp and are for a dark surface only:
+   on the light card they render as near-white text on near-white. Both are used
+   by the cash flow panel's unit-check band, whose whole job is to be read. */
+html:not(.dark) .text-amber-200 { color: #92560a; }
+html:not(.dark) .text-emerald-200 { color: #05614a; }
+
+/* A white card lifted off the ivory by a shadow too soft to read as an edge —
+   GCR's own two layers. NEITHER LAYER MAY BE A HARD OFFSET (`0 Npx 0 0`, N ≥ 2):
+   that shape is what makes a KPI tile read as a button, and `check:pages` fails
+   any card carrying it that opens nothing. Both layers here are blurred. */
+html:not(.dark) .card {
+  background-color: #ffffff;
+  border-color: #e4ddcd;
+  color: #1a1830;
+  box-shadow: 0 1px 2px 0 rgba(26, 24, 48, 0.04), 0 2px 8px 0 rgba(26, 24, 48, 0.035);
+}
+html:not(.dark) .btn-ghost { border-color: #e4ddcd; color: #26233d; background-color: #ffffff; }
+html:not(.dark) .btn-ghost:hover { background-color: #faf8f1; border-color: #d8d3c4; }
+/* WHITE ON GOLD FAILS AA. #ffffff on #b8923c is 2.9:1 — under the 4.5:1 floor,
+   and under even the 3:1 large-text allowance. The dark theme already puts INK
+   on champagne (`bg-champagne-500 text-ink-950`); light mode had inverted it for
+   no reason. Ink on the same gold is 5.4:1 and matches the dark theme's
+   treatment, so the primary button reads the same way in both. */
+html:not(.dark) .btn-primary { background-color: #c3a962; background-image: linear-gradient(135deg, #c3a962 0%, #d9c48f 100%); color: #1a1830; font-weight: 600; }
+html:not(.dark) .btn-primary:hover { background-color: #d9c48f; background-image: linear-gradient(135deg, #cdb26c 0%, #e2cf9d 100%); color: #1a1830; }
+html:not(.dark) .pill { border-color: #d8d3c4; background-color: rgba(255, 255, 255, 0.6); color: #3d3a52; }
+/* The page is GCR's: ivory, warmed at the top by two faint gold glows, and no
+   grid. The graph-paper pattern was the other half of why the light theme read
+   as a spreadsheet; the dark theme keeps its grid. */
+html:not(.dark) .bg-grid {
+  background-image:
+    radial-gradient(at 0% 0%, rgba(217, 196, 143, 0.16) 0, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(236, 220, 174, 0.24) 0, transparent 50%);
+  background-size: auto;
+}
+html:not(.dark) input[type="text"], html:not(.dark) input[type="search"],
+html:not(.dark) input[type="file"], html:not(.dark) input[type="number"],
+html:not(.dark) select, html:not(.dark) textarea {
+  background-color: #ffffff; border-color: #d8d3c4; color: #1a1830;
+}
+html:not(.dark) ::-webkit-scrollbar-thumb { background: rgba(60, 55, 100, 0.22); }
+html:not(.dark) ::-webkit-scrollbar-thumb:hover { background: rgba(60, 55, 100, 0.4); }
+
+/* ---------------------------------------------------------------------------
+   GLOW CENTRAL RESEARCH'S LOOK, ON THE LIGHT THEME — Stage 10cg.
+
+   *"look how good the font is and the ui is of glow-central research - colours
+   white etc - can you make this dashboard also with right color pallet and
+   fonts please i think right now its too monotonous and dull"*
+
+   The palette is GCR's own (`scripts/glow-palette.cjs` in that repo): ivory
+   page, WHITE surfaces, navy ink, gold for what is active. What made this
+   dashboard dull was that the chrome, the page and the cards were three shades
+   of one beige; now the chrome is white and the gold means "you are here".
+
+   ONE RULE HOLDS THROUGHOUT: nothing on the light theme is a dark fill or
+   white text. GCR prints white on a gold or green button; `check:pages`
+   rejects exactly that on this page, because pale text is how a missing remap
+   looks. So an active control is gold with INK on it (7:1), and Export Excel is
+   a green tint with deep-green type rather than a green slab with white.
+   ------------------------------------------------------------------------- */
+
+/* The chrome is white. The nav and the top bar were the page colour, so the
+   whole screen was one flat tone with the cards the only thing standing out. */
+html:not(.dark) aside.app-sidebar {
+  background-color: #ffffff;
+  border-right-color: #e4ddcd;
+  box-shadow: 6px 0 24px -18px rgba(26, 24, 48, 0.18);
+}
+html:not(.dark) header.app-topbar {
+  background-color: rgba(255, 255, 255, 0.82);
+  border-bottom-color: #e4ddcd;
+}
+
+/* Where you are: GCR's active tab — a pale gold wash, gold type, and a gold
+   rule on the edge the eye enters from. */
+html:not(.dark) a.nav-active {
+  background-color: #f7efdb;
+  color: #7d5f16;
+  font-weight: 600;
+  box-shadow: inset 3px 0 0 #c3a962;
+}
+
+/* Every active pill and toggle — Holdings / Transactions, the axis, a tab —
+   is GCR's gold gradient, with ink on it. */
+html:not(.dark) .bg-champagne-500 {
+  background-color: #c3a962;
+  background-image: linear-gradient(135deg, #c3a962 0%, #d9c48f 100%);
+}
+html:not(.dark) .hover\:bg-champagne-400:hover { background-image: none; background-color: #ecdcae; }
+
+/* Table headings sit on GCR's cream band. Written with `:where()` so the rule
+   carries the specificity of a bare `th` — any class on a heading cell (the
+   drag-over highlight, a sticky column's own surface) still wins. */
+:where(html:not(.dark) thead) th { background-color: #faf8f1; }
+
+/*
+ * EVERY TABLE STRIPES ITS ROWS, IN ONE PAIR OF SHADES.
+ *
+ *   *"Make sure that you add alternate [shades] on every separate row … one row
+ *    needs to be of one colour and then the next row will be of a different
+ *    shade of that color … implement this on the whole dashboard … make sure
+ *    that the shade of the alternate rows are same."*
+ *
+ * One rule for every table, so no table can stripe in a shade of its own: an
+ * odd row shows the card it sits on and an even row `--row-alt`, one variable
+ * per theme. OPAQUE, so the second shade is the same colour wherever the table
+ * is drawn rather than a tint that changes with what is under it.
+ *
+ * Written with `:where()` so it carries no specificity at all: a row that
+ * already says something with its colour — a section band, a child row, a total,
+ * a fired alert, a hovered row — keeps its own, because any class beats it.
+ */
+:where(table > tbody > tr:nth-child(even)) { background-color: var(--row-alt); }
+/*
+ * THE HOVERED ROW IS OPAQUE, AND ONLY A ROW. *"When I'm hovering over a lighter
+ * shaded row, it is converting into a darker shaded row, which is mixing it with
+ * the other adjacent rows. However, when I'm hovering over the darker shaded row,
+ * it is not being highlighted."* — the family.
+ *
+ * The hover utilities (`hover:bg-ink-700/40` on a parent row, `/30` on a child)
+ * are TRANSLUCENT: the light-mode remap composites the tint against whatever is
+ * behind the row. On an odd (card) row that landed on roughly the even-row shade,
+ * so a hovered row read as its own zebra neighbour; on an even row in the dark
+ * theme the base tint barely moved off `--row-alt`, so it did not read at all.
+ *
+ * So a data row — a `tr` directly in a `tbody`, carrying one of those hover
+ * classes — takes an OPAQUE `--row-hover` instead, distinct from both zebra
+ * shades in each theme. Scoped through `#root` so the ID beats both the
+ * translucent remap and the `:where` zebra, and scoped to `table > tbody > tr`
+ * so every other caller of these hover classes — tabs, sidebar links, the tile
+ * and allocation buttons, legends — keeps the shared translucent remap untouched.
+ */
+#root table > tbody > tr.hover\:bg-ink-700\/40:hover,
+#root table > tbody > tr.hover\:bg-ink-700\/30:hover {
+  background-color: var(--row-hover);
+}
+/* One grid for every dashboard table, including nested and expanded tables.
+   Separate borders stay attached to sticky headers, totals and pinned columns
+   while scrolling. Each cell draws only its right/bottom edge to avoid doubling
+   the grid; merged cells retain their spans. Compensate for the app's zoom so
+   the lines still paint at 2px on desktop. Scope through #root so border
+   utilities and light-theme remaps cannot weaken the grid. */
+#root table {
+  --table-grid-width: calc(2px / var(--app-zoom));
+  --table-section-width: calc(3px / var(--app-zoom));
+  border-collapse: separate;
+  border-spacing: 0;
+}
+html #root table :is(th, td) {
+  border: 0 solid var(--table-grid);
+  border-right-width: var(--table-grid-width);
+  border-bottom-width: var(--table-grid-width);
+}
+html #root table tr > :is(th, td):first-child {
+  border-left-width: var(--table-grid-width);
+}
+html #root table > :is(thead, tbody, tfoot):where(:first-of-type) > tr:where(:first-child) > :is(th, td) {
+  border-top-width: var(--table-grid-width);
+}
+/* Only the table's first row needs an outside top edge. */
+html #root table > thead ~ tbody > tr:first-child > :is(th, td),
+html #root table > tbody ~ tbody > tr:first-child > :is(th, td) {
+  border-top-width: 0;
+}
+html #root table thead > tr:last-child > :is(th, td) {
+  border-bottom-width: var(--table-section-width);
+}
+html #root table tfoot > tr:first-child > :is(th, td) {
+  border-top-width: var(--table-section-width);
+}
+html #root table:has(> tfoot) > tbody:last-of-type > tr:last-child > :is(th, td) {
+  border-bottom-width: 0;
+}
+/* THE MOVERS LISTS KEEP THEIR GRID, THINNED (Stage 10du). The family asked
+   for the borders on Today's movers to be thin rather than gone: a 1px hairline
+   in a lighter tone, set through the grid's own variables so every edge rule
+   above (first column, first row, sections) follows it. */
+#root [data-movers-lists] table {
+  --table-grid-width: calc(1px / var(--app-zoom));
+  --table-grid: var(--table-grid-thin);
+}
+
+/* EXPORT EXCEL IS GREEN, AS GCR'S IS — as a tint with deep-green type, for the
+   reason at the top of this block. #045f45 on #e8f3ee is 6.8:1. */
+.btn-excel {
+  display: inline-flex; align-items: center; gap: 0.375rem;
+  border-radius: 0.5rem; border: 1px solid rgba(16, 185, 129, 0.35);
+  background-color: rgba(16, 185, 129, 0.12); color: #6ee7b7;
+  padding: 0.5rem 0.75rem; font-size: 0.875rem; font-weight: 600;
+  transition: background-color 120ms ease, border-color 120ms ease;
+}
+.btn-excel:hover { background-color: rgba(16, 185, 129, 0.2); }
+.btn-excel:disabled { opacity: 0.6; }
+html:not(.dark) .btn-excel { background-color: #e8f3ee; border-color: #a9d3c0; color: #045f45; }
+html:not(.dark) .btn-excel:hover { background-color: #d3e8de; border-color: #6bb99b; }
+
+/* ---------------------------------------------------------------------------
+   PREVIEW — illustrative placeholder figures (see src/components/Preview.tsx).
+   The client asked to see the shape of unbuilt FOOS pages before their data
+   feeds exist. A preview figure is deliberately distinct from BOTH a real value
+   (bright slate) and an Absent dash (plain slate-500): a muted number with a
+   champagne-dashed underline, so a reader can never mistake a placeholder for a
+   measurement. Custom classes, so each just needs a base (dark) rule and a
+   light-mode override — no Tailwind opacity-variant fan-out.
+   ------------------------------------------------------------------------- */
+.preview-num {
+  color: #8f8bb0;
+  border-bottom: 1px dashed rgba(217, 196, 143, 0.5);
+  cursor: help;
+}
+.preview-hatch {
+  background-image: repeating-linear-gradient(45deg,
+    rgba(217, 196, 143, 0.05) 0, rgba(217, 196, 143, 0.05) 1px,
+    transparent 1px, transparent 7px);
+}
+html:not(.dark) .preview-num { color: #8d889f; border-bottom-color: rgba(184, 146, 60, 0.55); }
+html:not(.dark) .preview-hatch {
+  background-image: repeating-linear-gradient(45deg,
+    rgba(184, 146, 60, 0.055) 0, rgba(184, 146, 60, 0.055) 1px,
+    transparent 1px, transparent 7px);
+}
+
+/* ── PRINT / PDF ──────────────────────────────────────────────────────────────
+   The spec asks for PDF export under every module. A browser's own "Save as
+   PDF" is the whole feature, provided the page prints as a document rather than
+   as a screenshot of an app — so this is a stylesheet, not a dependency.
+
+   THE PART THAT IS NOT COSMETIC. A printed page loses every hover, tooltip and
+   audit link this dashboard uses to keep a figure checkable, and it is the copy
+   that gets emailed on. So printing must not quietly drop the things that say
+   what a figure IS:
+
+     - The basis pill and the as-of banner PRINT. They are the only remaining
+       statement of whether a total is on live prices or statement marks.
+     - The preview hatch PRINTS, redrawn as a visible border and label. A greyed
+       sample that prints as an ordinary table would be a fabricated figure on
+       a document with no badge left on it — the exact "would this still be
+       honest if the badge were cropped" failure.
+     - Absent cells keep their em dash; nothing collapses a "—" to blank.
+
+   Only the app chrome goes: the nav, the resize handle, buttons nobody can
+   click on paper, and the scroll containers that would otherwise clip a wide
+   table to whatever happened to be in view. */
+@media print {
+  html:root { --table-grid: #9690a3; --table-grid-thin: #ddd7ca; }
+  @page { size: A4 landscape; margin: 12mm; }
+
+  html, body {
+    background: #fff !important;
+    color: #1a1830 !important;
+  }
+
+  /* App chrome that cannot mean anything on paper. */
+  aside,
+  [role="separator"],
+  .no-print {
+    display: none !important;
+  }
+
+  /* A table clipped to the viewport prints as a truncated table with no sign
+     that anything was cut. Let every scroller print at full width. */
+  .overflow-x-auto,
+  .overflow-y-auto,
+  .overflow-auto {
+    overflow: visible !important;
+    max-height: none !important;
+  }
+
+  /* Cards are the document's sections; keep one from splitting across a page
+     break mid-figure. */
+  .card,
+  table {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  thead { display: table-header-group; }
+
+  /* Dark-mode surfaces would print as slabs of ink. Force the light palette
+     regardless of the theme the reader happens to be in. */
+  .bg-ink-900, .bg-ink-800, .bg-ink-950, .bg-ink-700,
+  .bg-ink-800\/40, .bg-ink-800\/60, .bg-ink-900\/40, .bg-ink-700\/60 {
+    background: #fff !important;
+  }
+  .text-slate-100, .text-slate-200, .text-slate-300 { color: #1a1830 !important; }
+  .text-slate-400, .text-slate-500, .text-slate-600 { color: #4a4860 !important; }
+
+  /* THE PREVIEW MARK SURVIVES THE PRINTER. The hatch is a background image and
+     browsers drop those by default, so it is restated as a border and a printed
+     label — a sample must never reach paper looking like a measurement. */
+  .preview-hatch {
+    border: 1.5px dashed #b8923c !important;
+    background-image: none !important;
+  }
+  .preview-hatch::before {
+    content: "ILLUSTRATIVE PREVIEW — not live data";
+    display: block;
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #8a6d24;
+    margin-bottom: 4px;
+  }
+
+  a[href] { text-decoration: none !important; color: inherit !important; }
+}

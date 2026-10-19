@@ -1,0 +1,755 @@
+import { useMemo } from "react";
+import {
+  BarChart, Bar, Cell, ResponsiveContainer, Tooltip, CartesianGrid, XAxis, YAxis, ReferenceLine,
+} from "recharts";
+import { Percent, TrendingDown, Target, Scale } from "lucide-react";
+import { PageHeader } from "@/components/PageHeader";
+import { Card } from "@/components/Card";
+import { Pill } from "@/components/Pill";
+import { StatTile } from "@/components/StatTile";
+import { usePortfolio } from "@/context/PortfolioContext";
+import { fmtPct, changeColor, fmtDate } from "@/lib/format";
+import { SortHeader, Tr, TrFoot } from "@/components/SortHeader";
+import { useTableView, sortRows } from "@/lib/tableView";
+import { withReviewAccessors } from "@/lib/reviewColumns";
+
+/** Each table's columns, in the order its rows write their cells. */
+const RA_SECTOR_COLS = ["sector", "pnl", "return", "contrib"] as const;
+const RA_ACCOUNT_COLS = ["account", "names", "cost", "pnl", "return", "best", "worst"] as const;
+const RA_CONTRIB_COLS = ["security", "pnl", "return", "contrib"] as const;
+const RA_DD_COLS = ["date", "index", "interval", "fromPeak"] as const;
+import { sum, isPriced, unpriced, isCompanyShare, bucketLabel, dedupedPositions, readerClassOf } from "@/lib/analytics";
+import { companySectorIndex } from "@/lib/lookthrough";
+import { useStockExposure } from "@/lib/useStockExposure";
+import { fifoTotals } from "@/lib/fifo";
+import { BasisPill } from "@/components/BasisPill";
+import { valuationBasis, dateSpan, navBasisLabel, navBasisTitle } from "@/lib/valuationBasis";
+import { AbsentCell, AbsentSection, DASH } from "@/components/Absent";
+import { stockHref } from "@/lib/auditFormulas";
+import { bookDrawdown } from "@/lib/drawdown";
+import { wholeFamilyOnly } from "@/lib/memberScope";
+import { BOOK_NAV_COVERAGE } from "@/data/glowData";
+import { chartTooltipStyle, chartTooltipLabelStyle, chartTooltipItemStyle } from "@/lib/chartTheme";
+
+const GAIN = "#10b981", LOSS = "#ef4444";
+
+// Return & Drawdown — the return half, built from what the book carries.
+//
+// DRAWDOWN IS MEASURED ON THE BOOK'S DATED NAV SERIES. A drawdown is
+// peak-to-trough of a VALUATION SERIES, and this page said the corpus carries
+// "two dated values per account" — the premise Stage 10p measured and
+// overturned for the NAV chart. `BOOK_NAV_HISTORY` is a dated series, chained
+// on the link (`navIndexSeries`): each interval over the accounts valued at
+// both its ends, net of the capital that entered it, so an account arriving and
+// a deposit landing are not falls. `bookDrawdown` strikes `maxDrawdown` on that
+// index — never on the level — and the card says what it cannot see — a fall and recovery inside one interval,
+// and every account that publishes no series. (Before that, the page drew a
+// drawdown area against a seeded placeholder benchmark — an axis with a shape
+// on it and no measurement behind it.)
+//
+// WHAT IS REAL HERE. Every position carries a cost basis, a market value and
+// therefore a return. That supports a genuine distribution, a
+// contribution-to-return decomposition by position and by sector, the best and
+// worst name per account, and the spread between ACCOUNTS — which is what the
+// registry supports. A spread between MANAGERS would have to be struck over the
+// discretionary mandates alone; the ends of this one are a venture-fund capital
+// account and the family's own broking account, and neither is a manager.
+//
+// All of it is point-in-time — on the statements' own marks, and on AMFI's
+// published NAV for every scheme it prices (`valuationBasis` says which, with
+// the dates) — which is stated rather than dressed up as a time series.
+
+/** Return bands, lowest first so the axis reads left to right. */
+const BANDS = [
+  { label: "< −25%", lo: -Infinity, hi: -25 },
+  { label: "−25 to −10%", lo: -25, hi: -10 },
+  { label: "−10 to 0%", lo: -10, hi: 0 },
+  { label: "0 to 10%", lo: 0, hi: 10 },
+  { label: "10 to 25%", lo: 10, hi: 25 },
+  { label: "25 to 50%", lo: 25, hi: 50 },
+  { label: "> 50%", lo: 50, hi: Infinity },
+];
+
+const acctLabel = (a: { owner?: string | null; provider: string; accountNo: string }) =>
+  `${a.owner ?? a.accountNo} · ${a.provider.split(" ")[0]} ${a.accountNo}`;
+
+/**
+ * The short form for the spread tile's two ends. It carries the ACCOUNT NUMBER
+ * as well as the provider because a provider is not an account: this book holds
+ * two Transition Venture Capital folios, two SVAN accounts, two Green Lanterns,
+ * two V.E.Cs and two Goldstandards, so the provider word alone does not say
+ * which row of the table below the figure came from.
+ */
+const acctEnd = (a: { provider: string; accountNo: string }) =>
+  `${a.provider.split(" ")[0]} ${a.accountNo}`;
+
+export function ReturnAnalysis() {
+  const { portfolio, statementPortfolio, consolidated, fmtFromBase, scope } = usePortfolio();
+  const sectorView = useTableView("returns-sectors", RA_SECTOR_COLS, { reviewKind: "sector" });
+  const accountView = useTableView("returns-accounts", RA_ACCOUNT_COLS);
+  /**
+   * ── A COMPANY'S SECTOR IS THE ONE SECTOR COMPOSITION DRAWS ────────────────
+   *
+   * The sector table keyed each share on `x.sector` — the family's own
+   * statement and nothing else — so every share a depository reports (an ISIN,
+   * a quantity, a rate and no industry) landed in an "Unclassified" row worth
+   * +₹2.76 Cr of this page's return, and the page's sector split disagreed with
+   * Sector Composition's for the same companies. `companySectorIndex` is the
+   * projection of `companyExposure`'s three tiers — the statement, a fund's SEBI
+   * filing on the ISIN, screener.in on the NSE symbol, a lower tier only ever
+   * filling an empty sector — built over every consolidated company share, as
+   * Family & Entities builds it. No second resolver.
+   */
+  const exposure = useStockExposure(consolidated, true);
+  const companySectors = useMemo(
+    () => companySectorIndex(consolidated.filter(isCompanyShare), exposure),
+    [consolidated, exposure],
+  );
+
+  const model = useMemo(() => {
+    if (!portfolio) return null;
+    // CONSOLIDATED: the book-wide figures on this page — the return
+    // distribution, the contribution decomposition by name and by sector, the
+    // embedded return — count a holding reported under two members once. Without
+    // this the distribution puts the same ₹1.46 Cr in the same band twice. The
+    // PER-ACCOUNT table below, and the spread struck from it, read the full
+    // position set instead: see the note above `pricedByAccount`.
+    const priced = consolidated.filter(isPriced);
+    // Named, not just dropped: a position whose statement reports no cost cannot
+    // answer a question about return, and the page says how many that is.
+    const withoutCost = unpriced(consolidated);
+    const cost = sum(priced.map((x) => x.costBasis));
+    const pnl = sum(priced.map((x) => x.unrealizedPnL));
+    /**
+     * FIFO, HOLDING BY HOLDING — this page decomposes the return BY NAME, so
+     * every figure on it is struck from each holding's own FIFO fields: the
+     * unrealised gain on what is held and the realised gain on units already
+     * sold, over the cost of both. A whole mandate's income, fees and the sales
+     * before its capital-gain window belong to no name, so they are not here;
+     * Morning CIO and each mandate's own page strike a whole mandate on its
+     * capital. Summed before it is divided, so the names add to the total.
+     */
+    const realisedOf = (x: { realizedPnL?: number | null }) => (typeof x.realizedPnL === "number" ? x.realizedPnL : 0);
+    const soldOf = (x: { costOfUnitsSold?: number | null }) => (typeof x.costOfUnitsSold === "number" ? x.costOfUnitsSold : 0);
+    const realised = sum(priced.map(realisedOf));
+    const deployed = cost + sum(priced.map(soldOf));
+
+    // Distribution by VALUE, not by count: ten small losers and one large winner
+    // is a different book from the reverse, and a count hides that.
+    const dist = BANDS.map((b) => {
+      const inBand = priced.filter((x) => x.returnPct >= b.lo && x.returnPct < b.hi);
+      return { label: b.label, value: sum(inBand.map((x) => x.marketValue)), names: inBand.length, loss: b.hi <= 0 };
+    });
+
+    // Contribution to return: each SECURITY's FIFO gain — unrealised plus
+    // realised — over the book's total deployed cost, so the parts add to the
+    // embedded return exactly.
+    //
+    // ONE ROW PER SECURITY (XA-25). This mapped every POSITION, so Sanshi
+    // Fund-I Class E — held in four accounts — stood four times under a
+    // "Security" heading, taking four of the ten places. The accounts' gains
+    // are summed and the return re-struck on their summed cost, never averaged.
+    const byKey = new Map<string, { key: string; security: string; pnl: number; cost: number; sold: number; accounts: Set<string> }>();
+    for (const x of priced) {
+      const e = byKey.get(x.securityKey)
+        ?? { key: x.securityKey, security: x.security, pnl: 0, cost: 0, sold: 0, accounts: new Set<string>() };
+      e.pnl += x.unrealizedPnL + realisedOf(x);
+      e.cost += x.costBasis;
+      e.sold += soldOf(x);
+      e.accounts.add(x.accountId);
+      byKey.set(x.securityKey, e);
+    }
+    const contrib = [...byKey.values()]
+      .map((e) => ({
+        key: e.key, security: e.security, pnl: e.pnl, accounts: e.accounts.size,
+        returnPct: e.cost + e.sold > 0 ? (e.pnl / (e.cost + e.sold)) * 100 : 0,
+        contribPct: deployed > 0 ? (e.pnl / deployed) * 100 : 0,
+      }))
+      .sort((a, b) => b.pnl - a.pnl);
+
+    // A FUND UNIT CARRIES NO EQUITY SECTOR — and the test for that is
+    // `isFundVehicle`, not `isPrivateClass`.
+    //
+    // Keying a wrapper under "Unclassified" made it the single largest "sector",
+    // which is why AIF units were moved to their own asset-class row. That fix
+    // stopped one class short: a mutual fund is marked at a published NAV so it
+    // is not PRIVATE, and this book holds ₹52.4 Cr of mutual-fund units — Helios
+    // Flexi Cap ₹31.0 Cr and Motilal Oswal Active Momentum ₹21.4 Cr — which went
+    // on sitting in "Unclassified" beside shares that genuinely have no sector
+    // printed. Bucket every wrapper under its asset class instead. Its P&L still
+    // counts, so the rows still sum to the embedded return exactly; only the
+    // label changes, from a sector it never had to the thing it is.
+    //
+    // THE COMPANY SIDE IS `isCompanyShare`'S SET AND STAYS THAT WAY. A share a
+    // discretionary manager chose under a PMS mandate has a GICS sector exactly
+    // like one the family bought itself, so it belongs in this table under that
+    // sector — narrowing to own-held shares here would drop ₹127 Cr of real
+    // sector exposure and answer a narrower question than the heading asks. The
+    // holdings TABLES regroup by mandate; a sector attribution does not, and the
+    // caption says so rather than leaving the reader to infer it from a word.
+    //
+    // A ROW IS A SECTOR OR A CLASS, AND WHICH IT IS TRAVELS WITH IT. The label
+    // for a class comes from `bucketLabel` — the one place a class becomes a
+    // word — so this table cannot print a class name that Portfolio Monitor,
+    // Morning CIO or Exposure & IPS have since relabelled. A sector is the
+    // provider's own normalised taxonomy and is never passed through it.
+    const bySector = new Map<string, { pnl: number; cost: number; mv: number; isClass: boolean; deployed: number; keys: Set<string> }>();
+    // EVERY HOLDING THAT IS NOT A COMPANY SHARE IS BY CLASS — a fund wrapper,
+    // a private instrument, and a cash row too, whose statement prints the
+    // sector string "Cash" but which is not a company and has no sector.
+    for (const x of priced) {
+      const byClass = !isCompanyShare(x);
+      // The READER'S class: a liquid or arbitrage fund is Cash here as on every
+      // other page, never the wrapper its statement typed it as.
+      const secKey = byClass ? readerClassOf(x) : (companySectors.get(x.securityKey)?.sector || "Unclassified");
+      const e = bySector.get(secKey) ?? { pnl: 0, cost: 0, mv: 0, isClass: byClass, deployed: 0, keys: new Set<string>() };
+      e.pnl += x.unrealizedPnL + realisedOf(x); e.cost += x.costBasis; e.mv += x.marketValue;
+      e.deployed += x.costBasis + soldOf(x);
+      e.keys.add(x.securityKey);
+      bySector.set(secKey, e);
+    }
+    // The wrapper classes this table bucketed BY CLASS, derived from the same
+    // rows the table is built from and carrying the SAME label the rows do.
+    // Named in the caption so the page states which of its rows are asset
+    // classes rather than sectors — and so the rendering check has something on
+    // the page to hold the table against: a class named here with no row in the
+    // table is a wrapper that leaked back into "Unclassified", which is exactly
+    // the regression being guarded. Labelled through `bucketLabel` on both
+    // sides, because a caption naming "Mutual Fund" over a row headed something
+    // else would satisfy a reader and fail the reader's arithmetic.
+    const wrapperClasses = [...new Set(
+      priced.filter((x) => !isCompanyShare(x)).map((x) => bucketLabel(readerClassOf(x))),
+    )].sort();
+    // WHICH TIER PLACED EACH COMPANY IN THIS TABLE, over the companies it
+    // draws, and what none of them could — the same count Family & Entities
+    // and Data & Refresh print, so borrowed evidence is never unmarked.
+    const shareKeys = [...new Set(priced.filter(isCompanyShare).map((x) => x.securityKey))];
+    const placedBy = { book: 0, disclosure: 0, vendor: 0 };
+    let unplaced = 0;
+    for (const k of shareKeys) {
+      const t = companySectors.get(k)?.from ?? null;
+      if (t) placedBy[t]++; else unplaced++;
+    }
+    const sectorSource = { companies: shareKeys.length, ...placedBy, unplaced };
+    const sectors = [...bySector.entries()]
+      .map(([sector, e]) => ({
+        sector, ...e,
+        companies: e.keys.size,
+        label: e.isClass ? bucketLabel(sector) : sector,
+        returnPct: e.deployed > 0 ? (e.pnl / e.deployed) * 100 : null,
+        contribPct: deployed > 0 ? (e.pnl / deployed) * 100 : 0,
+      }))
+      .sort((a, b) => b.pnl - a.pnl);
+
+    // PER ACCOUNT, so this reads the full position set, NOT the deduped one.
+    // Deduping here emptied Bharat's 360 ONE account entirely — his only holding
+    // is the AIF also reported under Kapil's CRN, and dedupe keeps whichever row
+    // comes first. The row then rendered `0  ₹0  ₹0`, which says the account
+    // measured nothing when it holds ₹1.46 Cr. Book-wide figures above dedupe;
+    // an account's own row shows its own statement.
+    // AN EMPTY SUM IS NOT A MEASUREMENT OF ZERO. `sum([])` is 0, so an account
+    // this page found no priced rows for rendered `0 · ₹0 · ₹0` — and two
+    // accounts here have no rows at all because NO STATEMENT VALUES THEM. The
+    // 360 ONE Alternates folios (1000632, 1000633) issue distribution letters and
+    // statements of earnings and never a valuation; the book already says so in
+    // `Account.noPositionsReason`, and this table printed ₹0 over the top of it.
+    // That is the standing rule's exact failure — a measured zero and an absent
+    // measurement looking the same — against an account whose units ARE marked,
+    // on another member's statement.
+    //
+    // Contrast HDFC 16180583, which really is ₹0: both its schemes are redeemed
+    // to nil units, its `noPositionsReason` is null, and its zero stays.
+    const pricedByAccount = portfolio.positions.filter(isPriced);
+    const byAccount = portfolio.accounts.map((a) => {
+      const rows = pricedByAccount.filter((x) => x.accountId === a.accountId);
+      const held = portfolio.positions.filter((x) => x.accountId === a.accountId).length;
+      const measured = rows.length > 0;
+      const c = sum(rows.map((x) => x.costBasis));
+      const pl = sum(rows.map((x) => x.unrealizedPnL));
+      // PER ACCOUNT, and an account is exactly where a whole mandate's capital
+      // applies: FIFO through the one aggregator, struck on its capital since
+      // inception where the statements state it.
+      const acctFifo = fifoTotals(rows, { accounts: portfolio.accounts, universe: portfolio.positions });
+      const sorted = [...rows].sort((x, y) => y.returnPct - x.returnPct);
+      return {
+        account: a, names: rows.length, held,
+        // Null, not zero, when nothing on this account carries a cost to sum.
+        cost: measured ? c : null,
+        pnl: measured ? pl : null,
+        returnPct: measured && c > 0 ? acctFifo.returnPct : null,
+        // Why the row is empty: the book's own reason where it has one, else the
+        // fact that the account's holdings report no cost.
+        absentReason: a.noPositionsReason
+          ?? (held === 0
+            ? "no holding on this account in the book"
+            : "no holding on this account reports a cost basis, so cost and gain are not measurable"),
+        best: sorted[0] ?? null,
+        worst: sorted[sorted.length - 1] ?? null,
+      };
+    }).sort((a, b) => (b.returnPct ?? -Infinity) - (a.returnPct ?? -Infinity));
+
+    const rated = byAccount.filter((a) => a.returnPct !== null);
+    // HOLDINGS SHOWING A GAIN, on Morning CIO's own predicate (XA-24): a FIFO
+    // return above zero. `unrealizedPnL > 0` counted two cash rows at ₹0.01 and
+    // ₹0.10 of P&L, and ignored a holding whose realised loss outweighs its
+    // unrealised gain, so the two pages read 177 and 175 for one question.
+    const winners = priced.filter((x) => x.returnPct > 0);
+    return {
+      priced, withoutCost, cost, pnl, dist, contrib, sectors, wrapperClasses, sectorSource, byAccount, winners: winners.length,
+      embeddedRet: deployed > 0 ? ((pnl + realised) / deployed) * 100 : null,
+      realised, deployed,
+      hitRate: priced.length ? (winners.length / priced.length) * 100 : null,
+      // Only across accounts that HAVE a return — an account without one is
+      // named, never folded in as zero.
+      spread: rated.length >= 2 ? rated[0].returnPct! - rated[rated.length - 1].returnPct! : null,
+      spreadEnds: rated.length >= 2 ? [rated[0], rated[rated.length - 1]] : null,
+      unrated: byAccount.filter((a) => a.returnPct === null).map((a) => a.account.accountNo),
+    };
+  }, [portfolio, consolidated, companySectors]);
+
+  if (!portfolio || !model) return null;
+  const money = (n: number | null | undefined, sign?: boolean) => fmtFromBase(n, { compact: true, sign });
+  const m = model;
+  // What this page's values are struck on — the statements' marks, and AMFI's
+  // published NAV for every scheme it prices. The subtitle said "on the
+  // statements' own marks" over both; the basis pill reads STATEMENT whenever
+  // no live quote is in, because a NAV never sets the live flag.
+  const vb = valuationBasis(consolidated, portfolio.accounts,
+    statementPortfolio ? dedupedPositions(statementPortfolio.positions) : undefined);
+  // THE BOOK'S OWN DATED SERIES, chained on the link — the one `/history`
+  // and Morning CIO's NAV chart are drawn from, so the three cannot disagree.
+  const { index: ddIndex, drawdown: dd } = bookDrawdown(portfolio.navHistory ?? []);
+  const ddCovered = BOOK_NAV_COVERAGE.covered.length;
+  const ddNote = dd
+    ? `On the book's dated NAV series — ${dd.points} statement dates, ${fmtDate(dd.from)} → ${fmtDate(dd.to)}, chained over the accounts valued at both ends of each interval and net of the external capital that entered it. It covers the ${ddCovered} accounts that publish a series; between statement dates each is held at its latest mark, so a fall and recovery inside one interval is not seen.`
+    : "";
+  const sectorRows = m ? sortRows(m.sectors, sectorView.sort, withReviewAccessors<typeof m.sectors[number]>({
+    sector: (x) => x.label,
+    pnl: (x) => x.pnl,
+    return: (x) => x.returnPct,
+    contrib: (x) => x.contribPct,
+  }, (x) => ({ sector: x.sector }), scope.owners !== null)) : [];
+  const accountRows = m ? sortRows(m.byAccount, accountView.sort, {
+    account: (a) => acctLabel(a.account),
+    names: (a) => (a.cost === null ? null : a.names),
+    cost: (a) => a.cost,
+    pnl: (a) => a.pnl,
+    return: (a) => a.returnPct,
+    best: (a) => a.best?.returnPct ?? null,
+    worst: (a) => a.worst?.returnPct ?? null,
+  }) : [];
+
+
+  if (!m.priced.length) {
+    return (
+      <div>
+        <PageHeader eyebrow="Analytics" title="Return &amp; Drawdown" />
+        <AbsentSection what="No priced positions in this book"
+          needs="A return needs a cost basis and a market value on the same position. No holding in this book carries both." />
+      </div>
+    );
+  }
+
+  return (
+    <div>
+      <PageHeader eyebrow="Analytics" title="Return &amp; Drawdown"
+        subtitle={vb.nav.rows
+          ? `Where the book's return comes from, name by name and sector by sector. Point-in-time — on the statements' own marks, and on AMFI's published NAV of ${dateSpan(vb.nav, fmtDate)} for the ${vb.nav.schemes} scheme${vb.nav.schemes === 1 ? "" : "s"} it prices.`
+          : "Where the book's return comes from, name by name and sector by sector. Point-in-time, on the statements' own marks."}
+        right={<div className="flex items-center gap-2">
+          <BasisPill liveText="Live prices" hint="Returns are FIFO — unrealised gain on what is held plus realised gain on units already sold, over the cost of both — rebuilt from live prices where a quote exists; cost basis is as the statements report it." />
+          {vb.nav.rows > 0 && (
+            <Pill tone="info">
+              <span data-xa="nav-basis" data-nav-from={vb.nav.from ?? ""} data-nav-to={vb.nav.to ?? ""}
+                data-nav-schemes={vb.nav.schemes} data-nav-rows={vb.nav.rows} data-nav-value={vb.nav.value}
+                data-nav-printed={vb.nav.statementValue ?? ""} data-nav-marked={vb.nav.markedValue}
+                data-units-value={vb.units.value} data-units-rows={vb.units.rows}
+                data-units-from={vb.units.from ?? ""} data-units-to={vb.units.to ?? ""}
+                title={navBasisTitle(vb, (n) => fmtFromBase(n, { compact: true }), fmtDate)}>
+                {navBasisLabel(vb, fmtDate)}
+              </span>
+            </Pill>
+          )}
+          <Pill tone="info">{m.priced.length} priced positions</Pill>
+        </div>} />
+
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <StatTile label="Return · FIFO, by holding"
+          value={<span className={changeColor(m.embeddedRet ?? 0)}>{fmtPct(m.embeddedRet ?? 0, { sign: true })}</span>}
+          sub={<>{money(m.pnl, true)} unrealised + {money(m.realised, true)} realised on {money(m.deployed)} deployed</>}
+          title="Each holding's own FIFO figures, summed before they are divided: the unrealised gain on what is held plus the realised gain on units already sold, over the cost of both. A whole mandate's income, fees and earlier sales belong to no single name and are not here — Morning CIO strikes a whole mandate on its capital."
+          icon={<Percent className="h-4 w-4" />} />
+
+        <StatTile label="Holdings showing a gain"
+          {...(m.hitRate === null
+            ? { value: <span className="text-slate-500">{DASH}</span>, sub: "no holding reports a cost to measure a gain against" }
+            : {
+              value: `${m.hitRate.toFixed(0)}%`,
+              sub: <span data-xa="returns-hit" data-winners={m.winners} data-priced={m.priced.length}>{`${m.winners} of ${m.priced.length} holdings with a cost`}</span>,
+            })}
+          icon={<Target className="h-4 w-4" />} />
+
+        {/* SPREAD BETWEEN ACCOUNTS, WHICH IS WHAT IS MEASURED. `rated` is every
+            account in the registry that carries a cost basis, and on this book
+            the two ends are a drawdown venture-fund capital account (Transition
+            Venture Capital, engagement AIF) and the family's own self-directed
+            broking account (LKP, engagement Execution). Neither is a manager
+            running a discretionary mandate, so "Spread between managers" over
+            them asserts manager dispersion nobody measured — the same failure as
+            a word claiming how a holding is run over a set where it is not true.
+            The table directly below is headed "Per account" and says a PMS
+            mandate and the family's own demat are each one row of it; this tile
+            is the same set and now uses the same word. Restricting `rated` to
+            `isMandateHeld` accounts would be the other honest answer, and it is
+            deliberately not taken: the widest dispersion in the book is a real
+            finding, and narrowing it to the ten mandates would hide it. */}
+        <StatTile label="Spread between accounts"
+          value={m.spread === null ? <span className="text-slate-500">{DASH}</span> : `${m.spread.toFixed(1)} pp`}
+          sub={m.spread === null
+            ? "needs two accounts with a cost basis"
+            : `${acctEnd(m.spreadEnds![0].account)} to ${acctEnd(m.spreadEnds![1].account)}`}
+          hint={m.unrated.length ? `${m.unrated.length} ${m.unrated.length === 1 ? "account has" : "accounts have"} no cost basis — left out, not counted as zero` : undefined}
+          title={m.unrated.length ? `${m.unrated.length === 1 ? "Account" : "Accounts"} ${m.unrated.join(", ")} ${m.unrated.length === 1 ? "has" : "have"} no cost basis and ${m.unrated.length === 1 ? "is" : "are"} excluded rather than counted as zero.` : undefined}
+          icon={<Scale className="h-4 w-4" />} />
+
+        {dd ? (
+          <StatTile label="Maximum drawdown"
+            value={<span className={dd.pct < 0 ? "text-loss" : "text-slate-300"} data-xa="returns-drawdown"
+                data-value={dd.pct} data-peak={dd.peakDate ?? ""} data-trough={dd.troughDate ?? ""}
+                data-recovered={dd.recoveredOn ?? ""} data-points={dd.points}>
+                {fmtPct(dd.pct, { decimals: 2 })}
+              </span>}
+            sub={dd.pct < 0
+              ? `${fmtDate(dd.peakDate!)} → ${fmtDate(dd.troughDate!)} · ${dd.recoveredOn ? `recovered ${fmtDate(dd.recoveredOn)}` : "not yet recovered"}`
+              : "a measured nil — the dated series never fell"}
+            hint={`On the dated NAV series of the ${ddCovered} accounts that publish one`}
+            title={ddNote}
+            icon={<TrendingDown className="h-4 w-4" />} />
+        ) : scope.selected ? (
+          <StatTile label="Maximum drawdown" value={<span className="text-slate-500">{DASH}</span>}
+            sub="whole family only"
+            hint={wholeFamilyOnly("The dated NAV series a drawdown is struck on", scope.label)}
+            icon={<TrendingDown className="h-4 w-4" />} />
+        ) : (
+          <StatTile label="Maximum drawdown" value={<span className="text-slate-500">{DASH}</span>}
+            sub="needs a valuation series"
+            hint="Peak-to-trough needs the book's value at two or more dates, and no account here publishes a dated series."
+            icon={<TrendingDown className="h-4 w-4" />} />
+        )}
+      </div>
+
+      <div className="mt-5 grid gap-5 lg:grid-cols-5 items-start">
+        <Card className="lg:col-span-3" title="Return distribution"
+          subtitle="Market value in each return band — by value, not by count">
+          <div className="h-72">
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart data={m.dist} margin={{ top: 8, right: 8, left: -8, bottom: 0 }}>
+                <CartesianGrid stroke="#2b2668" strokeDasharray="2 4" vertical={false} />
+                <XAxis dataKey="label" stroke="#6b6880" fontSize={10} interval={0} angle={-20} textAnchor="end" height={58} />
+                <YAxis stroke="#6b6880" fontSize={11} tickFormatter={(v: number) => fmtFromBase(v, { compact: true })} width={78} />
+                <ReferenceLine y={0} stroke="#3a3570" />
+                <Tooltip contentStyle={chartTooltipStyle} labelStyle={chartTooltipLabelStyle} itemStyle={chartTooltipItemStyle}
+                  formatter={(v: number, _n, o) => [`${fmtFromBase(v as number, { compact: true })} · ${(o?.payload as { names: number })?.names ?? 0} holdings`, "Market value"]} />
+                <Bar dataKey="value" radius={[4, 4, 0, 0]}>
+                  {m.dist.map((d, i) => <Cell key={i} fill={d.loss ? LOSS : GAIN} />)}
+                </Bar>
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+        </Card>
+
+        {/* THE SET NAME IS A SENTENCE, NOT A CLASS LABEL. This card's rows are
+            every share in a company — own-held and mandate-held alike — plus one
+            row per fund wrapper, and no class word names that set.
+
+            It used to read `assetClassLabel("Equity")`, the ONLY hardcoded call
+            to that helper in src/ and the one place a class label was being used
+            as a noun phrase for a set rather than as a row label. That is a
+            binding no caption should have: `CLASS_LABEL` exists to answer "what
+            IS this holding?", it has already been rewritten twice as the family
+            read successive words as claims about WHO CHOSE the position, and
+            each rewrite silently changed the meaning of this sentence — which
+            then went on to say "a manager's mandate included" in its own next
+            clause. Whatever the class vocabulary settles on, a caption that
+            reads "<class word> by sector — a manager's mandate included" is
+            either redundant or self-contradicting, and nothing on the `returns`
+            route checks its vocabulary.
+
+            The phrase below states the set outright, so it is true under either
+            vocabulary and cannot go stale when a class is relabelled. The class
+            words this card DOES render — its row labels and the wrapper classes
+            named under the table — still come from `bucketLabel`, which is
+            correct: those ARE classes. */}
+        <Card className="lg:col-span-2" title="Contribution by sector"
+          subtitle="Company shares by sector, funds by class, each as a share of total cost — every share in a company, a manager's mandate included, and every fund wrapper under its own class.">
+          <div className="overflow-x-auto">
+            <table className="w-full text-[12.5px]">
+              <thead className="label-xs border-b border-ink-700">
+                <Tr view={sectorView}>
+                  <SortHeader col="sector" view={sectorView} align="left" pad="px-2 py-2">Sector / class</SortHeader>
+                  <SortHeader col="pnl" view={sectorView} pad="px-2 py-2">P&amp;L</SortHeader>
+                  <SortHeader col="return" view={sectorView} pad="px-2 py-2">Return</SortHeader>
+                  <SortHeader col="contrib" view={sectorView} pad="px-2 py-2">Contrib.</SortHeader>
+                </Tr>
+              </thead>
+              <tbody>
+                {sectorRows.map((s) => (
+                  <Tr view={sectorView} reviewScope={{ sector: s.sector }} key={s.sector} className="border-t border-ink-700/60">
+                    <td className="px-2 py-2 text-slate-200" data-xa="returns-sector-row" data-sector={s.sector}
+                      data-class={s.isClass ? "1" : "0"} data-companies={s.companies} data-pnl={s.pnl}>{s.label}</td>
+                    <td className={`px-2 py-2 text-right mono ${changeColor(s.pnl)}`}>{money(s.pnl, true)}</td>
+                    <td className="px-2 py-2 text-right mono">
+                      {s.returnPct === null
+                        ? <span className="text-slate-500" title="no cost basis on these rows">{DASH}</span>
+                        : <span className={changeColor(s.returnPct)}>{fmtPct(s.returnPct, { sign: true, decimals: 1 })}</span>}
+                    </td>
+                    <td className={`px-2 py-2 text-right mono ${changeColor(s.contribPct)}`}>{fmtPct(s.contribPct, { sign: true, decimals: 2 })}</td>
+                  </Tr>
+                ))}
+              </tbody>
+              <tfoot className="border-t-2 border-ink-600 font-semibold">
+                <TrFoot view={sectorView} className="px-2 py-2 text-slate-200" label={<>Total</>}
+                  cells={{
+                    pnl: <td key="pnl" className={`px-2 py-2 text-right mono ${changeColor(m.pnl + m.realised)}`}>{money(m.pnl + m.realised, true)}</td>,
+                    return: <td key="return" className={`px-2 py-2 text-right mono ${changeColor(m.embeddedRet ?? 0)}`}>{fmtPct(m.embeddedRet ?? 0, { sign: true, decimals: 1 })}</td>,
+                    contrib: <td key="contrib" className={`px-2 py-2 text-right mono ${changeColor(m.embeddedRet ?? 0)}`}>{fmtPct(m.embeddedRet ?? 0, { sign: true, decimals: 2 })}</td>,
+                  }} />
+              </tfoot>
+            </table>
+          </div>
+          {/* ONE LINE, the reasoning in its hover — the family asked for the
+              notes under the tables to go. Which classes are bucketed by class
+              stays on screen, because that is what makes a row readable. */}
+          <p className="mt-2 text-[11px] text-slate-500"
+            title="Contributions are each row's P&L over the book's total cost, so they add to the embedded return exactly. A GICS sector is a property of a company, so every share in a company is bucketed by one — including the shares a discretionary manager chose under a PMS mandate. A fund is a wrapper holding many companies and has no sector of its own, so it appears under its asset class instead — as does anything else that is not a share in a company, cash included; its gain still counts. A company's sector is the one Sector Composition draws: its own statement's, then a fund's filing on the ISIN, then screener.in on the NSE symbol, a lower tier only ever filling a sector the statements left empty.">
+            {/* Stage 10cp: the line is the classes alone; that contributions
+                add to the total exactly is the first words of its hover. */}
+            {m.wrapperClasses.length > 0
+              ? <>Funds by class: <span className="text-slate-400">{m.wrapperClasses.join(", ")}</span></>
+              : <>Contributions add to the total return exactly</>}
+          </p>
+          {/* WHICH TIER PLACED THE COMPANIES IN THIS TABLE — borrowed evidence
+              is counted where it is used, and `data-status` carries the fetch's
+              own state so a walk can tell a tier still landing from a settled
+              one. Until the funds' filings land, a company only a filing places
+              sits in Unclassified and its row WILL move; the strip says so. */}
+          {m.sectorSource.companies > 0 && (
+            <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-[11px] text-slate-400"
+              data-returns-sector-source data-xa="returns-sector-source"
+              data-status={exposure.status}
+              data-from-book={m.sectorSource.book}
+              data-from-disclosure={m.sectorSource.disclosure}
+              data-from-vendor={m.sectorSource.vendor}
+              data-unplaced={m.sectorSource.unplaced}
+              data-companies={m.sectorSource.companies}>
+              <span className="text-slate-500">Sector source</span>
+              <span><span className="mono text-slate-200">{m.sectorSource.book}</span> from a statement in this book</span>
+              {m.sectorSource.disclosure > 0 && <span><span className="mono text-slate-200">{m.sectorSource.disclosure}</span> from a fund&rsquo;s filing</span>}
+              {m.sectorSource.vendor > 0 && <span><span className="mono text-slate-200">{m.sectorSource.vendor}</span> from screener.in</span>}
+              {m.sectorSource.unplaced > 0 && <span className="text-slate-500"><span className="mono">{m.sectorSource.unplaced}</span> unplaced</span>}
+              {exposure.status === "loading" && <span className="text-slate-500">still reading the funds&rsquo; filings</span>}
+              {exposure.status === "unreachable" && (
+                <span className="text-amber-400/80" title="The look-through store did not answer, so no company is placed by a fund's own filing on this visit; those companies sit in Unclassified. Nothing is misplaced by it — that tier only ever fills a sector the statements left empty.">
+                  a fund&rsquo;s filings could not be read
+                </span>
+              )}
+            </div>
+          )}
+        </Card>
+      </div>
+
+      <Card className="mt-5" title="Per account"
+        subtitle="Every account, with its best and worst name — the same measure on every account the book carries; a PMS mandate is one account here, and so is the family's own demat.">
+        <div className="overflow-x-auto">
+          <table className="w-full text-[12.5px]">
+            <thead className="label-xs border-b border-ink-700">
+              <Tr view={accountView}>
+                <SortHeader col="account" view={accountView} align="left" pad="px-3 py-2">Account</SortHeader>
+                <SortHeader col="names" view={accountView} pad="px-3 py-2">Names</SortHeader>
+                <SortHeader col="cost" view={accountView} pad="px-3 py-2">Cost</SortHeader>
+                <SortHeader col="pnl" view={accountView} pad="px-3 py-2">Unrealised P&amp;L</SortHeader>
+                <SortHeader col="return" view={accountView} pad="px-3 py-2">Return</SortHeader>
+                <SortHeader col="best" view={accountView} align="left" pad="px-3 py-2">Best</SortHeader>
+                <SortHeader col="worst" view={accountView} align="left" pad="px-3 py-2">Worst</SortHeader>
+              </Tr>
+            </thead>
+            <tbody>
+              {accountRows.map((a) => (
+                <Tr view={accountView} key={a.account.accountId} className="border-t border-ink-700/60">
+                  <td className="px-3 py-2.5 font-medium text-slate-100">{acctLabel(a.account)}</td>
+                  <td className="px-3 py-2.5 text-right mono text-slate-400">
+                    {a.cost === null ? <AbsentCell reason={a.absentReason} /> : a.names}
+                  </td>
+                  <td className="px-3 py-2.5 text-right mono text-slate-300">
+                    {a.cost === null ? <AbsentCell reason={a.absentReason} /> : money(a.cost)}
+                  </td>
+                  <td className={`px-3 py-2.5 text-right mono ${a.pnl === null ? "" : changeColor(a.pnl)}`}>
+                    {a.pnl === null ? <AbsentCell reason={a.absentReason} /> : money(a.pnl, true)}
+                  </td>
+                  <td className="px-3 py-2.5 text-right mono">
+                    {a.returnPct === null
+                      ? <AbsentCell reason={a.absentReason} />
+                      : <span className={changeColor(a.returnPct)}>{fmtPct(a.returnPct, { sign: true, decimals: 1 })}</span>}
+                  </td>
+                  <td className="px-3 py-2.5">
+                    {a.best
+                      ? <a className="text-slate-200 hover:text-accent-400" href={stockHref(a.best.securityKey)}>
+                          {a.best.security} <span className="mono text-gain">{fmtPct(a.best.returnPct, { sign: true, decimals: 0 })}</span>
+                        </a>
+                      : <span className="text-slate-500">{DASH}</span>}
+                  </td>
+                  <td className="px-3 py-2.5">
+                    {a.worst
+                      ? <a className="text-slate-200 hover:text-accent-400" href={stockHref(a.worst.securityKey)}>
+                          {a.worst.security} <span className="mono text-loss">{fmtPct(a.worst.returnPct, { sign: true, decimals: 0 })}</span>
+                        </a>
+                      : <span className="text-slate-500">{DASH}</span>}
+                  </td>
+                </Tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </Card>
+
+      <div className="mt-5 grid gap-5 lg:grid-cols-2 items-start">
+        {/* The P&L is the FIFO gain — unrealised plus realised — which the
+            subtitle used to call "unrealised" after the column stopped being
+            only that. */}
+        <Card title="Largest contributors" subtitle="By FIFO gain — unrealised plus realised, per security">
+          <ContribTable rows={m.contrib.slice(0, 10)} money={money} storageKey="returns-contributors" />
+        </Card>
+        <Card title="Largest detractors" subtitle="By FIFO gain — unrealised plus realised, per security">
+          <ContribTable rows={[...m.contrib].reverse().slice(0, 10)} money={money} storageKey="returns-detractors" />
+        </Card>
+      </div>
+
+      <Card className="mt-5" title="Drawdown"
+        // A CARD'S SUBTITLE IS ITS TITLE'S HOVER (Stage 10cp), and the line
+        // that stood under the table — how the series is chained — goes there
+        // with the rest of `ddNote`, never back under the table.
+        subtitle={dd ? `Peak-to-trough on the book's dated NAV series, rebased to 100 at ${fmtDate(dd.from)}. ${ddNote}` : "Peak-to-trough decline in the book's value"}>
+        {dd ? (
+          <DrawdownTable index={ddIndex} />
+        ) : scope.selected ? (
+          <div data-nav-scope-absent>
+            <AbsentSection what={`Whole family only · not shown for ${scope.label}`}
+              needs={wholeFamilyOnly("The dated NAV series a drawdown is struck on", scope.label)} />
+          </div>
+        ) : (
+          <AbsentSection
+            what="No drawdown can be computed for this book"
+            needs={`A drawdown is the largest peak-to-trough fall in the book's VALUE, which needs that value at two or
+              more dates. No account in this book publishes more than one dated valuation, so there is no series to
+              fall along. A periodic valuation statement per account is what this needs.`} />
+        )}
+      </Card>
+    </div>
+  );
+}
+
+function ContribTable({ rows, money, storageKey }: {
+  rows: { key: string; security: string; pnl: number; returnPct: number; contribPct: number; accounts: number }[];
+  money: (n: number, sign?: boolean) => string;
+  /** Contributors and detractors are two tables, so each keeps its own order. */
+  storageKey: string;
+}) {
+  const { scope } = usePortfolio();
+  const view = useTableView(storageKey, RA_CONTRIB_COLS, { reviewKind: "holding" });
+  const shown = sortRows(rows, view.sort, withReviewAccessors<typeof rows[number]>({
+    security: (r) => r.security,
+    pnl: (r) => r.pnl,
+    return: (r) => r.returnPct,
+    contrib: (r) => r.contribPct,
+  }, (r) => ({ securityKey: r.key }), scope.owners !== null));
+  if (!rows.length) {
+    return <p className="py-6 text-center text-[11.5px] text-slate-500">{DASH} no priced positions in the book</p>;
+  }
+  return (
+    <div className="overflow-x-auto">
+      <table className="w-full text-[12.5px]">
+        <thead className="label-xs border-b border-ink-700">
+          <Tr view={view}>
+            <SortHeader col="security" view={view} align="left" pad="px-2 py-2">Security</SortHeader>
+            <SortHeader col="pnl" view={view} pad="px-2 py-2">P&amp;L</SortHeader>
+            <SortHeader col="return" view={view} pad="px-2 py-2">Return</SortHeader>
+            <SortHeader col="contrib" view={view} pad="px-2 py-2">Contrib.</SortHeader>
+          </Tr>
+        </thead>
+        <tbody>
+          {shown.map((r) => (
+            <Tr view={view} reviewScope={{ securityKey: r.key }} key={r.key} className="border-t border-ink-700/60">
+              <td className="px-2 py-2" data-xa={`${storageKey}-row`} data-key={r.key} data-pnl={r.pnl} data-accounts={r.accounts}>
+                <a className="text-slate-200 hover:text-accent-400" href={stockHref(r.key)}>{r.security}</a>
+                {r.accounts > 1 && <span className="ml-1.5 text-[10.5px] text-slate-500"
+                  title={`Held in ${r.accounts} accounts; their gains are added and the return is struck on their added cost.`}>
+                  · {r.accounts} accounts</span>}
+              </td>
+              <td className={`px-2 py-2 text-right mono ${changeColor(r.pnl)}`}>{money(r.pnl, true)}</td>
+              <td className={`px-2 py-2 text-right mono ${changeColor(r.returnPct)}`}>{fmtPct(r.returnPct, { sign: true, decimals: 1 })}</td>
+              <td className={`px-2 py-2 text-right mono ${changeColor(r.contribPct)}`}>{fmtPct(r.contribPct, { sign: true, decimals: 2 })}</td>
+            </Tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+/**
+ * The dated index behind the drawdown tile, one row per statement date — the
+ * interval's own chained change and the fall from the running peak — so a
+ * reader can find the peak and the trough the tile names.
+ */
+function DrawdownTable({ index }: { index: { date: string; index: number }[] }) {
+  const view = useTableView("returns-drawdown", RA_DD_COLS);
+  let peak = -Infinity;
+  const rows = index.map((x, i) => {
+    peak = Math.max(peak, x.index);
+    return {
+      date: x.date,
+      index: x.index,
+      interval: i > 0 && index[i - 1].index > 0 ? (x.index / index[i - 1].index - 1) * 100 : null,
+      fromPeak: peak > 0 ? (x.index / peak - 1) * 100 : null,
+    };
+  });
+  const shown = sortRows(rows, view.sort, {
+    date: (r) => r.date,
+    index: (r) => r.index,
+    interval: (r) => r.interval,
+    fromPeak: (r) => r.fromPeak,
+  });
+  return (
+    <div className="overflow-x-auto">
+      <table className="min-w-full text-sm">
+        <thead className="border-b border-ink-700">
+          <Tr view={view}>
+            <SortHeader col="date" view={view} align="left">Statement date</SortHeader>
+            <SortHeader col="index" view={view}>Index</SortHeader>
+            <SortHeader col="interval" view={view}>Interval</SortHeader>
+            <SortHeader col="fromPeak" view={view}>From peak</SortHeader>
+          </Tr>
+        </thead>
+        <tbody className="divide-y divide-ink-700/70">
+          {shown.map((r) => (
+            <Tr view={view} key={r.date}>
+              <td className="px-4 py-2 text-slate-200" data-xa="returns-dd-row" data-date={r.date}
+                data-from-peak={r.fromPeak ?? ""} data-interval={r.interval ?? ""}>{fmtDate(r.date)}</td>
+              <td className="px-4 py-2 text-right mono text-slate-300">{r.index.toFixed(2)}</td>
+              <td className="px-4 py-2 text-right mono">
+                {r.interval === null
+                  ? <AbsentCell reason="the first point has nothing before it to change from" />
+                  : <span className={changeColor(r.interval)}>{fmtPct(r.interval, { sign: true, decimals: 2 })}</span>}
+              </td>
+              <td className="px-4 py-2 text-right mono">
+                {r.fromPeak === null
+                  ? <AbsentCell reason="no peak to measure from" />
+                  : <span className={r.fromPeak < 0 ? "text-loss" : "text-slate-500"}>{fmtPct(r.fromPeak, { decimals: 2 })}</span>}
+              </td>
+            </Tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}

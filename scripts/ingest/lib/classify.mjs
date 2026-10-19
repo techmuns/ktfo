@@ -1,0 +1,1122 @@
+// Best-effort classification of one statement PDF.
+//
+// Everything here is a GUESS and is labelled as one. The inventory's job is to
+// make the shape of the drop visible — which provider, which account, which
+// date, which kind of report — so a human can decide what is authoritative
+// before any figure is extracted. A field this cannot determine comes back
+// null, and a file it cannot place lands in the inventory's "could not
+// classify" section rather than being filed under a plausible guess.
+//
+// Two provider signatures are seeded from real documents; the generic
+// keyword pass catches the rest.
+
+export const REPORT_TYPES = [
+  "holdings", "appraisal", "fact-sheet", "performance-summary", "performance-history",
+  "performance-benchmark", "transaction-statement", "corporate-action", "capital-gain",
+  "capital-register", "dividend-statement", "bank-book", "expense-statement",
+  "corporate-benefits", "capital-call", "distribution-notice", "contract-note",
+  // The SEBI-prescribed PMS INVESTOR REPORT: account overview, portfolio
+  // summary, capital contributions since inception, the period's trades and a
+  // holding report, all in one statement. SVAN issues it monthly and Green
+  // Lantern quarterly, in the same regulator-mandated shape.
+  "investor-report",
+  // A DEPOSITORY movement statement — CDSL's own record of shares entering and
+  // leaving a demat account. Deliberately not "transaction-statement", which it
+  // is titled: a demat debit can be a pledge, a remat or an off-market transfer
+  // with no trade behind it, and the statement prints no price for any of them.
+  "demat-statement",
+  // A fund's own holdings, published under SEBI's disclosure rules. Carries no
+  // client and no units — archived for look-through, worth nothing to the book.
+  "scheme-portfolio",
+  // A Category-II AIF's pass-through income for one folio, split by TAX HEAD.
+  // The only place in this drop that says which rate the family's AIF income
+  // attracts, which is not a detail a "distribution-notice" would carry.
+  "statement-of-earnings",
+  // The same reporting system's two since-inception ACCOUNT SUMMARIES. ASK's
+  // PROFIT AND LOSS ACCOUNT (income, expenses and the surplus, with a balance
+  // sheet on its second page) and Marathon's DETAILS OF INCOME AND EXPENSES
+  // (one row: gains by term, dividend, interest, fees, STT). Each is the
+  // manager's own total of what the dated statements beside it itemise — a
+  // CHECK on those statements, and the only document carrying the fees.
+  "profit-and-loss", "income-expense",
+  // Buoyant's PORTFOLIO SNAP REPORT: its Category III account statement (the
+  // summary row, the deposits, the allotments per class) with a third page the
+  // statement alone does not carry — Current Investments by class, the
+  // since-inception Investment Summary and the TWRR. Its own report type so the
+  // book can decide what it is authoritative for rather than letting a newer
+  // issue silently supersede the account statement it is not.
+  "portfolio-snap",
+  // A PERSONAL BANK ACCOUNT STATEMENT — the family's own savings accounts, with
+  // a running balance beside a withdrawal and a deposit column.
+  //
+  // Deliberately NOT "bank-book", which is the PMS reporting system's record of
+  // the cash leg INSIDE a mandate: that one is the manager moving a client's
+  // money between a trade and a dividend, and `precedence.mjs` already names it
+  // for `cashFlows` on six accounts. A savings account is not a mandate, its
+  // movements are not a manager's, and one report type for both would let a
+  // bank statement supersede a bank book on an account that has one.
+  "bank-statement",
+  "unknown",
+];
+
+// ── Date parsing ─────────────────────────────────────────────────────────────
+const MONTHS = {
+  jan: 1, feb: 2, mar: 3, apr: 4, may: 5, jun: 6,
+  jul: 7, aug: 8, sep: 9, oct: 10, nov: 11, dec: 12,
+};
+
+const pad = (n) => String(n).padStart(2, "0");
+
+/**
+ * Normalise a printed date to ISO. Indian statements are day-first throughout,
+ * so `03/04/2026` is 3 April — never 4 March. Anything ambiguous enough to need
+ * the other reading would be a different provider and a different rule.
+ */
+export function toIso(raw) {
+  if (!raw) return null;
+  const s = String(raw).trim();
+  let m;
+  if ((m = s.match(/^(\d{4})-(\d{2})-(\d{2})$/))) return s;
+  if ((m = s.match(/^(\d{1,2})[/-](\d{1,2})[/-](\d{2}|\d{4})$/))) {
+    const [, d, mo, yy] = m;
+    // The capital gain statement prints two-digit years (`07/05/26`) while every
+    // other report prints four. Two digits are read as 20xx: the earliest dated
+    // row in this book is ASK's 2019 inception (its capital gain statement
+    // prints `18/08/20` and `30/03/22`), and no row in the drop predates 2000.
+    // A wider rule would need a pivot year, and a pivot year guessed here would
+    // silently move a trade by a century.
+    const y = yy.length === 2 ? `20${yy}` : yy;
+    if (Number(mo) >= 1 && Number(mo) <= 12 && Number(d) >= 1 && Number(d) <= 31) return `${y}-${pad(mo)}-${pad(d)}`;
+    return null;
+  }
+  // `30 Jun 2026` and `30-Jun-26`. The two-digit year reads as 20xx on the same
+  // rule as the numeric form above: 360 ONE's holding statement prints its
+  // "Price As on" and its corporate-action dates this way, and no row in the
+  // drop predates 2000.
+  if ((m = s.match(/^(\d{1,2})[\s-]*([A-Za-z]{3,})[\s-]*,?[\s-]*(\d{2}|\d{4})$/))) {
+    const mo = MONTHS[m[2].slice(0, 3).toLowerCase()];
+    const y = m[3].length === 2 ? `20${m[3]}` : m[3];
+    return mo ? `${y}-${pad(mo)}-${pad(m[1])}` : null;
+  }
+  if ((m = s.match(/^([A-Za-z]{3,})[\s-]+(\d{1,2}),?[\s-]+(\d{4})$/))) {
+    const mo = MONTHS[m[1].slice(0, 3).toLowerCase()];
+    return mo ? `${m[3]}-${pad(mo)}-${pad(m[2])}` : null;
+  }
+  return null;
+}
+
+const DATE_PATTERN = String.raw`(\d{1,2}[/-]\d{1,2}[/-]\d{4}|\d{4}-\d{2}-\d{2}|\d{1,2}[\s-]*[A-Za-z]{3,}[\s-]*,?[\s-]*\d{4}|[A-Za-z]{3,}[\s-]+\d{1,2},?[\s-]+\d{4})`;
+
+/** First date appearing after `label` in the (scrambled) text. */
+function dateAfter(text, label) {
+  const re = new RegExp(label + String.raw`\s*[:\-]?\s*` + DATE_PATTERN, "i");
+  const m = text.match(re);
+  return m ? toIso(m[1]) : null;
+}
+
+/**
+ * Cut a person/entity name out of scrambled text.
+ *
+ * The text has no line breaks, so a greedy capture after "Client Name :" runs
+ * straight on into the next label — `<first> <last> Report As On Date`. The
+ * name is therefore taken as a short run of words and cut at the first token
+ * that starts a known label, plus any caller-supplied stop word (the detected
+ * strategy name, whose first token otherwise reads as part of the owner).
+ */
+const NAME_STOPS = new Set([
+  "report", "date", "as", "on", "of", "at", "account", "statement", "portfolio",
+  "client", "family", "name", "scheme", "strategy", "equity", "fund", "current",
+  "valuation", "period", "folio", "crn", "no", "number", "code", "summary",
+  "holding", "holdings", "appraisal", "performance", "transaction", "total", "page",
+]);
+
+export function trimPersonName(raw, extraStops = []) {
+  if (!raw) return null;
+  const stops = new Set([...NAME_STOPS, ...extraStops.map((w) => w.toLowerCase())]);
+  const words = String(raw).trim().split(/\s+/);
+  const out = [];
+  for (const w of words) {
+    const bare = w.replace(/[^A-Za-z]/g, "").toLowerCase();
+    if (!bare || stops.has(bare)) break;
+    out.push(w);
+    if (out.length === 5) break;      // no real name runs longer than this here
+  }
+  const name = out.join(" ").replace(/[,;:.]+$/, "").trim();
+  return name.length >= 2 ? name : null;
+}
+
+/** First capture group after `label`, trimmed and length-capped. */
+function fieldAfter(text, label, pattern = String.raw`([^:|]{2,80}?)`) {
+  const re = new RegExp(label + String.raw`\s*[:\-]?\s*` + pattern + String.raw`(?=\s{2,}|\s*[A-Z][a-z]+\s*(?:Name|Date|No|Number)|$)`, "i");
+  const m = text.match(re);
+  return m ? m[1].trim().replace(/\s+/g, " ") || null : null;
+}
+
+// ── Provider signatures ──────────────────────────────────────────────────────
+
+/**
+ * 360 ONE PRIVATE WEALTH — "PORTFOLIO ANALYSIS REPORT - CLIENT LEVEL", ~11pp.
+ * Header carries Family Name, Client Name (CRN…), Report As On Date. The file is
+ * a BUNDLE: executive summary, a detailed holding statement, a transaction
+ * statement and a corporate-action statement all in one PDF. It gets one primary
+ * reportType for grouping and a `sections` list so the overlap stays visible.
+ * Holdings are AIF/PMS units — no ISIN, no ticker.
+ */
+function match360One(text, name) {
+  // AND SO DOES A BANK NARRATION — an RTGS to or from a manager prints the
+  // manager's name. This matcher reads the LETTERHEAD rather than the whole
+  // text, so no bank statement in this drop trips it, and the guard is here
+  // because that is a fact about today's narrations rather than a property of
+  // the matcher. COUNTED, and the run prints the count even at zero — see
+  // `bankGuardHits`.
+  if (isBankStatement(text)) { bankGuardHits.match360One += 1; return null; }
+  // A NON-STATEMENT NAMES 360 ONE TOO — as a manager the family pays and, in the
+  // review, as a holding. Same reasoning as the depository guard in
+  // `matchGoldstandard`: stop it here so it reaches ISSUER_PROVIDER_RULES and is
+  // labelled for what it is.
+  if (isNonStatement(text)) return null;
+  /**
+   * THE LETTERHEAD, NOT THE WHOLE DOCUMENT.
+   *
+   * `360 ONE` also appears as a HOLDING — `360 One WAM Limited` is a listed
+   * company, and WhiteOak's multi-asset fund holds ₹10.16 Cr of it. Matching the
+   * whole text filed that scheme's monthly portfolio disclosure, a document with
+   * no client and no position in it, under 360 ONE Private Wealth and handed it
+   * to a reader written for a client-level portfolio analysis report.
+   *
+   * Exactly the trap ISSUER_PROVIDER_RULES / HOUSE_PROVIDER_RULES were split to
+   * avoid further down this file; this seeded matcher runs BEFORE that split and
+   * had never been given the same discipline. The report title stays matched on
+   * the whole text, because it is a title and appears once.
+   */
+  const head = text.slice(0, LETTERHEAD_CHARS);
+  const hit = /360\s*ONE/i.test(head) || /PORTFOLIO\s+ANALYSIS\s+REPORT/i.test(text) || /\b360one\b/i.test(name);
+  if (!hit) return null;
+  // The group's ALTERNATES arm publishes per-folio AIF correspondence — a
+  // distribution letter, a statement of earnings — which is a different document
+  // family from the wealth arm's client-level report and has its own reader.
+  // Claiming it here sent five statements to a reader that could only say it had
+  // none for them.
+  if (/360\s*ONE\s+ALTERNATES/i.test(text) && !/PORTFOLIO\s+ANALYSIS\s+REPORT/i.test(text)) return null;
+  const crn = text.match(/CRN[\s:#-]*([A-Z0-9-]{4,20})/i);
+  const client = trimPersonName(fieldAfter(text, "Client\\s*Name(?:\\s*\\(CRN[^)]*\\))?"));
+  const family = trimPersonName(fieldAfter(text, "Family\\s*Name"));
+  const asOf = dateAfter(text, "Report\\s*As\\s*On\\s*Date") || dateAfter(text, "As\\s*on\\s*Date") || dateAfter(text, "Report\\s*Date");
+
+  const sections = [];
+  if (/Detailed\s+Holding\s+Statement/i.test(text)) sections.push("holdings");
+  if (/Transaction\s+Statement/i.test(text)) sections.push("transaction-statement");
+  if (/Corporate\s+Action\s+Statement/i.test(text)) sections.push("corporate-action");
+  if (/Executive\s+Summary/i.test(text)) sections.push("performance-summary");
+
+  return {
+    provider: "360 ONE Private Wealth",
+    ownerName: client || family || null,
+    // The wider family grouping the provider files the account under. Kept
+    // distinct from the owner: several accounts share one Family Name.
+    familyGroup: family || null,
+    accountNo: crn ? crn[1] : null,
+    asOfDate: asOf,
+    // The holding statement is the authoritative section for the book; the rest
+    // ride along in the same file.
+    reportType: sections.includes("holdings") ? "holdings"
+      : sections.includes("transaction-statement") ? "transaction-statement"
+      : "unknown",
+    sections,
+    strategy: null,
+    confidence: asOf && (client || family) ? "high" : "medium",
+    matchedBy: "360 ONE signature",
+  };
+}
+
+/**
+ * GOLDSTANDARD WEALTH PRIVATE LIMITED — PMS, "Aristos Equity Portfolio".
+ * Header: `Account : <no>  <owner name>`, plus `Report Date` or `As of <date>`.
+ * Filenames look like `G<acct>_<acct>_<ReportType><n>OT_<n>.pdf`, and the file
+ * name is the more reliable of the two signals for report type because the
+ * on-page title is part of the scrambled text.
+ * Listed Indian equity, name only — NO ISIN.
+ */
+const GOLDSTANDARD_FILE_TYPES = [
+  [/currentportfolio/i, "holdings"],
+  [/portfoliopositionmain/i, "holdings"],
+  [/portfolioappraisal/i, "appraisal"],
+  [/portfoliofactsheet/i, "fact-sheet"],
+  [/portfolioperfsummary/i, "performance-summary"],
+  [/portfolioperfhistory/i, "performance-history"],
+  [/portfolioperfbm/i, "performance-benchmark"],
+  [/transactionstatement/i, "transaction-statement"],
+  [/capitalgain/i, "capital-gain"],
+  [/capitalregister/i, "capital-register"],
+  [/dividendstatement/i, "dividend-statement"],
+  [/bankbook/i, "bank-book"],
+  [/expensestmt/i, "expense-statement"],
+  [/corporatebenefits/i, "corporate-benefits"],
+  [/profitlossaccount/i, "profit-and-loss"],
+  [/incomeexpense/i, "income-expense"],
+];
+
+/**
+ * The shared PMS reporting system.
+ *
+ * Goldstandard (Aristos), Green Lantern and Carnelian all issue from it, with
+ * identical filenames `<code>_<account>_<ReportType><n>OT (n).pdf`. That pattern
+ * is the gate; the manager is then read from the letterhead, falling back to the
+ * account-code prefix because the appraisal carries no letterhead.
+ */
+const PMS_FILE = /^[A-Z]{1,8}\d+_\d+_/i;
+// ASK's files carry no client code before the account: `askimpms_10034025_…`.
+const ASK_FILE = /^askimpms_\d+_/i;
+// ASK INVESTMENT MANAGERS' PMS statements, by the three things they print: the
+// house's own name (fact sheet, P&L, balance sheet), its strategy (every
+// statement) and its SEBI PMS registration (every footer). The registration is
+// the strongest: it is issued to ASK Investment Managers Limited and to no one
+// else. ASK's AIF arm prints none of the three.
+const isAsk = (text) => /ASK\s+Investment\s+Managers/i.test(text)
+  || /ASK\s+Indian\s+Entrepreneur\s+Portfolio/i.test(text)
+  || /\bINP000008066\b/.test(text);
+// MARATHON TRENDS ADVISORY prints its letterhead on every statement.
+const isMarathon = (text) => /Marathon\s+Trends\s+Advisory/i.test(text);
+
+/**
+ * THE FAMILY'S OWN INVESTMENT REGISTER, matched on a header no custodian prints.
+ *
+ * A depository tracks units; it never tracks whether the family has the paper
+ * share certificate in hand. `ORG. SHARE CERTIFICATE STATUS` is a family
+ * record-keeping column and is the one field in
+ * `source/august-2026-f/NEW INVESTMENT SHEET.xlsx` that no issuer would ever
+ * emit — the same kind of anchor `Absolute Gain / (Loss) Including Redeemed
+ * Funds` gives the consolidated review.
+ *
+ * It is used in TWO places (the guard below and ISSUER_PROVIDER_RULES) and is
+ * therefore defined once: two copies of a signature are two chances for the
+ * guard and the label to disagree about the same document.
+ */
+export const FAMILY_REGISTER_SIGNATURE = /ORG\.?\s*SHARE\s+CERTIFICATE\s+STATUS/i;
+
+/** The consolidated review's own anchor — a column header no issuer prints. */
+export const FAMILY_REVIEW_SIGNATURE = /Absolute\s+Gain\s*\/\s*\(Loss\)\s+Including\s+Redeemed\s+Funds/i;
+
+/**
+ * EVERY non-statement signature, tested TOGETHER by the house-rule guards.
+ *
+ * The review workbook was protected only by ISSUER_PROVIDER_RULES, which run
+ * AFTER `match360One`/`matchGoldstandard` — so it escaped them only because its
+ * cells spell "Green Lantern Growth Strategy" rather than "GREEN LANTERN
+ * CAPITAL". That is luck, not design, and the adviser writing a manager's full
+ * legal name in one cell is all it would take: the workbook would then be filed
+ * as a Green Lantern report. Both documents are guarded on both signatures.
+ */
+export const NON_STATEMENT_SIGNATURES = [FAMILY_REGISTER_SIGNATURE, FAMILY_REVIEW_SIGNATURE];
+
+/** True for a document the family or their adviser produced, not an institution. */
+export const isNonStatement = (text) => NON_STATEMENT_SIGNATURES.some((re) => re.test(text));
+
+/**
+ * THE TWO DOCUMENTS IN THIS CORPUS THAT ARE NOT STATEMENTS.
+ *
+ * Both are the family's or their adviser's own records, both name every manager
+ * in the book, and both are held out of `glowData.ts` BY DECISION rather than by
+ * omission (see the rules in ISSUER_PROVIDER_RULES). Being non-statements, they
+ * have NO report type and NO account number — those are properties of a document
+ * an institution issued about one account.
+ *
+ * This is asserted rather than left to luck. The review workbook classified as
+ * `reportType: unknown` only because its cells happen to trip no report-type
+ * keyword; the family register's cells DO ("capital commitment", "drawdown
+ * notice"), so it came back `capital-call` — a live report type — with an
+ * accountNo of "GoldStandard" scraped out of a cell. A reader is chosen by
+ * report type, so leaving that to chance is how an aggregation reaches one.
+ */
+export const NON_STATEMENT_PROVIDERS = new Set([
+  "Consolidated family review (not a statement)",
+  "Family investment register (not a statement)",
+]);
+
+/**
+ * A PERSONAL BANK ACCOUNT STATEMENT, MATCHED ON ITS COLUMNS AND NOT ITS BANK.
+ *
+ * "HDFC Bank" is on the letterhead of a mutual-fund folio statement, a NSDL
+ * depository statement and a savings statement in this corpus, and "ICICI Bank"
+ * on a payment advice, an NSDL statement and a savings one. The bank's name
+ * says who printed the page and not what the page IS — the same rule as
+ * `match360One`'s letterhead note and §"a phrase in a footnote is not what a
+ * document is", arriving at a sixth issuer.
+ *
+ * What a savings statement IS, and what no other document here is, is a dated
+ * record printing a WITHDRAWAL column, a DEPOSIT column and a RUNNING BALANCE
+ * beside them. The PMS reporting system's BANK BOOK prints one `Dep With`
+ * column and no running withdrawal/deposit pair, so the two cannot collide —
+ * which matters, because `bank-book` is a live report type with a reader and a
+ * precedence entry of its own.
+ *
+ * Neither predicate reads the bank's name, a customer id or an email. The
+ * statements print all three; this file never looks at any of them.
+ */
+const HDFC_SAVINGS = (text) =>
+  /\bNarration\b/i.test(text)
+  && /\bValue\s*Dt\b/i.test(text)
+  && /\bWithdrawal\s*(?:Amt|Amount)/i.test(text)
+  && /\bDeposit\s*(?:Amt|Amount)/i.test(text)
+  && /\bClosing\s*Bal/i.test(text);
+
+const ICICI_SAVINGS = (text) =>
+  /\bTransaction\s+Remarks\b/i.test(text)
+  && /\bWithdrawal\s*(?:Amt|Amount)/i.test(text)
+  && /\bDeposit\s*(?:Amt|Amount)/i.test(text)
+  && /\bBalance\b/i.test(text);
+
+/** Which bank printed this savings statement, or null if it is not one. */
+export function bankStatementProvider(text) {
+  if (HDFC_SAVINGS(text)) return "HDFC Bank (savings account)";
+  if (ICICI_SAVINGS(text)) return "ICICI Bank (savings account)";
+  return null;
+}
+
+/** True for a personal bank account statement, by its own columns. */
+export const isBankStatement = (text) => bankStatementProvider(text) !== null;
+
+/**
+ * HOW OFTEN EACH HOUSE MATCHER'S BANK GUARD REFUSED A SAVINGS STATEMENT.
+ *
+ * ZERO ON A CORRECT RUN, AND PRINTED ANYWAY. `classify()` resolves a savings
+ * statement through `matchBankStatement` BEFORE either house matcher is
+ * reached, so neither guard fires on the live path however many bank statements
+ * a drop carries. A NON-ZERO count therefore means the order in `classify()`
+ * has changed and these two guards are now the only thing between a narration
+ * and a misfile — which is a finding, and one nothing else in the run reports.
+ *
+ * Printed even at zero, because a guard that only speaks when it fires is
+ * indistinguishable, on a clean run, from one that was quietly deleted — the
+ * rule `build-book`'s identity guards already follow. The count is also the
+ * only honest form the claim can take: the two guards are NOT alike, and which
+ * of them is load-bearing is a fact about a delivery's narrations rather than
+ * about the matchers. On the October 2026 statements `matchGoldstandard`'s is
+ * the one whose refusal would change the answer — HDFC 0394's own narration
+ * carries a PMS house's name — where `match360One` reads a letterhead no bank
+ * statement prints, so its guard would have nothing to stop even if reached.
+ */
+const bankGuardHits = { match360One: 0, matchGoldstandard: 0 };
+
+/** The counts above, as a copy. `extract.mjs` prints them at the end of a run. */
+export const bankGuardCounts = () => ({ ...bankGuardHits });
+
+/**
+ * Zero them. Module state outlives one `classify()` call, so a suite asserting
+ * that a bank statement never REACHED a house matcher has to start from a known
+ * count rather than from whatever an earlier case left behind.
+ */
+export const resetBankGuardCounts = () => {
+  bankGuardHits.match360One = 0;
+  bankGuardHits.matchGoldstandard = 0;
+};
+
+/**
+ * THE PERIOD THE STATEMENT COVERS — `From` and `To`, in whichever of the three
+ * forms the two banks print (dd/mm/yy, dd/mm/yyyy, dd-mm-yyyy). The as-of is
+ * the TO date: a statement is as of the last day it accounts for, and its
+ * closing balance is struck on that day.
+ */
+function bankPeriod(text) {
+  const d = "(\\d{2}[./-]\\d{2}[./-]\\d{2,4})";
+  const m = text.match(new RegExp(`(?:Statement\\s*)?From\\s*:?\\s*${d}[\\s\\S]{0,120}?\\bTo\\s*:?\\s*${d}`, "i"));
+  if (!m) return { from: null, to: null };
+  const iso = (s) => {
+    const p = s.split(/[./-]/);
+    if (p.length !== 3) return null;
+    const [dd, mm] = [p[0], p[1]];
+    const yyyy = p[2].length === 2 ? `20${p[2]}` : p[2];
+    const D = Number(dd), M = Number(mm);
+    if (!(D >= 1 && D <= 31 && M >= 1 && M <= 12)) return null;
+    return `${yyyy}-${mm}-${dd}`;
+  };
+  return { from: iso(m[1]), to: iso(m[2]) };
+}
+
+/**
+ * THE ACCOUNT NUMBER THE PAGE PRINTS, under its own label.
+ *
+ * Both banks print several labelled numbers in the same block, and only one of
+ * them is the account: an HDFC statement prints a customer id, an IFSC, a MICR,
+ * a branch code and a product code beside it. The label is the whole of the
+ * read — never a bare run of digits, and never the file name, which this book
+ * has recorded naming the wrong holder four times.
+ *
+ * A masked account is kept exactly as printed. The reader is authoritative and
+ * `rekey()` re-derives the docKey from what it returns; this is what the
+ * manifest is keyed on until then.
+ */
+function bankAccountNo(text) {
+  const m = text.match(/\b(?:Account|A\s*\/?\s*c)\s*(?:No|Number)\b\s*[.:#-]*\s*([0-9Xx*]{8,24})/);
+  return m ? m[1].trim() : null;
+}
+
+function matchBankStatement(text, name) {
+  const provider = bankStatementProvider(text);
+  if (!provider) return null;
+  const { to } = bankPeriod(text);
+  const accountNo = bankAccountNo(text);
+  return {
+    provider,
+    // The holder prints in an UNLABELLED address block on both layouts, so
+    // there is nothing here to read it from. `bankStatement.mjs` says the same
+    // and warns `holder-not-labelled` rather than taking the first line of an
+    // address — these accounts are `excludedFromBook`, so nothing attributes
+    // money to a guess either way.
+    ownerName: null,
+    accountNo,
+    asOfDate: to || dateFromName(name),
+    reportType: "bank-statement",
+    sections: ["bank-statement"],
+    familyGroup: null,
+    strategy: null,
+    confidence: accountNo && to ? "high" : "medium",
+    matchedBy: "savings-statement columns",
+  };
+}
+
+function matchGoldstandard(text, name) {
+  // A PERSONAL BANK STATEMENT IS NEVER A PMS HOUSE REPORT, and its NARRATIONS
+  // name whichever manager the family paid: HDFC 0394's own narration carries
+  // "VEC ASSAGO", which the `byText` gate below matched, so that statement was
+  // claimed by this matcher and filed under V.E.C Assago Capital Management.
+  // Same shape as the depository and register guards beside it — a document is
+  // not what it MENTIONS. COUNTED, and the run prints the count even at zero —
+  // see `bankGuardHits`, which is also where a zero's meaning is written down:
+  // `classify()` stops a savings statement before this matcher is reached, so
+  // this guard is what would hold if that order ever changed, and on these
+  // narrations it is the one of the two whose refusal changes the answer.
+  if (isBankStatement(text)) { bankGuardHits.matchGoldstandard += 1; return null; }
+  // A DEPOSITORY STATEMENT IS NEVER A PMS HOUSE REPORT, and it lists every fund
+  // the family owns as a transaction row — Buoyant's among them, which the
+  // `byText` gate below would otherwise claim. `genericProvider` matches these
+  // on the DP's own SEBI registration line; this just stops them being taken
+  // before they get there.
+  if (/CDSL\s+AND\s+NSDL\s*:\s*IN-DP-/i.test(text)) return null;
+  // AND NEITHER IS THE FAMILY'S OWN INVESTMENT REGISTER, which lists every
+  // manager they have ever paid — Green Lantern, Carnelian, Aristos, V.E.C and
+  // Buoyant all appear in it as INVESTMENT NAMES, so `byText` claimed it.
+  // Measured before this guard: provider "Green Lantern Capital LLP", strategy
+  // "Aristos Equity Portfolio", owner "COMMUNITY PRIVATE LIMITED BHARAT",
+  // accountNo "EDUGORILLA", reportType "capital-call" — and Green Lantern has a
+  // reader, so it would have been handed to one rather than merely misfiled.
+  if (isNonStatement(text)) return null;
+  const byText = /GOLDSTANDARD\s+WEALTH/i.test(text) || /GREEN\s+LANTERN\s+CAPITAL/i.test(text)
+    || /CARNELIAN\s+(?:ASSET\s+MANAGEMENT|BESPOKE\s+PORTFOLIO)/i.test(text) || /Aristos\s+Equity\s+Portfolio/i.test(text)
+    || /SVAN\s+INVESTMENT\s+MANAGERS/i.test(text)
+    || /V\.?\s*E\.?\s*C\s+ASSAGO/i.test(text)
+    || /MOLECULE\s+VENTURES/i.test(text)
+    // Buoyant issues from this system TOO, under an `I83_` account code. Its
+    // own Category III account statement is a different document family and
+    // goes to `altFundStatements.mjs`; see the dispatch note in extract.mjs.
+    || /Buoyant\s+Opportunities\s+Strategy/i.test(text)
+    // ASK Investment Managers and Marathon Trends Advisory issue from this
+    // system too — the same titles (BANK BOOK, STATEMENT OF CAPITAL GAIN/LOSS,
+    // STATEMENT OF DIVIDEND), the same `<code>_<account>_<Report><n>CT` file
+    // names. ASK's dated statements print no house name at all, only the
+    // strategy line and the SEBI registration in the footer, so both are
+    // signatures. The ASK ABSOLUTE RETURN FUND is a different vehicle from a
+    // different arm (ASK Long-Short Fund Managers) and prints none of these,
+    // which is what keeps it out of here; see ISSUER_PROVIDER_RULES.
+    || isAsk(text) || isMarathon(text);
+  const byName = PMS_FILE.test(name) || ASK_FILE.test(name);
+  if (!byText && !byName) return null;
+
+  // `Account : 12345  Some Owner Name`
+  // ASK and Marathon are tested FIRST: each is a whole letterhead (or, for ASK,
+  // its strategy and registration), and neither names another house.
+  const provider = isAsk(text) ? "ASK Investment Managers Limited"
+    : isMarathon(text) ? "Marathon Trends Advisory Pvt Ltd"
+    : /GREEN\s+LANTERN\s+CAPITAL/i.test(text) ? "Green Lantern Capital LLP"
+    // The AMRITKAAL fund is a Category III AIF, a different vehicle from the
+    // PMS mandate, and its statement names Carnelian as its manager — so it has
+    // to be tested BEFORE the house rule or it lands in the PMS account.
+    : /CARNELIAN\s+BHARAT\s+AMRITKAAL\s+FUND/i.test(text) ? "Carnelian Bharat Amritkaal Fund"
+    : /CARNELIAN\s+(?:ASSET\s+MANAGEMENT|BESPOKE\s+PORTFOLIO)/i.test(text) ? "Carnelian Asset Management and Advisors Pvt Ltd"
+    : /SVAN\s+INVESTMENT\s+MANAGERS/i.test(text) ? "SVAN Investment Managers LLP"
+    : /GOLDSTANDARD\s+WEALTH/i.test(text) || /Aristos/i.test(text) ? "Goldstandard Wealth Private Limited"
+    : /V\.?\s*E\.?\s*C\s+ASSAGO/i.test(text) ? "V.E.C Assago Capital Management LLP"
+    : /MOLECULE\s+VENTURES/i.test(text) ? "Molecule Ventures LLP"
+    : /Buoyant\s+Opportunities\s+Strategy/i.test(text) ? "Buoyant Capital"
+    : /^GLC/i.test(name) ? "Green Lantern Capital LLP"
+    : /^CBP/i.test(name) ? "Carnelian Asset Management and Advisors Pvt Ltd"
+    : /^VEC/i.test(name) ? "V.E.C Assago Capital Management LLP"
+    : /^G\d/i.test(name) ? "Goldstandard Wealth Private Limited"
+    : /^I83/i.test(name) ? "Buoyant Capital"
+    : ASK_FILE.test(name) ? "ASK Investment Managers Limited"
+    : /^Z1211_/i.test(name) ? "Marathon Trends Advisory Pvt Ltd"
+    : null;
+  const strategy = /Aristos\s+Equity\s+Portfolio/i.test(text) ? "Aristos Equity Portfolio"
+    : /GLC\s+GROWTH\s+FUND/i.test(text) ? "GLC Growth Fund"
+    : /CARNELIAN\s+BESPOKE\s+PORTFOLIO/i.test(text) ? "Carnelian Bespoke Portfolio"
+    : /V\.?\s*E\.?\s*C\s+ASSAGO\s+Small\s+and\s+Mid-?Cap\s+Growth/i.test(text) ? "V.E.C ASSAGO Small and Mid-Cap Growth"
+    : /ASK\s+Indian\s+Entrepreneur\s+Portfolio/i.test(text) ? "ASK Indian Entrepreneur Portfolio"
+    : /Trend\s+Following\s*-\s*Flexicap\s+Growth/i.test(text) ? "Trend Following - Flexicap Growth"
+    : null;
+  // ASK prints TWO numbers before the holder — `Account : 10034025 0034926 -
+  // Kapil Verma` (the fact sheet hyphenates both gaps). The first is the
+  // account its file name and every statement carry; the second is the house's
+  // client code. The generic pattern below cannot read it: after the first
+  // number it wants a NAME, finds the client code, and gives up.
+  const askAcct = provider === "ASK Investment Managers Limited"
+    ? text.match(/Account\s*:\s*(\d{6,})\s*-?\s*(\d{5,})\s*-\s*([A-Za-z][A-Za-z.'\- ]{2,60})/i)
+    : null;
+  const acct = askAcct
+    ? [askAcct[0], askAcct[1], askAcct[3]]
+    : text.match(/Account\s*[:#-]\s*([A-Z0-9-]{2,20})\s+([A-Za-z][A-Za-z.&'\- ]{2,80})/i);
+  let accountNo = acct ? acct[1] : null;
+  // The strategy name sits right after the owner on the same header line, so its
+  // leading token has to stop the name or it reads as part of it. ASK's fact
+  // sheet runs the holdings table into the same line (`… Verma 1 BANK
+  // Cash and …`), and its other statements run into `ASK Indian Entrepreneur
+  // Portfolio`, so `ASK` stops the name there.
+  // Buoyant prints its holder on the TITLE line with no label after it —
+  // `Account : 103473 AJAY THAKURDAS VERMA Buoyant Opportunities Strategy
+  // - Investor` once the text is flattened — so the scheme name ran straight
+  // into the owner ("AJAY THAKURDAS VERMA Buoyant Opportunities"). The
+  // owner still RESOLVED, by the PAN the reader finds, which is exactly how a
+  // polluted name hides; the inventory printed it as the holder.
+  const stops = [
+    ...(strategy ? [strategy.split(" ")[0]] : []),
+    ...(askAcct ? ["ASK", "Inception", "Sebi"] : []),
+    ...(provider === "Buoyant Capital" ? ["Buoyant"] : []),
+  ];
+  let ownerName = acct ? trimPersonName(acct[2], stops) : null;
+  // Goldstandard ONLY: its filename repeats the account number twice
+  // (`G100023_100024_…` on account 100024), so the second field is the account
+  // and is trusted when the text didn't parse. This does NOT generalise — V.E.C
+  // files `VECBES0004_145052_…` on account 128005, where the second field is the
+  // client code, and reading it as the account filed the fact sheet under an
+  // account number that appears on no statement.
+  if (!accountNo) {
+    const fn = name.match(/^G(\d+)_(\d+)_/i);
+    if (fn) accountNo = fn[2];
+  }
+
+  let asOf = dateAfter(text, "Report\\s*Date") || dateAfter(text, "As\\s*of") || dateAfter(text, "As\\s*on");
+  // ASK's and Marathon's dated statements carry no `As of` line — only the
+  // window they cover, `From 06/09/2019 to 08/09/2026` — and a statement is as
+  // of the day its window closes. SCOPED to those two houses: every other house
+  // in this book reaches its as-of above, and widening the fallback to them
+  // would move a document key the archive already carries.
+  if (!asOf && (provider === "ASK Investment Managers Limited" || provider === "Marathon Trends Advisory Pvt Ltd")) {
+    const w = text.match(/From\s+(\d{1,2}\/\d{1,2}\/\d{4})\s+to\s+(\d{1,2}\/\d{1,2}\/\d{4})/i);
+    if (w) asOf = toIso(w[2]);
+  }
+
+  let reportType = "unknown";
+  let matchedBy = "Goldstandard signature";
+  for (const [re, type] of GOLDSTANDARD_FILE_TYPES) {
+    if (re.test(name.replace(/[^A-Za-z]/g, ""))) { reportType = type; matchedBy = "Goldstandard filename"; break; }
+  }
+  if (reportType === "unknown") {
+    /**
+     * BUOYANT'S PORTFOLIO SNAP REPORT, on its NAME AND its content — both.
+     *
+     * The content alone cannot decide it: `source/august-2026/reports/BUOYANT -
+     * AJAY.pdf` is the same three pages (summary, transactions, Current
+     * Investments + Investment Summary) and is archived as `holdings`; reading
+     * the content as the rule would re-key a document already in the book. The
+     * file name is what the issuer calls this document, and the content is what
+     * makes the name true — a file merely NAMED a snap that lacks the page the
+     * snap is for keeps whatever it was before.
+     */
+    if (provider === "Buoyant Capital" && /Portfolio[\s_-]*Snap[\s_-]*Report/i.test(name)
+      && /Current\s+Investments/i.test(text) && /Investment\s+Summary/i.test(text)) {
+      reportType = "portfolio-snap";
+      matchedBy = "Buoyant Portfolio Snap Report — file name, and its Current Investments / Investment Summary page";
+    } else if (/Portfolio\s+Holdings/i.test(text) && /Sector\s+Allocation/i.test(text)) {
+      // Molecule's file is named `Molecule_June_2026_392.pdf` — nothing in it maps
+      // to a report type. Its CONTENT is unmistakable: a fact sheet's own
+      // "Portfolio Holdings" table beside a "Sector Allocation" one.
+      reportType = "fact-sheet";
+      matchedBy = "fact-sheet content (Portfolio Holdings + Sector Allocation)";
+    } else {
+      const g = genericReportType(text);
+      if (g) { reportType = g; matchedBy = "Goldstandard signature + content keywords"; }
+    }
+  }
+
+  return {
+    provider,
+    ownerName,
+    accountNo,
+    asOfDate: asOf,
+    reportType,
+    sections: reportType === "unknown" ? [] : [reportType],
+    familyGroup: null,
+    strategy,
+    confidence: accountNo && asOf && reportType !== "unknown" ? "high" : "medium",
+    matchedBy,
+  };
+}
+
+// ── Generic content keywords, most specific first ────────────────────────────
+const GENERIC_TYPE_RULES = [
+  // A TITLE, and it comes first for a reason. This report's own footnote reads
+  // "Net Rate includes brokerage, stamp duty, tax and any charge customarily
+  // included in the contract note of broker, STT etc." — so the contract-note
+  // keyword below matched all four SVAN statements and the fifteen-page Green
+  // Lantern bundle, filing a SEBI investor report as a report type this repo has
+  // no reader for. A phrase inside a footnote is not what a document is.
+  [/PMS\s+INVESTOR\s+REPORT/i, "investor-report"],
+  // ── A fund's OWN portfolio, not a client's. Matched first because the row of
+  // holdings inside it will match almost any content keyword below.
+  [/Portfolio\s+Statement\s+as\s+on|Monthly\s+Portfolio\s+(?:Statement|Disclosure)/i, "scheme-portfolio"],
+  // A mutual-fund FOLIO statement — units, NAV and a value per scheme, which is
+  // a holdings statement whatever the AMC titles it. Matched on the phrase every
+  // one of them prints beside the folio number, so the looser `holding
+  // statement` keyword below cannot claim a PMS report by mistake.
+  [/Market Value of Balance Units at NAV|Your Account At A Glance|PORTFOLIO SUMMARY[\s\S]{0,200}?Unit Balance/i, "holdings"],
+  // ── AIF pass-through correspondence, per folio.
+  [/STATEMENT\s+OF\s+EARNINGS/i, "statement-of-earnings"],
+  [/INCOME\s+DISTRIBUTION\s+LETTER/i, "distribution-notice"],
+  // ── The broker/depository set, all four titled unambiguously. These come
+  // before the looser keyword rules below because three of them contain a phrase
+  // one of those rules matches: the CDSL statement is headed TRANSACTION
+  // STATEMENT and is not a trade record at all, the depository statement is a
+  // holding statement, and the P&L is a capital gain statement that says neither.
+  [/DEPOSITORY\s+HOLDING\s+STATEMENT/i, "holdings"],
+  // ── A PERSONAL BANK STATEMENT, above the two rules below it because both
+  // would claim one: a savings statement is titled "Statement of account" and
+  // its rows are transactions. `matchBankStatement` resolves one in full
+  // before this list is reached; this is the backstop for a layout whose
+  // columns it does not know, so such a document reaches no reader at all
+  // rather than reaching the demat or trade reader, which would read its
+  // narrations as securities.
+  [/\bTransaction\s+Remarks\b|\bValue\s*Dt\b[\s\S]{0,400}?\bClosing\s*Bal/i, "bank-statement"],
+  [/STATEMENT\s+OF\s+ACCOUNT\s+FOR\s+THE\s+PERIOD/i, "demat-statement"],
+  [/Annual\s*P\s*&?(?:amp;)?\s*L/i, "capital-gain"],
+  [/Global\s+Details\s+Report/i, "transaction-statement"],
+  [/capital\s+call|drawdown\s+notice|call\s+notice/i, "capital-call"],
+  [/distribution\s+notice|redemption\s+(?:notice|advice)|payout\s+advice/i, "distribution-notice"],
+  [/contract\s+note/i, "contract-note"],
+  [/corporate\s+action/i, "corporate-action"],
+  [/transaction\s+(?:statement|summary|report)|statement\s+of\s+transactions/i, "transaction-statement"],
+  [/fact\s*sheet/i, "fact-sheet"],
+  // A PERFORMANCE APPRAISAL is a returns block (Green Lantern's one-page
+  // summary of 6 Oct 2026), not the holdings appraisal — above that rule,
+  // because "Portfolio Performance Appraisal" contains neither of its phrases
+  // but a bare "Performance Appraisal" reaching no rule went to no reader.
+  [/performance\s+appraisal/i, "performance-history"],
+  [/portfolio\s+appraisal|appraisal\s+report/i, "appraisal"],
+  [/performance\s+history|historical\s+performance/i, "performance-history"],
+  [/performance\s+summary|returns?\s+summary/i, "performance-summary"],
+  [/holding\s+statement|statement\s+of\s+holdings?|current\s+portfolio|portfolio\s+holdings?|detailed\s+holding/i, "holdings"],
+];
+
+function genericReportType(text) {
+  for (const [re, type] of GENERIC_TYPE_RULES) if (re.test(text)) return type;
+  return null;
+}
+
+/**
+ * ISSUERS come first and are matched on the WHOLE text, because these are the
+ * names that appear on a letterhead and nowhere else.
+ *
+ * The order matters and so does the split below: a manager's own name is not
+ * the only place a financial institution's name appears in its statement. SVAN's
+ * monthly report HOLDS `Edelweiss Financial Services Ltd`, Sanshi Fund prints
+ * the investor's HDFC bank details, Transition Venture prints an HDFC IFSC code
+ * — and matching those against the whole document filed four different managers'
+ * statements under the wrong house. Every one of them looked like a confident
+ * classification.
+ */
+const ISSUER_PROVIDER_RULES = [
+  /**
+   * A CONSOLIDATED REVIEW IS NOT A STATEMENT, AND IT NAMES EVERY MANAGER.
+   *
+   * The family's adviser sends a 25-tab workbook aggregating the whole book.
+   * Matched on any issuer name it would claim whichever one its cells happen to
+   * mention first — it landed under Helios, then under Motilal Oswal Founders
+   * Fund, with an "owner" read as the literal word "Sale". It contributed
+   * nothing either time only because the fund readers refused its summary row.
+   *
+   * It is matched on a COLUMN HEADER no issuer prints, and it has no reader by
+   * DECISION rather than by omission: every figure in this book traces to the
+   * statement of the institution that struck it, and an aggregation carries
+   * someone else's assumptions about what to include and how to value it. Its
+   * proper use is as an independent CROSS-CHECK of the generated book — the
+   * role `golden.mjs` plays for the extractors — not as a source.
+   */
+  [FAMILY_REVIEW_SIGNATURE, "Consolidated family review (not a statement)"],
+  /**
+   * AND THE FAMILY'S OWN INVESTMENT REGISTER IS THE SAME KIND OF DOCUMENT.
+   *
+   * `source/august-2026-f/NEW INVESTMENT SHEET.xlsx` is the family's own record
+   * of what they PAID for each direct/private holding — 8 sheets, 844 tranche
+   * rows, 151 names. It is not a statement: no institution struck it, and its
+   * INVESTMENT AMOUNT column is a cash outflow rather than a mark.
+   *
+   * Unmatched, it behaves exactly as the review workbook did before the rule
+   * above. Measured: it classified as provider "Green Lantern Capital LLP",
+   * strategy "Aristos Equity Portfolio", owner "COMMUNITY PRIVATE LIMITED
+   * BHARAT", accountNo "EDUGORILLA", reportType "capital-call" — every field
+   * scraped off a PORTFOLIO COMPANY's name in one of its cells. Green Lantern
+   * has a reader and `capital-call` is a live report type, so unlike the review
+   * workbook this one would have been HANDED TO A READER rather than merely
+   * misfiled.
+   *
+   * Matched, like the review, on a column header no custodian prints: a
+   * depository tracks units, never whether the family has the paper certificate
+   * in hand. Held out of the book for the same reason and reversibly — what it
+   * carries is the family's own judgement and cash record, which belongs in the
+   * family-input layer (`src/lib/deals.ts`), never in `glowData.ts`.
+   */
+  [FAMILY_REGISTER_SIGNATURE, "Family investment register (not a statement)"],
+  /**
+   * A DEMAT STATEMENT IS MATCHED ON ITS DEPOSITORY REGISTRATION, and it comes
+   * first because its ROWS are other people's funds.
+   *
+   * These are the depository participant's own holding and transaction
+   * statements, and every fund the family owns is printed inside them as a
+   * line item — so matched on any fund name, one landed under Buoyant and
+   * another under Neo Infra, which is the WhiteOak failure exactly: a name on a
+   * document is not a claim about who issued it. `CDSL AND NSDL : IN-DP-…` is
+   * the DP's SEBI registration line, printed on its own letterhead and on
+   * nothing else in this drop.
+   */
+  [/CDSL\s+AND\s+NSDL\s*:\s*IN-DP-/i, "Motilal Oswal Financial Services (demat)"],
+  /**
+   * ...and the NSDL one beside it, for exactly the same reason and with the same
+   * hazard proved on the document itself.
+   *
+   * ICICI Bank's `Statement of Holding` lists SANSHI TRUST, INDIA SME
+   * INVESTMENTS AIF TRUST II and SKY CAPITAL RISING TITANS FUND I as scrip rows,
+   * so before this rule it was claimed by `Sky Capital Rising Titans Fund` — a
+   * ₹12,479 Cr demat account filed under an angel fund whose four folios are
+   * worth ₹4.73 Cr, because the fund's name is a LINE ITEM inside it.
+   *
+   * It takes BOTH halves of the letterhead. `ICICI BANK LIMITED` alone is
+   * already in this book as an `ISIN NAME:` on a Motilal transaction statement —
+   * a security the family holds — and `DP ID :` alone is printed on thirty
+   * statements as a field about the INVESTOR's depository account. Only the two
+   * adjacent are the depository participant's own letterhead.
+   */
+  [/ICICI\s+BANK\s+LIMITED[\s\S]{0,40}?DP\s*ID\s*:\s*IN\d{6}/i, "ICICI Bank (NSDL demat)"],
+  /**
+   * HDFC BANK'S OWN NSDL DP ID, and it has to be the DP ID rather than the bank's
+   * name. This corpus is full of documents that MENTION HDFC without being issued
+   * by it — Sanshi prints the investor's HDFC bank details, Transition Venture an
+   * HDFC IFSC code, and 3P's own statement names HDFC as its redemption payout
+   * bank. `IN301549` is the depository participant registration and appears only
+   * on a statement HDFC's depository arm produced.
+   *
+   * Both statements this matches carry no text layer at all; their words are
+   * recovered by rendering the outlined glyphs (lib/ocr.mjs), which is why this
+   * rule can fire at all.
+   */
+  [/DP\s*ID\s*IN301549[\s\S]{0,4000}?HDFC\s+Bank\s+Limited/i, "HDFC Bank (NSDL demat)"],
+  /**
+   * …AND THE SAME BANK'S NATIVE EXPORT, which prints neither `IN301549` nor
+   * `HDFC Bank Limited` on its first page. Its title names the bank AND the
+   * document — `HDFC Bank Depository Holding Details` — so the title is the
+   * signature, never the bank's name alone: every rule above records how many
+   * documents here merely MENTION HDFC. It sits ABOVE the house rule
+   * `HDFC (Securities|Bank|…)`, which would otherwise file Kapil's DP account
+   * 10295743 under a provider no reader knows.
+   */
+  [/HDFC\s+Bank\s+Depository\s+Holding\s+Details/i, "HDFC Bank (NSDL demat)"],
+  /**
+   * THE FUND'S OWN NAME BEATS THE STATIONERY IT ARRIVES ON.
+   *
+   * These six come FIRST because four of them print `Motilal Oswal` on the
+   * letterhead — as the DISTRIBUTOR, the depository participant or the RTA —
+   * and one arrives through CAMS and three more through their investors' banks.
+   * Matched on the house instead of the fund, Buoyant's Category III AIF and
+   * Motilal Oswal's own Founders Fund landed in one account under one manager,
+   * which is two different people's money in one row.
+   *
+   * The same reasoning as the WhiteOak disclosure that matched `360 ONE`
+   * because the scheme HELD ₹10.16 Cr of the listed company: a name on a
+   * document is not a claim about who issued it.
+   */
+  [/Buoyant\s+Opportunities\s+Strategy/i, "Buoyant Capital"],
+  /**
+   * ...and Sky Capital proves the rule twice on one page. Its statements print
+   * `HDFC Bank Ltd` in the investor's BANK block and `Motilal Oswal Financial
+   * Servies Ltd` as the DEPOSITORY PARTICIPANT, so before this rule two folios
+   * classified as HDFC and two as Motilal Oswal — four statements of one angel
+   * fund, split across two houses that issued none of them. It must sit above
+   * the bare `Motilal Oswal` issuer rule further down, which matches the whole
+   * text and would otherwise claim the two trust folios.
+   */
+  [/Sky\s+Capital\s+Rising\s+Titans\s+Fund/i, "Sky Capital Rising Titans Fund"],
+  [/HELIOS\s+MUTUAL\s+FUND|Helios\s+Flexi\s+Cap/i, "Helios Mutual Fund"],
+  [/Motilal\s+Oswal\s+Founders\s+Fund/i, "Motilal Oswal Founders Fund"],
+  [/Active\s+Momentum\s+Fund/i, "Motilal Oswal Active Momentum Fund"],
+  [/3P\s+India\s+Equity\s+Fund/i, "3P Investment Managers"],
+  [/India\s+SME\s+Investments\s+Fund/i, "India SME Investments"],
+  /**
+   * ...and the same rule again for everything the `august-2026-d` delivery
+   * introduced. EVERY ONE of these was landing under a house that did not issue
+   * it: the demat statements under HDFC / 3P / Buoyant / Aditya Birla, because
+   * the classifier matched a HOLDING inside them; the Delphi and NEO statements
+   * and a Baring PE folio under the bare `Motilal Oswal` rule, because Motilal
+   * Oswal is the distributor or the depository participant; and the CONSOLIDATED
+   * REVIEW WORKBOOK under Helios Mutual Fund, because the family owns some.
+   *
+   * THE POSITION OF THIS BLOCK IS LOAD-BEARING. Placed above the established
+   * fund rules it stole two accounts that were already in the book: the demat
+   * rule matched `Motilal Oswal Financial Services` printed as the DEPOSITORY
+   * PARTICIPANT on the Founders Fund and 3P statements, and ₹21.83 Cr walked out
+   * of the book on a re-run. It sits below every fund rule that predates it and
+   * above the bare `Motilal Oswal` and `CARNELIAN ASSET MANAGEMENT` rules, which
+   * is the only band where all of them resolve.
+   *
+   * These rules only ATTRIBUTE them. Most still have no reader, and the
+   * coverage section of the extraction report is where that is stated — which
+   * is the honest place for it, and is not the same thing as filing a document
+   * under a manager who never wrote it.
+   */
+  [/Neo\s+Infra\s+Income\s+Opportunities\s+Fund/i, "Neo Infra Income Opportunities Fund"],
+  [/Baring\s+Private\s+Equity\s+India\s+Fund/i, "Baring Private Equity India Fund"],
+  [/CARNELIAN\s+BHARAT\s+AMRITKAAL\s+FUND/i, "Carnelian Bharat Amritkaal Fund"],
+  [/Motilal\s+Oswal\s+Wealth\s+Delphi\s+Equity\s+Fund|Delphi\s+Emerging\s+Equity\s+Fund/i, "Motilal Oswal Delphi Equity Fund"],
+  [/Motilal\s+Oswal\s+Hedged\s+Equity\s+Multi\s+Factor/i, "Motilal Oswal Hedged Equity Multi Factor Strategy"],
+  /**
+   * ASK'S CATEGORY III AIF, NAMED BY ITS OWN STATEMENT'S TITLE.
+   *
+   * Its statement of account names Motilal Oswal Wealth as the DISTRIBUTOR, a
+   * bank in the investor's block and KFintech in its footer, so before this
+   * rule all three folios landed under the bare `Motilal Oswal` issuer rule
+   * below with the investor's BANK ACCOUNT as their account number. It sits
+   * below the depository rules — the family's demat statements carry this fund
+   * as a scrip row (`ASK ALTERNATE INVESTMENT FUND - ASK ABSOLUTE RETURN
+   * FUND…`) — and above the distributor and RTA rules, the band the
+   * `august-2026-d` block above already documents.
+   */
+  [/ASK\s+Absolute\s+Return\s+Fund/i, "ASK Absolute Return Fund"],
+  // A bank payment advice, not a statement. `3P_Folio 3000049.pdf` is named for
+  // the folio the money went to and is an ICICI receipt for the transfer.
+  [/ICICI\s+Bank\s+Advice\s+Receipt/i, "ICICI Bank (payment advice)"],
+  // The ALTERNATES arm comes first and must: it signs its letters "360 ONE
+  // ALTERNATES ASSET MANAGEMENT LIMITED", which the broader `360 ONE` rule below
+  // also matches. Two arms of one group, two document families, two readers.
+  [/360\s*ONE\s+ALTERNATES/i, "360 ONE Alternates Asset Management"],
+  /**
+   * The wealth arm, identified by its own REPORT TITLE and its EMAIL DOMAIN.
+   *
+   * The bare name cannot be used on the whole text: `360 One WAM Limited` is a
+   * listed company and WhiteOak's multi-asset fund holds ₹10.16 Cr of it, so one
+   * row inside a 348-row table filed that fund's own scheme disclosure under this
+   * provider and sent it to a client-report reader.
+   *
+   * The title alone is not enough either. In the FLAT reading order the
+   * inventory uses, the address block lands between the two halves of it —
+   * `PORTFOLIO Mr. KAPIL VERMA, 1301 B BEAU MONDE … ANALYSIS REPORT
+   * CLIENT LEVEL` — so the title matches in the coordinate grid and not in the
+   * inventory's text, and the two stages disagreed about a file they both read.
+   *
+   * `@360.one` is on the letterhead of every one of these documents (the
+   * relationship manager's address) and can appear in a holdings table only if a
+   * fund starts printing its holdings' e-mail addresses.
+   */
+  [/PORTFOLIO\s+ANALYSIS\s+REPORT|@360\.one\b/i, "360 ONE Private Wealth"],
+  [/GOLDSTANDARD\s+WEALTH/i, "Goldstandard Wealth Private Limited"],
+  [/GREEN\s+LANTERN\s+CAPITAL/i, "Green Lantern Capital LLP"],
+  [/CARNELIAN\s+ASSET\s+MANAGEMENT/i, "Carnelian Asset Management and Advisors Pvt Ltd"],
+  [/V\.?\s*E\.?\s*C\s+ASSAGO/i, "V.E.C Assago Capital Management LLP"],
+  [/SVAN\s+INVESTMENT\s+MANAGERS/i, "SVAN Investment Managers LLP"],
+  [/MOLECULE\s+VENTURES/i, "Molecule Ventures LLP"],
+  [/SANSHI\s+FUND/i, "Sanshi Fund"],
+  [/TRANSITION\s+VENTURE\s+CAPITAL/i, "Transition Venture Capital"],
+  [/LKP\s+SEC|lkpsec\.com/i, "LKP Securities"],
+  // A folio's document title and scheme/domain, after the non-statement and
+  // depository guards. Distributor names and funds held by a demat cannot
+  // establish the issuer.
+  [/(?=[\s\S]*Account Statement for Folio No\.)(?=[\s\S]*invescomutualfund\.com)/i, "Invesco Mutual Fund"],
+  [/\bScheme\s+Motilal\s+Oswal\s+Arbitrage\s+Fund[\s\S]{0,100}ISIN No\s*:\s*INF247L01ED1/i, "Motilal Oswal Mutual Fund"],
+  [/B153DZ-Aditya\s+Birla\s+Sun\s+Life\s+Liquid\s+Fund/i, "Aditya Birla Sun Life Mutual Fund"],
+  // Mutual-fund account statements. Matched on the AMC's FULL registered name,
+  // which appears only on its own statement — never as a holding, where the
+  // house shows up as a listed share ("HDFC Bank Ltd", "Kotak Mahindra Bank
+  // Ltd"). That distinction is why these belong here and the bare bank names
+  // stay in HOUSE_PROVIDER_RULES below.
+  [/Aditya\s+Birla\s+Sun\s+Life\s+(?:Mutual\s+Fund|AMC)/i, "Aditya Birla Sun Life Mutual Fund"],
+  [/Kotak\s+Mahindra\s+Mutual\s+Fund|Kotak\s+Mutual\s+Fund/i, "Kotak Mahindra Mutual Fund"],
+  [/Mirae\s+Asset\s+(?:Mutual\s+Fund|Investment|Asset\s+Management|MF)/i, "Mirae Asset Mutual Fund"],
+  // Before HDFC: an ICICI Prudential statement names "HDFC Bank Ltd" in its
+  // bank details, so the HDFC rule would claim it on a name it merely mentions.
+  [/ICICI\s+Prudential\s+(?:Mutual\s+Fund|Asset\s+Management)|icicipruamc\.com/i, "ICICI Prudential Mutual Fund"],
+  [/HDFC\s+Mutual\s+Fund|HDFC\s+Asset\s+Management/i, "HDFC Mutual Fund"],
+  [/WhiteOak\s+Capital|White\s*Oak\s+Capital/i, "Scheme portfolio disclosure"],
+  [/\bMotilal\s+Oswal/i, "Motilal Oswal"],
+  [/\bJulius\s+Baer/i, "Julius Baer"],
+  [/\bAvendus\b/i, "Avendus"],
+  [/\bCAMS\b|Computer\s+Age\s+Management/i, "CAMS"],
+  [/\bKFin(?:tech)?\b|Karvy/i, "KFintech"],
+];
+
+/**
+ * CUSTODIAN / BANK / AMC names, matched only against the HEAD of the document —
+ * the letterhead region. These names also occur in a holdings table, a bank
+ * details block and an IFSC code, where they say nothing about who issued the
+ * statement.
+ */
+const HOUSE_PROVIDER_RULES = [
+  // 360 ONE on a LETTERHEAD is the issuer; 360 ONE in a holdings table is a
+  // share of a listed company. Only the first 700 characters count.
+  [/360\s*ONE/i, "360 ONE Private Wealth"],
+  // The AMCs, on their own letterhead. Their support domains are the one token
+  // that survives whatever the flat reading order does to the address block.
+  [/hdfcfund\.com|HDFC\s+Asset\s+Management/i, "HDFC Mutual Fund"],
+  [/kotakmf\.com/i, "Kotak Mahindra Mutual Fund"],
+  [/mutualfund\.adityabirlacapital\.com|Aditya\s+Birla\s+Sun\s+Life\s+AMC/i, "Aditya Birla Sun Life Mutual Fund"],
+  [/miraeassetmf\.co\.in/i, "Mirae Asset Mutual Fund"],
+  [/\bKotak\s+(?:Mahindra\s+)?(?:Bank|Securities|Investment|MF|Mutual)/i, "Kotak"],
+  [/\bICICI\s+(?:Securities|Prudential|Bank)/i, "ICICI"],
+  [/\bHDFC\s+(?:Securities|Bank|AMC|Mutual)/i, "HDFC"],
+  [/\bAditya\s+Birla\s+Sun\s+Life|\bABSL\b/i, "Aditya Birla Sun Life"],
+  [/\bMirae\s+Asset/i, "Mirae Asset"],
+  [/\bAxis\s+(?:Securities|Bank|AMC|Mutual)/i, "Axis"],
+  [/\bNuvama\b/i, "Nuvama"],
+  [/\bEdelweiss\b/i, "Edelweiss"],
+];
+
+/** How much of the text counts as "the letterhead" for the house rules. */
+const LETTERHEAD_CHARS = 700;
+
+function genericProvider(text) {
+  /**
+   * A SAVINGS STATEMENT IS NAMED BY ITS BANK, NOT BY WHOEVER IT PAID.
+   *
+   * `ISSUER_PROVIDER_RULES` run over the WHOLE text, and a narration names the
+   * manager on the other side of the transfer: measured on HDFC 0394's own
+   * text, this function returned "V.E.C Assago Capital Management LLP" for a
+   * bank statement. `classify()` resolves one through `matchBankStatement`
+   * before reaching here, so that was never on the live path — and this is
+   * where the decision would be made if it ever were, which is the same reason
+   * `isNonStatement` guards both house matchers rather than one caller.
+   */
+  const bank = bankStatementProvider(text);
+  if (bank) return bank;
+  for (const [re, name] of ISSUER_PROVIDER_RULES) if (re.test(text)) return name;
+  const head = text.slice(0, LETTERHEAD_CHARS);
+  for (const [re, name] of HOUSE_PROVIDER_RULES) if (re.test(head)) return name;
+  return null;
+}
+
+/** Any labelled as-of-ish date, in order of how authoritative the label is. */
+function genericAsOf(text) {
+  const labels = [
+    "Report\\s*As\\s*On\\s*Date", "Report\\s*Date", "As\\s*on\\s*Date", "As\\s*of\\s*Date",
+    "As\\s*on", "As\\s*of", "Statement\\s*Date", "Valuation\\s*Date", "Period\\s*Ended?", "As\\s*at",
+  ];
+  for (const l of labels) {
+    const d = dateAfter(text, l);
+    if (d) return d;
+  }
+  return null;
+}
+
+/** A date encoded in the filename, e.g. `..._2026-06-30.pdf` or `..._30062026.pdf`. */
+function dateFromName(name) {
+  let m = name.match(/(20\d{2})[-_.]?(\d{2})[-_.]?(\d{2})/);
+  if (m && Number(m[2]) >= 1 && Number(m[2]) <= 12 && Number(m[3]) >= 1 && Number(m[3]) <= 31) {
+    return `${m[1]}-${m[2]}-${m[3]}`;
+  }
+  m = name.match(/(\d{2})[-_.]?(\d{2})[-_.]?(20\d{2})/);
+  if (m && Number(m[2]) >= 1 && Number(m[2]) <= 12 && Number(m[1]) >= 1 && Number(m[1]) <= 31) {
+    return `${m[3]}-${m[2]}-${m[1]}`;
+  }
+  return null;
+}
+
+/**
+ * Classify one PDF from its filename and extracted text.
+ * Returns { provider, ownerName, accountNo, asOfDate, reportType, sections,
+ *           strategy, confidence, matchedBy } — any field may be null.
+ */
+export function classify({ fileName, text }) {
+  const name = fileName || "";
+  const t = text || "";
+
+  // A PERSONAL BANK STATEMENT IS RESOLVED FIRST, because both seeded matchers
+  // below read a manager's name out of a document that merely prints one in a
+  // narration, and the house rules further down would file it under the BANK —
+  // "HDFC", which is also an AMC and a depository participant here.
+  const bank = matchBankStatement(t, name);
+  if (bank) return bank;
+
+  const seeded = match360One(t, name) || matchGoldstandard(t, name);
+  if (seeded) return seeded;
+
+  const provider = genericProvider(t);
+  // A document nobody issued has no report type, no account and no as-of. See
+  // NON_STATEMENT_PROVIDERS: without this the family register came back
+  // `capital-call` on account "GoldStandard", and a reader is chosen by report
+  // type.
+  if (NON_STATEMENT_PROVIDERS.has(provider)) {
+    return {
+      provider, ownerName: null, accountNo: null, asOfDate: null,
+      reportType: "unknown", sections: [], familyGroup: null, strategy: null,
+      confidence: "high", matchedBy: "non-statement signature",
+    };
+  }
+  /**
+   * ASK ABSOLUTE RETURN FUND prints its folio with NO separator — `Folio Number
+   * 9039917144` — so the generic pattern below finds the investor's BANK account
+   * first (`Account Number : 0651…`) and files the statement under it. The folio
+   * is the account. The holder is the `Name :` that opens the investor block,
+   * cut where the bank block beside it begins (`… Bank & Branch :`); the second
+   * holder and the distributor print `Name :` too and are never followed by it.
+   * It is a single-scheme ACCOUNT STATEMENT — units, NAVs and the dated record —
+   * which is what every other fund this book reads is typed as.
+   */
+  if (provider === "ASK Absolute Return Fund") {
+    const folio = (t.match(/Folio\s+Number\s*:?\s*(\d{6,})/i) || [])[1] || null;
+    const holder = (t.match(/\bName\s*:\s*([A-Za-z][A-Za-z .'-]{2,60}?)\s+Bank\s*&/) || [])[1] || null;
+    const asOfDate = genericAsOf(t) || dateFromName(name);
+    return {
+      provider, ownerName: trimPersonName(holder), accountNo: folio, asOfDate,
+      reportType: "holdings", sections: ["holdings"], familyGroup: null, strategy: null,
+      confidence: folio && asOfDate ? "high" : "medium",
+      matchedBy: "ASK Absolute Return Fund statement of account",
+    };
+  }
+  /**
+   * ICICI PRUDENTIAL's statement of account prints the holder as the first word
+   * run on the line that carries `Bank Account Number`, and the investor's
+   * ADDRESS on the lines below it — so the generic name rule found nothing and
+   * the fallback read a fragment of the street ("E MARGNEAR SIDDHIVINAYAK…").
+   * The folio is `Folio No. : 36379637 / 57`; the part after the slash is a
+   * check digit, not a second account. It is a folio's ACCOUNT SUMMARY — units,
+   * NAV and value per scheme — so it is typed `holdings` like every other folio.
+   */
+  if (provider === "ICICI Prudential Mutual Fund") {
+    const folio = (t.match(/Folio\s+No\.?\s*:\s*(\d{6,})/i) || [])[1] || null;
+    const holder = (t.match(/\n\s*([A-Z][A-Za-z .'-]{4,60}?)\s+Bank\s+Account\s+Number\b/) || [])[1] || null;
+    const asOfDate = genericAsOf(t) || dateFromName(name);
+    return {
+      provider, ownerName: trimPersonName(holder), accountNo: folio, asOfDate,
+      reportType: "holdings", sections: ["holdings"], familyGroup: null, strategy: null,
+      confidence: folio && asOfDate ? "high" : "medium",
+      matchedBy: "ICICI Prudential Mutual Fund statement of account",
+    };
+  }
+  const reportType = genericReportType(t) || genericReportType(name.replace(/[_-]/g, " "));
+  const asOfDate = genericAsOf(t) || dateFromName(name);
+  const accountNo = (t.match(/(?:Account|Folio|Client\s*Code|A\/c)\s*(?:No\.?|Number|#)?\s*[:#-]\s*([A-Z0-9][A-Z0-9\/-]{3,20})/i) || [])[1] || null;
+  const ownerName = trimPersonName(fieldAfter(t, "(?:Client|Investor|Holder|Account)\\s*Name"))
+    || trimPersonName(fieldAfter(t, "Family\\s*Name"));
+
+  // Confidence is about how much of the row we could establish, and it is what
+  // decides whether a file lands in the main tables or the "could not classify"
+  // section of the report.
+  const known = [provider, accountNo, asOfDate, reportType && reportType !== "unknown"].filter(Boolean).length;
+  const confidence = known >= 3 ? "high" : known === 2 ? "medium" : "low";
+
+  return {
+    provider: provider || null,
+    ownerName: ownerName || null,
+    accountNo,
+    asOfDate,
+    reportType: reportType || "unknown",
+    sections: reportType && reportType !== "unknown" ? [reportType] : [],
+    familyGroup: null,
+    strategy: null,
+    confidence,
+    matchedBy: provider || reportType ? "generic keywords" : "nothing matched",
+  };
+}
